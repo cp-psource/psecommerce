@@ -97,7 +97,7 @@ var mp_cart = {};
      * @since 1.0
      */
     mp_cart.initCartButtonListeners = function() {
-        $('.mp_button-widget-cart-empty').on('click', function(e) {
+        $('.mp_button-widget-cart-empty').on("click", function(e) {
             e.preventDefault();
             mp_cart.emptyCart();
         });
@@ -658,7 +658,7 @@ var mp_cart = {};
             }, 300);
         }, function() {
             $cart.removeClass('visible in-transition');
-        }).click(function() {
+        }).on("click", function() {
             $cart.addClass('in-transition');
             setTimeout(function() {
                 $cart.addClass('visible');

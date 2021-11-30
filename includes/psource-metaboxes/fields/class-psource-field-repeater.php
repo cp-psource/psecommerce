@@ -423,7 +423,7 @@ jQuery(function($) {
 		$links.hide();
 	}
 
-	$('.psource-subfields').on('click', '.psource-subfield-delete-group-link', function(event){
+	$('.psource-subfields').on("click", '.psource-subfield-delete-group-link', function(event){
 		if ( confirm('<?php _e('Sicher das Du dies löschen möchtest?', 'psource_metaboxes'); ?>') ) {
 			var $this = $(this),
 					$subfieldGroup = $this.closest('.psource-subfield-group'),
@@ -459,7 +459,7 @@ jQuery(function($) {
 		}
 	});
 
-	$('.psource-repeater-field-add').click(function(){
+	$('.psource-repeater-field-add').on("click", function(){
 		/**
 		 * Triggered right before a row is added.
 		 *

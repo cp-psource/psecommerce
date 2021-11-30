@@ -71,7 +71,7 @@ class MP_Shop_Einstellungen_Presentation {
 		?>
 		<script type="text/javascript">
 			jQuery(function($) {
-				$('.mp-create-page-button').click(function (e) {
+				$('.mp-create-page-button').on("click", function (e) {
 					e.preventDefault();
 
 					var $this = $(this),

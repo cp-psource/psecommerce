@@ -2,7 +2,7 @@
 	var initLayout = function() {
 		var hash = window.location.hash.replace('#', '');
 		var currentTab = $('ul.navigationTabs a')
-							.on('click', showTab)
+							.on("click", showTab)
 							.filter('a[rel=' + hash + ']');
 		if (currentTab.length == 0) {
 			currentTab = $('ul.navigationTabs a:first');
@@ -18,7 +18,7 @@
 		});
 		$('#colorpickerHolder2>div').css('position', 'absolute');
 		var widt = false;
-		$('#colorSelector2').on('click', function() {
+		$('#colorSelector2').on("click", function() {
 			$('#colorpickerHolder2').stop().animate({height: widt ? 0 : 173}, 500);
 			widt = !widt;
 		});

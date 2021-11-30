@@ -1,6 +1,6 @@
 jQuery(function($) {
 
-    $('.text-wrap').on('click', function(e) {
+    $('.text-wrap').on("click", function(e) {
         $(this).find('.variation_values').focus();
     });
 
@@ -12,7 +12,7 @@ jQuery(function($) {
         }
     });
 
-    $('.mp-variation-row .text-wrap').on('click', function(e) {
+    $('.mp-variation-row .text-wrap').on("click", function(e) {
 
         //if ( $( this ).val() == '' || $( this ).val() == '[]' ) {
         //  $( this ).parent().find( '.mp-variation-field-required' ).addClass( 'mp_variation_invalid' );
@@ -114,7 +114,7 @@ jQuery(function($) {
         $(this).repeatable_fields();
     });
 
-    $('.mp-variation-add-all').on('click', function(e) {
+    $('.mp-variation-add-all').on("click", function(e) {
         e.preventDefault();
         var $variation_tags_textarea = $(this).parents('.variation-row').find('input.variation_values'),
             variation_tags = $(this).parents('.variation-row').find('.mp_product_attributes_select option:selected').attr('data-tags'),
@@ -154,7 +154,7 @@ jQuery(function($) {
         }
     });
 
-    $('.select_attributes_filter a').on('click', function(event) {
+    $('.select_attributes_filter a').on("click", function(event) {
         $('.select_attributes_filter a').removeClass('selected');
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
@@ -190,7 +190,7 @@ jQuery(function($) {
         $(this).blur();
     });
 
-    $('#mp_make_combinations, #publishing-action #publish').on('click', function(event) { //
+    $('#mp_make_combinations, #publishing-action #publish').on("click", function(event) { //
 
         var caller_id = $(this).attr('id');
 
@@ -290,7 +290,7 @@ jQuery(function($) {
             }
         });
 
-        $(this).on('click', function() {
+        $(this).on("click", function() {
 
             var orig_val = $(this).html();
             orig_val = orig_val.replace(inline_icon_edit, "");
@@ -409,7 +409,7 @@ jQuery(function($) {
             return false;
         }
     });
-    $('#variant_bulk_doaction').click(function() {
+    $('#variant_bulk_doaction').on("click", function() {
         var selected_variant_bulk_action = $('.variant_bulk_selected').val();
         var checked_variants = $(".check-column-box:checked").length;
         if (selected_variant_bulk_action == 'variant_update_prices') {
@@ -538,7 +538,7 @@ jQuery(function($) {
         }
 
     });
-    $('.mp-variation-image img').on('click', function() {
+    $('.mp-variation-image img').on("click", function() {
 
         var placeholder_image = $(this);
         var post_id = $(this).closest('td').attr('data-post-image-id');
@@ -602,7 +602,7 @@ jQuery(function($) {
         }
     });
     //Price controls
-    jQuery('.mp_popup_controls.mp_price_controls a.save-bulk-form').on('click', function(e) {
+    jQuery('.mp_popup_controls.mp_price_controls a.save-bulk-form').on("click", function(e) {
         //LINK can't disabled, so we have to check
         if ($(this).attr('disabled') == 'disabled') {
             e.preventDefault();
@@ -620,7 +620,7 @@ jQuery(function($) {
         e.preventDefault();
     });
     //Inventory controls
-    jQuery('.mp_popup_controls.mp_inventory_controls a.save-bulk-form').on('click', function(e) {
+    jQuery('.mp_popup_controls.mp_inventory_controls a.save-bulk-form').on("click", function(e) {
         //LINK can't disabled, so we have to check
         if ($(this).attr('disabled') == 'disabled') {
             e.preventDefault();
@@ -642,7 +642,7 @@ jQuery(function($) {
         e.preventDefault();
     });
     //Delete controls
-    jQuery('.mp_popup_controls.mp_delete_controls a.delete-bulk-form').on('click', function(e) {
+    jQuery('.mp_popup_controls.mp_delete_controls a.delete-bulk-form').on("click", function(e) {
         e.preventDefault();
 
         parent.jQuery.colorbox.close();
@@ -690,7 +690,7 @@ jQuery(function($) {
         //$.colorbox.remove
         // return false;
     });
-    $('#variant_add').on('click', function(e) {
+    $('#variant_add').on("click", function(e) {
         var url = mp_product_admin_i18n.ajaxurl + '?action=ajax_add_new_variant';
         $.post(url, {
             action: 'ajax_add_new_variant',
@@ -724,7 +724,7 @@ jQuery(function($) {
     });
     $('body').on('mp-variation-popup-loaded', function() {
 
-        $('#variation_popup a.remove_popup_image').on('click', function(e) {
+        $('#variation_popup a.remove_popup_image').on("click", function(e) {
 
             var placeholder_image = $('#variation_popup .mp-variation-image img');
             var post_id = $('#variation_id').val();
@@ -738,7 +738,7 @@ jQuery(function($) {
             save_inline_post_data(post_id, '_thumbnail_id', '', '');
             e.preventDefault();
         });
-        $('#variation_popup .mp-variation-image img').on('click', function() {
+        $('#variation_popup .mp-variation-image img').on("click", function() {
             var placeholder_image = $(this);
             var post_id = $('#variation_id').val();
             var table_placeholder_image = $('#post-' + post_id).find('.mp-variation-image img');
@@ -764,7 +764,7 @@ jQuery(function($) {
             wp.media.editor.open(this);
             return false;
         });
-        $('#file_url_button').on('click', function() {
+        $('#file_url_button').on("click", function() {
 
             var field = $(this).closest('#file_url');
             wp.media.string.props = function(props, attachment) {
@@ -901,7 +901,7 @@ jQuery(function($) {
 
     });
 
-    $('#save-variation-popup-data, .variation_description_button').on('click', function(e) {
+    $('#save-variation-popup-data, .variation_description_button').on("click", function(e) {
         var form = $('form#variation_popup');
         if (!form.valid()) {
             e.preventDefault();
@@ -980,7 +980,7 @@ jQuery(function($) {
     $target.find("input[name='regular_price']").trigger('input');
 
     // Set default variant action
-    $('#mp-product-price-inventory-variants-metabox').on('click', 'a.set-default', function(event) {
+    $('#mp-product-price-inventory-variants-metabox').on("click", 'a.set-default', function(event) {
         event.preventDefault();
         $this = $(this);
         post_id = $this.attr('data-post-id');

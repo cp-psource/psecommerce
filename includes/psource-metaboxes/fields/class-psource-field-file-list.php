@@ -64,7 +64,7 @@ class PSOURCE_Field_File_List extends PSOURCE_Field {
             /*
             * Show the media library popup
             */
-            $('.psource-fields').on('click', '.psource-field-file-select', function(e){
+            $('.psource-fields').on("click", '.psource-field-file-select', function(e){
                 e.preventDefault();
 
                 var $this = $(this),
@@ -104,7 +104,7 @@ class PSOURCE_Field_File_List extends PSOURCE_Field {
             });
 
             //Add field button
-            $('.psource-fields .add-file').click(function(e) {
+            $('.psource-fields .add-file').on("click", function(e) {
                 e.preventDefault();
                 var newInput = $(".psource-fields .file-list .file:first").clone();
                 newInput.find("input").val('');
@@ -114,7 +114,7 @@ class PSOURCE_Field_File_List extends PSOURCE_Field {
             });
 
             //Remove field button
-            $(document).on('click','.psource-fields .remove-file',function(e) {
+            $(document).on("click",'.psource-fields .remove-file',function(e) {
                 e.preventDefault();
                 $(this).parent().remove();
             });

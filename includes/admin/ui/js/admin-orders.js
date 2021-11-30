@@ -80,7 +80,7 @@
 		};
 		
 		var initCustomerInfoLightbox = function() {
-			$( '.column-mp_orders_name' ).find( 'a' ).click( function() {
+			$( '.column-mp_orders_name' ).find( 'a' ).on("click", function() {
 				$.colorbox( {
 					href : $( this ).parent().find( '.mp-customer-info-lb' ),
 					inline : true,
@@ -116,7 +116,7 @@
 		};
 
 		var removeCustomShippingMethod = function () {
-			$('.mp-remove-custom-carrier').click(function (e) {
+			$('.mp-remove-custom-carrier').on("click", function (e) {
 				e.preventDefault();
 				var selected = $('select[name="mp[tracking_info][shipping_method]"]').val();
 				var that = $(this);

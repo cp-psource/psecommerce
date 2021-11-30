@@ -52,7 +52,7 @@ jQuery(function($) {
 	/*
 	 * Show the media library popup
 	 */
-	$('.psource-fields').on('click', '.psource-field-file-select', function(e){
+	$('.psource-fields').on("click", '.psource-field-file-select', function(e){
 		e.preventDefault();
 
 		var $this = $(this),

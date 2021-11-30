@@ -193,7 +193,7 @@
                             $slide.find('.lSAction').hide();
                         }
                     }
-                    $slide.find('.lSAction a').on('click', function (e) {
+                    $slide.find('.lSAction a').on("click", function (e) {
                         if (e.preventDefault) {
                             e.preventDefault();
                         } else {
@@ -397,7 +397,7 @@
                     }
                     var $pager = $cSouter.find('.lSPager').find('li');
                     $pager.first().addClass('active');
-                    $pager.on('click', function () {
+                    $pager.on("click", function () {
                         if (settings.loop === true && settings.mode === 'slide') {
                             scene = scene + ($pager.index(this) - $cSouter.find('.lSPager').find('li.active').index());
                         } else {

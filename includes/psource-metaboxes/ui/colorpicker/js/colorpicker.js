@@ -403,7 +403,7 @@
 												.on('focus', focus);
 						cal
 							.find('span').on('mousedown', downIncrement).end()
-							.find('>div.colorpicker_current_color').on('click', restoreOriginal);
+							.find('>div.colorpicker_current_color').on("click", restoreOriginal);
 						options.selector = cal.find('div.colorpicker_color').on('mousedown', downSelector);
 						options.selectorIndic = options.selector.find('div div');
 						options.el = this;
@@ -415,7 +415,7 @@
 						cal.find('div.colorpicker_submit')
 							.on('mouseenter', enterSubmit)
 							.on('mouseleave', leaveSubmit)
-							.on('click', clickSubmit);
+							.on("click", clickSubmit);
 						fillRGBFields(options.color, cal.get(0));
 						fillHSBFields(options.color, cal.get(0));
 						fillHexFields(options.color, cal.get(0));

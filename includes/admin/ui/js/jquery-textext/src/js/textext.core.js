@@ -509,7 +509,7 @@
 
         function bind( event, handler )
         {
-            target.on( event, function()
+            target.bind( event, function()
             {
                 // apply handler to our PLUGIN object, not the target
                 return handler.apply( self, arguments );

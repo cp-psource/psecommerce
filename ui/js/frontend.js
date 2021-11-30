@@ -226,7 +226,7 @@ var psecommerce = {};
          */
         initProductTabs: function() {
 
-            $('body').on('click', '.mp_product_meta a.more-link', function(e) {
+            $('body').on("click", '.mp_product_meta a.more-link', function(e) {
                 e.preventDefault();
                 // $( '#mp-single-product a.mp_product_tab_label_link.mp-product-overview' ).click( );
                 $('.mp-single-product a.mp_product_tab_label_link.mp-product-overview').click();
@@ -234,7 +234,7 @@ var psecommerce = {};
                     scrollTop: $("a.mp_product_tab_label_link.mp-product-overview").offset().top - 30
                 }, 500);
             });
-            $('.mp_product_tab_label_link').click(function(e) {
+            $('.mp_product_tab_label_link').on("click", function(e) {
                 e.preventDefault();
                 var $this = $(this),
                     $tab = $this.parent(),

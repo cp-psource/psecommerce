@@ -104,7 +104,7 @@ class MP_Admin_Multisite {
 		?>
 		<script type="text/javascript">
 			jQuery(function($) {
-				$('.mp-create-page-button').click(function (e) {
+				$('.mp-create-page-button').on("click", function (e) {
 					e.preventDefault();
 
 					var $this = $(this),
@@ -296,7 +296,7 @@ class MP_Admin_Multisite {
 			?>
 			<script type="text/javascript">
 				jQuery(function($) {
-					$('.mp_index_products').click(function () {
+					$('.mp_index_products').on("click", function () {
 						var that = $(this);
 						$.ajax({
 							type: 'POST',
@@ -604,7 +604,7 @@ class MP_Admin_Multisite {
 		?>
 		<script type="text/javascript">
 			jQuery(function($) {
-				$('.mp-create-page-button').click(function (e) {
+				$('.mp-create-page-button').on("click", function (e) {
 					e.preventDefault();
 
 					var $this = $(this),

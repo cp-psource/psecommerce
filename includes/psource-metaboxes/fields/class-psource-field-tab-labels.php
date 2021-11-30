@@ -62,7 +62,7 @@ class PSOURCE_Field_Tab_Labels extends PSOURCE_Field {
 	};
 
 	var initTabGroupListeners = function() {
-		$('.psource-field').on('click', '.psource-field-tab-label-link', function(e){
+		$('.psource-field').on("click", '.psource-field-tab-label-link', function(e){
 			e.preventDefault();
 
 			var $this = $(this),

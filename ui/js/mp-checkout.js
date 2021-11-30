@@ -216,7 +216,7 @@ var mp_checkout;
             });
 
             // Go to step when clicking on section heading
-            $checkout.find('.mp_checkout_section_heading-link').on('click', function(e) {
+            $checkout.find('.mp_checkout_section_heading-link').on("click", function(e) {
                 var $this = $(this);
                 var $section = $this.closest('.mp_checkout_section');
                 //var $current = $('.mp_form-checkout').find('.current');
@@ -572,7 +572,7 @@ var mp_checkout;
          */
         listenToLogin: function() {
             //if login click, we will add those rules
-            $(document).on('click', '.mp_button-checkout-login', function() {
+            $(document).on("click", '.mp_button-checkout-login', function() {
                 $('input[name="mp_login_email"]').rules('add', {
                     required: true
                 });
@@ -584,7 +584,7 @@ var mp_checkout;
                 $(this).closest('form').submit();
             });
             //else, we have to remove the rules
-            $(document).on('click', '.mp_continue_as_guest', function(e) {
+            $(document).on("click", '.mp_continue_as_guest', function(e) {
                     $('input[name="mp_login_email"]').rules('remove');
                     $('input[name="mp_login_password"]').rules('remove');
                     var form = $(this).closest('form');

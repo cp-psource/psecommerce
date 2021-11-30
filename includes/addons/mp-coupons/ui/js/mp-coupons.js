@@ -115,7 +115,7 @@ var mp_coupons = {};
 
                 $couponForm
                 // User clicked "apply coupon"
-                    .on('click', 'button', function(e) {
+                    .on("click", 'button', function(e) {
                         var couponCode = $couponCode.val().toUpperCase().replace(/[^A-Z0-9]/g, '');
 
                         $tooltip.mptooltip('close');
