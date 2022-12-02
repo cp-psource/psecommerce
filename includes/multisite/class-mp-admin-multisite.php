@@ -186,7 +186,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Display global currency information
 	 *
-	 * @since 3.1.3
+	 * @since 1.1.3
 	 * @access public
 	 */
 	public function init_global_currency_metabox(){
@@ -437,7 +437,7 @@ class MP_Admin_Multisite {
 			'page_slugs'       => array( 'network-shop-einstellungen' ),
 			'title'            => __( 'Theme Berechtigungen', 'mp' ),
 			'site_option_name' => 'mp_network_settings',
-			'desc'             => __( 'Festlegen von Theme-Zugriffsberechtigungen für Netzwerkspeicher. Speichere für ein benutzerdefiniertes CSS-Thema Deine CSS-Datei mit dem Header <strong> PSeCommerce Theme: NAME </strong> im Ordner <strong> /psecommerce/ui/themes/ </strong>, damit es in dieser Liste angezeigt wird.', 'mp' ),
+			'desc'             => __( 'Festlegen von Theme-Zugriffsberechtigungen für Netzwerkspeicher. Speichere für ein benutzerdefiniertes CSS-Thema Deine CSS-Datei mit dem Header <strong> PSeCommerce Theme: NAME </strong> im Ordner <strong> wp-content/psecommerce-styles/ </strong>, damit es in dieser Liste angezeigt wird. Erfahre <a href="https://n3rds.work/docs/psecommerce-theme-erstellen/"target=_blank">hier</a> mehr', 'mp' ),
 			'order'            => 15,
 		) );
 
@@ -633,7 +633,7 @@ class MP_Admin_Multisite {
 	public function __call( $method, $args ) {
 		switch ( $method ) {
 			case 'is_main_site' :
-				_deprecated_function( $method, '3.0', 'mp_is_main_site' );
+				_deprecated_function( $method, '1.0', 'mp_is_main_site' );
 
 				return call_user_func_array( 'mp_is_main_site', $args );
 				break;
@@ -647,7 +647,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Update blog_public state to 1 on blog status change
 	 *
-	 * @since 3.1.2
+	 * @since 1.1.2
 	 * @access public
 	 *
 	 */
