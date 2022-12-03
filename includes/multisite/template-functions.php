@@ -832,7 +832,7 @@ if ( ! function_exists( '_mp_global_tags_cloud' ) ) {
 				$html .= '<a href="' . mp_global_taxonomy_url( $row->slug, $taxonomy ) . '" class="tag-link tag-link-' . $row->term_id . '" title="">' . $row->name . '</a> ';
 			}
 		} else {
-			$html .= __( 'No Tags', 'mp' );
+			$html .= __( 'Keine Tags', 'mp' );
 		}
 		$html .= '</div>';
 

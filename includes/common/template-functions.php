@@ -925,7 +925,7 @@ if ( ! function_exists( 'mp_create_store_page' ) ) :
 			case 'order_status' :
 				$args = array(
 					'post_title'   => __( 'Bestellstatus', 'mp' ),
-					'post_content' => "[mp_order_lookup_form]<h2>" . __( 'Order Search', 'mp' ) . "</h2><p>" . __( 'Wenn Du eine Bestellnummer hast, kannst Du diese über das unten stehende Formular nachschlagen.', 'mp' ) . "</p>[/mp_order_lookup_form][mp_order_status]",
+					'post_content' => "[mp_order_lookup_form]<h2>" . __( 'Bestellsuche', 'mp' ) . "</h2><p>" . __( 'Wenn Du eine Bestellnummer hast, kannst Du diese über das unten stehende Formular nachschlagen.', 'mp' ) . "</p>[/mp_order_lookup_form][mp_order_status]",
 					'post_parent'  => mp_get_setting( 'pages->store', 0 )
 				);
 				break;
