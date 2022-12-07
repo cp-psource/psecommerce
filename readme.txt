@@ -62,6 +62,10 @@ Mehr Details auf der [Projektseite](https://n3rds.work/piestingtal_source/psecom
 
 == ChangeLog ==
 
+= 1.5.6 = DerN3rd =
+
+* Psource Updater 1.2
+
 = 1.5.5 = DerN3rd =
 
 * Deprecated: Optional parameter Fix

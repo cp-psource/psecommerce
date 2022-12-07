@@ -3,14 +3,14 @@
  * Plugin Name: PSeCommerce
  * Plugin URI:  https://n3rds.work/piestingtal_source/psecommerce-shopsystem/
  * Description: Das einfachste und dennoch mächtigste WordPress-E-Commerce-Plugin - Ob kleiner Onlineshop, Digitales Schaufenster, funktioniert auch perfekt mit BuddyPress und Multisite, um einen sozialen Marktplatz zu schaffen, auf dem Du einen Prozentsatz nehmen kannst! Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige Produkte hinzu.
- * Version:     1.5.5
+ * Version:     1.5.6
  * Author:      DerN3rd (WMS N3rds@Work)
  * Author URI:  https://n3rds.work
  * Text Domain: mp
  */
 
 /*
-Copyright 20019-2021 Webmasterservice N3rds@Work (https://n3rds.work/)
+Copyright 20019-2023 Webmasterservice N3rds@Work (https://n3rds.work/)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as
@@ -27,15 +27,16 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA	02111-1307	USA
 
 Plugin Authors: DerN3rd (WMS N3rds@Work) DerN3rd (WMS N@W), DerN3rd (WMS N@W), Hoang Ngo (Incsub), Jonathan Cowher (Incsub), Ricardo Freitas (Incsub), Cvetan Cvetanov (Incsub), Julien Zerbib (Incsub), Sabri Bouchaala (Incsub), Emmanuel Laborin (Incsub)
 */
+
 require 'psource/psource-plugin-update/psource-plugin-updater.php';
-$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+use Psource\PluginUpdateChecker\v5\PucFactory;
+$MyUpdateChecker = PucFactory::buildUpdateChecker(
 	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=psecommerce', 
 	__FILE__, 
 	'psecommerce' 
 );
 
-
-define( 'MP_VERSION', '1.5.5' );
+define( 'MP_VERSION', '1.5.6' );
 
 /**
  * Hauptklasse PSeCommerce.
