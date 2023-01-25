@@ -1,6 +1,6 @@
 <?php
 
-class MP_Shop_Einstellungen_Admin {
+class MP_Store_Settings_Admin {
 
 	/**
 	 * Refers to a single instance of the class
@@ -20,7 +20,7 @@ class MP_Shop_Einstellungen_Admin {
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new MP_Shop_Einstellungen_Admin();
+			self::$_instance = new MP_Store_Settings_Admin();
 		}
 		return self::$_instance;
 	}
@@ -119,10 +119,10 @@ class MP_Shop_Einstellungen_Admin {
 		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Shopkategorien', 'mp' ), __( 'Shopkategorien', 'mp' ), apply_filters( 'mp_manage_product_categories_cap', 'manage_product_categories' ), 'edit-tags.php?taxonomy=product_category&post_type=' . MP_Product::get_post_type() );
 		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: ProduktTags', 'mp' ), __( 'ProduktTags', 'mp' ), apply_filters( 'mp_manage_product_tags_cap', 'manage_product_tags' ), 'edit-tags.php?taxonomy=product_tag&post_type=' . MP_Product::get_post_type() );
 		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Benutzerrechte', 'mp' ), __( 'Benutzerrechte', 'mp' ), $cap, 'shop-einstellungen-capabilities', array( &$this, 'display_settings_form' ) );
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Import/Export', 'mp' ), __( 'Import/Export', 'mp' ), $cap, 'shop-einstellungen-import', array( MP_Shop_Einstellungen_Import::get_instance(), 'display_settings' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Import/Export', 'mp' ), __( 'Import/Export', 'mp' ), $cap, 'shop-einstellungen-import', array( MP_Store_Settings_Import::get_instance(), 'display_settings' ) );
 		//add_submenu_page('shop-einstellungen', __('Shop Einstellungen: Importers', 'mp'), __('Importers', 'mp'), $cap, 'shop-einstellungen-importers', false);
 		//add_submenu_page('shop-einstellungen', __('Shop Einstellungen: Exporters', 'mp'), __('Exporters', 'mp'), $cap, 'shop-einstellungen-exporters', false);
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Erweiterungen', 'mp' ), __( 'Erweiterungen', 'mp' ), $cap, 'shop-einstellungen-addons', array( MP_Shop_Einstellungen_Addons::get_instance(), 'display_settings' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Erweiterungen', 'mp' ), __( 'Erweiterungen', 'mp' ), $cap, 'shop-einstellungen-addons', array( MP_Store_Settings_Addons::get_instance(), 'display_settings' ) );
 
 		$mp_needs_quick_setup = get_option( 'mp_needs_quick_setup', 1 );
 
@@ -326,4 +326,4 @@ class MP_Shop_Einstellungen_Admin {
 
 }
 
-MP_Shop_Einstellungen_Admin::get_instance();
+MP_Store_Settings_Admin::get_instance();

@@ -164,7 +164,9 @@ class PSOURCE_Field_Repeater extends PSOURCE_Field {
 		// Get the base field name for the repeater field
 		$this_name_parts = explode( '[', $this->args['name'] );
 		//$this_name_parts = array_map( create_function( '$val', 'return rtrim( $val, "]" );' ), $this_name_parts );
-		$this_name_parts = array_map( function($val) {return rtrim( $val, "]" );}, $this_name_parts );
+		$name_parts = array_map( function($val) {
+			return rtrim($val, "]");
+		}, $name_parts );
 		$this_name_key = implode( '->', $this_name_parts );
 
 		// Loop through the fields and setup the appropriate name keys (e.g. $key1->$key2->$key3)
@@ -172,7 +174,9 @@ class PSOURCE_Field_Repeater extends PSOURCE_Field {
 			foreach ( $this->subfields as $index => $field ) {
 				$name_parts = explode( '[', $field->args['name_base'] );
 				//$name_parts = array_map( create_function( '$val', 'return rtrim( $val, "]" );' ), $name_parts );
-				$name_parts = array_map( function($val) {return rtrim( $val, "]" );}, $name_parts );
+				$name_parts = array_map(function($val) {
+					return rtrim($val, "]");
+				}, $name_parts );
 				$name_key = implode( '->', $name_parts );
 				$name_key = str_replace( $this_name_key, $idx, $name_key );
 

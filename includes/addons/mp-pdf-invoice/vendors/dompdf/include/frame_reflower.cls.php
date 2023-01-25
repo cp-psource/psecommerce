@@ -219,7 +219,7 @@ abstract class Frame_Reflower {
    * @param $single_trim
    * @return string
    */
-  protected function _parse_string($string, $single_trim = false) {
+  /*protected function _parse_string($string, $single_trim = false) {//PhP8 Komp
     if ( $single_trim ) {
       $string = preg_replace('/^[\"\']/', "", $string);
       $string = preg_replace('/[\"\']$/', "", $string);
@@ -235,6 +235,23 @@ abstract class Frame_Reflower {
     //$string = preg_replace_callback("/\\\\([0-9a-fA-F]{0,6})/", create_function('$matches', 'return unichr(hexdec($matches[1]));'),
     $string = preg_replace_callback("/\\\\([0-9a-fA-F]{0,6})/", function($matches) {return unichr(hexdec($matches[1]));}, $string);
     return $string;
+  }*/
+  protected function parseCssString($cssString, $trimQuotes = false) {
+    if ( $trimQuotes ) {
+        $cssString = preg_replace('/^[\"\']/', "", $cssString);
+        $cssString = preg_replace('/[\"\']$/', "", $cssString);
+    } else {
+        $cssString = trim($cssString, "'\"");
+    }
+    
+    $cssString = str_replace(array("\\\n",'\\"',"\\'"),
+                             array("",'"',"'"), $cssString);
+
+    // Convert escaped hex characters into ascii characters (e.g. \A => newline)
+    $cssString = preg_replace_callback("/\\\\([0-9a-fA-F]{0,6})/", 
+                                       function($matches){return unichr(hexdec($matches[1]));},
+                                       $cssString);
+    return $cssString;
   }
   
   /**

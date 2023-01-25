@@ -1,6 +1,6 @@
 <?php
 
-class MP_Shop_Einstellungen_Notifications {
+class MP_Store_Settings_Notifications {
 	/**
 	 * Refers to a single instance of the class
 	 *
@@ -19,7 +19,7 @@ class MP_Shop_Einstellungen_Notifications {
 	 */
 	public static function get_instance() {
 		if ( is_null(self::$_instance) ) {
-			self::$_instance = new MP_Shop_Einstellungen_Notifications();
+			self::$_instance = new MP_Store_Settings_Notifications();
 		}
 		return self::$_instance;
 	}
@@ -355,4 +355,4 @@ class MP_Shop_Einstellungen_Notifications {
 	}
 }
 
-MP_Shop_Einstellungen_Notifications::get_instance();
+MP_Store_Settings_Notifications::get_instance();

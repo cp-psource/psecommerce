@@ -3,11 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PSeCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-02 22:17+0000\n"
+"POT-Creation-Date: 2023-01-24 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
+"Last-Translator: FULL NAME <webmaster@n3rds.work>\n"
+"Language-Team: German\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -515,7 +515,7 @@ msgid ""
 msgstr ""
 
 #. %s: plugin title
-#: psecommerce.php:691
+#: psecommerce.php:692
 #, php-format
 msgid ""
 "<strong>Einrichtungsassistent: %s</strong> &#8211; installiert vollkommen "
@@ -560,7 +560,7 @@ msgid "Abgeschlossen"
 msgstr ""
 
 #. %s: orders closed
-#: psecommerce.php:334
+#: psecommerce.php:335
 #, php-format
 msgid "Abgeschlossen <span class=\"count\">(%s)</span>"
 msgid_plural "Geschlossen <span class=\"count\">(%s)</span>"
@@ -688,7 +688,7 @@ msgstr ""
 msgid "AFN - Afghan Afghani*"
 msgstr ""
 
-#: psecommerce.php:766
+#: psecommerce.php:767
 msgid ""
 "Aktiviere diese Erweiterung um eine Dashboard-Seite mit Shop-Statistiken zu "
 "erstellen"
@@ -698,7 +698,7 @@ msgstr ""
 msgid "Aktiviere Erweiterung"
 msgstr ""
 
-#: psecommerce.php:748
+#: psecommerce.php:749
 msgid "Aktiviere mehrere Downloads pro Produkt"
 msgstr ""
 
@@ -830,7 +830,7 @@ msgstr ""
 msgid "Alle Länder"
 msgstr ""
 
-#: psecommerce.php:192
+#: psecommerce.php:193
 msgid "Alle Produkt-Tags"
 msgstr ""
 
@@ -838,7 +838,7 @@ msgstr ""
 msgid "Alle Produkte"
 msgstr ""
 
-#: psecommerce.php:158
+#: psecommerce.php:159
 msgid "Alle Shopkategorien"
 msgstr ""
 
@@ -956,8 +956,20 @@ msgstr ""
 msgid "Anzahl der Produkte:"
 msgstr ""
 
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:173
+msgid "Anzahl der Produktverkäufe, 12 Monate"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:208
+msgid "Anzahl der Produktverkäufe, 12 Months"
+msgstr ""
+
 #: includes/admin/widgets/product-list.php:215
 msgid "Anzahl der Verkäufe"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:376
+msgid "Anzahl der Verkäufe, 12 Monate"
 msgstr ""
 
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-presentation.php:510
@@ -1041,6 +1053,19 @@ msgstr ""
 msgid "ARS - Argentine Peso*"
 msgstr ""
 
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:393
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:401
+msgid "Artikel"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:402
+msgid "Artikel pro Bestellung"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:394
+msgid "Artikel pro Verkauf"
+msgstr ""
+
 #: includes/admin/class-mp-products-admin.php:2230
 #: includes/admin/class-mp-shortcode-builder.php:226
 msgid "Attribute"
@@ -1065,12 +1090,12 @@ msgstr ""
 msgid "Auf jedes zutreffende Produkt und jede bestellte Menge anwenden"
 msgstr ""
 
-#: includes/admin/class-mp-shortcode-builder.php:1447
-msgid "Auf Standard zurücksetzen"
+#: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:130
+msgid "Auf neuere Version prüfen"
 msgstr ""
 
-#: psource/psource-plugin-update/Puc/v4p10/Plugin/Ui.php:128
-msgid "Auf Updates prüfen"
+#: includes/admin/class-mp-shortcode-builder.php:1447
+msgid "Auf Standard zurücksetzen"
 msgstr ""
 
 #: includes/admin/class-mp-product-attributes-admin.php:109
@@ -1199,7 +1224,7 @@ msgstr ""
 msgid "Bearbeite Produkteigenschaft %s"
 msgstr ""
 
-#: psecommerce.php:230
+#: psecommerce.php:231
 #: includes/addons/mp-coupons/class-mp-coupons-addon.php:1022
 msgid "Bearbeiten"
 msgstr ""
@@ -1475,7 +1500,7 @@ msgstr ""
 msgid "Bestellstatus erfolgreich aktualisiert."
 msgstr ""
 
-#: psecommerce.php:269
+#: psecommerce.php:270
 msgid "Bestellung"
 msgstr ""
 
@@ -1488,7 +1513,7 @@ msgstr ""
 msgid "Bestellung &#8220;%s&#8221 ansehen;"
 msgstr ""
 
-#: psecommerce.php:332
+#: psecommerce.php:333
 msgid "Bestellung abgeschlossen"
 msgstr ""
 
@@ -1496,11 +1521,11 @@ msgstr ""
 msgid "Bestellung abschicken"
 msgstr ""
 
-#: psecommerce.php:274
+#: psecommerce.php:275
 msgid "Bestellung ansehen"
 msgstr ""
 
-#: psecommerce.php:272
+#: psecommerce.php:273
 msgid "Bestellung bearbeiten"
 msgstr ""
 
@@ -1516,7 +1541,7 @@ msgstr ""
 msgid "Bestellung eingegangen"
 msgstr ""
 
-#: psecommerce.php:311
+#: psecommerce.php:312
 msgid "Bestellung erhalten"
 msgstr ""
 
@@ -1559,7 +1584,7 @@ msgstr ""
 msgid "Bestellung/Zahlung überprüfen"
 msgstr ""
 
-#: psecommerce.php:268 includes/admin/class-mp-dashboard-widgets.php:315
+#: psecommerce.php:269 includes/admin/class-mp-dashboard-widgets.php:315
 #: includes/admin/class-mp-orders-admin.php:991
 #: includes/admin/class-mp-orders-admin.php:991
 #: includes/admin/class-mp-pages-admin.php:62
@@ -1567,17 +1592,21 @@ msgstr ""
 msgid "Bestellungen"
 msgstr ""
 
-#: psecommerce.php:280
+#: psecommerce.php:281
 msgid "Bestellungen aus Deinem E-Commerce-Shop."
 msgstr ""
 
-#: psecommerce.php:275
+#: psecommerce.php:276
 msgid "Bestellungen durchsuchen"
 msgstr ""
 
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-notifications.php:110
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-notifications.php:238
 msgid "Bestellungen für digitale Downloads"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:577
+msgid "Bestellungen insgesamt"
 msgstr ""
 
 #: includes/admin/class-mp-orders-admin.php:302
@@ -1606,7 +1635,7 @@ msgstr ""
 msgid "Bezahlanleitung"
 msgstr ""
 
-#: psecommerce.php:318 includes/admin/class-mp-admin.php:224
+#: psecommerce.php:319 includes/admin/class-mp-admin.php:224
 #: includes/admin/class-mp-dashboard-widgets.php:298
 #: includes/admin/class-mp-orders-admin.php:378
 #: includes/admin/class-mp-orders-admin.php:951
@@ -1619,7 +1648,7 @@ msgid "Bezahlt"
 msgstr ""
 
 #. %s: paid orders
-#: psecommerce.php:320
+#: psecommerce.php:321
 #, php-format
 msgid "Bezahlt <span class=\"count\">(%s)</span>"
 msgid_plural "Bezahlt <span class=\"count\">(%s)</span>"
@@ -2370,7 +2399,7 @@ msgstr ""
 msgid "Die Autorisierungsfrist für diese Zahlung ist erreicht."
 msgstr ""
 
-#: psecommerce.php:677
+#: psecommerce.php:678
 msgid "Die benötigten Seiten für Deinen Shop wurden erfolgreich erstellt!"
 msgstr ""
 
@@ -2947,6 +2976,20 @@ msgid ""
 "angezeigt werden. Standardmäßig wird alles eingeschlossen."
 msgstr ""
 
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:137
+msgid "Durchschnitt pro Verkauf, 12 Monate"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:394
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:402
+msgid "Durchschnitt von"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:121
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:192
+msgid "Durchschnittlich"
+msgstr ""
+
 #: includes/admin/class-mp-ajax.php:193 includes/admin/class-mp-ajax.php:201
 msgid "Durchsuchen"
 msgstr ""
@@ -3101,7 +3144,7 @@ msgid "Eingegangen"
 msgstr ""
 
 #. %s: orders received
-#: psecommerce.php:313
+#: psecommerce.php:314
 #, php-format
 msgid "Eingegangen <span class=\"count\">(%s)</span>"
 msgid_plural "Eingegangen <span class=\"count\">(%s)</span>"
@@ -3123,6 +3166,11 @@ msgstr ""
 
 #: includes/addons/mp-coupons/class-mp-coupons-addon.php:613
 msgid "Einmal pro Warenkorb auf jedes zutreffende Produkt auftragen"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:341
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:534
+msgid "Einnahmen"
 msgstr ""
 
 #: includes/psource-metaboxes/fields/class-psource-field-custom-quick-setup.php:144
@@ -3161,6 +3209,7 @@ msgid "Einzeln"
 msgstr ""
 
 #: includes/common/class-mp-order.php:817
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:576
 #: includes/common/payment-gateways/stripe.php:335
 msgid "Email"
 msgstr ""
@@ -3311,11 +3360,11 @@ msgid ""
 "Angebot</em>."
 msgstr ""
 
-#: psecommerce.php:757
+#: psecommerce.php:758
 msgid "Erlaube das kommentieren von Produkten"
 msgstr ""
 
-#: psecommerce.php:756
+#: psecommerce.php:757
 msgid "Erlaube Produktkommentare"
 msgstr ""
 
@@ -3389,10 +3438,6 @@ msgstr ""
 msgid ""
 "Es gab ein Problem beim Herstellen einer Verbindung zu PayPal, um Deinn Kauf "
 "abzuschließen. Bitte versuche es erneut."
-msgstr ""
-
-#: psource/psource-plugin-update/Puc/v4p10/Vcs/PluginUpdateChecker.php:98
-msgid "Es ist kein Änderungsprotokoll verfügbar."
 msgstr ""
 
 #: includes/public/class-mp-checkout.php:1190
@@ -3825,6 +3870,8 @@ msgstr ""
 
 #: includes/common/class-mp-order.php:1052
 #: includes/addons/mp-pdf-invoice/class-mp-pdf-invoice.php:232
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:86
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:157
 msgid "Gesamt"
 msgstr ""
 
@@ -3835,6 +3882,23 @@ msgstr ""
 
 #: includes/common/class-mp-cart.php:752 includes/common/helpers.php:155
 msgid "Gesamtbetrag:"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:403
+msgid "Gesamtdurchschnitt/Verkauf:"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:553
+msgid "Gesamtumsatz"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:102
+msgid "Gesamtumsatz, 12 Monate"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:398
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:400
+msgid "Gesamtumsatz:"
 msgstr ""
 
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-presentation.php:128
@@ -3886,7 +3950,7 @@ msgid ""
 msgstr ""
 
 #: includes/psource-metaboxes/fields/class-psource-field-custom-variations.php:353
-msgid "Gib einen Wert ein und ENTER"
+msgid "Gib einen Wert ein und klicke auf Variationen erstellen"
 msgstr ""
 
 #: includes/common/payment-gateways/free_orders.php:170
@@ -4006,7 +4070,7 @@ msgstr ""
 msgid "Google Analytics Ecommerce Tracking"
 msgstr ""
 
-#: psecommerce.php:721
+#: psecommerce.php:722
 msgid ""
 "Grant access to themes and gateways depending on the user's Pro Site level"
 msgstr ""
@@ -4107,11 +4171,11 @@ msgstr ""
 msgid "Gutscheincode hier eingeben"
 msgstr ""
 
-#: psecommerce.php:712
+#: psecommerce.php:713
 msgid "Gutscheincodes anbieten und annehmen"
 msgstr ""
 
-#: psecommerce.php:711 includes/admin/class-mp-dashboard-widgets.php:319
+#: psecommerce.php:712 includes/admin/class-mp-dashboard-widgets.php:319
 #: includes/addons/mp-coupons/class-mp-coupons-addon.php:916
 #: includes/addons/mp-coupons/class-mp-coupons-addon.php:916
 #: includes/addons/mp-coupons/class-mp-coupons-addon.php:1015
@@ -4509,7 +4573,7 @@ msgid "Installiere %s"
 msgstr ""
 
 #. %s: plugin title
-#: psecommerce.php:696
+#: psecommerce.php:697
 #, php-format
 msgid "Installiere %s Seiten"
 msgstr ""
@@ -4649,6 +4713,13 @@ msgstr ""
 msgid "Ja"
 msgstr ""
 
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:105
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:176
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:211
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:379
+msgid "Jahr"
+msgstr ""
+
 #: includes/admin/class-mp-dashboard-widgets.php:275
 msgid "Jahres-Schnitt"
 msgstr ""
@@ -4749,7 +4820,7 @@ msgstr ""
 msgid "Kein Filter"
 msgstr ""
 
-#: psecommerce.php:234
+#: psecommerce.php:235
 msgid "Kein Produkt gefunden"
 msgstr ""
 
@@ -4783,11 +4854,11 @@ msgstr ""
 msgid "Keine - Ohne spezielles CSS"
 msgstr ""
 
-#: psecommerce.php:276
+#: psecommerce.php:277
 msgid "Keine Bestellung(en) gefunden"
 msgstr ""
 
-#: psecommerce.php:277
+#: psecommerce.php:278
 msgid "Keine Bestellung(en) im Papierkorb gefunden"
 msgstr ""
 
@@ -4804,7 +4875,7 @@ msgstr ""
 msgid "Keine Kategorien"
 msgstr ""
 
-#: psecommerce.php:204
+#: psecommerce.php:205
 msgid "Keine Produkt-Tags gefunden"
 msgstr ""
 
@@ -4817,7 +4888,7 @@ msgstr ""
 msgid "Keine Produkte ausverkauft."
 msgstr ""
 
-#: psecommerce.php:235
+#: psecommerce.php:236
 msgid "Keine Produkte im Papierkorb gefunden"
 msgstr ""
 
@@ -4829,8 +4900,12 @@ msgstr ""
 msgid "Keine Produkte vorhanden"
 msgstr ""
 
-#: psecommerce.php:170
+#: psecommerce.php:171
 msgid "Keine Shopkategorien gefunden :("
+msgstr ""
+
+#: includes/multisite/template-functions.php:835
+msgid "Keine Tags"
 msgstr ""
 
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-shipping.php:109
@@ -4924,6 +4999,10 @@ msgstr ""
 msgid "Kundendaten"
 msgstr ""
 
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:572
+msgid "Kundenname"
+msgstr ""
+
 #: includes/common/payment-gateways/stripe.php:118
 msgid "KYD - Cayman Islands Dollar"
 msgstr ""
@@ -4954,6 +5033,7 @@ msgstr ""
 
 #: includes/common/class-mp-order.php:805
 #: includes/public/class-mp-checkout.php:408
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:574
 msgid "Land"
 msgstr ""
 
@@ -4970,7 +5050,7 @@ msgid "Language"
 msgstr ""
 
 #: includes/psource-metaboxes/fields/class-psource-field-custom-quick-setup.php:53
-msgid "Lass das, ich mach das lieber selbst.."
+msgid "Lass das, ich mach das lieber selbst..."
 msgstr ""
 
 #: includes/admin/class-mp-admin.php:83
@@ -5347,7 +5427,7 @@ msgstr ""
 msgid "Mehr Produktdetails &raquo;"
 msgstr ""
 
-#: psecommerce.php:747
+#: psecommerce.php:748
 msgid "Mehrfache Downloads"
 msgstr ""
 
@@ -5505,11 +5585,19 @@ msgstr ""
 msgid "Mollie"
 msgstr ""
 
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:86
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:121
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:157
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:192
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:360
+msgid "Monat"
+msgstr ""
+
 #: includes/common/payment-gateways/stripe.php:132
 msgid "MOP - Macanese Pataca"
 msgstr ""
 
-#: psecommerce.php:270
+#: psecommerce.php:271
 msgctxt "mp_order"
 msgid "Neue hinzufügen"
 msgstr ""
@@ -5608,7 +5696,7 @@ msgstr ""
 msgid "Name (Z-A)"
 msgstr ""
 
-#: psecommerce.php:163
+#: psecommerce.php:164
 msgid "Name der neuen Shopkategorie"
 msgstr ""
 
@@ -5668,7 +5756,7 @@ msgstr ""
 msgid "NEU"
 msgstr ""
 
-#: psecommerce.php:273
+#: psecommerce.php:274
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-notifications.php:60
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-notifications.php:95
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-notifications.php:128
@@ -5683,11 +5771,11 @@ msgstr ""
 msgid "Neue Bestellung - Gemischt"
 msgstr ""
 
-#: psecommerce.php:271
+#: psecommerce.php:272
 msgid "Neue Bestellung hinzufügen"
 msgstr ""
 
-#: psecommerce.php:162
+#: psecommerce.php:163
 msgid "Neue Shopkategorie hinzufügen"
 msgstr ""
 
@@ -5699,7 +5787,7 @@ msgstr ""
 msgid "Neuen erstellen"
 msgstr ""
 
-#: psecommerce.php:196
+#: psecommerce.php:197
 msgid "Neuen Produkt-Tag hinzufügen"
 msgstr ""
 
@@ -5707,15 +5795,15 @@ msgstr ""
 msgid "Neuer Gutschein"
 msgstr ""
 
-#: psecommerce.php:197
+#: psecommerce.php:198
 msgid "Neuer Produkt-Tag-Name"
 msgstr ""
 
-#: psecommerce.php:231
+#: psecommerce.php:232
 msgid "Neues Produkt"
 msgstr ""
 
-#: psecommerce.php:227 psecommerce.php:228
+#: psecommerce.php:228 psecommerce.php:229
 msgid "Neues Produkt hinzufügen"
 msgstr ""
 
@@ -5774,10 +5862,6 @@ msgstr ""
 
 #: includes/addons/mp-coupons/class-mp-coupons-addon.php:1247
 msgid "No end"
-msgstr ""
-
-#: includes/multisite/template-functions.php:835
-msgid "Keine Tags"
 msgstr ""
 
 #: includes/public/class-mp-short-codes.php:636
@@ -6098,7 +6182,7 @@ msgstr ""
 msgid "PDF Rechnung"
 msgstr ""
 
-#: psecommerce.php:738
+#: psecommerce.php:739
 msgid "PDF Rechnung/Lieferschein"
 msgstr ""
 
@@ -6278,6 +6362,10 @@ msgstr ""
 #: includes/admin/class-mp-products-admin.php:2087
 #: includes/admin/class-mp-products-admin.php:2218
 #: includes/common/class-mp-cart.php:1415 includes/common/helpers.php:96
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:268
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:274
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:334
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:340
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-presentation.php:530
 #: includes/admin/widgets/ms-global-product-list.php:119
 #: includes/psource-metaboxes/fields/class-psource-field-custom-variations.php:135
@@ -6406,22 +6494,22 @@ msgstr ""
 msgid "Product Weight:"
 msgstr ""
 
-#: psecommerce.php:157
+#: psecommerce.php:158
 msgctxt "product_category"
 msgid "Shopkategorie"
 msgstr ""
 
-#: psecommerce.php:156
+#: psecommerce.php:157
 msgctxt "product_category"
 msgid "Shopkategorien"
 msgstr ""
 
-#: psecommerce.php:191
+#: psecommerce.php:192
 msgctxt "product_tag"
 msgid "Produkt-Tag"
 msgstr ""
 
-#: psecommerce.php:190
+#: psecommerce.php:191
 msgctxt "product_tag"
 msgid "Produkt-Tags"
 msgstr ""
@@ -6431,19 +6519,21 @@ msgstr ""
 msgid "Production"
 msgstr ""
 
-#: psecommerce.php:224 includes/admin/class-mp-orders-admin.php:1013
+#: psecommerce.php:225 includes/admin/class-mp-orders-admin.php:1013
 #: includes/common/class-mp-cart.php:1566 includes/common/helpers.php:93
 #: includes/multisite/template-functions.php:82
 #: includes/addons/mp-coupons/class-mp-coupons-addon.php:687
 #: includes/addons/mp-coupons/class-mp-coupons-addon.php:698
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:515
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:534
 msgid "Produkt"
 msgstr ""
 
-#: psecommerce.php:232
+#: psecommerce.php:233
 msgid "Produkt ansehen"
 msgstr ""
 
-#: psecommerce.php:229
+#: psecommerce.php:230
 msgid "Produkt bearbeiten"
 msgstr ""
 
@@ -6452,7 +6542,7 @@ msgstr ""
 msgid "Produkt bearbeiten: %s"
 msgstr ""
 
-#: psecommerce.php:236
+#: psecommerce.php:237
 msgid "Produkt betrachten"
 msgstr ""
 
@@ -6460,7 +6550,7 @@ msgstr ""
 msgid "Produkt Details"
 msgstr ""
 
-#: psecommerce.php:445
+#: psecommerce.php:446
 msgid "Produkt erstellen"
 msgstr ""
 
@@ -6492,7 +6582,7 @@ msgstr ""
 msgid "Produkt Name"
 msgstr ""
 
-#: psecommerce.php:233
+#: psecommerce.php:234
 msgid "Produkt suchen"
 msgstr ""
 
@@ -6513,27 +6603,27 @@ msgstr ""
 msgid "Produkt-Miniaturansicht anzeigen?"
 msgstr ""
 
-#: psecommerce.php:195
+#: psecommerce.php:196
 msgid "Produkt-Tag aktualisieren"
 msgstr ""
 
-#: psecommerce.php:194
+#: psecommerce.php:195
 msgid "Produkt-Tag anzeigen"
 msgstr ""
 
-#: psecommerce.php:193
+#: psecommerce.php:194
 msgid "Produkt-Tag bearbeiten"
 msgstr ""
 
-#: psecommerce.php:201
+#: psecommerce.php:202
 msgid "Produkt-Tags durch Kommas trennen"
 msgstr ""
 
-#: psecommerce.php:202
+#: psecommerce.php:203
 msgid "Produkt-Tags hinzufügen oder entfernen"
 msgstr ""
 
-#: psecommerce.php:200
+#: psecommerce.php:201
 msgid "Produkt-Tags suchen"
 msgstr ""
 
@@ -6602,7 +6692,7 @@ msgstr ""
 msgid "Produktdetails"
 msgstr ""
 
-#: psecommerce.php:223 psecommerce.php:226
+#: psecommerce.php:224 psecommerce.php:227
 #: includes/admin/class-mp-dashboard-widgets.php:321
 #: includes/common/class-mp-cart.php:1563
 #: includes/common/class-mp-cart.php:1568
@@ -6613,7 +6703,7 @@ msgstr ""
 msgid "Produkte auswählen"
 msgstr ""
 
-#: psecommerce.php:238
+#: psecommerce.php:239
 msgid "Produkte für Deinen PSeCommerce-Shop."
 msgstr ""
 
@@ -6691,6 +6781,7 @@ msgstr ""
 #: includes/admin/class-mp-shortcode-builder.php:689
 #: includes/admin/class-mp-shortcode-builder.php:856
 #: includes/admin/class-mp-shortcode-builder.php:1300
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:552
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-presentation.php:525
 #: includes/admin/widgets/product-list.php:211
 #: includes/addons/mp-pdf-invoice/templates/default/invoice.php:90
@@ -6734,6 +6825,10 @@ msgstr ""
 msgid "Produktvariationen"
 msgstr ""
 
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:554
+msgid "Produktverkäufe"
+msgstr ""
+
 #: includes/admin/class-mp-ajax.php:262
 msgid "Prozentualer Rabatt"
 msgstr ""
@@ -6742,7 +6837,7 @@ msgstr ""
 msgid "Präsentation"
 msgstr ""
 
-#: psecommerce.php:720
+#: psecommerce.php:721
 msgid "PS Bloghosting"
 msgstr ""
 
@@ -6775,7 +6870,7 @@ msgid "PSEC Warenkorb"
 msgstr ""
 
 #. Name of the plugin
-#: psecommerce.php:1159
+#: psecommerce.php:1160
 msgid "PSeCommerce"
 msgstr ""
 
@@ -7285,7 +7380,7 @@ msgstr ""
 msgid "Shop Name"
 msgstr ""
 
-#: psecommerce.php:765
+#: psecommerce.php:766
 msgid "Shop Statistiken (ALFAVERSION)"
 msgstr ""
 
@@ -7293,7 +7388,7 @@ msgstr ""
 msgid "Shop Verwaltung"
 msgstr ""
 
-#: psecommerce.php:225
+#: psecommerce.php:226
 msgid "Shop-Board"
 msgstr ""
 
@@ -7310,7 +7405,7 @@ msgstr ""
 msgid "Shopdesign"
 msgstr ""
 
-#: psecommerce.php:616 includes/admin/class-mp-shop-einstellungen-admin.php:111
+#: psecommerce.php:617 includes/admin/class-mp-shop-einstellungen-admin.php:111
 #: includes/admin/class-mp-shop-einstellungen-admin.php:220
 msgid "Shopeinstellungen"
 msgstr ""
@@ -7365,15 +7460,15 @@ msgstr ""
 msgid "Shopeinstellungen: Zahlungen"
 msgstr ""
 
-#: psecommerce.php:161
+#: psecommerce.php:162
 msgid "Shopkategorie aktualisieren"
 msgstr ""
 
-#: psecommerce.php:160
+#: psecommerce.php:161
 msgid "Shopkategorie anzeigen"
 msgstr ""
 
-#: psecommerce.php:159
+#: psecommerce.php:160
 msgid "Shopkategorie bearbeiten"
 msgstr ""
 
@@ -7382,15 +7477,15 @@ msgstr ""
 msgid "Shopkategorien"
 msgstr ""
 
-#: psecommerce.php:167
+#: psecommerce.php:168
 msgid "Shopkategorien durch Kommas trennen"
 msgstr ""
 
-#: psecommerce.php:168
+#: psecommerce.php:169
 msgid "Shopkategorien hinzufügen oder entfernen"
 msgstr ""
 
-#: psecommerce.php:166
+#: psecommerce.php:167
 msgid "Shopkategorien suchen"
 msgstr ""
 
@@ -7419,6 +7514,10 @@ msgstr ""
 
 #: includes/admin/class-mp-pages-admin.php:52
 msgid "Shopseiten Einstellungen"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:25
+msgid "Shopstatistik"
 msgstr ""
 
 #: includes/admin/class-mp-setup-wizard.php:454
@@ -7614,6 +7713,10 @@ msgstr ""
 
 #: includes/common/payment-gateways/stripe.php:166
 msgid "SRD - Surinamese Dollar*"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:573
+msgid "Stadt"
 msgstr ""
 
 #: includes/common/class-mp-order.php:788
@@ -7906,6 +8009,7 @@ msgid "Taxonomie-Filter:"
 msgstr ""
 
 #: includes/common/class-mp-order.php:813
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:575
 msgid "Telefon"
 msgstr ""
 
@@ -7997,22 +8101,24 @@ msgid ""
 "The PIN Token was not generated correctly. Please go back and try again."
 msgstr ""
 
-#: psource/psource-plugin-update/Puc/v4p10/Plugin/Ui.php:213
+#: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:221
 #, php-format
 msgctxt "the plugin title"
-msgid "Das %s-Plugin ist laut PSource Server auf dem neuesten Stand."
+msgid ""
+"Entschuldige, es konnte nicht festgestellt werden, ob Updates für %s "
+"verfügbar sind."
 msgstr ""
 
-#: psource/psource-plugin-update/Puc/v4p10/Plugin/Ui.php:215
+#: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:219
 #, php-format
 msgctxt "the plugin title"
-msgid "Eine neue Version des %s-Plugins ist auf dem PSource Server verfügbar."
+msgid "Im PSOURCE REPO ist eine <b>neuere Version von %s</b> verfügbar!."
 msgstr ""
 
-#: psource/psource-plugin-update/Puc/v4p10/Plugin/Ui.php:217
+#: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:217
 #, php-format
 msgctxt "the plugin title"
-msgid "Es konnte nicht festgestellt werden, ob Updates für %s verfügbar sind."
+msgid "Keine neuere Version von %s im PSOURCE REPO gefunden."
 msgstr ""
 
 #: includes/common/payment-gateways/skrill.php:144
@@ -8063,6 +8169,10 @@ msgstr ""
 msgid ""
 "There are no shipping services available for this type of package in your "
 "location."
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v5p0/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
 msgstr ""
 
 #: includes/common/payment-gateways/eway.php:452
@@ -8210,6 +8320,14 @@ msgstr ""
 msgid "TOP - Tongan Paʻanga"
 msgstr ""
 
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:520
+msgid "Top-Produkte nach Anzahl der Verkäufe"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:539
+msgid "Top-Produkte Umsatz"
+msgstr ""
+
 #: includes/common/shipping-modules/mp-usps.php:344
 msgid "Total weight selects the box size used for calculating Shipping costs."
 msgstr ""
@@ -8300,9 +8418,25 @@ msgstr ""
 msgid "UL mit einer Klasse von \"wp-tag-cloud\""
 msgstr ""
 
-#: psource/psource-plugin-update/Puc/v4p10/Plugin/Ui.php:223
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:268
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:275
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:334
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:360
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:396
+msgid "Umsatz"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:273
+msgid "Umsatz nach Produkt Preis"
+msgstr ""
+
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:339
+msgid "Umsatz nach Produktpreis"
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v5p0/Plugin/Ui.php:227
 #, php-format
-msgid "Unbekannter Update-Status \"%s\""
+msgid "Unbekannter PSOURCE-UPDATTER-Status \"%s\""
 msgstr ""
 
 #: includes/admin/class-mp-ajax.php:222
@@ -8550,10 +8684,17 @@ msgstr ""
 msgid "Verfügbare Menge einfügen. Unbegrenzt leer."
 msgstr ""
 
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:25
+msgid "Verkaufsstatistik"
+msgstr ""
+
 #: includes/admin/class-mp-dashboard-widgets.php:247
 #: includes/admin/class-mp-products-admin.php:465
 #: includes/admin/class-mp-shortcode-builder.php:860
 #: includes/admin/class-mp-shortcode-builder.php:1304
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:393
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:401
+#: includes/addons/psecommerce-statistics/psecommerce-stats.php:515
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-presentation.php:529
 #: includes/psource-metaboxes/fields/class-psource-field-custom-variations.php:147
 msgid "Verkäufe"
@@ -8563,7 +8704,7 @@ msgstr ""
 msgid "Verkäufer"
 msgstr ""
 
-#: psecommerce.php:325 includes/admin/class-mp-orders-admin.php:1014
+#: psecommerce.php:326 includes/admin/class-mp-orders-admin.php:1014
 #: includes/admin/class-mp-products-admin.php:1986
 #: includes/admin/class-mp-products-admin.php:2226
 #: includes/admin/class-mp-shop-einstellungen-admin.php:116
@@ -8704,7 +8845,7 @@ msgid "Versendet"
 msgstr ""
 
 #. %s: shipped orders
-#: psecommerce.php:327
+#: psecommerce.php:328
 #, php-format
 msgid "Versendet <span class=\"count\">(%s)</span>"
 msgid_plural "Versendet <span class=\"count\">(%s)</span>"
@@ -9230,11 +9371,11 @@ msgstr ""
 msgid "Wähle %s"
 msgstr ""
 
-#: psecommerce.php:203
+#: psecommerce.php:204
 msgid "Wähle aus den am häufigsten verwendeten Produkt-Tags"
 msgstr ""
 
-#: psecommerce.php:169
+#: psecommerce.php:170
 msgid "Wähle aus den am häufigsten verwendeten Shopkategorien"
 msgstr ""
 
@@ -9986,23 +10127,23 @@ msgstr ""
 msgid "Österreich"
 msgstr ""
 
-#: psecommerce.php:278
+#: psecommerce.php:279
 msgid "Übergeordnete Bestellung"
 msgstr ""
 
-#: psecommerce.php:164
+#: psecommerce.php:165
 msgid "Übergeordnete Shopkategorie"
 msgstr ""
 
-#: psecommerce.php:165
+#: psecommerce.php:166
 msgid "Übergeordnete Shopkategorie:"
 msgstr ""
 
-#: psecommerce.php:198
+#: psecommerce.php:199
 msgid "Übergeordnetes Produkt-Tag"
 msgstr ""
 
-#: psecommerce.php:199
+#: psecommerce.php:200
 msgid "Übergeordnetes Produkt-Tag:"
 msgstr ""
 

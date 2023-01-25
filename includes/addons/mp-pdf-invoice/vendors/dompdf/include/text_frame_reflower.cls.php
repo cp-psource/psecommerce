@@ -341,8 +341,6 @@ class Text_Frame_Reflower extends Frame_Reflower {
   // Returns an array(0 => min, 1 => max, "min" => min, "max" => max) of the
   // minimum and maximum widths of this frame
   function get_min_max_width() {
-    /*if ( !is_null($this->_min_max_cache)  )
-      return $this->_min_max_cache;*/
     $frame = $this->_frame;
     $style = $frame->get_style();
     $this->_block_parent = $frame->find_block_parent();
@@ -369,57 +367,48 @@ class Text_Frame_Reflower extends Frame_Reflower {
       // faster than doing a single-pass character by character scan.  Heh,
       // yes I took the time to bench it ;)
       $words = array_flip(preg_split("/[\s-]+/u",$str, -1, PREG_SPLIT_DELIM_CAPTURE));
-      /*foreach($words as &$word) {
-        $word = Font_Metrics::get_text_width($word, $font, $size, $word_spacing, $char_spacing);
-      }*/
-      array_walk($words, function( &$val , $str , $font ) {$val = Font_Metrics::get_text_width($str, "'.addslashes($font).'", '.$size.', '.$word_spacing.', '.$char_spacing.');});
+      array_walk($words, function( &$val , $str , $font ) {$val = Font_Metrics::get_text_width($str, $font, $size, $word_spacing, $char_spacing);});
       arsort($words);
       $min = reset($words);
       break;
 
-    case "pre":
-      $lines = array_flip(preg_split("/\n/u", $str));
-      /*foreach($words as &$word) {
-        $word = Font_Metrics::get_text_width($word, $font, $size, $word_spacing, $char_spacing);
-      }*/
-      array_walk($lines, function( &$val , $str , $font ) {$val = Font_Metrics::get_text_width($str, "'.addslashes($font).'", '.$size.', '.$word_spacing.', '.$char_spacing.');});
-
-      arsort($lines);
-      $min = reset($lines);
-      break;
-
-    case "nowrap":
-      $min = Font_Metrics::get_text_width($this->_collapse_white_space($str), $font, $size, $word_spacing, $char_spacing);
-      break;
-
-    }
-
-    switch ($style->white_space) {
-
-    default:
-    case "normal":
-    case "nowrap":
-      $str = preg_replace(self::$_whitespace_pattern," ", $text);
-      break;
-
-    case "pre-line":
-      //XXX: Is this correct?
-      $str = preg_replace( "/[ \t]+/u", " ", $text);
-
-    case "pre-wrap":
-      // Find the longest word (i.e. minimum length)
-      $lines = array_flip(preg_split("/\n/", $text));
-      /*foreach($words as &$word) {
-        $word = Font_Metrics::get_text_width($word, $font, $size, $word_spacing, $char_spacing);
-      }*/
-      /*array_walk($lines, create_function('&$val,$str', '$val = Font_Metrics::get_text_width($str, "'.$font.'", '.$size.', '.$word_spacing.', '.$char_spacing.');'));*/ 
-      array_walk($lines, function( &$val , $str , $font ) {$val = Font_Metrics::get_text_width($str, "'.$font.'", '.$size.', '.$word_spacing.', '.$char_spacing.');});
-      arsort($lines);
-      reset($lines);
-      $str = key($lines);
-      break;
-
-    }
+      case "pre":
+        $lines = array_flip(preg_split("/\n/u", $str));
+        array_walk($lines, function( &$val , $str , $font ) {$val = Font_Metrics::get_text_width($str, $font, $size, $word_spacing, $char_spacing);});
+      
+        arsort($lines);
+        $min = reset($lines);
+        break;
+      
+      case "nowrap":
+        $min = Font_Metrics::get_text_width($this->_collapse_white_space($str), $font, $size, $word_spacing, $char_spacing);
+        break;
+      
+      }
+      
+      switch ($style->white_space) {
+      
+      default:
+      case "normal":
+      case "nowrap":
+        $str = preg_replace(self::$_whitespace_pattern," ", $text);
+        break;
+      
+      case "pre-line":
+        //XXX: Is this correct?
+        $str = preg_replace( "/[ \t]+/u", " ", $text);
+      
+      case "pre-wrap":
+        // Find the longest word (i.e. minimum length)
+        $lines = array_flip(preg_split("/\n/", $text));
+        array_walk($lines, function( &$val , $str , $font ) {$val = Font_Metrics::get_text_width($str, $font, $size, $word_spacing, $char_spacing);});
+        arsort($lines);
+        $max = reset($lines);
+        break;
+      }
+      
+      $this->_min_max_cache = array($min, $max);
+      return $this->_min_max_cache;
 
     $max = Font_Metrics::get_text_width($str, $font, $size, $word_spacing, $char_spacing);
     

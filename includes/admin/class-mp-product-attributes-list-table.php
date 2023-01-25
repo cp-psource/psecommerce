@@ -50,13 +50,24 @@ class MP_Product_Attributes_List_Table extends WP_List_Table {
 		return $data;
 	}
 
-	function process_bulk_actions() {
+	/*function process_bulk_actions() {
 		if ( $this->current_action() == 'delete' && ($ids = mp_get_get_value('product_attribute')) ) {
 			//$ids = array_filter($ids, create_function('$id', 'return is_numeric($id);'));
 			$ids = array_filter($ids, function($id) {return is_numeric($id);});
 			MP_Product_Attributes::get_instance()->delete($ids);
 			echo '<div class="updated"><p>' . __('Produktattribute wurden erfolgreich gelöscht.', 'mp') . '</p></div>';
 		}
+	}*/
+	function process_bulk_actions() {
+		if ( $this->current_action() !== 'delete' ) {
+			return;
+		}
+		$ids = filter_input( INPUT_GET, 'product_attribute', FILTER_SANITIZE_NUMBER_INT, FILTER_REQUIRE_ARRAY );
+		if ( empty( $ids ) ) {
+			return;
+		}
+		MP_Product_Attributes::get_instance()->delete( $ids );
+		echo '<div class="updated"><p>' . __( 'Produktattribute wurden erfolgreich gelöscht.', 'mp' ) . '</p></div>';
 	}
 
 	function prepare_items() {

@@ -554,7 +554,9 @@ class MP_Public {
 		if ( strpos( $template, 'page.php' ) !== false ) {
 // Hide edit-post links
 			//add_filter( 'edit_post_link', create_function( '', 'return "";' ) );
-			add_filter( 'edit_post_link', function() {return "";} );
+			add_filter( 'edit_post_link', function() {
+				return "";
+			});
 // Filter output of the_title()
 			add_filter( 'the_title', array( &$this, 'taxonomy_title' ) );
 // Filter output of the_content()
@@ -733,9 +735,13 @@ class MP_Public {
 
 //don't verify ssl connections
 			//add_filter( 'https_local_ssl_verify', create_function( '$ssl_verify', 'return false;' ) );
-			add_filter( 'https_local_ssl_verify', function( $ssl_verify ) {return false;} );
+			add_filter( 'https_local_ssl_verify', function($ssl_verify) {
+				return false;
+			});
 			//add_filter( 'https_ssl_verify', create_function( '$ssl_verify', 'return false;' ) );
-			add_filter( 'https_ssl_verify', function( $ssl_verify ) {return false;} );
+			add_filter( 'https_ssl_verify', function($ssl_verify) {
+				return false;
+			});
 
 			$tmp = download_url( $url ); //we download the url so we can serve it via php, completely obfuscating original source
 

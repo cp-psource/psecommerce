@@ -1,19 +1,19 @@
 <?php
 /**
- * Class MP_Shop_Einstellungen_Import
+ * Class MP_Store_Settings_Import
  *
  * @since   1.2.3
  * @package PSeCommerce
  */
 
-if ( ! class_exists( 'MP_Shop_Einstellungen_Import' ) ) {
+if ( ! class_exists( 'MP_Store_Settings_Import' ) ) {
 	return;
 }
 
 // Load WordPress export API.
 require_once( ABSPATH . 'wp-admin/includes/export.php' );
 
-class MP_Shop_Einstellungen_Import {
+class MP_Store_Settings_Import {
 	/**
 	 * Refers to a single instance of the class
 	 *
@@ -136,7 +136,7 @@ class MP_Shop_Einstellungen_Import {
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new MP_Shop_Einstellungen_Import();
+			self::$_instance = new MP_Store_Settings_Import();
 		}
 		return self::$_instance;
 	}
@@ -717,4 +717,4 @@ echo '<?xml version="1.0" encoding="' . get_bloginfo('charset') . "\" ?>\n"; ?>
 
 }
 
-MP_Shop_Einstellungen_Import::get_instance();
+MP_Store_Settings_Import::get_instance();

@@ -97,6 +97,8 @@ if ( is_multisite() ) {
 	}
 
 	//add_action( 'widgets_init', create_function( '', 'return register_widget("PSeCommerce_Global_Category_List_Widget");' ) );
-	add_action( 'widgets_init', 'PSeCommerce_Global_Category_List_Widget' ); function PSeCommerce_Global_Category_List_Widget() {return register_widget('PSeCommerce_Global_Category_List_Widget');}
+	add_action( 'widgets_init', function() {
+		register_widget( 'PSeCommerce_Global_Category_List_Widget' );
+	});
 }
 ?>

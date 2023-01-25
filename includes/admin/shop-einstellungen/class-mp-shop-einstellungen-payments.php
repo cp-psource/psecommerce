@@ -1,6 +1,6 @@
 <?php
 
-class MP_Shop_Einstellungen_Payments {
+class MP_Store_Settings_Payments {
 
 	/**
 	 * Refers to a single instance of the class
@@ -20,7 +20,7 @@ class MP_Shop_Einstellungen_Payments {
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new MP_Shop_Einstellungen_Payments();
+			self::$_instance = new MP_Store_Settings_Payments();
 		}
 
 		return self::$_instance;
@@ -89,4 +89,4 @@ class MP_Shop_Einstellungen_Payments {
 
 }
 
-MP_Shop_Einstellungen_Payments::get_instance();
+MP_Store_Settings_Payments::get_instance();

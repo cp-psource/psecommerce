@@ -777,7 +777,7 @@ class PSOURCE_Metabox {
 
 		if ( $this->is_settings_metabox() ) :
 			$atts                                   = '';
-			foreach ( (array) $this->args['custom'] as $name => $val ) {
+			foreach ( $this->args['custom'] as $name => $val ) {
 				$atts .= ' ' . $name . '="' . esc_attr( $val ) . '"';
 			}
 
@@ -785,7 +785,7 @@ class PSOURCE_Metabox {
 
             $current_screen = get_current_screen();
 			$current_screen_id_part = explode( '_page_', $current_screen->id );
-			$current_screen_id = $current_screen->parent_base . '_page_' . end( $current_screen_id_part );
+			$current_screen_id = $current_screen->parent_base . '_page_' . array_pop($current_screen_id_part);
 			?>
 			<div id="poststuff">
 			<div class="meta-box-sortables <?php echo esc_attr( $current_screen_id ); ?>">
@@ -805,7 +805,7 @@ class PSOURCE_Metabox {
 		if ( ! empty( $this->args['custom'] ) ) :
 		$jquery_string = 'jQuery("#' . $this->args['id'] . '")';
 
-		foreach ( (array) $this->args['custom'] as $name => $val ) {
+		foreach ( $this->args['custom'] as $name => $val ) {
 			$jquery_string .= '.attr("' . $name . '", "' . esc_attr( $val ) . '")';
 		}
 

@@ -383,7 +383,9 @@ class PSOURCE_Field {
 		}
 
 		//$name_parts = array_filter( $name_parts, create_function( '$x', 'return ! empty($x);' ) );
-		$name_parts = array_filter( $name_parts, function($x) {return ! empty($x);} );
+		$name_parts = array_filter( $name_parts, function($x) {
+			return !empty($x);
+		});
 
 		return array_shift( $name_parts );
 	}
@@ -407,9 +409,10 @@ class PSOURCE_Field {
 			$part = rtrim( $part, ']' );
 		}
 
-		$name_parts = array_filter( $name_parts, function($x) {return ! empty($x);} );
 		//$name_parts = array_filter( $name_parts, create_function( '$x', 'return ! empty($x);' ) );
-		//$name_parts = array_filter( $name_parts, function() ($x) {return ! empty($x); )} );
+		$name_parts = array_filter($name_parts, function($x) {
+			return !empty($x);
+		});
 
 		return implode( '->', $name_parts );
 	}

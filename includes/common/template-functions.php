@@ -626,7 +626,9 @@ if ( ! function_exists( '_mp_products_html' ) ) :
 			}
 
 			//$class = array_filter( $class, create_function( '$s', 'return ( ! empty( $s ) );' ) );
-			$class = array_filter( $class, function($s) {return ( ! empty( $s ) );} );
+			$class = array_filter( $class, function($s) {
+				return !empty($s);
+			});
 
 			$image_alignment = mp_get_setting( 'image_alignment_list' );
 

@@ -66,7 +66,10 @@ class MP_Orders_Admin {
 		add_action( 'admin_notices', array( &$this, 'admin_notices' ) );
 		//remove submit div
 		//add_action( 'admin_menu', create_function( '', 'remove_meta_box( "submitdiv", "mp_order", "side" ); remove_meta_box( "titlediv", "mp_order", "core" );' ) );
-		add_action( 'admin_menu', function() {remove_meta_box( "submitdiv", "mp_order", "side" ); remove_meta_box( "titlediv", "mp_order", "core" ); } );
+		add_action( 'admin_menu', function() {
+			remove_meta_box( 'submitdiv', 'mp_order', 'side' );
+			remove_meta_box( 'titlediv', 'mp_order', 'core' );
+		});
 		//add export form
 		add_action( 'mp_render_settings/shop-einstellungen_page_shop-einstellungen-exporters', array(
 			&$this,

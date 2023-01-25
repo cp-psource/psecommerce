@@ -1,6 +1,6 @@
 <?php
 
-class MP_Shop_Einstellungen_Capabilities {
+class MP_Store_Settings_Capabilities {
 	/**
 	 * Refers to a single instance of the class
 	 *
@@ -19,7 +19,7 @@ class MP_Shop_Einstellungen_Capabilities {
 	 */
 	public static function get_instance() {
 		if ( is_null(self::$_instance) ) {
-			self::$_instance = new MP_Shop_Einstellungen_Capabilities();
+			self::$_instance = new MP_Store_Settings_Capabilities();
 		}
 		return self::$_instance;
 	}
@@ -100,4 +100,4 @@ class MP_Shop_Einstellungen_Capabilities {
 	}
 }
 
-MP_Shop_Einstellungen_Capabilities::get_instance();
+MP_Store_Settings_Capabilities::get_instance();
