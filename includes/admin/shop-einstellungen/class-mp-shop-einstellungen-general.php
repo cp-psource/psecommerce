@@ -1,7 +1,7 @@
 <?php
-add_action( 'wp_ajax_mp_update_currency', array( 'MP_Store_Settings_General', 'ajax_mp_update_currency' ) );
+add_action( 'wp_ajax_mp_update_currency', array( 'MP_Shop_Einstellungen_General', 'ajax_mp_update_currency' ) );
 
-class MP_Store_Settings_General {
+class MP_Shop_Einstellungen_General {
 
 	/**
 	 * Refers to a single instance of the class
@@ -21,7 +21,7 @@ class MP_Store_Settings_General {
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new MP_Store_Settings_General();
+			self::$_instance = new MP_Shop_Einstellungen_General();
 		}
 		return self::$_instance;
 	}
@@ -57,10 +57,10 @@ class MP_Store_Settings_General {
 		add_filter( 'psource_field/format_value/tax[rate]', array( &$this, 'format_tax_rate_value' ), 10, 2 );
 		add_filter( 'psource_field/sanitize_for_db/tax[rate]', array( &$this, 'save_tax_rate_value' ), 10, 3 );
 
-		/*foreach ( mp()->CA_provinces as $key => $value ) {
+		foreach ( mp()->CA_provinces as $key => $value ) {
 			add_filter( 'psource_field/format_value/tax[canada_rate][' . $key . ']', array( &$this, 'format_tax_rate_value' ), 10, 2 );
 			add_filter( 'psource_field/sanitize_for_db/tax[canada_rate][' . $key . ']', array( &$this, 'save_tax_rate_value' ), 10, 3 );
-		}*/
+		}
 	}
 
 	/**
@@ -465,7 +465,7 @@ class MP_Store_Settings_General {
 		) );
 
 		// Create field for each canadian province
-		/*foreach ( mp()->CA_provinces as $key => $label ) {
+		foreach ( mp()->CA_provinces as $key => $label ) {
 			$metabox->add_field( 'text', array(
 				'name'			 => 'tax[canada_rate][' . $key . ']',
 				'desc'			 => '<a target="_blank" href="http://en.wikipedia.org/wiki/Sales_taxes_in_Canada">' . __( 'Aktuelle Steuersätze', 'mp' ) . '</a>',
@@ -478,7 +478,7 @@ class MP_Store_Settings_General {
 					'action' => 'show',
 				),
 			) );
-		}*/
+		}
 
 		$metabox->add_field( 'text', array(
 			'name'	 => 'tax[label]',
@@ -651,4 +651,4 @@ class MP_Store_Settings_General {
 
 }
 
-MP_Store_Settings_General::get_instance();
+MP_Shop_Einstellungen_General::get_instance();

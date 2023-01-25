@@ -226,7 +226,7 @@ class MP_Product_Attributes {
 		}
 
 		// Sort terms
-		/*foreach ( $groups as $tax_slug => &$group ) {
+		foreach ( $groups as $tax_slug => &$group ) {
 			$tax_id = $this->get_id_from_slug($tax_slug);
 			$tax = $this->get_one($tax_id);
 
@@ -255,26 +255,6 @@ class MP_Product_Attributes {
 					$this->sort_terms_by_custom_order($group);
 				break;
 			}
-		}*/
-		foreach ( $groups as $tax_slug => &$group ) {
-			$tax_id = $this->get_id_from_slug($tax_slug);
-			$tax = $this->get_one($tax_id);
-		
-			switch ( $tax->attribute_terms_sort_by ) {
-				case 'ID' :
-					usort($group, function($a, $b) use ($tax) {
-						return $tax->attribute_terms_sort_order == 'ASC' ? $a->term_id <=> $b->term_id : $b->term_id <=> $a->term_id;
-					});
-					break;
-				case 'ALPHA' :
-					usort($group, function($a, $b) use ($tax) {
-						return $tax->attribute_terms_sort_order == 'ASC' ? strcmp($a->name, $b->name) : strcmp($b->name, $a->name);
-					});
-					break;
-				case 'CUSTOM':
-					$this->sort_terms_by_custom_order($group);
-					break;
-			}
 		}
 
 		return ( $grouping ) ? $groups : array_shift($groups);
@@ -289,9 +269,7 @@ class MP_Product_Attributes {
 	 */
 	public function sort_terms_by_custom_order( &$terms ) {
 		//usort($terms, create_function('$a, $b', 'return ( $a->term_order == $b->term_order ) ? 0 : ( $a->term_order < $b->term_order ) ? -1 : 1;'));
-		usort($terms, function($a, $b) {
-			return $a->term_order == $b->term_order ? 0 : ($a->term_order < $b->term_order ? -1 : 1);
-		});
+		usort($terms, function($a, $b) {return ( $a->term_order == $b->term_order ) ? 0 : (( $a->term_order < $b->term_order ) ? -1 : 1);});
 	}
 }
 

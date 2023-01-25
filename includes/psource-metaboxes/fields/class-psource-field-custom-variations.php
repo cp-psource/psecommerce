@@ -124,7 +124,11 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 							<?php } ?>
 
 							<th scope="col" id="inventory" class="manage-column <?php echo $product_type == 'external' ? 'mp_hidden_content' : ''; ?>">
-								<?php _e( 'Lagerstand', 'mp' ); ?>
+								<?php _e( 'Inventar', 'mp' ); ?>
+							</th>
+
+							<th scope="col" id="inventory" class="manage-column <?php echo $product_type == 'freedownload' ? 'mp_hidden_content' : ''; ?>">
+								<?php _e( 'Inventar', 'mp' ); ?>
 							</th>
 
 							<th scope="col" id="price" class="manage-column">
@@ -136,7 +140,7 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 							</th>
 
 							<!--<th scope="col" id="sku" class="manage-column">
-							<?php // _e( 'SKU', 'mp' ); ?>
+								<?php // _e( 'SKU', 'mp' ); ?>
 							</th>-->
 
 							<th scope="col" id="sales" class="manage-column">
@@ -205,6 +209,15 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 									</span>
 								</td>
 
+								<td class="field_editable field_editable_inventory <?php echo $product_type == 'freedownload' ? 'mp_hidden_content' : ''; ?>" data-field-type="number" data-hide-field-product-type="freedownload">
+									<span class="original_value field_subtype field_subtype_inventory" data-meta="inventory" data-default="&infin;">
+										<?php
+										$inventory	 = get_post_meta( $child->ID, 'inventory', true );
+										echo esc_attr( isset( $inventory ) && !empty( $inventory ) || $inventory == '0' ? $inventory : '&infin;'  );
+										?>
+									</span>
+								</td>
+
 								<?php
 								$has_sale	 = get_post_meta( $child->ID, 'has_sale', true );
 								if ( $has_sale == 1 ) {
@@ -239,7 +252,7 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 
 								<!--<td class="field_editable" data-field-type="text">
 									<span class="original_value field_subtype field_subtype_sku" data-meta="sku" data-default="-">
-									<?php /*
+										<?php /*
 										$sku	 = get_post_meta( $child->ID, 'sku', true );
 										echo esc_attr( isset( $sku ) && !empty( $sku ) ? $sku : '-'  );
 										*/?>
@@ -259,7 +272,7 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 								<a target="_blank" href="<?php echo admin_url( 'post.php?post=' . $child->ID . '&action=edit' ) ?>"><?php _e( 'Edit', 'mp' ); ?></a>
 								</td>-->
 								<td class="field_more">
-									<a class="colorbox-link cboxElement open_ajax" href="#" data-popup-id="<?php echo esc_attr( $child->ID ); ?>"><i class="fa fa-th-large"></i></a>
+									<a class="colorbox-link cboxElement open_ajax" href="" data-popup-id="<?php echo esc_attr( $child->ID ); ?>"><i class="fa fa-th-large"></i></a>
 									<span class="hidden variation_name"><?php echo get_post_meta( $child->ID, 'name', true ); ?></span>
 								</td>
 								<td class="field_default_variation">
@@ -337,8 +350,8 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 										</div>
 
 										<div class="variation-second-col">
-											<div class="psource-field-label"><?php _e( 'Variation Werte', 'mp' ); ?> <span class="mp_meta_small_desc"><?php _e( '(z.B. Weiß, Grau, Rot etc.)', 'mp' ); ?> - <strong><?php _e( 'Gib einen Wert ein und klicke auf Variationen erstellen', 'mp' ); ?></strong></span></div>
-											<input type="text" name="variation_values[]" class="variation_values mp-variation-field-required" value="" placeholder="<?php esc_attr_e( __( 'Werte eingeben', 'mp' ) ); ?>">
+											<div class="psource-field-label"><?php _e( 'Variation Werte', 'mp' ); ?> <span class="mp_meta_small_desc"><?php _e( '(z.B. Weiß, Grau, Rot etc.)', 'mp' ); ?> - <strong><?php _e( 'Gib einen Wert ein und ENTER', 'mp' ); ?></strong></span></div>
+											<input type="text" name="variation_values[]" class="variation_values mp-variation-field-required" value="" placeholder="<?php esc_attr_e( __( 'Wert  eingeben und ENTER', 'mp' ) ); ?>">
 										</div>
 
 										<div class="variation-third-col">

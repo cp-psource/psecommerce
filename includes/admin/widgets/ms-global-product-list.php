@@ -189,7 +189,5 @@ if ( is_multisite() ) {
 	}
 
 	//add_action( 'widgets_init', create_function( '', 'return register_widget("PSeCommerce_Global_Product_List");' ) );
-	add_action( 'widgets_init', function() {
-		register_widget( 'PSeCommerce_Global_Product_List' );
-	});
+	add_action( 'widgets_init', 'PSeCommerce_Global_Product_List' ); function PSeCommerce_Global_Product_List() {return register_widget('PSeCommerce_Global_Product_List');}
 }

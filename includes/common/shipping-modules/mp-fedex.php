@@ -546,9 +546,7 @@ class MP_Shipping_FedEx extends MP_Shipping_API_Calculated {
 		$services         = ( $international ) ? $this->intl_services : $this->services;
 
 		//Filter out all options that aren't enabled in settings
-		$shipping_options = array_filter( $shipping_options, function($val) {
-			return $val == 1;
-		});
+		$shipping_options = array_filter( $shipping_options, create_function( '$val', 'return ($val == 1);' ) );
 
 		//Filter out all options that aren't in the $services array
 		foreach ( $services as $code => $service ) {

@@ -626,9 +626,7 @@ if ( ! function_exists( '_mp_products_html' ) ) :
 			}
 
 			//$class = array_filter( $class, create_function( '$s', 'return ( ! empty( $s ) );' ) );
-			$class = array_filter( $class, function($s) {
-				return !empty($s);
-			});
+			$class = array_filter( $class, function($s) {return ( ! empty( $s ) );} );
 
 			$image_alignment = mp_get_setting( 'image_alignment_list' );
 
@@ -2510,34 +2508,31 @@ if ( ! function_exists( 'mp_product' ) ) {
 
 					$values = explode( ',', $values );
 
-					if ( ! empty( $value ) ) {
-						if ( preg_match( '/http:|https:/', $value ) ) {
-							$img_url = array( esc_url( $value ) );
-						} else {
-							$original_image = wp_get_attachment_image_src( $value, 'full' );
-							if(is_array($original_image)){
-							  $img_url        = mp_resize_image( $value, $original_image[0], $size );
-							}else{
-							  $img_url = array("");
+					if ( $image != "single" ) {
+						foreach ( $values as $value ) {
+
+							if ( preg_match( '/http:|https:/', $value ) ) {
+								$img_url = array( esc_url( $value ) );
+							} else {
+								//$img_url = wp_get_attachment_image_src( $value, $size );
+								$original_image = wp_get_attachment_image_src( $value, 'full' );
+								$img_url        = mp_resize_image( $value, $original_image[0], $size );
 							}
+
+							$return .= '<li data-thumb="' . $img_url[0] . '" data-src ="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
 						}
-						$return .= '<li data-thumb="' . $img_url[0] . '" data-src ="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
 					} else {
 						if ( ! empty( $values[0] ) ) {
+
 							if ( preg_match( '/http:|https:/', $values[0] ) ) {
-							 $img_url = array( esc_url( $values[0] ) );
+								$img_url = array( esc_url( $values[0] ) );
 							} else {
-							 $original_image = wp_get_attachment_image_src( $values[0], 'full' );
-							 if(is_array($original_image)){
-							   $img_url        = mp_resize_image( $values[0], $original_image[0], $size );
-							 }else{
-							   $img_url = array("");
-							 }
+								$original_image = wp_get_attachment_image_src( $values[0], 'full' );
+								$img_url        = mp_resize_image( $values[0], $original_image[0], $size );
 							}
-							if(is_array($img_url) && is_array($original_image)){
-								$return .= '<li data-thumb="' . $img_url[0] . '" data-src ="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
-							}
-						 }
+
+							$return .= '<li data-thumb="' . $img_url[0] . '" data-src ="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
+						}
 					}
 
 					$return .= '</ul><!-- end mp_product_gallery -->';

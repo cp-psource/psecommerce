@@ -127,7 +127,7 @@ if ( !class_exists('Ui', false) ):
 
 				$linkText = apply_filters(
 					$this->updateChecker->getUniqueName('manual_check_link'),
-					__('Auf neuere Version prüfen', 'mp')
+					__('Auf neuere Version prüfen', 'plugin-update-checker')
 				);
 				if ( !empty($linkText) ) {
 					/** @noinspection HtmlUnknownTarget */
@@ -214,17 +214,17 @@ if ( !class_exists('Ui', false) ):
 				$details = '';
 
 				if ( $status == 'no_update' ) {
-					$message = sprintf(_x('Keine neuere Version von %s im PSOURCE REPO gefunden.', 'the plugin title', 'mp'), $title);
+					$message = sprintf(_x('Keine neuere Version von %s im PSOURCE REPO gefunden.', 'the plugin title', 'plugin-update-checker'), $title);
 				} else if ( $status == 'update_available' ) {
-					$message = sprintf(_x('Im PSOURCE REPO ist eine <b>neuere Version von %s</b> verfügbar!.', 'the plugin title', 'mp'), $title);
+					$message = sprintf(_x('Im PSOURCE REPO ist eine <b>neuere Version von %s</b> verfügbar!.', 'the plugin title', 'plugin-update-checker'), $title);
 				} else if ( $status === 'error' ) {
-					$message = sprintf(_x('Entschuldige, es konnte nicht festgestellt werden, ob Updates für %s verfügbar sind.', 'the plugin title', 'mp'), $title);
+					$message = sprintf(_x('Entschuldige, es konnte nicht festgestellt werden, ob Updates für %s verfügbar sind.', 'the plugin title', 'plugin-update-checker'), $title);
 					$noticeClass = 'error notice-error';
 
 					$details = $this->formatManualCheckErrors(get_site_transient($this->manualCheckErrorTransient));
 					delete_site_transient($this->manualCheckErrorTransient);
 				} else {
-					$message = sprintf(__('Unbekannter PSOURCE-UPDATTER-Status "%s"', 'mp'), $status);
+					$message = sprintf(__('Unbekannter PSOURCE-UPDATTER-Status "%s"', 'plugin-update-checker'), $status);
 					$noticeClass = 'error notice-error';
 				}
 

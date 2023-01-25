@@ -59,10 +59,6 @@ if ( is_multisite() ) {
 	}
 
 	//add_action( 'widgets_init', create_function( '', 'return register_widget("PSeCommerce_Global_Tag_Cloud_Widget");' ) );
-	add_action( 'widgets_init', 'register_PSeCommerce_Global_Tag_Cloud_Widget' );
-
-	function register_PSeCommerce_Global_Tag_Cloud_Widget() {
-	register_widget( 'PSeCommerce_Global_Tag_Cloud_Widget' );
-	}
+	add_action( 'widgets_init', 'PSeCommerce_Global_Tag_Cloud_Widget' ); function PSeCommerce_Global_Tag_Cloud_Widget() {return register_widget('PSeCommerce_Global_Tag_Cloud_Widget');}
 }
 ?>

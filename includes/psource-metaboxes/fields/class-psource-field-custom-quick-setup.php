@@ -50,7 +50,7 @@ class PSOURCE_Field_Quick_Setup extends PSOURCE_Field {
 					</div><!-- end mp_callout -->
 
 					<div class="mp_skip_step">
-						<a class="mp_link mp_link-skip-step" href="<?php echo admin_url( add_query_arg( array( 'page' => 'store-setup-wizard', 'quick_setup_step' => 'skip' ), 'admin.php' ) ); ?>"><?php _e( 'Lass das, ich mach das lieber selbst...', 'mp' ); ?></a>
+						<a class="mp_link mp_link-skip-step" href="<?php echo admin_url( add_query_arg( array( 'page' => 'store-setup-wizard', 'quick_setup_step' => 'skip' ), 'admin.php' ) ); ?>"><?php _e( 'Lass das, ich mach das lieber selbst..', 'mp' ); ?></a>
 					</div><!-- end mp_skip_step -->
 				<?php } else {
 					?>

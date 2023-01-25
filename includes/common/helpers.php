@@ -295,9 +295,7 @@ if ( ! function_exists( 'mp_filter_email' ) ) :
 		// Escape for sprintf() if required
 		if ( $escape ) {
 			//$search_replace = array_map( create_function( '$a', 'return str_replace("%","%%",$a);' ), $search_replace );
-			$search_replace = array_map(function($a) {
-				return str_replace("%","%%",$a);
-			}, $search_replace);
+			$search_replace = array_map( function($a) {return str_replace("%","%%",$a);}, $search_replace );
 		}
 
 		// Replace codes
@@ -645,9 +643,7 @@ if ( ! function_exists( 'mp_get_dir_files' ) ) :
 		$dir   = trailingslashit( $dir );
 		$files = glob( $dir . '*' . $ext );
 		//$files = array_filter( $files, create_function( '$filepath', 'return is_readable($filepath);' ) );
-		$files = array_filter( $files, function($filepath) {
-			return is_readable($filepath);
-		});
+		$files = array_filter( $files, function($filepath) {return is_readable($filepath);});
 
 		return ( empty( $files ) ) ? false : $files;
 	}

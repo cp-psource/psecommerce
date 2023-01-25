@@ -1,6 +1,6 @@
 <?php
 
-class MP_Store_Settings_Addons {
+class MP_Shop_Einstellungen_Addons {
 	/**
 	 * Bezieht sich auf eine einzelne Instanz der Klasse
 	 *
@@ -19,7 +19,7 @@ class MP_Store_Settings_Addons {
 	 */
 	public static function get_instance() {
 		if ( is_null(self::$_instance) ) {
-			self::$_instance = new MP_Store_Settings_Addons();
+			self::$_instance = new MP_Shop_Einstellungen_Addons();
 		}
 		return self::$_instance;
 	}
@@ -157,4 +157,4 @@ jQuery(function($) {
 	}
 }
 
-MP_Store_Settings_Addons::get_instance();
+MP_Shop_Einstellungen_Addons::get_instance();
