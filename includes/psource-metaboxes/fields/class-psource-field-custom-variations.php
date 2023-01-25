@@ -272,7 +272,7 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 								<a target="_blank" href="<?php echo admin_url( 'post.php?post=' . $child->ID . '&action=edit' ) ?>"><?php _e( 'Edit', 'mp' ); ?></a>
 								</td>-->
 								<td class="field_more">
-									<a class="colorbox-link cboxElement open_ajax" href="" data-popup-id="<?php echo esc_attr( $child->ID ); ?>"><i class="fa fa-th-large"></i></a>
+									<a class="colorbox-link cboxElement open_ajax" href="#" data-popup-id="<?php echo esc_attr( $child->ID ); ?>"><i class="fa fa-th-large"></i></a>
 									<span class="hidden variation_name"><?php echo get_post_meta( $child->ID, 'name', true ); ?></span>
 								</td>
 								<td class="field_default_variation">
