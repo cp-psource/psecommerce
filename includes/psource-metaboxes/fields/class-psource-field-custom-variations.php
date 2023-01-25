@@ -350,8 +350,8 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 										</div>
 
 										<div class="variation-second-col">
-											<div class="psource-field-label"><?php _e( 'Variation Werte', 'mp' ); ?> <span class="mp_meta_small_desc"><?php _e( '(z.B. Weiß, Grau, Rot etc.)', 'mp' ); ?> - <strong><?php _e( 'Gib einen Wert ein und ENTER', 'mp' ); ?></strong></span></div>
-											<input type="text" name="variation_values[]" class="variation_values mp-variation-field-required" value="" placeholder="<?php esc_attr_e( __( 'Wert  eingeben und ENTER', 'mp' ) ); ?>">
+											<div class="psource-field-label"><?php _e( 'Variation Werte', 'mp' ); ?> <span class="mp_meta_small_desc"><?php _e( '(z.B. Weiß, Grau, Rot etc.)', 'mp' ); ?> - <strong><?php _e( 'Gib einen Wert ein und klicke auf Variationen erstellen', 'mp' ); ?></strong></span></div>
+											<input type="text" name="variation_values[]" class="variation_values mp-variation-field-required" value="" placeholder="<?php esc_attr_e( __( 'Werte eingeben', 'mp' ) ); ?>">
 										</div>
 
 										<div class="variation-third-col">
