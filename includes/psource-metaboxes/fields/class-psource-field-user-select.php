@@ -224,7 +224,7 @@ class PSOURCE_Field_User_Select extends PSOURCE_Field {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'psource-field-select2', mp_plugin_url( 'vendors/select2/select2.min.js' ), array( 'jquery' ), MP_VERSION );
+		wp_enqueue_script( 'psource-field-select2', mp_plugin_url( 'vendors/select2/select2.js' ), array( 'jquery' ), MP_VERSION );
 	}
 
 	/**

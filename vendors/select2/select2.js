@@ -689,7 +689,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             this.container = this.createContainer();
 
-            this.onRegion = $("<span>", {
+            this.liveRegion = $("<span>", {
                     role: "status",
                     "aria-live": "polite"
                 })
@@ -853,7 +853,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             if (select2 !== undefined) {
                 select2.container.remove();
-                select2.onRegion.remove();
+                select2.liveRegion.remove();
                 select2.dropdown.remove();
                 element
                     .removeClass("select2-offscreen")
@@ -919,7 +919,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             opts = $.extend({}, {
                 populateResults: function(container, results, query) {
-                    var populate, id=this.opts.id, liveRegion=this.onRegion;
+                    var populate, id=this.opts.id, liveRegion=this.liveRegion;
 
                     populate=function(results, container, depth) {
 
@@ -1570,7 +1570,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             this.ensureHighlightVisible();
 
-            this.onRegion.text(choice.text());
+            this.liveRegion.text(choice.text());
 
             data = choice.data("select2-data");
             if (data) {
@@ -1688,10 +1688,10 @@ the specific language governing permissions and limitations under the Apache Lic
                 search.removeClass("select2-active");
                 self.positionDropdown();
                 if (results.find('.select2-no-results,.select2-selection-limit,.select2-searching').length) {
-                    self.onRegion.text(results.text());
+                    self.liveRegion.text(results.text());
                 }
                 else {
-                    self.onRegion.text(self.opts.formatMatches(results.find('.select2-result-selectable').length));
+                    self.liveRegion.text(self.opts.formatMatches(results.find('.select2-result-selectable').length));
                 }
             }
 
@@ -3406,13 +3406,13 @@ the specific language governing permissions and limitations under the Apache Lic
         },
         formatResultCssClass: function(data) {return data.css;},
         formatSelectionCssClass: function(data, container) {return undefined;},
-        formatMatches: function (matches) { if (matches === 1) { return "Ein Ergebnis ist verfügbar. Drücke die Eingabetaste, um es auszuwählen."; } return matches + " results are available, use up and down arrow keys to navigate."; },
+        formatMatches: function (matches) { if (matches === 1) { return "One result is available, press enter to select it."; } return matches + " results are available, use up and down arrow keys to navigate."; },
         formatNoMatches: function () { return "No matches found"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Please enter " + n + " or more character" + (n == 1? "" : "s"); },
         formatInputTooLong: function (input, max) { var n = input.length - max; return "Please delete " + n + " character" + (n == 1? "" : "s"); },
         formatSelectionTooBig: function (limit) { return "You can only select " + limit + " item" + (limit == 1 ? "" : "s"); },
-        formatLoadMore: function (pageNumber) { return "Weitere Ergebnisse laden…"; },
-        formatSearching: function () { return "Suchen…"; },
+        formatLoadMore: function (pageNumber) { return "Loading more results…"; },
+        formatSearching: function () { return "Searching…"; },
         minimumResultsForSearch: 0,
         minimumInputLength: 0,
         maximumInputLength: null,

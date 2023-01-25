@@ -124,11 +124,7 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 							<?php } ?>
 
 							<th scope="col" id="inventory" class="manage-column <?php echo $product_type == 'external' ? 'mp_hidden_content' : ''; ?>">
-								<?php _e( 'Inventar', 'mp' ); ?>
-							</th>
-
-							<th scope="col" id="inventory" class="manage-column <?php echo $product_type == 'freedownload' ? 'mp_hidden_content' : ''; ?>">
-								<?php _e( 'Inventar', 'mp' ); ?>
+								<?php _e( 'Lagerstand', 'mp' ); ?>
 							</th>
 
 							<th scope="col" id="price" class="manage-column">
@@ -140,7 +136,7 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 							</th>
 
 							<!--<th scope="col" id="sku" class="manage-column">
-								<?php // _e( 'SKU', 'mp' ); ?>
+							<?php // _e( 'SKU', 'mp' ); ?>
 							</th>-->
 
 							<th scope="col" id="sales" class="manage-column">
@@ -209,15 +205,6 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 									</span>
 								</td>
 
-								<td class="field_editable field_editable_inventory <?php echo $product_type == 'freedownload' ? 'mp_hidden_content' : ''; ?>" data-field-type="number" data-hide-field-product-type="freedownload">
-									<span class="original_value field_subtype field_subtype_inventory" data-meta="inventory" data-default="&infin;">
-										<?php
-										$inventory	 = get_post_meta( $child->ID, 'inventory', true );
-										echo esc_attr( isset( $inventory ) && !empty( $inventory ) || $inventory == '0' ? $inventory : '&infin;'  );
-										?>
-									</span>
-								</td>
-
 								<?php
 								$has_sale	 = get_post_meta( $child->ID, 'has_sale', true );
 								if ( $has_sale == 1 ) {
@@ -252,7 +239,7 @@ class PSOURCE_Field_Variations extends PSOURCE_Field {
 
 								<!--<td class="field_editable" data-field-type="text">
 									<span class="original_value field_subtype field_subtype_sku" data-meta="sku" data-default="-">
-										<?php /*
+									<?php /*
 										$sku	 = get_post_meta( $child->ID, 'sku', true );
 										echo esc_attr( isset( $sku ) && !empty( $sku ) ? $sku : '-'  );
 										*/?>

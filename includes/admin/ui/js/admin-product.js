@@ -1,29 +1,31 @@
 jQuery( document ).ready( function( $ ) {
 
-    $( '.text-wrap' ).on('click', function(e) {
+    $( '.text-wrap' ).live('click', function(e) {
         $(this).find('.variation_values').focus();
-        });
+    } );
 
-        $( '.mp-variation-row .mp-variation-attribute-name' ).on( 'keyup', function( e ) {
-            if ( $( this ).val() === '' ) {
-                $( this ).addClass( 'mp_variation_invalid' );
-            } else {
-                $( this ).removeClass( 'mp_variation_invalid' );
-            }
-        });
+    $( '.mp-variation-row .mp-variation-attribute-name' ).live( 'keyup', function( e ) {
+        if ( $( this ).val() == '' ) {
+            $( this ).addClass( 'mp_variation_invalid' );
+        } else {
+            $( this ).removeClass( 'mp_variation_invalid' );
+        }
+    } );
 
-    $(document).on('click', '.mp-variation-row .text-wrap', function(e) {
+    $( '.mp-variation-row .text-wrap' ).live( 'click', function( e ) {
 
         //if ( $( this ).val() == '' || $( this ).val() == '[]' ) {
         //  $( this ).parent().find( '.mp-variation-field-required' ).addClass( 'mp_variation_invalid' );
         //} else {
-        $(this).parent().find('.mp-variation-field-required').removeClass('mp_variation_invalid');
+        $( this ).parent().find( '.mp-variation-field-required' ).removeClass( 'mp_variation_invalid' );
         //}
-    });
+    } );
 
-    $(document).on('keyup', 'input.variation_values', function(e) {
+    $( 'input.variation_values' ).live( 'keyup', function( e ) {
+
         var keyCode = e.keyCode || e.which;
-        if (keyCode == '9') {
+
+        if ( keyCode == '9' ) {
 
             // the prevent default allow you to stay in focus in the input and keep adding tags in
             //var press = jQuery.Event( "keyup" );
@@ -34,7 +36,7 @@ jQuery( document ).ready( function( $ ) {
             //alert($( 'input.variation_values' ).val());
             e.preventDefault();
         }
-    });
+    } );
 
     $( '#poststuff' ).append( '<div class="mp-admin-overlay"><div class="mp-variation-loading-spin"></div><div class="mp-variation-loading-message">' + mp_product_admin_i18n.creating_vatiations_message + '</div></div>' );
 
@@ -106,69 +108,68 @@ jQuery( document ).ready( function( $ ) {
         $( this ).repeatable_fields( );
     } );
 
-	$(document).on('click', '.mp-variation-add-all', function(e) {
-        e.preventDefault();
-        var $variation_tags_textarea = $(this).parents('.variation-row').find('input.variation_values'),
-        variation_tags = $(this).parents('.variation-row').find('.mp_product_attributes_select option:selected').attr('data-tags'),
-        variation_tags_array = variation_tags.split(','),
-        existing_tags = $variation_tags_textarea.textext()[0].tags()._formData,
-        all_tags = jQuery.grep(variation_tags_array, function(n, i) {
-                return $.inArray(n, existing_tags) === -1;
-        });
-    
-        $variation_tags_textarea.textext()[0].tags().addTags(all_tags);
-    });
+	$( '.mp-variation-add-all' ).live( 'click', function( e ) {
+		e.preventDefault();
+		var $variation_tags_textarea = $( this ).parents( '.variation-row' ).find( 'input.variation_values' ),
+		variation_tags = $( this ).parents( '.variation-row' ).find( '.mp_product_attributes_select option:selected' ).attr( 'data-tags' ),
+		variation_tags_array = variation_tags.split( ',' ),
+		existing_tags = $variation_tags_textarea.textext()[0].tags()._formData,
+		all_tags = jQuery.grep(variation_tags_array, function( n, i ) {
+			return $.inArray(n, existing_tags) === -1;
+		});
 
-	$('.mp_product_attributes_select').on('change', function() {
-            var $variation_tags_textarea = $(this).parents('.variation-row').find('input.variation_values');
-            $variation_tags_textarea.textext()[0].input().unbind('getSuggestions');
-            if ($(this).val() == '-1') {
-                $(this).parent().find('.mp-variation-attribute-name').show();
-                $(this).parent().find('.mp-variation-add-all').hide();
-            } else {
-                var variation_tags = $(this).find(':selected').data('tags');
-                $(this).parent().find('.mp-variation-attribute-name').hide();
-                if (variation_tags !== "") {
-                    $(this).parent().find('.mp-variation-add-all').show();
-                    var variation_tags_array = variation_tags.split(',');
-                    $variation_tags_textarea.textext()[0].input().bind('getSuggestions', function(e, data) {
-                        var textext = $(e.target).textext()[0],
-                            query = (data ? data.query : '') || '',
-                                existing_tags = textext.tags()._formData,
-                            suggestions = jQuery.grep(variation_tags_array, function(n, i) {
-                                return $.inArray(n, existing_tags) === -1;
-                            });
-                        $(this).trigger(
-                            'setSuggestions', {
-                                result: textext.itemManager().filter(suggestions, query)
-                            }
-                        );
-                    });
-                }
-            }
-        });
+		$variation_tags_textarea.textext()[0].tags().addTags( all_tags );
+	} );
 
-        $( '.select_attributes_filter a' ).on( 'click', function( event ) {
-            $( '.select_attributes_filter a' ).removeClass( 'selected' );
-            if ( $( this ).hasClass( 'selected' ) ) {
-                $( this ).removeClass( 'selected' );
-            } else {
-                $( this ).addClass( 'selected' );
-            }
+	$( '.mp_product_attributes_select' ).live( 'change', function( ) {
+		var $variation_tags_textarea = $( this ).parents( '.variation-row' ).find( 'input.variation_values' );
+		$variation_tags_textarea.textext()[0].input().unbind('getSuggestions');
+		if ( $( this ).val( ) == '-1' ) {
+			$( this ).parent( ).find( '.mp-variation-attribute-name' ).show( );
+			$( this ).parent( ).find( '.mp-variation-add-all' ).hide( );
+		} else {
+			var variation_tags = $( this ).find( ':selected' ).attr( 'data-tags' );			
+			$( this ).parent( ).find( '.mp-variation-attribute-name' ).hide( );
+			if( variation_tags !== "" ) {
+				$( this ).parent( ).find( '.mp-variation-add-all' ).show( );				
+				var variation_tags_array = variation_tags.split( ',' );
+				$variation_tags_textarea.textext()[0].input().bind('getSuggestions', function(e, data) {
+				    var textext = $(e.target).textext()[0],
+				        query = (data ? data.query : '') || '',
+						existing_tags =textext.tags()._formData,
+				        suggestions = jQuery.grep(variation_tags_array, function( n, i ) {
+							return $.inArray(n, existing_tags) === -1;
+						});
+				    $(this).trigger(
+				        'setSuggestions',
+				        { result : textext.itemManager().filter(suggestions, query) }
+				    );
+				});
+			}
+		}
+	} );
 
-        //Select All link clicked
+    $( '.select_attributes_filter a' ).live( 'click', function( event ) {
+        $( '.select_attributes_filter a' ).removeClass( 'selected' );
+        if ( $( this ).hasClass( 'selected' ) ) {
+            $( this ).removeClass( 'selected' );
+        } else {
+            $( this ).addClass( 'selected' );
+        }
+
+//Select All link clicked
         if ( $( this ).hasClass( 'select_all_link' ) ) {
             $( '#cb-select-all' ).prop( "checked", true );
             $( '.check-column .check-column-box' ).prop( "checked", true );
         }
 
-        //Select None link clicked
+//Select None link clicked
         if ( $( this ).hasClass( 'select_none_link' ) ) {
             $( '#cb-select-all' ).prop( "checked", false );
             $( '.check-column .check-column-box' ).prop( "checked", false );
         }
 
-        //Variation filter clicked
+//Variation filter clicked
         if ( !$( this ).hasClass( 'select_none_link' ) && !$( this ).hasClass( 'select_all_link' ) ) {
             var term_id = $( this ).parent( ).data( 'term-id' );
             $( '.check-column .check-column-box' ).prop( "checked", false );
@@ -180,11 +181,11 @@ jQuery( document ).ready( function( $ ) {
         event.preventDefault( );
     } );
 
-    $(".select_attributes_filter a").on('focus', function(event) {
-        $(this).blur();
-        });
+    $( ".select_attributes_filter a" ).live( 'focus', function( event ) {
+        $( this ).blur( );
+    } );
 
-        $(document).on('click', '#mp_make_combinations, #publishing-action #publish', function(event) {//
+    $( '#mp_make_combinations, #publishing-action #publish' ).live( 'click', function( event ) {//
 
         var caller_id = $( this ).attr( 'id' );
 
@@ -371,27 +372,31 @@ jQuery( document ).ready( function( $ ) {
     $( ".original_value" ).each( function( index ) {
         $( this ).inlineEdit( $( '<input name="temp" class="mp_inline_temp_value" type="text" value="" />' ), $( 'input.editable_value' ) ); //' + $.trim( $( this ).html( ) ) + '
     } );
-    $(document).on('keyup', ".mp_inline_temp_value", function(e) {
-        if ( e.key === "Enter" ) {
-        $( this ).blur( );
+    $( ".mp_inline_temp_value" ).live( 'keyup', function( e ) {
+        if ( e.keyCode == 13 ) {
+            $( this ).blur( );
         }
-        });
-    $(document).on('keydown', '.mp_variations_table_box [name="selected_variation[]"]', function(e) {
-		if (e.keyCode === 9) {
-			e.preventDefault();
-			var parentContainer = $(this).closest('th');
-			var nextContainer = parentContainer.next().next('td.field_editable');
-			nextContainer.find('.original_value').trigger('click');
-			$(this).blur();
+        e.preventDefault( );
+    } );
+    $( '.mp_variations_table_box [name="selected_variation[]"]' ).live('keydown', function( e ) {
+		if ( e.keyCode == 9 ) {
+			e.preventDefault( );
+			var parentContainer = $( this ).parent( 'th' );
+			var nextContainer = $( this ).parent( 'th' ).next().next( 'td.field_editable' );
+			nextContainer.find( '.original_value' ).trigger( 'click' );
+			
+           $( this ).blur( );
         }
     });
-	$(document).on('keydown', ".mp_inline_temp_value", function(e) {
-		if (e.keyCode === 9) {
-			e.preventDefault();
-			var parentContainer = $(this).closest('th');
-            var nextContainer = parentContainer.next().next('td.field_editable');
-            nextContainer.find('.original_value').trigger('click');
-            $(this).blur();
+	$( ".mp_inline_temp_value" ).live( 'keydown', function( e ) {
+		if ( e.keyCode == 9 ) {
+			e.preventDefault( );
+			
+			var parentContainer = $( this ).parent( );
+			var nextContainer = $( this ).parent( ).next( 'td' );
+			nextContainer.find( '.original_value' ).trigger( 'click' );
+			
+            $( this ).blur( );
         }
 	});
     $( '#mp-product-price-inventory-variants-metabox' ).keydown( function( event ) {//window
@@ -656,13 +661,14 @@ jQuery( document ).ready( function( $ ) {
     } )
 
     /* Close thickbox window on link / cancel click */
-    $( '.mp_popup_controls a.cancel' ).on('click', function( e ) {
+    $( '.mp_popup_controls a.cancel' ).live( 'click', function( e ) {
         parent.jQuery.colorbox.close( );
+        return false;
         e.preventDefault( );
     } );
-    $( "a.open_ajax" ).on('click', function( e ) {
+    $( "a.open_ajax" ).live( 'click', function( e ) {
         $.colorbox( {
-            href: mp_product_admin_i18n.ajaxurl + '?action=mp_variation_popup&variation_id=' + $( this ).data('popup-id'),
+            href: mp_product_admin_i18n.ajaxurl + '?action=mp_variation_popup&variation_id=' + ( $( this ).attr( 'data-popup-id' ) ),
             opacity: .7,
             inline: false,
             //width: 400,
@@ -681,9 +687,10 @@ jQuery( document ).ready( function( $ ) {
             }
         } );
         e.preventDefault( );
+        //$.colorbox.remove
+        // return false;
     } );
-    $( '#variant_add' ).on('click', function( e ) {
-        e.preventDefault();
+    $( '#variant_add' ).live( 'click', function( e ) {
         var url = mp_product_admin_i18n.ajaxurl + '?action=ajax_add_new_variant';
         $.post( url, {
             action: 'ajax_add_new_variant',
@@ -699,23 +706,23 @@ jQuery( document ).ready( function( $ ) {
                         width: 400,
                         height: 460,
                         title: '',
-                            onClosed: function( ) {
-                                $.colorbox.remove( );
-                                //tinyMCE.execCommand("mceRepaint");
-                            },
+                        onClosed: function( ) {
+                            $.colorbox.remove( );
+                            //tinyMCE.execCommand("mceRepaint");
+                        },
                         onLoad: function( ) {
+
                         }
                     } );
                 } else {
                     alert( 'An error occured while trying to create a new variation post' );
                 }
             }
-    
-        } ).fail(function(jqXHR, textStatus, errorThrown) {
-            alert("Request failed: " + textStatus + " " + errorThrown);
-        });
+
+        } );
+        e.preventDefault( );
     } );
-    $( 'body' ).on( 'mp-variation-popup-loaded', function( ) {
+    $( 'body' ).live( 'mp-variation-popup-loaded', function( ) {
 
         $( '#variation_popup a.remove_popup_image' ).on( 'click', function( e ) {
 
@@ -802,9 +809,9 @@ jQuery( document ).ready( function( $ ) {
             $( '.variation_content_type_plain' ).show( );
         }
 
-        $( "input[name='variation_content_type']" ).on( 'change', function( ) {
+        $( "input[name='variation_content_type']" ).live( 'change', function( ) {
             var variation_content_type = $( "input[name='variation_content_type']:checked" ).val( );
-            if ( variation_content_type === 'html' ) {
+            if ( variation_content_type == 'html' ) {
                 $( '.variation_description_button' ).show( );
                 $( '.variation_content_type_plain' ).hide( );
             } else {//plain text
@@ -879,7 +886,7 @@ jQuery( document ).ready( function( $ ) {
             } );
         } );
 
-        $( '#variation_popup input, #variation_popup textarea, #variation_popup select' ).on( 'keypress', function( e ) {
+        $( '#variation_popup input, #variation_popup textarea, #variation_popup select' ).live( 'keypress', function( e ) {
         
             $( '#save-variation-popup-data' ).toggleClass( "disabled", !$( 'form#variation_popup' ).valid() );
         
@@ -887,7 +894,7 @@ jQuery( document ).ready( function( $ ) {
 
     } );
     
-    $( '.has_controller' ).on( 'change', function( ) {
+    $( '.has_controller' ).live( 'change', function( ) {
         var parent_holder = $( this ).closest( '.fieldset_check' );
         var controller = $( this );
         if ( controller.is( ':checked' ) ) {
@@ -899,7 +906,7 @@ jQuery( document ).ready( function( $ ) {
 
     } );
     
-    $( '#save-variation-popup-data, .variation_description_button' ).on( 'click', function( e ) {
+    $( '#save-variation-popup-data, .variation_description_button' ).live( 'click', function( e ) {
         var form = $( 'form#variation_popup' );
         if( !form.valid() ) {
             e.preventDefault( );

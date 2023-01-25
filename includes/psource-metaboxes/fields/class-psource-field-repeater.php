@@ -3,7 +3,7 @@
 class PSOURCE_Field_Repeater extends PSOURCE_Field {
 	/**
 	 * Stores reference to the repeater's subfields
-	 *12.3.20 alles fein DN
+	 *
 	 * @since 1.0
 	 * @access public
 	 * @var array
@@ -27,7 +27,7 @@ class PSOURCE_Field_Repeater extends PSOURCE_Field {
 	public function on_creation( $args ) {
 		$this->args = array_replace_recursive(array(
 			'layout' => 'table',
-			'add_row_label' => __('Reihe hinzufügen', 'psource_metaboxes'),
+			'add_row_label' => __('Add Row', 'psource_metaboxes'),
 			'sortable' => true,
 		), $args);
 	}
@@ -163,20 +163,14 @@ class PSOURCE_Field_Repeater extends PSOURCE_Field {
 
 		// Get the base field name for the repeater field
 		$this_name_parts = explode( '[', $this->args['name'] );
-		//$this_name_parts = array_map( create_function( '$val', 'return rtrim( $val, "]" );' ), $this_name_parts );
-		$name_parts = array_map( function($val) {
-			return rtrim($val, "]");
-		}, $name_parts );
+		$this_name_parts = array_map('trim', $this_name_parts, array("]"));
 		$this_name_key = implode( '->', $this_name_parts );
 
 		// Loop through the fields and setup the appropriate name keys (e.g. $key1->$key2->$key3)
 		foreach ( $unsorted as $idx => $fields ) {
 			foreach ( $this->subfields as $index => $field ) {
 				$name_parts = explode( '[', $field->args['name_base'] );
-				//$name_parts = array_map( create_function( '$val', 'return rtrim( $val, "]" );' ), $name_parts );
-				$name_parts = array_map(function($val) {
-					return rtrim($val, "]");
-				}, $name_parts );
+				$name_parts = array_map('trim', $name_parts, array("]"));
 				$name_key = implode( '->', $name_parts );
 				$name_key = str_replace( $this_name_key, $idx, $name_key );
 
@@ -370,7 +364,7 @@ class PSOURCE_Field_Repeater extends PSOURCE_Field {
 		parent::print_scripts();
 		?>
 <script type="text/javascript">
-jQuery(function($) {
+jQuery(document).ready(function($){
 	var updateOrdering = function( $elms ){
 		$elms.each(function(i){
 			var $this = $(this);
@@ -402,7 +396,7 @@ jQuery(function($) {
 			$(document).trigger('psource_repeater_field/start_sort', [ ui.item ]);
 		},
 		"stop" : function(e, ui) {
-			updateOrdering(ui.item.siblings().addBack());
+			updateOrdering(ui.item.siblings().andSelf());
 
 			/**
 			 * Triggered when sorting stops
@@ -427,8 +421,8 @@ jQuery(function($) {
 		$links.hide();
 	}
 
-	$('.psource-subfields').on("click", '.psource-subfield-delete-group-link', function(event){
-		if ( confirm('<?php _e('Sicher das Du dies löschen möchtest?', 'psource_metaboxes'); ?>') ) {
+	$('.psource-subfields').on('click', '.psource-subfield-delete-group-link', function(event){
+		if ( confirm('<?php _e('Are you sure you want to delete this?', 'psource_metaboxes'); ?>') ) {
 			var $this = $(this),
 					$subfieldGroup = $this.closest('.psource-subfield-group'),
 					$links = $('.psource-subfield-delete-group-link'),
@@ -463,7 +457,7 @@ jQuery(function($) {
 		}
 	});
 
-	$('.psource-repeater-field-add').on("click", function(){
+	$('.psource-repeater-field-add').click(function(){
 		/**
 		 * Triggered right before a row is added.
 		 *
@@ -516,7 +510,7 @@ jQuery(function($) {
 			$clonedRow.find('label[for="' + oldId + '"]').attr('for', $this.attr('id'));
 		});
 
-		updateOrdering($clonedRow.siblings().addBack());
+		updateOrdering($clonedRow.siblings().andSelf());
 
 		/**
 		 * Triggered when a row is added.
