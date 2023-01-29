@@ -639,7 +639,7 @@ class MP_Shop_Einstellungen_General {
 			
 			$metabox->add_field( 'text', array(
 				'name'		 => 'zip_label',
-				'label'		 => array( 'text' => __( 'PLZ Label', 'mp' ) ),
+				'label'		 => array( 'text' => __( 'Zip/Postal Code Label', 'mp' ) ),
 				'custom'	 => array(
 					'style' => 'width:300px',
 				),

@@ -4,7 +4,7 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: ecommerce, onlineshop, multisite
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -55,6 +55,11 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == Entwickler ==
 
+= HINWEIS = 
+
+Wir sind noch dabei die vollständige PhP8 Kompatibilität herzustellen, bei Problemen bitte auf PhP7 wechseln.
+Eure Unterstützung wird gern angenommen, wendet euch hierfür bitte an unsere [GitHub Projekt-Seite]([GitHub](https://github.com/piestingtal-source/psecommerce))
+
 PSeCommerce ist eine OpenSource Community-Software, beruhend auf dem Quellcode von MarketPress, welchem auch WooCommerce zugrunde liegt. 
 PSeCommerce wird von seiner Communty weiterentwickelt, auch Du kannst Dich z.B. auf GitHub gerne Beteiligen, besuche Doch einfach einmal unser [PSeCommerce Projektboard](https://github.com/piestingtal-source/psecommerce/projects). 
 Ob es gefundene Fehler sind, Idee, Verbesserungsvorschläge, Dein persönliches Theme, welches Du teilen möchtest, Du bist uns sicher Willkommen.
@@ -62,14 +67,12 @@ Mehr Details auf der [Projektseite](https://n3rds.work/piestingtal_source/psecom
 
 == ChangeLog ==
 
-= 1.5.6 = DerN3rd =
-
-* Psource Updater 1.2
-
 = 1.5.5 = DerN3rd =
 
-* Deprecated: Optional parameter Fix
-* Getestet mit PhP 8.1
+* PHP Deprecated:  implode() Fix
+* Fix: Setup-Wizard Falsche Fehlermeldung in den Standort-Einstellungen
+* PhP8 Fix Required parameter follows optional parameter
+* Fix: create_function
 
 = 1.5.4 = DerN3rd =
 

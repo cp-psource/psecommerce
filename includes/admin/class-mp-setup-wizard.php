@@ -395,7 +395,7 @@ class MP_Setup_Wizard {
 
 			$metabox->add_field( 'text', array(
 				'name'       => 'zip_label',
-				'label'      => array( 'text' => __( 'Postleitzahl Label', 'mp' ) ),
+				'label'      => array( 'text' => __( 'Zip/Postal Code Label', 'mp' ) ),
 				'custom'     => array(
 					'style' => 'max-width: 300px',
 				),
