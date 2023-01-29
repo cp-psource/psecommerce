@@ -716,7 +716,7 @@ class MP_Installer {
 		if ( ! empty( $old_version ) ) {
 			//2.1.4 update
 			if ( version_compare( $old_version, '2.1.4', '<' ) || ( false !== $force_version && version_compare( $force_version, '2.1.4', '<' ) ) ) {
-				$this->update_214();
+				$this->update_114();
 			}
 
 			//2.9.2.3 update
@@ -1368,7 +1368,7 @@ class MP_Installer {
 	 * @since 1.0
 	 * @access public
 	 */
-	public function update_214() {
+	public function update_114() {
 		global $wpdb;
 
 		$posts = $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'product'" );
