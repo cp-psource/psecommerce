@@ -1733,7 +1733,7 @@ class MP_Cart {
 				}
 
 				/**
-				 * Filter the product original total, also, this variable should be internal
+				 * Filter the product original 'total', also, this variable should be internal
 				 *
 				 * @since 3.0
 				 *

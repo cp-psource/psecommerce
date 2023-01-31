@@ -2,8 +2,9 @@
 /**
  * Plugin Name: PSeCommerce
  * Plugin URI:  https://n3rds.work/?piestingtal_source=psecommerce-shopsystem
- * Description: Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin - Ob kleiner Onlineshop, Digitales Schaufenster, funktioniert auch perfekt mit BuddyPress und Multisite, um einen sozialen Marktplatz zu schaffen, auf dem Du einen Prozentsatz nehmen kannst! Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige Produkte hinzu.
+ * Description: Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin
  * Version:     3.5.1
+ * Requires at least: 4.9
  * Author:      DerN3rd (WMS N3rds@Work)
  * Author URI:  https://n3rds.work
  * Text Domain: mp
