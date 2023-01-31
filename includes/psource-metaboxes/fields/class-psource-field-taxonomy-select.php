@@ -46,7 +46,7 @@ class PSOURCE_Field_Taxonomy_Select extends PSOURCE_Field {
 	/**
 	 * Prints scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function print_scripts() {
@@ -144,7 +144,7 @@ class PSOURCE_Field_Taxonomy_Select extends PSOURCE_Field {
 					initSelect2();
 				} );
 
-				$(function() {
+				$( document ).ready( function() {
 					initSelect2();
 				} );
 			}( jQuery ) );

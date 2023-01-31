@@ -66,7 +66,7 @@ if ( ! class_exists( 'MP_Shipping_API_Calculated' ) ) {
 		/**
 		 * Update CRCs and cached shipping options
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 *
 		 * @param array $shipping_option An array of unformatted shipping options.
@@ -108,7 +108,7 @@ if ( ! class_exists( 'MP_Shipping_API_Calculated' ) ) {
 		/**
 		 * Format an array of unformatted shipping options
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access private
 		 *
 		 * @param array $unformatted The array of unformatted shipping options.
@@ -149,7 +149,7 @@ if ( ! class_exists( 'MP_Shipping_API_Calculated' ) ) {
 		/**
 		 * Parse XML string into DOMDocument object
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access protected
 		 *
 		 * @param string $xml

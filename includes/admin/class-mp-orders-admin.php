@@ -5,7 +5,7 @@ class MP_Orders_Admin {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Orders_Admin {
 	/**
 	 * Refers to the order's IPN history
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var array
 	 */
@@ -23,7 +23,7 @@ class MP_Orders_Admin {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -38,7 +38,7 @@ class MP_Orders_Admin {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -81,7 +81,7 @@ class MP_Orders_Admin {
 	/**
 	 * Save customer info metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 *
 	 * @param MP_Order $order
@@ -98,7 +98,7 @@ class MP_Orders_Admin {
 	/**
 	 * Save order notes metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 *
 	 * @param MP_Order $order
@@ -119,7 +119,7 @@ class MP_Orders_Admin {
 	/**
 	 * Save shipping info metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 *
 	 * @param MP_Order $order
@@ -172,7 +172,7 @@ class MP_Orders_Admin {
 	/**
 	 * Display the export order form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wpdb, $wp_locale
 	 * @action in_admin_footer
@@ -185,7 +185,7 @@ class MP_Orders_Admin {
 	/**
 	 * Get IPN history
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return array False, if no IPN history exists.
 	 */
@@ -250,7 +250,7 @@ class MP_Orders_Admin {
 	/**
 	 * Save meta boxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action save_post
 	 */
@@ -271,7 +271,7 @@ class MP_Orders_Admin {
 	/**
 	 * Add meta boxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action add_meta_boxes_mp_order
 	 */
@@ -322,7 +322,7 @@ class MP_Orders_Admin {
 	/**
 	 * Display the payment info meta box
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function meta_box_payment_info( $post ) {
@@ -367,7 +367,7 @@ class MP_Orders_Admin {
 	/**
 	 * Display the order history meta box
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function meta_box_order_history( $post ) {
@@ -396,7 +396,7 @@ class MP_Orders_Admin {
 	/**
 	 * Display the order IPN history meta box
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function meta_box_order_ipn_history( $post ) {
@@ -421,7 +421,7 @@ class MP_Orders_Admin {
 	/**
 	 * Display the order actions meta box
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function meta_box_order_actions( $post ) {
@@ -452,7 +452,7 @@ class MP_Orders_Admin {
 	/**
 	 * Display the order notes meta box
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function meta_box_order_notes( $post ) {
@@ -467,7 +467,7 @@ class MP_Orders_Admin {
 	/**
 	 * Display the shipping info meta box
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function meta_box_shipping_info( $post ) {
@@ -486,7 +486,7 @@ class MP_Orders_Admin {
 		/**
 		 * Filter shipping carriers
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param array $carrier An array of carriers.
 		 */
@@ -551,7 +551,7 @@ class MP_Orders_Admin {
 	/**
 	 * Display the customer info meta box
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function meta_box_customer_info( $post ) {
@@ -618,7 +618,7 @@ class MP_Orders_Admin {
 	/**
 	 * Display the order details meta box
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function meta_box_order_details( $post ) {
@@ -681,7 +681,7 @@ class MP_Orders_Admin {
 	/**
 	 * Displays the bulk update notice
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function admin_notices() {
@@ -699,7 +699,7 @@ class MP_Orders_Admin {
 	/**
 	 * Processes bulk actions
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function process_bulk_actions() {
@@ -803,7 +803,7 @@ class MP_Orders_Admin {
 	/**
 	 * Changes the given order's status
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action admin_ajax_mp_change_order_status
 	 */
@@ -841,7 +841,7 @@ class MP_Orders_Admin {
 	/**
 	 * Change order status
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action transition_post_status
 	 */
@@ -863,7 +863,7 @@ class MP_Orders_Admin {
 	/**
 	 * Modifies the query object for orders
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action pre_get_posts
 	 *
@@ -895,7 +895,7 @@ class MP_Orders_Admin {
 	/**
 	 * Defines the product coupon sortable columns
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action manage_edit-product_coupon_sortable_columns
 	 *
@@ -913,7 +913,7 @@ class MP_Orders_Admin {
 	/**
 	 * Changes the "enter title here" text when editing/adding coupons
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action enter_title_here
 	 *
@@ -932,7 +932,7 @@ class MP_Orders_Admin {
 	/**
 	 * Enqueue CSS and JS
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action admin_enqueue_scripts
 	 */
@@ -959,7 +959,7 @@ class MP_Orders_Admin {
 	/**
 	 * Adds menu items to the admin menu
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action admin_menu
 	 */
@@ -967,7 +967,7 @@ class MP_Orders_Admin {
 		/**
 		 * Filter the store orders capability
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $order_cap The current store order capability
 		 */
@@ -995,7 +995,7 @@ class MP_Orders_Admin {
 	/**
 	 * Defines the column headers for the product coupon list table
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action manage_mp_order_posts_columns
 	 *
@@ -1021,7 +1021,7 @@ class MP_Orders_Admin {
 	/**
 	 * Defines the list table data for product coupons
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action manage_mp_order_posts_custom_column
 	 * @uses $post
@@ -1168,7 +1168,7 @@ class MP_Orders_Admin {
 		/**
 		 * Filter the admin column html
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $html The current admin column $html.
 		 * @param string $column The admin column name.
@@ -1179,7 +1179,7 @@ class MP_Orders_Admin {
 		/**
 		 * Filter the admin column html
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $html The current admin column $html.
 		 * @param MP_Order $order The current order object.
@@ -1192,7 +1192,7 @@ class MP_Orders_Admin {
 	/**
 	 * Modify the join of the search query in admin
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $pagenow, $wpdb
 	 *
@@ -1211,7 +1211,7 @@ class MP_Orders_Admin {
 	/**
 	 * Modify the where of the search query in admin
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $pagenow, $wpdb
 	 *
@@ -1233,7 +1233,7 @@ class MP_Orders_Admin {
 	/**
 	 * Modify the groupby of the search query in admin
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $pagenow, $wpdb
 	 *

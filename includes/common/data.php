@@ -58,7 +58,7 @@ $this->default_settings = array(
 	'base_country'				 => 'AT',
 	'zip_label'					 => __( 'Postleitzahl', 'mp' ),
 	'tax'						 => array(
-		'rate'					 => 0,
+		'rate'					 => 20,
 		'label'					 => __( 'Steuer', 'mp' ),
 		'tax_shipping'			 => 1,
 		'tax_inclusive'			 => 0,
@@ -169,25 +169,25 @@ Hier kannst Du den aktuellen Status Deiner Bestellung verfolgen: TRACKINGURL\n\n
 		),
 		'new_order_mixed'		 => array(
 			'send_email' => 1,
-			'subject'	 => __( 'Deine Bestellbestätigung (ORDERID)', 'mp' ),
+			'subject'	 => __( 'Your Order Confirmation (ORDERID)', 'mp' ),
 			'text'		 => __( "Vielen Dank für Deine Bestellung CUSTOMERNAME!\n\nDeine Bestellung ist eingegangen, Deine digitalen Waren stehen zum Download bereit und alle zu versendenden Artikel werden so schnell wie möglich bearbeitet. Bitte beziehe Dich bei jeder Kontaktaufnahme mit uns auf Deine Bestell-ID (ORDERID)..\n\nHier ist eine Bestätigung Deiner Bestelldaten:\n\n Bestellinformationen:\n ORDERINFO\n\n Versandinformationen:\n SHIPPINGINFO\n\n Zahlungsinformationen:\n PAYMENTINFO\n\n ORDERNOTES\n\nHier kannst Du den aktuellen Status Deiner Bestellung verfolgen: TRACKINGURL\n\nDanke noch einmal!", 'mp'
 			),
 		),
 		'order_shipped'	 => array(
 			'send_email' => 1,
-			'subject'	 => __( 'Deine Bestellung wurde versandt! (ORDERID)', 'mp' ),
+			'subject'	 => __( 'Your Order Has Been Shipped! (ORDERID)', 'mp' ),
 			'text'		 => __( "Sehr geehrter CUSTOMERNAME,\nDeine Bestellung wurde versandt! Abhängig von der Versandart und Deinem Standort sollte es in Kürze eintreffen. Bitte beziehe Dich bei jeder Kontaktaufnahme mit uns auf Deine Bestell-ID (ORDERID)..\n\nHier ist eine Bestätigung Deiner Bestelldaten:\n\n Bestellinformationen:\n ORDERINFO\n\n Versandinformationen:\n SHIPPINGINFO\n\n Zahlungsinformationen:\n PAYMENTINFO\n\n ORDERNOTES\n\nHier kannst Du den aktuellen Status Deiner Bestellung verfolgen: TRACKINGURL\n\nDanke noch einmal!", 'mp'
 			),
 		),
 		'order_shipped_downloads'	 => array(
 			'send_email' => 1,
-			'subject'	 => __( 'Deine Bestellung kann heruntergeladen werden! (ORDERID)', 'mp' ),
+			'subject'	 => __( 'Your Order Is Ready To Be Downloaded! (ORDERID)', 'mp' ),
 			'text'		 => __( "Sehr geehrter CUSTOMERNAME,\nDeine Bestellung steht jetzt zum Download bereit! Bitte beziehe Dich bei jeder Kontaktaufnahme mit uns auf Deine Bestell-ID (ORDERID)..\n\nHier ist eine Bestätigung Deiner Bestelldaten:\n\n Bestellinformationen:\n ORDERINFO\n\n Zahlungsinformationen:\n PAYMENTINFO\n\n ORDERNOTES\n\nHier kannst Du den aktuellen Status Deiner Bestellung verfolgen: TRACKINGURL\n\nDanke noch einmal!", 'mp'
 			),
 		),
 		'order_shipped_mixed'	 => array(
 			'send_email' => 1,
-			'subject'	 => __( 'Deine Bestellung wurde versandt! (ORDERID)', 'mp' ),
+			'subject'	 => __( 'Your Order Has Been Shipped! (ORDERID)', 'mp' ),
 			'text'		 => __( "Sehr geehrter CUSTOMERNAME,\nDeine Bestellung wurde versandt! Außerdem können die in Deiner Bestellung enthaltenen digitalen Downloads jetzt heruntergeladen werden. Abhängig von der Versandart und Deinem Standort sollte es in Kürze eintreffen. Bitte beziehe Dich bei jeder Kontaktaufnahme mit uns auf Deine Bestell-ID (ORDERID)..\n\nHier ist eine Bestätigung Deiner Bestelldaten:\n\n Bestellinformationen:\n ORDERINFO\n\n Versandinformationen:\n SHIPPINGINFO\n\n Zahlungsinformationen:\n PAYMENTINFO\n\n ORDERNOTES\n\nHier kannst Du den aktuellen Status Deiner Bestellung verfolgen: TRACKINGURL\n\nDanke noch einmal!", 'mp'
 			),
 		) ),
@@ -943,8 +943,8 @@ $this->AM_provinces = array(
 $this->AT_provinces = array(
 	'BUR'	 => 'Burgenland',
 	'KAR'	 => 'Kärnten',
-	'NOS'	 => 'Niederösterreich',
-	'OOS'	 => 'Oberösterreich',
+	'NOS'	 => 'Niederöesterreich',
+	'OOS'	 => 'Oberöesterreich',
 	'SAL'	 => 'Salzburg',
 	'STE'	 => 'Steiermark',
 	'TIR'	 => 'Tirol',

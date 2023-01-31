@@ -4,7 +4,7 @@ class MP_Mailer {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -13,7 +13,7 @@ class MP_Mailer {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -27,7 +27,7 @@ class MP_Mailer {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -36,7 +36,7 @@ class MP_Mailer {
 	/**
 	 * Send an email
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param string $email The email address to send to.
 	 * @param string $subject The subject of the email.
@@ -67,7 +67,7 @@ class MP_Mailer {
 	/**
 	 * Set the charset
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter wp_mail_charset
 	 */
@@ -78,7 +78,7 @@ class MP_Mailer {
 	/**
 	 * Set the content type
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter wp_mail_content_type
 	 */
@@ -89,7 +89,7 @@ class MP_Mailer {
 	/**
 	 * Set the from email
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter wp_mail_from
 	 */
@@ -100,7 +100,7 @@ class MP_Mailer {
 	/**
 	 * Set the from name
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter wp_mail_from_name
 	 */

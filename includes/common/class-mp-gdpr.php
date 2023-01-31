@@ -4,7 +4,7 @@
  *
  * Class MP_GDPR
  *
- * @since 1.2.9
+ * @since 3.2.9
  *
  * @package PSeCommerce
  */
@@ -13,7 +13,7 @@
 /**
  * Class MP_GDPR is responsible for GDPR compliance
  *
- * @since 1.2.9
+ * @since 3.2.9
  */
 class MP_GDPR {
 
@@ -74,13 +74,13 @@ class MP_GDPR {
 				   2Checkout, Authorize.net AIM, gemeinsame Zahlungen von eWay, eWay Rapid 3.1 Payments, Mijireh,
                    Mollie, Paymill, PayPal, PIN, Simplify Commerce mit MasterCard, Stripe und WePay; 
 				   Versand-Gateways: Fedex, UPS, USPS.', 'mp' ),
-			__( 'Zusätzliche Daten', 'mp' ),
-			__( 'Zur Abwicklung von Bestellungen werden folgende Daten erhoben: dein Name,
-					Benutzername, E-Mail-Adresse, Avatar- und Profil-URLs, Adresse und Telefonnummer. Diese Daten können
-					exportiert und entfernt qwerden.', 'mp' ),
+			__( 'Additional data', 'mp' ),
+			__( 'The following information will be collected in order to process orders: your name,
+		           username, email address, avatar and profile URLs, address and phone number. This data can be
+		           exported and removed.', 'mp' ),
 			__( 'Cookies', 'mp' ),
-			__( 'Zusätzlich zu den standardmäßigen WordPress-Sitzungscookies setzt diese Website möglicherweise ein
-					zusätzliches Cookie, um Ihre Warenkorbeinstellungen zu speichern. Dieser Cookie hält ein Jahr.', 'mp' )
+			__( 'In addition to standard WordPress session cookies, this site might be setting an
+		           additional cookie to remember your cart settings. This cookie will last for one year.', 'mp' )
 		);
 
 		wp_add_privacy_policy_content(
@@ -98,7 +98,7 @@ class MP_GDPR {
 	 */
 	public function register_exporter( $exporters ) {
 		$exporters['mp'] = array(
-			'exporter_friendly_name' => __( 'PSeCommerce-Benutzerdaten', 'mp' ),
+			'exporter_friendly_name' => __( 'PSeCommerce User Data', 'mp' ),
 			'callback'               => array( $this, 'export_data' ),
 		);
 
@@ -114,7 +114,7 @@ class MP_GDPR {
 	 */
 	public function register_eraser( $erasers ) {
 		$erasers['mp'] = array(
-			'eraser_friendly_name' => __( 'PSeCommerce-Benutzerdaten', 'mp' ),
+			'eraser_friendly_name' => __( 'PSeCommerce User Data', 'mp' ),
 			'callback'             => array( $this, 'erase_data' ),
 		);
 
@@ -137,7 +137,7 @@ class MP_GDPR {
 		if ( $data ) {
 			$export_items[] = array(
 				'group_id'    => 'mp_customer',
-				'group_label' => __( 'Kundendaten', 'mp' ),
+				'group_label' => __( 'Customer Data', 'mp' ),
 				'item_id'     => 'user',
 				'data'        => $data,
 			);
@@ -149,7 +149,7 @@ class MP_GDPR {
 			foreach ( $order_data as $order ) {
 				$export_items[] = array(
 					'group_id'    => 'mp_orders',
-					'group_label' => __( 'Bestelldaten', 'mp' ),
+					'group_label' => __( 'Orders Data', 'mp' ),
 					'item_id'     => 'order_' . $order[0]['value'],
 					'data'        => $order,
 				);
@@ -242,31 +242,31 @@ class MP_GDPR {
 
 		$metas = array(
 			'mp_billing_info' => array(
-				'first_name'   => __( 'Rechnungsvorname', 'mp' ),
-				'last_name'    => __( 'Rechnungsnachname', 'mp' ),
-				'email'        => __( 'Rechnung Email', 'mp' ),
-				'company_name' => __( 'Name des Rechnungsunternehmens', 'mp' ),
-				'address1'     => __( 'Rechnungsadresse 1', 'mp' ),
-				'address2'     => __( 'Rechnungsadresse 2', 'mp' ),
-				'city'         => __( 'Rechnung Stadt', 'mp' ),
-				'state'        => __( 'Rechnung Staat', 'mp' ),
-				'zip'          => __( 'Rechnung Postleitzahl', 'mp' ),
-				'country'      => __( 'Rechnung Land', 'mp' ),
-				'phone'        => __( 'Rechnung Telefon', 'mp' ),
+				'first_name'   => __( 'Billing First Name', 'mp' ),
+				'last_name'    => __( 'Billing Last Name', 'mp' ),
+				'email'        => __( 'Billing Email', 'mp' ),
+				'company_name' => __( 'Billing Company Name', 'mp' ),
+				'address1'     => __( 'Billing Address 1', 'mp' ),
+				'address2'     => __( 'Billing Address 2', 'mp' ),
+				'city'         => __( 'Billing City', 'mp' ),
+				'state'        => __( 'Billing State', 'mp' ),
+				'zip'          => __( 'Billing ZIP', 'mp' ),
+				'country'      => __( 'Billing Country', 'mp' ),
+				'phone'        => __( 'Billing Phone', 'mp' ),
 
 			),
 			'mp_shipping_info'  => array(
-				'first_name'   => __( 'Versand Vorname', 'mp' ),
-				'last_name'    => __( 'Versand Nachname', 'mp' ),
-				'email'        => __( 'Versand-E-Mail', 'mp' ),
-				'company_name' => __( 'Versand Name der Firma', 'mp' ),
-				'address1'     => __( 'Lieferadresse 1', 'mp' ),
-				'address2'     => __( 'Lieferadresse 2', 'mp' ),
-				'city'         => __( 'Versand Stadt', 'mp' ),
-				'state'        => __( 'Versand Staat', 'mp' ),
-				'zip'          => __( 'Versand Postleitzahl', 'mp' ),
-				'country'      => __( 'Versand Land', 'mp' ),
-				'phone'        => __( 'Versand Telefon', 'mp' ),
+				'first_name'   => __( 'Shipping First Name', 'mp' ),
+				'last_name'    => __( 'Shipping Last Name', 'mp' ),
+				'email'        => __( 'Shipping Email', 'mp' ),
+				'company_name' => __( 'Shipping Company Name', 'mp' ),
+				'address1'     => __( 'Shipping Address 1', 'mp' ),
+				'address2'     => __( 'Shipping Address 2', 'mp' ),
+				'city'         => __( 'Shipping City', 'mp' ),
+				'state'        => __( 'Shipping State', 'mp' ),
+				'zip'          => __( 'Shipping ZIP', 'mp' ),
+				'country'      => __( 'Shipping Country', 'mp' ),
+				'phone'        => __( 'Shipping Phone', 'mp' ),
 
 			),
 		);
@@ -325,10 +325,10 @@ class MP_GDPR {
 		$data = array();
 
 		$order_statuses = array(
-			'order_received' => __( 'Empfangen', 'mp' ),
-			'order_paid'     => __( 'Bezahlt', 'mp' ),
-			'order_shipped'  => __( 'Versand', 'mp' ),
-			'order_closed'   => __( 'Abgeschlossen', 'mp' ),
+			'order_received' => __( 'Received', 'mp' ),
+			'order_paid'     => __( 'Paid', 'mp' ),
+			'order_shipped'  => __( 'Shipped', 'mp' ),
+			'order_closed'   => __( 'Closed', 'mp' ),
 		);
 
 		if ( ! $guest ) {
@@ -364,23 +364,23 @@ class MP_GDPR {
 
 			$data[] = array(
 				array(
-					'name'  => __( 'Bestellung ID', 'mp' ),
+					'name'  => __( 'Order ID', 'mp' ),
 					'value' => $order_data->post_title,
 				),
 				array(
-					'name'  => __( 'Bestellung Datum', 'mp' ),
+					'name'  => __( 'Order Date', 'mp' ),
 					'value' => date('Y-m-d H:i', $order_meta['mp_received_time'][0] ),
 				),
 				array(
-					'name'  => __( 'Bestellung Status', 'mp' ),
+					'name'  => __( 'Order Status', 'mp' ),
 					'value' => $order_statuses[ $order_data->post_status ],
 				),
 				array(
-					'name'  => __( 'Bestellung Gesamt', 'mp' ),
+					'name'  => __( 'Order Total', 'mp' ),
 					'value' => $order_meta['mp_order_total'][0],
 				),
 				array(
-					'name'  => __( 'Bestellung Info', 'mp' ),
+					'name'  => __( 'Order Info', 'mp' ),
 					'value' => $order_info,
 				),
 			);
@@ -390,14 +390,14 @@ class MP_GDPR {
 
 			if ( ' <br /><br />, ' !== $billing_address ) {
 				$data[][] = array(
-					'name'  => __( 'Rechnungsadresse', 'mp' ),
+					'name'  => __( 'Billing Address', 'mp' ),
 					'value' => $billing_address,
 				);
 			}
 
 			if ( ' <br /><br />, ' !== $shipping_address ) {
 				$data[][] = array(
-					'name'  => __( 'Lieferanschrift', 'mp' ),
+					'name'  => __( 'Shipping Address', 'mp' ),
 					'value' => $shipping_address,
 				);
 			}

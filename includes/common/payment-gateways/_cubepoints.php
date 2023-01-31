@@ -5,7 +5,7 @@
  *
  * Requires the CubePoints plugin: http://wordpress.org/extend/plugins/cubepoints/
  *
- * @since 1.0
+ * @since 3.0
  *
  * @package PSeCommerce
  */
@@ -175,7 +175,7 @@ class MP_Gateway_CubePoints extends MP_Gateway_API {
   /**
    * Initialize the settings metabox
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    */
   public function init_settings_metabox() {

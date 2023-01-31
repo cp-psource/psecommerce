@@ -4,7 +4,7 @@ class MP_Product_Attributes {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -13,7 +13,7 @@ class MP_Product_Attributes {
 	/**
 	 * Refers to the current product attributes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var array
 	 */
@@ -22,7 +22,7 @@ class MP_Product_Attributes {
 	/**
 	 * Refers to the base slug for all product attributes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var string
 	 */
@@ -31,7 +31,7 @@ class MP_Product_Attributes {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -45,7 +45,7 @@ class MP_Product_Attributes {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 
@@ -55,7 +55,7 @@ class MP_Product_Attributes {
 	/**
 	 * Deletes a product attribute(s)
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses $wpdb
 	 * @access public
 	 * @param array/int $id The ID of the attribute to delete.
@@ -82,7 +82,7 @@ class MP_Product_Attributes {
 	/**
 	 * Gets all product attributes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses $wpdb
 	 * @param string $where The where clause for the SQL statement. IMPORTANT: You must make sure your SQL is escaped/safe!
 	 * @return array
@@ -105,7 +105,7 @@ class MP_Product_Attributes {
 	/**
 	 * Get an attribute ID from it's slug
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param string $slug
 	 * @return int
@@ -117,7 +117,7 @@ class MP_Product_Attributes {
 	/**
 	 * Get product categories associated with a given attribute
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wpdb
 	 * @param int $att_id An attribute ID.
@@ -145,7 +145,7 @@ class MP_Product_Attributes {
 	/**
 	 * Get a single product attribute
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param int $id The ID of product attribute to fetch.
 	 * @return object The product attribute or FALSE if a product attribute is not found for the given ID.
@@ -164,7 +164,7 @@ class MP_Product_Attributes {
 	/**
 	 * Generates a product attribute's slug from it's ID.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param int $id The attribute's ID.
 	 * @return string
@@ -176,7 +176,7 @@ class MP_Product_Attributes {
 	/**
 	 * Gets the product attribute table name
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wpdb
 	 * @return string
@@ -189,7 +189,7 @@ class MP_Product_Attributes {
 	/**
 	 * Registers the product attribute taxonomies
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function register() {
@@ -208,7 +208,7 @@ class MP_Product_Attributes {
 	/**
 	 * Sort attributes per settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $attributes
 	 * @return array
@@ -263,7 +263,7 @@ class MP_Product_Attributes {
 	/**
 	 * Sort terms by custom order
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $terms
 	 */

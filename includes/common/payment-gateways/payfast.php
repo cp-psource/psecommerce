@@ -25,7 +25,7 @@
  * @since v1.0
  *
  * @author  Ron Darby ron.darby@payfast.co.za
- * @since 1.0
+ * @since 2.0
  * @date    2013-07-04
  *
  * @copyright  2013 PayFast (Pty) Ltd

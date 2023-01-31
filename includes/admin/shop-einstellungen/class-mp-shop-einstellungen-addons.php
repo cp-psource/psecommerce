@@ -2,18 +2,18 @@
 
 class MP_Shop_Einstellungen_Addons {
 	/**
-	 * Bezieht sich auf eine einzelne Instanz der Klasse
+	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
 	private static $_instance = null;
 
 	/**
-	 * Ruft die einzelne Instanz der Klasse ab
+	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -25,9 +25,9 @@ class MP_Shop_Einstellungen_Addons {
 	}
 
 	/**
-	 * Add-On-Einstellungen anzeigen
+	 * Display add-on settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function display_addon_settings() {
@@ -58,7 +58,7 @@ class MP_Shop_Einstellungen_Addons {
 	/**
 	 * Add metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function display_list_table() {
@@ -89,8 +89,8 @@ td.column-actions {
 }
 </style>
 <script type="text/javascript">
-jQuery(function($) {
-	$('.mp-enable-disable-addon').on("click", function(e){
+jQuery(document).ready(function($){
+	$('.mp-enable-disable-addon').click(function(e){
 		e.preventDefault();
 		var $this = $(this),
 				$row = $this.closest('tr'),
@@ -134,7 +134,7 @@ jQuery(function($) {
 	/**
 	 * Display settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action
 	 */
@@ -149,7 +149,7 @@ jQuery(function($) {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {

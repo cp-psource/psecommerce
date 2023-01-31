@@ -33,7 +33,7 @@ class PSOURCE_Field_File extends PSOURCE_Field {
 	public function enqueue_scripts() {
 		wp_enqueue_script('media-upload');
 
-		// 1.5 media gallery
+		// 3.5 media gallery
 		if ( function_exists('wp_enqueue_media') && ! did_action('wp_enqueue_media') ) {
 			wp_enqueue_media();
 		}
@@ -48,11 +48,11 @@ class PSOURCE_Field_File extends PSOURCE_Field {
 	public function print_scripts() {
 		?>
 <script type="text/javascript">
-jQuery(function($) {
+jQuery(document).ready(function($){
 	/*
 	 * Show the media library popup
 	 */
-	$('.psource-fields').on("click", '.psource-field-file-select', function(e){
+	$('.psource-fields').on('click', '.psource-field-file-select', function(e){
 		e.preventDefault();
 
 		var $this = $(this),

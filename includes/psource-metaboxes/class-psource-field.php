@@ -277,7 +277,7 @@ class PSOURCE_Field {
 	/**
 	 * Safely retreives a value from the $_POST array
 	 *
-	 * @since 1.0.0
+	 * @since 3.0.0
 	 * @uses mp_arr_get_value()
 	 *
 	 * @param string $key (e.g. key1->key2->key3)
@@ -301,7 +301,7 @@ class PSOURCE_Field {
 	/**
 	 * Searches an array multidimensional array for a specific path (if it exists)
 	 *
-	 * @since 1.0.0
+	 * @since 3.0.0
 	 *
 	 * @param array $array The array we want to search
 	 * @param string $path The path we want to check for (e.g. key1->key2->key3 = $array[key1][key2][key3])
@@ -731,7 +731,7 @@ class PSOURCE_Field {
 	/**
 	 * Enqueue styles and scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function enqueue_styles_scripts() {
@@ -815,7 +815,7 @@ class PSOURCE_Field {
 		/**
 		 * Allows modification of the content that displays before a given field.
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @param string $text The current text.
 		 * @param PSOURCE_Field The current field object.
@@ -836,7 +836,7 @@ class PSOURCE_Field {
 		/**
 		 * Allows modification of the content that displays after a given field.
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @param string $text The current text.
 		 * @param PSOURCE_Field The current field object.

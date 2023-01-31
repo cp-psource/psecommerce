@@ -366,7 +366,7 @@ class PSOURCE_Field_Repeater extends PSOURCE_Field {
 		parent::print_scripts();
 		?>
 <script type="text/javascript">
-jQuery(function($) {
+jQuery(document).ready(function($){
 	var updateOrdering = function( $elms ){
 		$elms.each(function(i){
 			var $this = $(this);
@@ -398,7 +398,7 @@ jQuery(function($) {
 			$(document).trigger('psource_repeater_field/start_sort', [ ui.item ]);
 		},
 		"stop" : function(e, ui) {
-			updateOrdering(ui.item.siblings().addBack());
+			updateOrdering(ui.item.siblings().andSelf());
 
 			/**
 			 * Triggered when sorting stops
@@ -423,7 +423,7 @@ jQuery(function($) {
 		$links.hide();
 	}
 
-	$('.psource-subfields').on("click", '.psource-subfield-delete-group-link', function(event){
+	$('.psource-subfields').on('click', '.psource-subfield-delete-group-link', function(event){
 		if ( confirm('<?php _e('Sicher das Du dies löschen möchtest?', 'psource_metaboxes'); ?>') ) {
 			var $this = $(this),
 					$subfieldGroup = $this.closest('.psource-subfield-group'),
@@ -459,7 +459,7 @@ jQuery(function($) {
 		}
 	});
 
-	$('.psource-repeater-field-add').on("click", function(){
+	$('.psource-repeater-field-add').click(function(){
 		/**
 		 * Triggered right before a row is added.
 		 *
@@ -512,7 +512,7 @@ jQuery(function($) {
 			$clonedRow.find('label[for="' + oldId + '"]').attr('for', $this.attr('id'));
 		});
 
-		updateOrdering($clonedRow.siblings().addBack());
+		updateOrdering($clonedRow.siblings().andSelf());
 
 		/**
 		 * Triggered when a row is added.

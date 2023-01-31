@@ -5,7 +5,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -29,7 +29,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -60,7 +60,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Print scripts for creating store page
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_field/print_scripts
 	 */
@@ -70,8 +70,8 @@ class MP_Shop_Einstellungen_Presentation {
 		}
 		?>
 		<script type="text/javascript">
-			jQuery(function($) {
-				$('.mp-create-page-button').on("click", function (e) {
+			jQuery(document).ready(function ($) {
+				$('.mp-create-page-button').click(function (e) {
 					e.preventDefault();
 
 					var $this = $(this),
@@ -97,7 +97,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Initialize metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_metaboxes() {
@@ -113,7 +113,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Gets the appropriate image size label for a given size.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $size The image size.
@@ -131,7 +131,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Display "create page" button next to a given field
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * filter psource_field/after_field
 	 */
@@ -179,7 +179,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Init the store page/slugs settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_store_pages_slugs_settings() {
@@ -249,7 +249,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Init the product list settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_social_settings() {
@@ -336,7 +336,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Init the product list settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_product_list_settings() {
@@ -571,7 +571,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Init the related product settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_related_product_settings() {
@@ -635,10 +635,10 @@ class MP_Shop_Einstellungen_Presentation {
 			'desc'          => __( 'Stelle die Anzahl der Produkte ein, die in einer Rasterzeile angezeigt werden, damit sie am besten zu Deinem Thema passen', 'mp' ),
 			'default_value' => 3,
 			'options'       => array(
-				1 => __( 'Eins', 'mp' ),
-				2 => __( 'Zwei', 'mp' ),
-				3 => __( 'Drei', 'mp' ),
-				4 => __( 'Vier', 'mp' ),
+				1 => __( 'One', 'mp' ),
+				2 => __( 'Two', 'mp' ),
+				3 => __( 'Three', 'mp' ),
+				4 => __( 'Four', 'mp' ),
 			),
 			'conditional'   => array(
 				'name'   => 'related_products[view]',
@@ -651,7 +651,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Init the general settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_product_page_settings() {
@@ -803,7 +803,7 @@ class MP_Shop_Einstellungen_Presentation {
 	/**
 	 * Init the general settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_general_settings() {

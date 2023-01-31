@@ -5,7 +5,7 @@ class MP_Product_Attributes_Admin {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Product_Attributes_Admin {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -28,7 +28,7 @@ class MP_Product_Attributes_Admin {
 	/**
 	 * Displays the product attributes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	public static function display_product_attributes() {
@@ -60,7 +60,7 @@ class MP_Product_Attributes_Admin {
 	/**
 	 * Add product attribute metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public static function add_product_attribute_metaboxes() {
@@ -198,7 +198,7 @@ class MP_Product_Attributes_Admin {
 /**
 	 * Gets the product attribute terms
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return string
 	 */
@@ -236,7 +236,7 @@ class MP_Product_Attributes_Admin {
 	/**
 	 * Gets the product attribute terms
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter psource_field_value
 	 * @return string
@@ -306,7 +306,7 @@ class MP_Product_Attributes_Admin {
 	/**
 	 * Saves the product attribute
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @action psource_metabox_before_save_fields
 	 * @uses $wpdb
 	 */
@@ -463,7 +463,7 @@ class MP_Product_Attributes_Admin {
 	/**
 	 * Print custom scripts for the product attribute repeater field
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param PSOURCE_Field $field
 	 */
@@ -495,7 +495,7 @@ class MP_Product_Attributes_Admin {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {

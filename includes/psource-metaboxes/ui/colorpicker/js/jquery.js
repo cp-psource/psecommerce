@@ -216,11 +216,11 @@ jQuery.extend = jQuery.fn.extend = function() {
 
 				// Recurse if we're merging plain objects or arrays
 				if ( deep && copy && ( jQuery.isPlainObject( copy ) ||
-					( copyIsArray = Array.isArray( copy ) ) ) ) {
+					( copyIsArray = jQuery.isArray( copy ) ) ) ) {
 
 					if ( copyIsArray ) {
 						copyIsArray = false;
-						clone = src && Array.isArray( src ) ? src : [];
+						clone = src && jQuery.isArray( src ) ? src : [];
 
 					} else {
 						clone = src && jQuery.isPlainObject( src ) ? src : {};
@@ -278,7 +278,7 @@ jQuery.extend( {
 		// subtraction forces infinities to NaN
 		// adding 1 corrects loss of precision from parseFloat (#15100)
 		var realStringObj = obj && obj.toString();
-		return !Array.isArray( obj ) && ( realStringObj - parseFloat( realStringObj ) + 1 ) >= 0;
+		return !jQuery.isArray( obj ) && ( realStringObj - parseFloat( realStringObj ) + 1 ) >= 0;
 	},
 
 	isEmptyObject: function( obj ) {
@@ -340,7 +340,7 @@ jQuery.extend( {
 	// Workarounds based on findings by Jim Driscoll
 	// http://weblogs.java.net/blog/driscoll/archive/2009/09/08/eval-javascript-global-context
 	globalEval: function( data ) {
-		if ( data && String.prototype.trim( data ) ) {
+		if ( data && jQuery.trim( data ) ) {
 
 			// We use execScript on Internet Explorer
 			// We use an anonymous function so that context is window
@@ -3943,7 +3943,7 @@ function internalRemoveData( elem, name, pvt ) {
 		if ( thisCache ) {
 
 			// Support array or space separated string names for data keys
-			if ( !Array.isArray( name ) ) {
+			if ( !jQuery.isArray( name ) ) {
 
 				// try the string as a key before any manipulation
 				if ( name in thisCache ) {
@@ -4117,7 +4117,7 @@ jQuery.extend( {
 
 			// Speed up dequeue by getting out quickly if this is just a lookup
 			if ( data ) {
-				if ( !queue || Array.isArray( data ) ) {
+				if ( !queue || jQuery.isArray( data ) ) {
 					queue = jQuery._data( elem, type, jQuery.makeArray( data ) );
 				} else {
 					queue.push( data );
@@ -4901,7 +4901,7 @@ jQuery.event = {
 			special = jQuery.event.special[ type ] || {};
 
 			// If selector defined, determine special event api type, otherwise given type
-			type = ( selector ? special.delegateType : special.onType ) || type;
+			type = ( selector ? special.delegateType : special.bindType ) || type;
 
 			// Update special based on newly reset type
 			special = jQuery.event.special[ type ] || {};
@@ -4989,7 +4989,7 @@ jQuery.event = {
 			}
 
 			special = jQuery.event.special[ type ] || {};
-			type = ( selector ? special.delegateType : special.onType ) || type;
+			type = ( selector ? special.delegateType : special.bindType ) || type;
 			handlers = events[ type ] || [];
 			tmp = tmp[ 2 ] &&
 				new RegExp( "(^|\\.)" + namespaces.join( "\\.(?:.*\\.|)" ) + "(\\.|$)" );
@@ -5120,7 +5120,7 @@ jQuery.event = {
 
 			event.type = i > 1 ?
 				bubbleType :
-				special.onType || type;
+				special.bindType || type;
 
 			// jQuery handler
 			handle = ( jQuery._data( cur, "events" ) || {} )[ event.type ] &&
@@ -5976,7 +5976,7 @@ function fixCloneNodeIssues( src, dest ) {
 		// element in IE9, the outerHTML strategy above is not sufficient.
 		// If the src has innerHTML and the destination does not,
 		// copy the src.innerHTML into the dest.innerHTML. #10324
-		if ( support.html5Clone && ( src.innerHTML && !String.prototype.trim( dest.innerHTML ) ) ) {
+		if ( support.html5Clone && ( src.innerHTML && !jQuery.trim( dest.innerHTML ) ) ) {
 			dest.innerHTML = src.innerHTML;
 		}
 
@@ -7244,7 +7244,7 @@ if ( !support.opacity ) {
 			// attempt to remove filter attribute #6652
 			// if value === "", then remove inline opacity #12685
 			if ( ( value >= 1 || value === "" ) &&
-					String.prototype.trim( filter.replace( ralpha, "" ) ) === "" &&
+					jQuery.trim( filter.replace( ralpha, "" ) ) === "" &&
 					style.removeAttribute ) {
 
 				// Setting style.filter to null, "" & " " still leave "filter:" in the cssText
@@ -7333,7 +7333,7 @@ jQuery.fn.extend( {
 				map = {},
 				i = 0;
 
-			if ( Array.isArray( name ) ) {
+			if ( jQuery.isArray( name ) ) {
 				styles = getStyles( elem );
 				len = name.length;
 
@@ -7690,7 +7690,7 @@ function propFilter( props, specialEasing ) {
 		name = jQuery.camelCase( index );
 		easing = specialEasing[ name ];
 		value = props[ index ];
-		if ( Array.isArray( value ) ) {
+		if ( jQuery.isArray( value ) ) {
 			easing = value[ 1 ];
 			value = props[ index ] = value[ 0 ];
 		}
@@ -8241,7 +8241,7 @@ jQuery.fn.extend( {
 				val = "";
 			} else if ( typeof val === "number" ) {
 				val += "";
-			} else if ( Array.isArray( val ) ) {
+			} else if ( jQuery.isArray( val ) ) {
 				val = jQuery.map( val, function( value ) {
 					return value == null ? "" : value + "";
 				} );
@@ -8269,7 +8269,7 @@ jQuery.extend( {
 					// option.text throws exceptions (#14686, #14858)
 					// Strip and collapse whitespace
 					// https://html.spec.whatwg.org/#strip-and-collapse-whitespace
-					String.prototype.trim( jQuery.text( elem ) ).replace( rspaces, " " );
+					jQuery.trim( jQuery.text( elem ) ).replace( rspaces, " " );
 			}
 		},
 		select: {
@@ -8358,7 +8358,7 @@ jQuery.extend( {
 jQuery.each( [ "radio", "checkbox" ], function() {
 	jQuery.valHooks[ this ] = {
 		set: function( elem, value ) {
-			if ( Array.isArray( value ) ) {
+			if ( jQuery.isArray( value ) ) {
 				return ( elem.checked = jQuery.inArray( jQuery( elem ).val(), value ) > -1 );
 			}
 		}
@@ -8832,7 +8832,7 @@ jQuery.fn.extend( {
 					}
 
 					// only assign if different to avoid unneeded rendering.
-					finalValue = String.prototype.trim( cur );
+					finalValue = jQuery.trim( cur );
 					if ( curValue !== finalValue ) {
 						jQuery.attr( elem, "class", finalValue );
 					}
@@ -8878,7 +8878,7 @@ jQuery.fn.extend( {
 					}
 
 					// Only assign if different to avoid unneeded rendering.
-					finalValue = String.prototype.trim( cur );
+					finalValue = jQuery.trim( cur );
 					if ( curValue !== finalValue ) {
 						jQuery.attr( elem, "class", finalValue );
 					}
@@ -9013,11 +9013,11 @@ jQuery.parseJSON = function( data ) {
 
 	var requireNonComma,
 		depth = null,
-		str = String.prototype.trim( data + "" );
+		str = jQuery.trim( data + "" );
 
 	// Guard against invalid (and possibly dangerous) input by ensuring that nothing remains
 	// after removing valid tokens
-	return str && !String.prototype.trim( str.replace( rvalidtokens, function( token, comma, open, close ) {
+	return str && !jQuery.trim( str.replace( rvalidtokens, function( token, comma, open, close ) {
 
 		// Force termination if we see a misplaced comma
 		if ( requireNonComma && comma ) {
@@ -9595,7 +9595,7 @@ jQuery.extend( {
 		s.type = options.method || options.type || s.method || s.type;
 
 		// Extract dataTypes list
-		s.dataTypes = String.prototype.trim( s.dataType || "*" ).toLowerCase().match( rnotwhite ) || [ "" ];
+		s.dataTypes = jQuery.trim( s.dataType || "*" ).toLowerCase().match( rnotwhite ) || [ "" ];
 
 		// A cross-domain request is in order when we have a protocol:host:port mismatch
 		if ( s.crossDomain == null ) {
@@ -10001,7 +10001,7 @@ function filterHidden( elem ) {
 	return false;
 }
 
-jQuery.expr.pseudos.hidden = function( elem ) {
+jQuery.expr.filters.hidden = function( elem ) {
 
 	// Support: Opera <= 12.12
 	// Opera reports offsetWidths and offsetHeights less than zero on some elements
@@ -10011,8 +10011,8 @@ jQuery.expr.pseudos.hidden = function( elem ) {
 			filterHidden( elem );
 };
 
-jQuery.expr.pseudos.visible = function( elem ) {
-	return !jQuery.expr.pseudos.hidden( elem );
+jQuery.expr.filters.visible = function( elem ) {
+	return !jQuery.expr.filters.hidden( elem );
 };
 
 
@@ -10027,7 +10027,7 @@ var r20 = /%20/g,
 function buildParams( prefix, obj, traditional, add ) {
 	var name;
 
-	if ( Array.isArray( obj ) ) {
+	if ( jQuery.isArray( obj ) ) {
 
 		// Serialize array item.
 		jQuery.each( obj, function( i, v ) {
@@ -10080,7 +10080,7 @@ jQuery.param = function( a, traditional ) {
 	}
 
 	// If an array was passed in, assume that it is an array of form elements.
-	if ( Array.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
+	if ( jQuery.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
 
 		// Serialize the form elements
 		jQuery.each( a, function() {
@@ -10124,7 +10124,7 @@ jQuery.fn.extend( {
 
 			return val == null ?
 				null :
-				Array.isArray( val ) ?
+				jQuery.isArray( val ) ?
 					jQuery.map( val, function( val ) {
 						return { name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
 					} ) :
@@ -10592,7 +10592,7 @@ jQuery.fn.load = function( url, params, callback ) {
 		off = url.indexOf( " " );
 
 	if ( off > -1 ) {
-		selector = String.prototype.trim( url.slice( off, url.length ) );
+		selector = jQuery.trim( url.slice( off, url.length ) );
 		url = url.slice( 0, off );
 	}
 
@@ -10666,7 +10666,7 @@ jQuery.each( [
 
 
 
-jQuery.expr.pseudos.animated = function( elem ) {
+jQuery.expr.filters.animated = function( elem ) {
 	return jQuery.grep( jQuery.timers, function( fn ) {
 		return elem === fn.elem;
 	} ).length;

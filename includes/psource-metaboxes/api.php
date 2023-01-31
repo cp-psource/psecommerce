@@ -33,7 +33,7 @@ if ( ! function_exists( 'field_exists' ) ) :
 	/**
 	 * Check if a field exists given a field name
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @param string $name The name of the field.
 	 * @param int $post_id The post ID to check.
 	 * @return bool

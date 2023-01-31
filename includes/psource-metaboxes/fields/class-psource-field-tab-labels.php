@@ -56,13 +56,13 @@ class PSOURCE_Field_Tab_Labels extends PSOURCE_Field {
 					$anchor = $this.find('.psource-field-tab-anchor'),
 					slug = $anchor.attr('name');
 
-			$this.nextUntil('.psource-field-tab').addBack().wrapAll('<div class="psource-field-tab-wrap" data-slug="' + slug + '"></div>');
+			$this.nextUntil('.psource-field-tab').andSelf().wrapAll('<div class="psource-field-tab-wrap" data-slug="' + slug + '"></div>');
 			$anchor.remove();
 		});
 	};
 
 	var initTabGroupListeners = function() {
-		$('.psource-field').on("click", '.psource-field-tab-label-link', function(e){
+		$('.psource-field').on('click', '.psource-field-tab-label-link', function(e){
 			e.preventDefault();
 
 			var $this = $(this),
@@ -74,7 +74,7 @@ class PSOURCE_Field_Tab_Labels extends PSOURCE_Field {
 		$('.psource-field-tab-label').filter('.active').find('.psource-field-tab-label-link').trigger('click');
 	}
 
-	$(function() {
+	$(document).ready(function(){
 		createTabGroups($('.psource-field-tab'));
 		initTabGroupListeners();
 	});

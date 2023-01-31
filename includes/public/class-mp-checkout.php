@@ -1,59 +1,56 @@
 <?php
 
-// Beenden, wenn direkt darauf zugegriffen wird
-if ( !defined( 'ABSPATH' ) ) exit;
-
 class MP_Checkout {
 
 	/**
-	 * Bezieht sich auf eine einzelne Instanz der Klasse
+	 * Refers to a single instance of the class
 	 *12.3.20 alles fine DN
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
 	private static $_instance = null;
 
 	/**
-	 * Bezieht sich auf den aktuellen Checkout-Schritt
+	 * Refers to the current checkout step
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var string
 	 */
 	protected $_step = null;
 
 	/**
-	 * Bezieht sich auf die aktuelle Kassenschrittnummer
+	 * Refers to the current checkout step number
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var int
 	 */
 	protected $_stepnum = 1;
 
 	/**
-	 * Bezieht sich auf die Kassenbereiche
+	 * Refers to the checkout sections
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var array
 	 */
 	protected $_sections = array();
 
 	/**
-	 * Bezieht sich auf die Checkout-Fehler
+	 * Refers to the checkout errors
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var array
 	 */
 	protected $_errors = array();
 
 	/**
-	 * Ruft die einzelne Instanz der Klasse ab
+	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -65,17 +62,17 @@ class MP_Checkout {
 	}
 
 	/**
-	 * Konstruktorfunktion
+	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
 		/**
-		 * Filtert das Array der Kassenbereiche
+		 * Filter the checkout sections array
 		 *
-		 * @since 1.0
-		 * @param array Das aktuelle Abschnitts-Array.
+		 * @since 3.0
+		 * @param array The current sections array.
 		 */
 		$cart				 = mp_cart();
 		$is_download_only	 = $cart->is_download_only();
@@ -94,23 +91,23 @@ class MP_Checkout {
 		add_filter( 'mp_cart/after_cart_html', array( &$this, 'payment_form' ), 10, 3 );
 		add_filter( 'mp_checkout/address_fields_array', array( &$this, 'contact_details_collection' ), 1, 2 );
 
-		// Checkout-Daten aktualisieren
+		// Update checkout data
 		add_action( 'wp_ajax_mp_update_checkout_data', array( &$this, 'ajax_update_checkout_data' ) );
 		add_action( 'wp_ajax_nopriv_mp_update_checkout_data', array( &$this, 'ajax_update_checkout_data' ) );
 
-		// Kasse verarbeiten
+		// Process checkout
 		add_action( 'wp_ajax_mp_process_checkout', array( &$this, 'ajax_process_checkout' ) );
 		add_action( 'wp_ajax_nopriv_mp_process_checkout', array( &$this, 'ajax_process_checkout' ) );
 
-		// Eventuell zur Kasse gehen bestätigen
+		// Maybe process checkout confirm
 		add_action( 'wp', array( &$this, 'maybe_process_checkout_confirm' ) );
 		add_action( 'wp', array( &$this, 'maybe_process_checkout' ) );
 	}
 
 	/**
-	 * Stelle fest, ob der Versandschritt erforderlich ist, wechsel auch zum ursprünglichen Blog zurück oder verursache seltsame Dinge
+	 * Determine if the shipping step is needed, also switch back to the original blog, or it cause weird stuff
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @return bool
 	 */
@@ -141,15 +138,15 @@ class MP_Checkout {
 	}
 
 	/**
-	 * Versandabschnitt aktualisieren
+	 * Update shipping section
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 */
 	protected function _update_shipping_section() {
 		$data = (array) mp_get_post_value( 'billing', array() );
 
-		// Erzwinge das Leeren des Zustands, wenn er nicht vom Benutzer festgelegt wurde, um sicherzustellen, dass der alte Zustandswert gelöscht wird
+		// Force state to empty if not set by user to ensure that old state value will be deleted
 		if( !isset( $data['state'] ) ) {
 			$data['state'] = '';
 		}
@@ -167,11 +164,11 @@ class MP_Checkout {
 			mp_update_session_value( 'mp_shipping_info', mp_get_session_value( 'mp_billing_info' ) );
 		}
 
-	    //Versandinformationen speichern, auch wenn Versandinformationen zum Speichern anderer Felder deaktiviert sind (z. B. "special_instructions")
+	    //Save shipping info needs even if shipping info disabled for saving other fields (ex. 'special_instructions')
 	    $data = (array) mp_get_post_value( 'shipping', array() );
 
 	    if ( $data ) {
-	        // Erzwinge das Leeren des Zustands, wenn er nicht vom Benutzer festgelegt wurde, um sicherzustellen, dass der alte Zustandswert gelöscht wird
+	        // Force state to empty if not set by user to ensure that old state value will be deleted
 	        if( $enable_shipping_address && !isset( $data['state'] ) ) {
                 $data['state'] = '';
 	        }
@@ -184,9 +181,9 @@ class MP_Checkout {
 	}
 
 	/**
-	 * Bestellprüfung/Zahlungsabschnitt aktualisieren
+	 * Update order review/payment section
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 */
 	protected function _update_order_review_payment_section() {
@@ -222,11 +219,11 @@ class MP_Checkout {
 	}
 
 	/**
-	 * Felder für Adressnamen abrufen
+	 * Get address name fields
 	 *
-	 * @since 1.2.7
+	 * @since 3.2.7
 	 * @access public
-	 * @param string $type Entweder Rechnung oder Versand.
+	 * @param string $type Either billing or shipping.
 	 * @return array
 	 */
 	public function get_address_name_fields( $type ) {
@@ -248,11 +245,11 @@ class MP_Checkout {
 	}
 
 	/**
-	 * Adressfelder abrufen
+	 * Get address fields
 	 *
-	 * @since 1.2.7
+	 * @since 3.2.7
 	 * @access public
-	 * @param string $type Entweder Rechnung oder Versand.
+	 * @param string $type Either billing or shipping.
 	 * @return array
 	 */
 	public function get_address_fields( $type ) {
@@ -273,13 +270,13 @@ class MP_Checkout {
 
 		$countries = array();
 
-		//$countries[''] = __('Wähle eins', 'mp');
+		//$countries[''] = __('Select One', 'mp');
 
 		foreach ( $allowed_countries as $_country ) {
 			$countries[ $_country ] = $all_countries[ $_country ];
 		}
 
-		// Bundesland/PLZ-Felder
+		// State/zip fields
 		$state_zip_fields	 = array();
 		$states				 = mp_get_states( $country );
 		$state_zip_fields[]	 = array(
@@ -429,22 +426,22 @@ class MP_Checkout {
 		);
 
 		/**
-		 * Filter das Adressfeld-Array
+		 * Filter the address fields array
 		 *
-		 * @since 1.0
-		 * @param array $address_fields Die aktuellen Adressfelder.
-		 * @param string $type Entweder Rechnung oder Versand.
+		 * @since 3.0
+		 * @param array $address_fields The current address fields.
+		 * @param string $type Either billing or shipping.
 		 */
 		return (array) apply_filters( 'mp_checkout/address_fields_array', $address_fields, $type );
 	}
 
 	/**
-	 * Adressfelder anzeigen
+	 * Display address fields
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
-	 * @param string $type Entweder Rechnung oder Versand.
-	 * @param bool $value_only Optional, ob die Felder nur ihre Werte anzeigen sollen. Standardwert auf false.
+	 * @param string $type Either billing or shipping.
+	 * @param bool $value_only Optional, whether the fields should display their values only. Defaults to false.
 	 * @return string
 	 */
 	public function address_fields( $type, $value_only = false ) {
@@ -462,23 +459,23 @@ class MP_Checkout {
 		}
 
 		/**
-		 * Adressfeld html filtern
+		 * Filter address field html
 		 *
-		 * @since 1.0
-		 * @param string Der aktuelle HTML-Code.
-		 * @param string Entweder Rechnung oder Versand.
+		 * @since 3.0
+		 * @param string The current html.
+		 * @param string Either billing or shipping.
 		 */
 		return apply_filters( 'mp_checkout/address_fields', $html, $type, $value_only );
 	}
 
 	/**
-	 * Filter für Details-Sammlung als Nur Kontaktdaten in den digitalen Einstellungen festlegen
-	 * Gutes Beispiel für die Anpassung von Adressfeldern auf der Checkout-Seite
+	 * Filter for Details Collection set as Only contact details in Digital settings
+	 * Good example for customization address fields on checkout page
 	 *
-	 * @since 1.2.7
+	 * @since 3.2.7
 	 * @access public
-	 * @param array $address_fields Die aktuellen Adressfelder
-	 * @param string $type Entweder Rechnung oder Versand.
+	 * @param array $address_fields The current address fields
+	 * @param string $type Either billing or shipping.
 	 * @return array
 	 */
 	public function contact_details_collection( $address_fields, $type ) {
@@ -512,17 +509,17 @@ class MP_Checkout {
 	}
 
 	/**
-	 * Checkout-Fehler hinzufügen
+	 * Add checkout error
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
-	 * @param string $msg Die Fehlermeldung.
-	 * @param string $context Der Kontext der Fehlermeldung.
-	 * @param bool $add_slashes Fügt Schrägstriche hinzu, um zu verhindern, dass doppelte Anführungszeichen Fehler verursachen.
+	 * @param string $msg The error message.
+	 * @param string $context The context of the error message.
+	 * @param bool $add_slashes Add slashes to prevent double quotes from causing errors.
 	 */
 	public function add_error( $msg, $context = 'general' , $add_slashes = true ) {
 		if ( $add_slashes ){
-			$msg = str_replace( '"', '\"', $msg ); //Verhindert dass doppelte Anführungszeichen Fehler verursachen.
+			$msg = str_replace( '"', '\"', $msg ); //prevent double quotes from causing errors.
 		}
 
 
@@ -534,30 +531,30 @@ class MP_Checkout {
 	}
 
 	/**
-	 * Checkout-Fehler erhalten
+	 * Get checkout errors
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
-	 * @param string $context Optional, der Fehlerkontext. Standardeinstellung auf "allgemein".
+	 * @param string $context Optional, the error context. Defaults to "general".
 	 * @return array
 	 */
 	public function get_errors( $context = 'general' ) {
 		$errors = mp_arr_get_value( $context, $this->_errors );
 
 		/**
-		 * Filtert die Fehlerzeichenfolge
+		 * Filter the error string
 		 *
-		 * @since 1.0
-		 * @param array $errors Das Fehlerarray.
-		 * @param string $context Der Fehlerkontext.
+		 * @since 3.0
+		 * @param array $errors The error array.
+		 * @param string $context The error context.
 		 */
 		return (array) apply_filters( 'mp_checkout/get_errors', $errors, $context );
 	}
 
 	/**
-	 * Kasse verarbeiten
+	 * Process checkout
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_mp_process_checkout, wp_ajax_nopriv_mp_process_checkout
 	 */
@@ -569,17 +566,17 @@ class MP_Checkout {
 			$shipping_info	 = mp_get_user_address( 'shipping' );
 
 			/**
-			 * Für Gateways zum Einbinden und Verarbeiten von Zahlungen
+			 * For gateways to tie into and process payment
 			 *
-			 * @since 1.0
-			 * @param MP_Cart $cart Ein MP_Cart-Objekt.
-			 * @param array $billing_info Eine Reihe von Zahlungsinformationen für Käufer.
-			 * @param array $shipping_info Eine Reihe von Versandinformationen für Käufer.
+			 * @since 3.0
+			 * @param MP_Cart $cart An MP_Cart object.
+			 * @param array $billing_info An array of buyer billing info.
+			 * @param array $shipping_info An array of buyer shipping info.
 			 */
 			do_action( 'mp_process_payment_' . $payment_method, $cart, $billing_info, $shipping_info );
 
 			if ( $this->has_errors() ) {
-				// Es gibt Fehler - Kaution
+				// There are errors - bail
 				wp_send_json_error( array(
 					'errors' => mp_arr_get_value( 'general', $this->_errors )
 				) );
@@ -597,15 +594,15 @@ class MP_Checkout {
 	}
 
 	/**
-	 * Versandabschnitt aktualisieren
+	 * Update shipping section
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 */
 	protected function _ajax_register_account() {
 
 		if ( is_user_logged_in() ) {
-			// Kaution - Benutzer ist eingeloggt (z.B. hat bereits ein Konto)
+			// Bail - user is logged in (e.g. already has an account)
 			return false;
 		}
 
@@ -651,14 +648,14 @@ class MP_Checkout {
 	}
 
 	public function force_logged_in_cookie( $logged_in_cookie, $expire, $expiration, $user_id, $scheme ){
-		wp_set_current_user( $user_id ); // Erzwinge die Verwendung des aktuellen Benutzers in der Nonce-Generierung.
-		$_COOKIE[LOGGED_IN_COOKIE] = $logged_in_cookie; // Setze das Cookie sofort nach der Ajax-Registrierung, um es in der Nonce-Generierung zu verwenden.
+		wp_set_current_user( $user_id ); // Force current user to be used in nonce generation.
+		$_COOKIE[LOGGED_IN_COOKIE] = $logged_in_cookie; // Set cookie immediately after ajax registration to be used in nonce generation.
 	}
 
 	/**
-	 * Checkout-Daten aktualisieren
+	 * Update checkout data
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_mp_update_checkout_data, wp_ajax_nopriv_mp_update_checkout_data
 	 */
@@ -687,9 +684,9 @@ class MP_Checkout {
 
 
 	/**
-	 * Checkout-Daten validieren
+	 * Validate checkout data
 	 *
-	 * @return array Gibt ein assoziatives Array zurück, wobei Schlüssel - Name des Eingabefelds, Wert - Fehlermeldung
+	 * @return array Return associative array where key - name of input field, value - error message
 	 */
 	private function _validate_checkout_data() {
 		$messages = array();
@@ -703,11 +700,11 @@ class MP_Checkout {
 			$required_fields = array( 'first_name', 'last_name', 'email', 'address1', 'zip', 'city', 'country', 'policy' );
 
 			/**
-			* Filtere die erforderlichen Felder
+			* Filter the required fields
 			*
-			* @since 1.2.7
-			* @param array $required_fields Benötigte Felder.
-			* @param string $type Entweder Rechnung oder Versand.
+			* @since 3.2.7
+			* @param array $required_fields required fields.
+			* @param string $type Either billing or shipping.
 			*/
 			$required_fields = apply_filters( 'mp_checkout/required_fields', $required_fields, $type );
 			foreach ( $required_fields as $field ) {
@@ -745,14 +742,14 @@ class MP_Checkout {
 
 
 	/**
-	 * Kassenformular anzeigen
+	 * Display checkout form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $args {
-	 * 		Optional, ein Array von Argumenten.
+	 * 		Optional, an array of arguments.
 	 *
-	 * 		@type bool $echo Ob echo oder return. Standardmäßig echo.
+	 * 		@type bool $echo Whether to echo or return. Defaults to echo.
 	 * }
 	 */
 	public function display( $args = array() ) {
@@ -768,7 +765,7 @@ class MP_Checkout {
 		if ( $disable_cart == '1' ) {
 				return __( '<div class="mp_cart_empty"><h3 class="mp_sub_title">Oops!</h3><p class="mp_cart_empty_message">Der Warenkorb ist deaktiviert.</p></div><!-- end mp_cart_empty -->', 'mp' );
 			} else {
-				return sprintf( __( '<div class="mp_cart_empty"><h3 class="mp_sub_title">Hoppla!</h3><p class="mp_cart_empty_message">Sieht so aus, als hättest Du Deinem Einkaufswagen noch nichts hinzugefügt... <a href="%s">Gehen wir einkaufen!</a></p></div><!-- end mp_cart_empty -->', 'mp' ), mp_store_page_url( 'products', false ) );
+				return sprintf( __( '<div class="mp_cart_empty"><h3 class="mp_sub_title">Hoppla!</h3><p class="mp_cart_empty_message">Sieht so aus, als hättest Du Deinem Einkaufswagen noch nichts hinzugefügt.. <a href="%s">Gehen wir einkaufen!</a></p></div><!-- end mp_cart_empty -->', 'mp' ), mp_store_page_url( 'products', false ) );
 			}
 
 		}
@@ -780,8 +777,8 @@ class MP_Checkout {
 			<form id="mp-checkout-form" class="mp_form' . (( get_query_var( 'mp_confirm_order_step' ) ) ? ' last-step' : '') . ' mp_form-checkout" method="post" style="display:none" novalidate>' .
 		wp_nonce_field( 'mp_process_checkout', 'mp_checkout_nonce', true, false );
 
-		/* Durchlaufe jeden Abschnitt, um festzustellen, ob ein bestimmter Abschnitt Fehler aufweist.
-		  Wenn ja, lege diesen Abschnitt als aktuellen Abschnitt fest */
+		/* Loop through each section to determine if a particular section has errors.
+		  If so, set that section as the current section */
 		$visible_section = null;
 		foreach ( $this->_sections as $section => $heading_text ) {
 			if ( ( $this->has_errors( $section ) ) ) {
@@ -838,11 +835,11 @@ class MP_Checkout {
 			</section><!-- end mp-checkout -->';
 
 		/**
-		 * Filtere das Checkout-Formular html
+		 * Filter the checkout form html
 		 *
-		 * @since 1.0
-		 * @param string $html Der aktuelle HTML-Code.
-		 * @param array $this->_sections Eine Reihe von Abschnitten zum Anzeigen.
+		 * @since 3.0
+		 * @param string $html The current html.
+		 * @param array $this->_sections An array of sections to display.
 		 */
 		$html = apply_filters( 'mp_checkout/display', $html, $this->_sections );
 
@@ -854,9 +851,9 @@ class MP_Checkout {
 	}
 
 	/**
-	 * Skripte in die Warteschlange stellen
+	 * Enqueue scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function enqueue_scripts() {
@@ -874,19 +871,19 @@ class MP_Checkout {
 			'cc_exp'		 => __( 'Bitte gib ein gültiges Kartenablaufdatum ein', 'mp' ),
 			'cc_cvc'		 => __( 'Bitte gib einen gültigen Kartensicherheitscode ein', 'mp' ),
 			'cc_fullname'	 => __( 'Bitte gib einen gültigen Vor- und Nachnamen ein', 'mp' ),
-			'errors'		 => __( '<h4 class="mp_sub_title">Hoppla, wir haben %s entdeckt.</h4><p>Felder mit Fehlern werden unten in <span>rot</span> hervorgehoben. Wenn Du ein Feld eingibst, wird der tatsächlich aufgetretene Fehler angezeigt.</p>', 'mp' ),
+			'errors'		 => __( '<h4 class="mp_sub_title">Hoppla, wir haben %s entdeckt.</h4><p>Felder mit Fehlern werden unten in <span>rot</span> hervorgehoben. Wenn Sie ein Feld eingeben, wird der tatsächlich aufgetretene Fehler angezeigt.</p>', 'mp' ),
 			'error_plural'	 => __( 'Fehler', 'mp' ),
 			'error_singular' => __( 'Fehler', 'mp' ),
 		) );
 	}
 
 	/**
-	 * Checkout-Feldnamen abrufen
+	 * Get checkout field name
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
-	 * @param string $name Der Feldname.
-	 * @param string $prefix Optional, Zeichen zum Präfix vor dem Feldnamen.
+	 * @param string $name The field name.
+	 * @param string $prefix Optional, characters to prefix before the field name.
 	 */
 	public function field_name( $name, $prefix = null ) {
 		if ( !is_null( $prefix ) ) {
@@ -897,9 +894,9 @@ class MP_Checkout {
 	}
 
 	/**
-	 * Formularfeld-HTML basierend auf Werten aus einem Array erstellen
+	 * Build form field html based upon values from an array
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @param array $field {
 	 * 		An array of field properties
 	 *
@@ -1031,7 +1028,7 @@ class MP_Checkout {
 	/**
 	 * Get the previous/next step html link
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param string $what Either "prev" or "next".
 	 * @return string
@@ -1066,7 +1063,7 @@ class MP_Checkout {
 	/**
 	 * Maybe process order
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp
 	 */
@@ -1083,7 +1080,7 @@ class MP_Checkout {
 			/**
 			 * For gateways to tie into and process payment
 			 *
-			 * @since 1.0
+			 * @since 3.0
 			 * @param MP_Cart $cart An MP_Cart object.
 			 * @param array $billing_info An array of buyer billing info.
 			 * @param array $shipping_info An array of buyer shipping info.
@@ -1098,7 +1095,7 @@ class MP_Checkout {
 	/**
 	 * Maybe process order confirmation
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp
 	 */
@@ -1107,7 +1104,7 @@ class MP_Checkout {
 			/**
 			 * For gateways to tie into before page loads
 			 *
-			 * @since 1.0
+			 * @since 3.0
 			 */
 			do_action( 'mp_checkout/confirm_order/' . mp_get_session_value( 'mp_payment_method', '' ) );
 		}
@@ -1116,7 +1113,7 @@ class MP_Checkout {
 	/**
 	 * Print errors (if applicable)
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param string $context Optional, the error context. Defaults to "general".
 	 * @param bool $echo Optional, whether to echo or return. Defaults to echo.
@@ -1147,7 +1144,7 @@ class MP_Checkout {
 	/**
 	 * Display payment form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter mp_cart/after_cart_html
 	 */
@@ -1160,7 +1157,7 @@ class MP_Checkout {
 		/**
 		 * Filter the payment form heading text
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @param string
 		 */
 		$heading = '<h3 class="mp_sub_title">' . apply_filters( 'mp_checkout/payment_form/heading_text', __( 'Zahlung', 'mp' ) ) . '</h3>';
@@ -1174,14 +1171,14 @@ class MP_Checkout {
 			/**
 			 * For gateways to tie into and display payment confirmation info
 			 *
-			 * @since 1.0
+			 * @since 3.0
 			 */
 			$form = apply_filters( 'mp_checkout/confirm_order_html/' . mp_get_session_value( 'mp_payment_method', '' ), '' );
 		} else {
 			/**
 			 * For gateways to tie into and display payment forms
 			 *
-			 * @since 1.0
+			 * @since 3.0
 			 * @param string
 			 */
 			$form = apply_filters( 'mp_checkout_payment_form', '' );
@@ -1203,7 +1200,7 @@ class MP_Checkout {
 	/**
 	 * Check if there are any errors
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param string $context Optional, the context of the errors. Defaults to "general".
 	 * @return bool
@@ -1215,7 +1212,7 @@ class MP_Checkout {
 	/**
 	 * Toggleable registration form on checkout
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return string
 	 */
@@ -1269,7 +1266,7 @@ class MP_Checkout {
 	/**
 	 * Display the billing/shipping address section
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return string
 	 */
@@ -1339,7 +1336,7 @@ class MP_Checkout {
 	/**
 	 * Display a section heading
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param string $text Heading text.
 	 * @param string $link Optional, the link url for the heading.
@@ -1372,7 +1369,7 @@ class MP_Checkout {
 	/**
 	 * Display the login/register section
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return string
 	 */
@@ -1412,7 +1409,7 @@ class MP_Checkout {
 		/**
 		 * Filter the section login html
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @param string The current html.
 		 */
 		return apply_filters( 'mp_checkout/section_login', $html );
@@ -1421,7 +1418,7 @@ class MP_Checkout {
 	/**
 	 * Display the order review section
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return string
 	 */
@@ -1453,7 +1450,7 @@ class MP_Checkout {
 		/**
 		 * Filter the section payment html
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @param string The current html.
 		 */
 		return apply_filters( 'mp_checkout/order_review', $html );
@@ -1462,7 +1459,7 @@ class MP_Checkout {
 	/**
 	 * Display the shipping section
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function section_shipping() {
@@ -1519,7 +1516,7 @@ class MP_Checkout {
 		/**
 		 * Filter the shipping section html
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @param string $html The current html.
 		 * @param string $shipping_method The selected shipping method per settings (e.g. calculated, flat-rate, etc)
 		 * @param array $active_plugins The currently active shipping plugins.
@@ -1530,7 +1527,7 @@ class MP_Checkout {
 	/**
 	 * Get current/next url hash
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param string $what Either "prev" or "next".
 	 * @return string
@@ -1554,7 +1551,7 @@ class MP_Checkout {
 	/**
 	 * Returns the js needed to record ecommerce transactions.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return string
 	 */

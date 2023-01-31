@@ -2,7 +2,7 @@
 
 /*
   PSeCommerce PIN Gateway (www.pin.net.au) Plugin
-  Author: DerN3rd (WMS N@W)
+  Author: Marko Miljus (Incsub)
  */
 
 class MP_Gateway_PIN extends MP_Gateway_API {
@@ -31,7 +31,7 @@ class MP_Gateway_PIN extends MP_Gateway_API {
 	/**
 	 * Gateway currencies
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var array
 	 */
@@ -70,7 +70,7 @@ class MP_Gateway_PIN extends MP_Gateway_API {
 	/**
 	 * Enqueue checkout scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_enqueue_scripts
 	 */
@@ -91,7 +91,7 @@ class MP_Gateway_PIN extends MP_Gateway_API {
 	/**
 	 * Display the payment form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $cart. Contains the cart contents for the current blog
 	 * @param array $shipping_info. Contains shipping info and email in case you need it
@@ -103,7 +103,7 @@ class MP_Gateway_PIN extends MP_Gateway_API {
 	/**
 	 * Print checkout scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function print_checkout_scripts() {
@@ -113,7 +113,7 @@ class MP_Gateway_PIN extends MP_Gateway_API {
 	/**
 	 * Updates the gateway settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $settings
 	 * @return array
@@ -135,7 +135,7 @@ class MP_Gateway_PIN extends MP_Gateway_API {
 	/**
 	 * Initialize the settings metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_settings_metabox() {

@@ -4,7 +4,7 @@ class PSOURCE_Field_Radio_Group extends PSOURCE_Field {
 	/**
 	 * Runs on construct of parent class
 	 *12.3.20 alles fein DN
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $args {
@@ -26,7 +26,7 @@ class PSOURCE_Field_Radio_Group extends PSOURCE_Field {
 	/**
 	 * Displays the field
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param int $post_id

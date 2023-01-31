@@ -2,7 +2,7 @@
 
 /*
   PSeCommerce Mollie Gateway Plugin
-  Author: DerN3rd (WMS N@W)
+  Author: Marko Miljus (Incsub)
  */
 
 class MP_Gateway_Mollie extends MP_Gateway_API {
@@ -33,7 +33,7 @@ class MP_Gateway_Mollie extends MP_Gateway_API {
 	/**
 	 * Refers to the gateways currencies
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var array
 	 */
@@ -61,7 +61,7 @@ class MP_Gateway_Mollie extends MP_Gateway_API {
 	/**
 	 * Init settings metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function init_settings_metabox() {

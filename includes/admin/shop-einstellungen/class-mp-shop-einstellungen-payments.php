@@ -5,7 +5,7 @@ class MP_Shop_Einstellungen_Payments {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Shop_Einstellungen_Payments {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -29,7 +29,7 @@ class MP_Shop_Einstellungen_Payments {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -40,7 +40,7 @@ class MP_Shop_Einstellungen_Payments {
 	/**
 	 * Add payment gateway settings metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function add_metaboxes() {
@@ -72,7 +72,7 @@ class MP_Shop_Einstellungen_Payments {
 	/**
 	 * Print styles
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action admin_head
 	 */

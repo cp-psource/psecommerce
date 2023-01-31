@@ -11,7 +11,7 @@ class MP_PDF_Invoice {
 	private $settings;
 
 	/**
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function __construct() {
@@ -25,7 +25,7 @@ class MP_PDF_Invoice {
 	 * @param $order_id
 	 * @param string $type
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @return bool
 	 */
@@ -55,7 +55,7 @@ class MP_PDF_Invoice {
 	/**
 	 * This function will create invoice pdf base on order passed
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function generate_pdf( $order_id, $type = self::PDF_INVOICE, $download = false ) {
@@ -112,7 +112,7 @@ class MP_PDF_Invoice {
 	 * @param string $type
 	 *
 	 * @return bool|string
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	public function generate_pdf_file( $order_id, $type = self::PDF_INVOICE ) {
 		$order = new MP_Order( $order_id );
@@ -153,7 +153,7 @@ class MP_PDF_Invoice {
 	 * @param string $type
 	 *
 	 * @return mixed|string
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function build_pdf_content( MP_Order $order, $type = self::PDF_INVOICE ) {
@@ -336,7 +336,7 @@ class MP_PDF_Invoice {
 	/**
 	 * @param $address
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	private function strip_tags_address( $address ) {
 		$parts = preg_split( '/<br[^>]*>/i', $address );
@@ -350,7 +350,7 @@ class MP_PDF_Invoice {
 
 	/**
 	 * @return string
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	private function create_runtime_dir() {
 		$wpdir        = wp_upload_dir();

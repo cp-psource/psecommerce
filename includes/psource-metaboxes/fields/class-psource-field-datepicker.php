@@ -43,7 +43,7 @@ class PSOURCE_Field_Datepicker extends PSOURCE_Field {
 					} );
 				} );
 
-				$(function() {
+				$( document ).ready( function() {
 					$( 'input.psource-datepicker-field' ).each( function() {
 						var $this = $( this );
 

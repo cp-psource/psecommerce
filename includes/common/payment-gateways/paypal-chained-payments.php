@@ -30,7 +30,7 @@ class MP_Gateway_Paypal_Chained_Payments extends MP_Gateway_API {
 	/**
 	 * Gateway currencies
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var array
 	 */
@@ -315,7 +315,7 @@ class MP_Gateway_Paypal_Chained_Payments extends MP_Gateway_API {
 	/**
 	 * Get the confirm order html
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter mp_checkout/confirm_order_html/{plugin_name}
 	 */
@@ -330,7 +330,7 @@ class MP_Gateway_Paypal_Chained_Payments extends MP_Gateway_API {
 	/**
 	 * Initialize the settings metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_settings_metabox() {
@@ -383,7 +383,7 @@ class MP_Gateway_Paypal_Chained_Payments extends MP_Gateway_API {
 	/**
 	 * Updates the gateway settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $settings
@@ -659,7 +659,7 @@ class MP_Gateway_Paypal_Chained_Payments extends MP_Gateway_API {
 	//Purpose: 	Prepares the parameters for the Pay API Call.
 	function PaymentDetails( $paykey ) {
 
-		$nvpstr = "payKey=" . urlencode( $paykey ) . "&senderOptions.referrerCode=psource_SP";
+		$nvpstr = "payKey=" . urlencode( $paykey ) . "&senderOptions.referrerCode=incsub_SP";
 
 		//make the call
 		return $this->api_call( "PaymentDetails", $nvpstr );

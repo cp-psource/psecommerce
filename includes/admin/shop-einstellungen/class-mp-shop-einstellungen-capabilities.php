@@ -4,7 +4,7 @@ class MP_Shop_Einstellungen_Capabilities {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -13,7 +13,7 @@ class MP_Shop_Einstellungen_Capabilities {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -27,7 +27,7 @@ class MP_Shop_Einstellungen_Capabilities {
 	/**
 	 * Init metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_metaboxes() {
@@ -63,7 +63,7 @@ class MP_Shop_Einstellungen_Capabilities {
 	/**
 	 * Update user caps
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_metabox/after_all_settings_metaboxes_saved/shop-einstellungen-capabilities
 	 */
@@ -91,7 +91,7 @@ class MP_Shop_Einstellungen_Capabilities {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {

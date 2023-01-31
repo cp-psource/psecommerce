@@ -5,7 +5,7 @@ class MP_Admin {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Admin {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -28,7 +28,7 @@ class MP_Admin {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -93,7 +93,7 @@ class MP_Admin {
 		?>
 		<div class="update-nag mp-deprecated-notice">
 		<div class="mp-notice-text">
-		<?php echo sprintf(__("Meistere PSeCommerce mit unserem PSeCommerce Master Kurs. Hole einfach alles aus Deinem PSeCommerce Shop! Absolviere jetzt unseren <a href=\"%s\" target=\"_blank\">PSeCommerce Shop-Master Kurs</a>.","mp"), ('https://n3rds.work/kurse/psecommerce-shop-master-kurs/')) ?>
+		<?php echo sprintf(__("PSeCommerce bietet Dir eine vielzahl an Zahlungsgateways (an einigen arbeiten wir noch), richte einige ein um Deine Kunden möglichst bequem shoppen lassen zu können. Erledige das am besten gleich <a href=\"%s\">HIER</a>.","mp"),admin_url('admin.php?page=shop-einstellungen-payments')) ?>
 		</div>
 		<a href="#" class="mp-dismissed-deprecated-notice"><i class="dashicons dashicons-no-alt"></i></a>
 		</div>
@@ -107,7 +107,7 @@ class MP_Admin {
 		?>
 			<script type="text/javascript">
 				jQuery(function($){
-					$('.mp-dismissed-deprecated-notice').on("click", function(e){
+					$('.mp-dismissed-deprecated-notice').click(function(e){
 					e.preventDefault();
 					$.ajax({
 						type:'POST',
@@ -136,7 +136,7 @@ class MP_Admin {
 	/**
 	 * Includes any necessary files
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function _includes() {
@@ -153,28 +153,21 @@ class MP_Admin {
 	/**
 	 * Adds the PSeCommerce help tab
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function add_help_tab() {
 		get_current_screen()->add_help_tab( array(
 			'id'		 => 'psecommerce-help',
-			'title'		 => __( 'PSeCommerce Projektseite', 'mp' ),
-			'content'	 => '<iframe src="https://n3rds.work/piestingtal_source/psecommerce-shopsystem/" width="100%" height="600px"></iframe>'
+			'title'		 => __( 'PSeCommerce Handbuch', 'mp' ),
+			'content'	 => '<iframe src="https://n3rds.work/docs/psecommerce-handbuch/" width="100%" height="600px"></iframe>'
 		) );
-		get_current_screen()->set_help_sidebar(
-			'<p><strong>' . esc_html__( 'Hole mehr aus PSeCommerce:', 'mp' ) . '</strong></p>' .
-			'<p><a href="https://n3rds.work/kurse/psecommerce-shop-master-kurs/" target="_blank">Master Kurs</a></p>' .
-			'<p><a href="https://n3rds.work/docs/psecommerce-handbuch/" target="_blank">' . esc_html__( 'Handbuch', 'mp' ) . '</a></p>' .
-			'<p><a href="https://n3rds.work/forums/forum/psource-support-foren/psecommerce-supportforum/" target="_blank">' . esc_html__( 'Supportforum', 'mp' ) . '</a></p>' .
-			'<p><a href="https://github.com/piestingtal-source/psecommerce" target="_blank">' . esc_html__( 'GitHub Repo', 'mp' ) . '</a></p>'
-		);
 	}
 
 	/**
 	 * Displays the export orders form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function export_orders_form() {
@@ -238,7 +231,7 @@ class MP_Admin {
 	/**
 	 * Enqueue styles and scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function enqueue_styles_scripts() {
@@ -320,7 +313,7 @@ class MP_Admin {
 	/**
 	 * Modifies the post-updated messages for the mp_order, product and mp_coupon post types
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter post_updated_messages
 	 *
@@ -384,7 +377,7 @@ class MP_Admin {
 
 		?>
 		<script type="text/javascript">
-			;jQuery(function($) {
+			;jQuery(document).ready(function ($) {
 				function mp_open_pointer(id, target, content) {
 					var options = {
 						position: {edge: 'left', align: 'right'},
@@ -395,7 +388,7 @@ class MP_Admin {
 						},
 						show: function (event, pointer_target) {
 							pointer_target.pointer.css({'position': 'fixed'});
-							pointer_target.pointer.find('.close').on('click.pointer', function (e) {
+							pointer_target.pointer.find('.close').bind('click.pointer', function (e) {
 								e.preventDefault();
 								pointer_target.element.pointer('close');
 							});

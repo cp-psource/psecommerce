@@ -5,7 +5,7 @@ class MP_Coupon {
 	/**
 	 * Refers to the coupon's ID.
 	 *12.3.20 alles fein DN
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var int
 	 */
@@ -14,7 +14,7 @@ class MP_Coupon {
 	/**
 	 * Refers to the coupon code
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var string
 	 */
@@ -23,7 +23,7 @@ class MP_Coupon {
 	/**
 	 * Refers to the coupon's internal WP_Post object.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @type WP_Post
 	 */
@@ -32,7 +32,7 @@ class MP_Coupon {
 	/**
 	 * Refers to the whether the coupon exists or not.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @type bool
 	 */
@@ -41,7 +41,7 @@ class MP_Coupon {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string /int $coupon A coupon code or coupon ID.
@@ -59,7 +59,7 @@ class MP_Coupon {
 	/**
 	 * Attempt to get an internal WP_Post object property (e.g post_name, post_status, etc)
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $name The property name.
@@ -81,7 +81,7 @@ class MP_Coupon {
 	/**
 	 * Attempt to set the internal WP_Post object
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 */
 	protected function _get_post() {
@@ -120,7 +120,7 @@ class MP_Coupon {
 	/**
 	 * Get coupon discount amount
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo Optional, whether to echo or return. Defaults to echo.
@@ -173,7 +173,7 @@ class MP_Coupon {
 	/**
 	 * Get discount meta formatted
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo Optional, whether to echo or return. Defaults to echo.
@@ -195,7 +195,7 @@ class MP_Coupon {
 	/**
 	 * Check if a product exists
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return bool
 	 */
@@ -206,7 +206,7 @@ class MP_Coupon {
 	/**
 	 * Get coupon code
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function get_code() {
@@ -216,7 +216,7 @@ class MP_Coupon {
 	/**
 	 * Get coupon meta value
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $name The name of the meta to get.
@@ -252,7 +252,7 @@ class MP_Coupon {
 	/**
 	 * Get the coupon price
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param float $price The price to calculate.
@@ -444,7 +444,7 @@ class MP_Coupon {
 	/**
 	 * Check if coupon is valid
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return bool
 	 */
@@ -491,7 +491,7 @@ class MP_Coupon {
 		/**
 		 * Filter is coupon is valid
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param bool Is valid?
 		 * @param MP_Coupon The current coupon object.
@@ -503,7 +503,7 @@ class MP_Coupon {
 	/**
 	 * Check if coupon is valid for combination
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @return bool
@@ -553,7 +553,7 @@ class MP_Coupon {
 	/**
 	 * Display coupon meta value
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $name The name of the meta to get.
@@ -569,7 +569,7 @@ class MP_Coupon {
 	/**
 	 * Get remaining uses
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo Optional, whether to echo or return. Defaults to echo.
@@ -643,7 +643,7 @@ class MP_Coupon {
 	/**
 	 * Update meta value
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $name The name of the meta to update.
@@ -656,7 +656,7 @@ class MP_Coupon {
 	/**
 	 * Use a coupon
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function use_coupon() {

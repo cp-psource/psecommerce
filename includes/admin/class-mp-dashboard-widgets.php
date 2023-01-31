@@ -5,7 +5,7 @@ class MP_Dashboard_Widgets {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Dashboard_Widgets {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -28,7 +28,7 @@ class MP_Dashboard_Widgets {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -40,7 +40,7 @@ class MP_Dashboard_Widgets {
 	/**
 	 * Enqueue styles and scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function enqueue_styles_scripts() {
@@ -58,16 +58,16 @@ class MP_Dashboard_Widgets {
 				'ajaxurl'								 => admin_url( 'admin-ajax.php' ),
 				'creating_vatiations_message'			 => __( 'Variationen erstellen, bitte warten ...', 'mp' ),
 				'ajax_nonce'							 => $ajax_nonce,
-				'bulk_update_prices_multiple_title'		 => sprintf( __( 'Preise für %s Produktvarianten aktualisieren', 'mp' ), '<span class="mp_variants_selected"></span>' ),
-				'bulk_update_prices_single_title'		 => sprintf( __( 'Preis für %s Produktvariante aktualisieren', 'mp' ), '<span class="mp_variants_selected"></span>' ),
-				'bulk_update_inventory_multiple_title'	 => sprintf( __( 'Inventar für %s Produktvarianten aktualisieren', 'mp' ), '<span class="mp_variants_selected"></span>' ),
-				'bulk_update_inventory_single_title'	 => sprintf( __( 'Inventar für %s Produktvariante aktualisieren', 'mp' ), '<span class="mp_variants_selected"></span>' ),
-				'bulk_delete_multiple_title'			 => sprintf( __( '%s Produktvarianten löschen', 'mp' ), '<span class="mp_variants_selected"></span>' ),
-				'bulk_delete_single_title'				 => sprintf( __( '%s Produktvariante löschen', 'mp' ), '<span class="mp_variants_selected"></span>' ),
+				'bulk_update_prices_multiple_title'		 => sprintf( __( 'Update prices for %s product variants', 'mp' ), '<span class="mp_variants_selected"></span>' ),
+				'bulk_update_prices_single_title'		 => sprintf( __( 'Update price for %s product variant', 'mp' ), '<span class="mp_variants_selected"></span>' ),
+				'bulk_update_inventory_multiple_title'	 => sprintf( __( 'Update inventory for %s product variants', 'mp' ), '<span class="mp_variants_selected"></span>' ),
+				'bulk_update_inventory_single_title'	 => sprintf( __( 'Update inventory for %s product variant', 'mp' ), '<span class="mp_variants_selected"></span>' ),
+				'bulk_delete_multiple_title'			 => sprintf( __( 'Delete %s product variants', 'mp' ), '<span class="mp_variants_selected"></span>' ),
+				'bulk_delete_single_title'				 => sprintf( __( 'Delete %s product variant', 'mp' ), '<span class="mp_variants_selected"></span>' ),
 				'date_format'							 => PSOURCE_Field_Datepicker::format_date_for_jquery( get_option( 'date_format' ) ),
-				'message_valid_number_required'			 => __( 'Gültige Nummer ist erforderlich', 'mp' ),
-				'message_input_required'				 => __( 'Eingabe ist erforderlich', 'mp' ),
-				'saving_message'						 => __( 'Bitte warten...Speichern läuft...', 'mp' ),
+				'message_valid_number_required'			 => __( 'Valid number is required', 'mp' ),
+				'message_input_required'				 => __( 'Input is required', 'mp' ),
+				'saving_message'						 => __( 'Please wait...saving in progress...', 'mp' ),
 				'placeholder_image'						 => $mp->plugin_url( '/includes/admin/ui/images/img-placeholder.jpg' )
 			) );
 		}
@@ -224,23 +224,21 @@ class MP_Dashboard_Widgets {
 	public function mp_store_report_display() {
 		global $wpdb;
 
-		$today_date			 = date( "Y-m-d", time() );
+		$today_date			   = date( "Y-m-d", time() );
 		$yesterday_date		 = date( "Y-m-d", time() - 60 * 60 * 24 );
 		$seven_days_date	 = date( "Y-m-d", time() - 60 * 60 * 24 * 7 );
 		$thirty_days_date	 = date( "Y-m-d", time() - 60 * 60 * 24 * 30 );
-		$ninty_days_date     = date( "Y-m-d", time() - 60 * 60 * 24 * 90 );
-		$year_days_date      = date( "Y-m-d", time() - 60 * 60 * 24 * 365 );
 
 		$day_current	 = date( 'd' );
-		$month_current   = date( 'm' );
+		$month_current = date( 'm' );
 		$year_current	 = date( 'Y' );
 
-		$today		 = $wpdb->get_row( "SELECT count(p.ID) as count, sum(m.meta_value) as total, avg(m.meta_value) as average FROM $wpdb->posts p JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE p.post_type = 'mp_order' AND m.meta_key = 'mp_order_total' AND p.post_date LIKE '" . $year_current . "-" . $month_current . "-" . $day_current . "%' AND p.post_status != 'trash'" );
+		$today		   = $wpdb->get_row( "SELECT count(p.ID) as count, sum(m.meta_value) as total, avg(m.meta_value) as average FROM $wpdb->posts p JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE p.post_type = 'mp_order' AND m.meta_key = 'mp_order_total' AND p.post_date LIKE '" . $year_current . "-" . $month_current . "-" . $day_current . "%' AND p.post_status != 'trash'" );
 		$yesterday	 = $wpdb->get_row( "SELECT count(p.ID) as count, sum(m.meta_value) as total, avg(m.meta_value) as average FROM $wpdb->posts p JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE p.post_type = 'mp_order' AND m.meta_key = 'mp_order_total' AND p.post_date LIKE '" . $yesterday_date . "%' AND p.post_status != 'trash'" );
 		$seven_days	 = $wpdb->get_row( "SELECT count(p.ID) as count, sum(m.meta_value) as total, avg(m.meta_value) as average FROM $wpdb->posts p JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE p.post_type = 'mp_order' AND m.meta_key = 'mp_order_total' AND p.post_date >= '" . $seven_days_date . "' AND p.post_status != 'trash'" );
 		$thirty_days = $wpdb->get_row( "SELECT count(p.ID) as count, sum(m.meta_value) as total, avg(m.meta_value) as average FROM $wpdb->posts p JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE p.post_type = 'mp_order' AND m.meta_key = 'mp_order_total' AND p.post_date >= '" . $thirty_days_date . "' AND p.post_status != 'trash'" );
-		$ninty_days  = $wpdb->get_row( "SELECT count(p.ID) as count, sum(m.meta_value) as total, avg(m.meta_value) as average FROM $wpdb->posts p JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE p.post_type = 'mp_order' AND m.meta_key = 'mp_order_total' AND p.post_date >= '" . $ninty_days_date . "' AND p.post_status != 'trash'" );
-        $year_days   = $wpdb->get_row( "SELECT count(p.ID) as count, sum(m.meta_value) as total, avg(m.meta_value) as average FROM $wpdb->posts p JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE p.post_type = 'mp_order' AND m.meta_key = 'mp_order_total' AND p.post_date >= '" . $year_days_date . "' AND p.post_status != 'trash'" );
+		//$ninty_days  = $wpdb->get_row( "SELECT count(p.ID) as count, sum(m.meta_value) as total, avg(m.meta_value) as average FROM $wpdb->posts p JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE p.post_type = 'mp_order' AND m.meta_key = 'mp_order_total' AND p.post_date >= '" . $ninty_days_date . "' AND p.post_status != 'trash'" );
+        //$year_days   = $wpdb->get_row( "SELECT count(p.ID) as count, sum(m.meta_value) as total, avg(m.meta_value) as average FROM $wpdb->posts p JOIN $wpdb->postmeta m ON p.ID = m.post_id WHERE p.post_type = 'mp_order' AND m.meta_key = 'mp_order_total' AND p.post_date >= '" . $year_days_date . "' AND p.post_status != 'trash'" );
 		?>
 		<p><span><?php _e( "Willkommen zurück! Hier ist eine kurze Zusammenfassung der Shopaktivitäten.", 'mp' ); ?></span></p>
 		<div class="main store-report">
@@ -266,16 +264,6 @@ class MP_Dashboard_Widgets {
 					<span class="mp-dashboard-square-amount"><?php echo mp_format_currency( '', $thirty_days->total ); ?></span>
 					<span class="mp-dashboard-square-footer"><?php echo $thirty_days->count . __( ' Bestellungen', 'mp' ); ?></span>
 				</div>
-				<div class="mp-dashboard-square mp-dashboard-right">
-					<span class="mp-dashboard-square-title"><?php _e( 'Quartals-Schnitt', 'mp' ); ?></span>
-					<span class="mp-dashboard-square-amount"><?php echo mp_format_currency( '', $ninty_days->total ); ?></span>
-					<span class="mp-dashboard-square-footer"><?php echo $ninty_days->count . __( ' Bestellungen', 'mp' ); ?></span>
-				</div>
-				<div class="mp-dashboard-square mp-dashboard-right">
-					<span class="mp-dashboard-square-title"><?php _e( 'Jahres-Schnitt', 'mp' ); ?></span>
-					<span class="mp-dashboard-square-amount"><?php echo mp_format_currency( '', $year_days->total ); ?></span>
-					<span class="mp-dashboard-square-footer"><?php echo $year_days->count . __( ' Bestellungen', 'mp' ); ?></span>
-				</div>
 			</div>
 
 			<?php
@@ -291,7 +279,7 @@ class MP_Dashboard_Widgets {
 
 			<div class="mp-dashboard-section-stock-orders">
 				<span class="mp-dashboard-stock-orders-title"><?php printf( _n( '%s Bestellung', '%s Bestellungen', $received_orders, 'mp' ), $received_orders ); ?></span>
-				<span class="mp-dashboard-stock-orders-subtitle"><?php _e( 'Eingegangen', 'mp' ); ?></span>
+				<span class="mp-dashboard-stock-orders-subtitle"><?php _e( 'Empfangen', 'mp' ); ?></span>
 			</div>
 			<div class="mp-dashboard-section-stock-orders">
 				<span class="mp-dashboard-stock-orders-title"><?php printf( _n( '%s Bestellung', '%s Bestellungen', $paid_orders, 'mp' ), $paid_orders ); ?></span>

@@ -8,7 +8,7 @@ class MP_Product {
 	/**
 	 * Refers to the product's ID.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var int
 	 */
@@ -17,7 +17,7 @@ class MP_Product {
 	/**
 	 * Refers to the product's qty
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var int
 	 */
@@ -26,7 +26,7 @@ class MP_Product {
 	/**
 	 * Refers to the product default variation.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var array
 	 */
@@ -35,7 +35,7 @@ class MP_Product {
 	/**
 	 * Refers to the product's variations.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var array
 	 */
@@ -44,7 +44,7 @@ class MP_Product {
 	/**
 	 * Refers to the product's variation IDs
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var array
 	 */
@@ -53,7 +53,7 @@ class MP_Product {
 	/**
 	 * Refers to the product's attributes.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var array
 	 */
@@ -62,7 +62,7 @@ class MP_Product {
 	/**
 	 * Refers to if the product is on sale.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var bool
 	 */
@@ -71,7 +71,7 @@ class MP_Product {
 	/**
 	 * Refers to the product's price
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 *
 	 * @param array
@@ -81,7 +81,7 @@ class MP_Product {
 	/**
 	 * Refers to the product's internal WP_Post object.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @type WP_Post
 	 */
@@ -90,7 +90,7 @@ class MP_Product {
 	/**
 	 * Refers to the whether the product exists or not.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @type bool
 	 */
@@ -99,7 +99,7 @@ class MP_Product {
 	/**
 	 * Refers to the product's content tabs
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @type array
 	 */
@@ -108,7 +108,7 @@ class MP_Product {
 	/**
 	 * Get the internal post type for products.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return string
 	 */
@@ -123,7 +123,7 @@ class MP_Product {
 	/**
 	 * Display the lightbox for product variations
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_mp_product_get_variations_lightbox, wp_ajax_nopriv_mp_product_get_variations_lightbox
 	 */
@@ -205,7 +205,7 @@ class MP_Product {
 	/**
 	 * Update the product attributes based upon selection
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_mp_product_update_attributes, wp_ajax_nopriv_mp_product_update_attributes
 	 */
@@ -276,7 +276,7 @@ class MP_Product {
 								/**
 								 * Filter the out of stock alert message
 								 *
-								 * @since 1.0
+								 * @since 3.0
 								 *
 								 * @param string The default message.
 								 * @param MP_Product The product that is out of stock.
@@ -338,7 +338,7 @@ class MP_Product {
 	/**
 	 * MP_Product constructor
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $post
 	 *
@@ -367,7 +367,7 @@ class MP_Product {
 	/**
 	 * Display an attribute option
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param $term_id
@@ -384,7 +384,7 @@ class MP_Product {
 		/**
 		 * Filter the attribute option
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $html
 		 * @param int $term_id
@@ -400,7 +400,7 @@ class MP_Product {
 	/**
 	 * Return the maximum product qty allowed to add to the cart
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param int $product_id Optional
@@ -433,7 +433,7 @@ class MP_Product {
 		/**
 		 * Filter default max product order limit
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param int $max
 		 */
@@ -469,7 +469,7 @@ class MP_Product {
 	/**
 	 * Display the attribute fields
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo
@@ -518,7 +518,7 @@ class MP_Product {
 			/**
 			 * Filter the default option label for the select field
 			 *
-			 * @since 1.0
+			 * @since 3.0
 			 * @access public
 			 *
 			 * @param string The default option label.
@@ -567,7 +567,7 @@ class MP_Product {
 		/**
 		 * Filter the attribute fields
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string The current html.
 		 * @param MP_Product The current MP_Product object.
@@ -607,7 +607,7 @@ class MP_Product {
 		/**
 		 * Filter the out of stock alert message
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string The default message.
 		 * @param MP_Product The product that is out of stock.
@@ -617,7 +617,7 @@ class MP_Product {
 		/**
 		 * Filter the order limit alert message
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string The default message.
 		 * @param MP_Product The product that is out of order limit.
@@ -662,7 +662,7 @@ class MP_Product {
 	/**
 	 * Get a parent product if product is a variation
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @return false/MP_Product
@@ -681,7 +681,7 @@ class MP_Product {
 	/**
 	 * Get a specific variation by it's index
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param int $index Optional.
@@ -695,7 +695,7 @@ class MP_Product {
 	/**
 	 * Get product default variation
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return false/MP_Product An MP_Product objects.
 	 */
@@ -714,7 +714,7 @@ class MP_Product {
 	/**
 	 * Set product default variation
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return false/MP_Product An MP_Product objects.
 	 */
@@ -748,7 +748,7 @@ class MP_Product {
 	/**
 	 * Get product variation ids
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return array
 	 */
@@ -765,7 +765,7 @@ class MP_Product {
 	/**
 	 * Get product variations
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return array An array of MP_Product objects.
 	 */
@@ -831,7 +831,7 @@ class MP_Product {
 	/**
 	 * Get variations by the given attributes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $attributes An array of attribute arrays in $taxonomy => $term_id format.
@@ -887,7 +887,7 @@ class MP_Product {
 	/**
 	 * Get product weight
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param float $default The default weight if a weight isn't set for the product.
@@ -918,7 +918,7 @@ class MP_Product {
 	/**
 	 * Get the product's ID for global cart
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return string
 	 */
@@ -929,7 +929,7 @@ class MP_Product {
 	/**
 	 * Get the product price before tax
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return float
 	 */
@@ -968,12 +968,10 @@ class MP_Product {
 	 * @param array $selected_atts Optional, the attributes that should be selected by default.
 	 */
 
-	public function buy_button( $echo = true, $context = 'list', $selected_atts = array(), $no_single = false, $mp_buy_button = false ) {
+	 public function buy_button( $echo = true, $context = 'list', $selected_atts = array(), $no_single = false, $mp_buy_button = false ) {
 		$button = '';
 		if ( $this->get_meta( 'product_type' ) == 'external' && ( $url = $this->get_meta( 'external_url' ) ) ) {
-			$button = '<a class="mp_button mp_link-buynow" href="' . esc_url( $url ) . '">' . __( 'Mehr Details &raquo;', 'mp' ) . '</a>';
-		} elseif ( $this->get_meta( 'product_type' ) == 'freedownload' && ( $url = $this->get_meta( 'file_url' ) ) ) {
-			$button = '<a class="mp_button mp_link-buynow" href="' . esc_url( $url ) . '">' . __( 'Downloaden &raquo;', 'mp' ) . '</a>';
+			$button = '<a class="mp_link-buynow" href="' . esc_url( $url ) . '">' . __( 'Jetzt kaufen &raquo;', 'mp' ) . '</a>';
 		} elseif ( ! mp_get_setting( 'disable_cart' ) ) {
 			$button = '<form id="mp-buy-product-' . $this->ID . '-form" class="mp_form mp_form-buy-product ' . ( $no_single ? 'mp_no_single' : '' ) . ' ' . ( $mp_buy_button ? 'mp_buy_button' : '' ) . '" method="post" data-ajax-url="' . mp_get_ajax_url( 'admin-ajax.php?action=mp_update_cart' ) . '" action="' . mp_cart_link( false, true ) . '">';
 
@@ -1019,7 +1017,7 @@ class MP_Product {
 	/**
 	 * Get the product content
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo
@@ -1050,7 +1048,7 @@ class MP_Product {
 	/**
 	 * Check if the product has content
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @return bool
@@ -1073,7 +1071,7 @@ class MP_Product {
 	/**
 	 * Get the product's excerpt
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $excerpt_more Optional
 	 * @param string $excerpt Optional
@@ -1131,7 +1129,7 @@ class MP_Product {
 		/**
 		 * Filter the product excerpt
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $text
 		 * @param string $excerpt
@@ -1146,7 +1144,7 @@ class MP_Product {
 	/**
 	 * Get the product's content tab labels
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo
@@ -1168,7 +1166,7 @@ class MP_Product {
 		/**
 		 * Filter the product tabs html
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $html The current HTML markup.
 		 * @param MP_Product $this The current product object.
@@ -1185,7 +1183,7 @@ class MP_Product {
 	/**
 	 * Get custom image tag
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo
@@ -1242,7 +1240,7 @@ class MP_Product {
 	/**
 	 * Get the display product price
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo
@@ -1325,7 +1323,7 @@ class MP_Product {
 		/**
 		 * Filter the display price of the product
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string The current display price text
 		 * @param array The current price object
@@ -1343,7 +1341,7 @@ class MP_Product {
 	/**
 	 * Add tax to the product price
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param double $price
@@ -1403,7 +1401,7 @@ class MP_Product {
 	/**
 	 * Display (tax incl.) or (tax excl.)
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo
@@ -1421,15 +1419,15 @@ class MP_Product {
 		}
 
 		if( $tax_inclusive != 1 && $include_tax_to_price != 1 ) {
-			$string = '<span class="exclusive_tax"> ' . __('(exkl. Ust)', 'mp') . '</span>';
+			$string = '<span class="exclusive_tax"> ' . __('(exkl.)', 'mp') . '</span>';
 		} elseif( $tax_inclusive == 1 ) {
 			if( $include_tax_to_price != 1 )  {
-				$string = '<span class="exclusive_tax"> ' . __('( exkl. Ust)', 'mp') . '</span>';
+				$string = '<span class="exclusive_tax"> ' . __('( exkl.)', 'mp') . '</span>';
 			} else {
-				$string = '<span class="inclusve_tax"> ' . __('( inkl. Ust)', 'mp') . '</span>';
+				$string = '<span class="inclusve_tax"> ' . __('( inkl.)', 'mp') . '</span>';
 			}
 		} elseif( $tax_inclusive != 1 && $include_tax_to_price == 1 ) {
-			$string = '<span class="exclusive_tax"> ' . __('( inkl. Ust)', 'mp') . '</span>';
+			$string = '<span class="exclusive_tax"> ' . __('( inkl.)', 'mp') . '</span>';
 		}
 
 		if ( $echo ) {
@@ -1442,7 +1440,7 @@ class MP_Product {
 	/**
 	 * Get the product's download url - if applicable
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $order_id The order ID for the download.
@@ -1481,7 +1479,7 @@ class MP_Product {
 		/**
 		 * Filter the product's download url
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $url The current url.
 		 * @param string $order_id The order ID.
@@ -1493,7 +1491,7 @@ class MP_Product {
 	/**
 	 * Determine if product has variations
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return bool
 	 */
@@ -1506,7 +1504,7 @@ class MP_Product {
 	/**
 	 * Determine if product is featured
 	 *
-	 * @since 1.0.0.8
+	 * @since 3.0.0.8
 	 * @access public
 	 * @return bool
 	 */
@@ -1517,7 +1515,7 @@ class MP_Product {
 	/**
 	 * Determine if product is on sale
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return bool
 	 */
@@ -1554,7 +1552,7 @@ class MP_Product {
 		/**
 		 * Filter the on sale flag
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param bool $on_sale The default on-sale flag.
 		 * @param MP_Product $this The current product.
@@ -1569,7 +1567,7 @@ class MP_Product {
 	 *
 	 * Will return the product's regular and sale price - if applicable.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $what Optional, the subset of the price array to be returned.
@@ -1633,7 +1631,7 @@ class MP_Product {
 				/**
 				 * Filter the maximum number of days before the "only x days left" nag shows
 				 *
-				 * @since 1.0
+				 * @since 3.0
 				 *
 				 * @param int The default number of days
 				 */
@@ -1657,7 +1655,7 @@ class MP_Product {
 		/**
 		 * Filter the price array
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param array The current pricing array.
 		 * @param MP_Product The current product.
@@ -1680,7 +1678,7 @@ class MP_Product {
 	/**
 	 * Get the product's lowest price
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return float The product's lowest price.
 	 */
@@ -1694,7 +1692,7 @@ class MP_Product {
     /**
      * Get related products
      *
-     * @since 1.0
+     * @since 3.0
      *
      * @param array $args {
      *        Optional, an array of arguments.
@@ -1823,7 +1821,7 @@ class MP_Product {
 		/**
 		 * Filter the related products html
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $html The current html.
 		 * @param MP_Product $this The current product object.
@@ -1842,7 +1840,7 @@ class MP_Product {
 	/**
 	 * Set price
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $price The pricing array.
@@ -1854,7 +1852,7 @@ class MP_Product {
 	/**
 	 * Get the special tax amount for the item
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo Optional, whether to echo or return. Defaults to return.
@@ -1880,7 +1878,7 @@ class MP_Product {
 		/**
 		 * Filter the special tax rate
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param float $special_rate The current special tax rate.
 		 * @param bool $is_fixed_amt Whether the special tax rate is a fixed amount or not.
@@ -1897,7 +1895,7 @@ class MP_Product {
 		/**
 		 * Filter the special tax price
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param float $special_tax_amt The current special tax price.
 		 * @param float $special_tax_rate The current special tax rate.
@@ -1911,7 +1909,7 @@ class MP_Product {
 	/**
 	 * Get the current inventory in stock
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return int/array Number of units in stock or an array containing the number of units in stock for each variation.
 	 */
@@ -1932,7 +1930,7 @@ class MP_Product {
 	/*
 	 * Get the product image
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @param bool $echo Optional, whether to echo
 	 * @param string $context Options are list, single, or widget
 	 * @param int $size An optional width/height for the image if contect is widget
@@ -1948,7 +1946,7 @@ class MP_Product {
 		/**
 		 * Filter the post_id used for the product image
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param int $post_id
 		 */
@@ -2141,7 +2139,7 @@ class MP_Product {
 	/**
 	 * Get the product image url
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo
@@ -2178,7 +2176,7 @@ class MP_Product {
 			/**
 			 * Filter the default image url
 			 *
-			 * @since 1.0
+			 * @since 3.0
 			 *
 			 * @param string The current default image url.
 			 */
@@ -2188,7 +2186,7 @@ class MP_Product {
 		/**
 		 * Filter the product image url
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $img_url The current image url.
 		 * @param string /int $size
@@ -2207,7 +2205,7 @@ class MP_Product {
 	/**
 	 * Check if product is in stock
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param int $qty The quantity to check against.
@@ -2262,7 +2260,7 @@ class MP_Product {
 	/**
 	 * Check if the product is a digital download
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return bool
 	 */
@@ -2279,7 +2277,7 @@ class MP_Product {
 	/**
 	 * Check if the product is a variation of another product
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function is_variation() {
@@ -2293,7 +2291,7 @@ class MP_Product {
 	/**
 	 * Send low-stock notification
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function low_stock_notification() {
@@ -2326,7 +2324,7 @@ class MP_Product {
 		/**
 		 * Filter the low stock notification message
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $msg The current message text.
 		 * @param int $this ->ID The product's ID.
@@ -2339,7 +2337,7 @@ class MP_Product {
 	/**
 	 * Get a product's attribute
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $attribute
@@ -2355,7 +2353,7 @@ class MP_Product {
 	/**
 	 * Get the product attributes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wpdb
 	 * @return array
@@ -2453,7 +2451,7 @@ class MP_Product {
 	/**
 	 * Get product meta value
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $name The name of the meta to get.
@@ -2489,7 +2487,7 @@ class MP_Product {
 	/**
 	 * Display product meta value
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $name The name of the meta to get.
@@ -2505,7 +2503,7 @@ class MP_Product {
 	/**
 	 * Get the product's url
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo
@@ -2526,7 +2524,7 @@ class MP_Product {
 		/**
 		 * Filter the product's URL
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $url The product's current URL.
 		 * @param MP_Product $this The current product object.
@@ -2543,7 +2541,7 @@ class MP_Product {
 	/**
 	 * Get the product's edit url
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo Optional, defaults to true.
@@ -2565,7 +2563,7 @@ class MP_Product {
 	/**
 	 * Update product meta
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $name The name of the meta to update.
@@ -2582,7 +2580,7 @@ class MP_Product {
 	/**
 	 * Get Pinterest PinIt button
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $context
 	 * @param bool $echo
@@ -2654,7 +2652,7 @@ class MP_Product {
 	/**
 	 * Get Twitter button
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $context
 	 * @param bool $echo
@@ -2708,7 +2706,7 @@ class MP_Product {
 	/**
 	 * Get Facebook button
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $context
 	 * @param bool $echo
@@ -2772,22 +2770,15 @@ class MP_Product {
 		//$snippet = apply_filters( 'mp_facebook_like_button_link', '<a target="_blank" href="' . $url . '" data-pin-do="buttonPin" data-pin-config="' . $count_pos . '"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>', $this->ID, $context );
 
 		$snippet = "<div id='fb-root'></div>
-			<script>(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = 'https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v3.0';
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));</script>
-		
-			<div class='fb-share-button' 
-			data-href='" . $url . "' 
-			data-layout='button'
-			data-action='" . $action . "'
-			data-show-faces='false'
-			data-share='" . $show_share . "'>
-			</div>
-		";
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = '//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.4';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class='fb-like' data-href='" . $url . "' data-layout='button' data-action='" . $action . "' data-show-faces='false' data-share='" . $show_share . "'></div>
+";
 		if ( $echo ) {
 			echo $snippet;
 		} else {
@@ -2798,7 +2789,7 @@ class MP_Product {
 	/**
 	 * Get the product title
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param bool $echo
@@ -2813,7 +2804,7 @@ class MP_Product {
 		/**
 		 * Filter the product title
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $title The product title.
 		 * @param MP_Product $this The current product object.
@@ -2830,7 +2821,7 @@ class MP_Product {
 	/**
 	 * Check if a product exists
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return bool
 	 */
@@ -2841,7 +2832,7 @@ class MP_Product {
 	/**
 	 * Attempt to get an internal WP_Post object property (e.g post_name, post_status, etc)
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param string $name The property name.
@@ -2863,7 +2854,7 @@ class MP_Product {
 	/**
 	 * Attempt to set the internal WP_Post object
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 *
 	 * @param int /object/WP_Post $product
@@ -2886,7 +2877,7 @@ class MP_Product {
 	/**
 	 * Set content tabs
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 */
 	protected function _set_content_tabs( $product ) {
@@ -2913,7 +2904,7 @@ class MP_Product {
 			/**
 			 * Filter the product tabs array
 			 *
-			 * @since 1.0
+			 * @since 3.0
 			 *
 			 * @param array $tabs The default product tabs.
 			 * @param MP_Product $this The current product object.

@@ -38,7 +38,7 @@ class MP_Gateway_IDeal extends MP_Gateway_API {
 	/**
 	 * Generate a SHA1 hash based upon the based parameters
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @param string $key
 	 * @param string $subID
@@ -88,7 +88,7 @@ class MP_Gateway_IDeal extends MP_Gateway_API {
 	/**
 	 * Display the payment form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
    * @param array $cart. Contains the cart contents for the current blog
    * @param array $shipping_info. Contains shipping info and email in case you need it
@@ -213,7 +213,7 @@ class MP_Gateway_IDeal extends MP_Gateway_API {
   /**
    * Process order confirmation before page loads (e.g. verify callback data, etc)
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @action mp_checkout/confirm_order/{plugin_name}
    */
@@ -258,7 +258,7 @@ class MP_Gateway_IDeal extends MP_Gateway_API {
   /**
    * Initialize the settings metabox
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    */
   public function init_settings_metabox() {

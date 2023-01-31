@@ -4,7 +4,7 @@ class MP_Prosites_Addon {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -13,7 +13,7 @@ class MP_Prosites_Addon {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -26,12 +26,12 @@ class MP_Prosites_Addon {
 	}
 
 	/**
-	 * Update pro levels keys when upgrading to 1.0+
+	 * Update pro levels keys when upgrading to 3.0+
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 *
-	 * @param array $pro_levels The current pro levels from < 1.0.
+	 * @param array $pro_levels The current pro levels from < 3.0.
 	 */
 	protected function _update_pro_levels( $pro_levels ) {
 		$settings = get_site_option( 'mp_network_settings', array() );
@@ -48,7 +48,7 @@ class MP_Prosites_Addon {
 	/**
 	 * Filter the list of gateways depending on pro sites level
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function get_gateways( $gateways ) {
@@ -67,7 +67,7 @@ class MP_Prosites_Addon {
 	/**
 	 * Filter the theme list
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter mp_get_theme_list
 	 */
@@ -90,7 +90,7 @@ class MP_Prosites_Addon {
 	/**
 	 * Runs when the addon is enabled
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function on_enable() {
@@ -102,7 +102,7 @@ class MP_Prosites_Addon {
 	/**
 	 * Add pro sites levels to permissions select dropdown for gateways and themes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter mp_admin_multisite/theme_permissions_options, mp_admin_multisite/gateway_permissions_options
 	 */
@@ -135,7 +135,7 @@ class MP_Prosites_Addon {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {

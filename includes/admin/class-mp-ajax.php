@@ -5,7 +5,7 @@ class MP_Ajax {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Ajax {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -28,7 +28,7 @@ class MP_Ajax {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -195,14 +195,6 @@ class MP_Ajax {
 					<?php } ?>
 					<?php do_action( 'mp_variation_popup_after_file_url' ); ?>
 
-					<?php if ( $product_type == 'freedownload' ) {//show these fields only for Gratis Downloads Products ?>
-						<div class="mp-product-field-100 mp-variation-field">
-							<div class="psource-field-label"><?php _e( 'Datei URL', 'mp' ); ?><span class="required">*</span></div>
-							<input type="button" name="file_url_button" id="file_url_button" value="<?php echo esc_attr( __( 'Durchsuchen', 'mp' ) ); ?>" />
-						</div>
-					<?php } ?>
-					<?php do_action( 'mp_variation_popup_after_external_url' ); ?>
-
 					<?php
 					foreach ( array_keys( $variation_attributes ) as $variation_attribute ) {
 						$child_term	 = get_the_terms( $variation_id, 'product_attr_' . $variation_attribute );
@@ -350,7 +342,7 @@ class MP_Ajax {
 			</div>
 			<div class="mp_popup_controls mp_more_controls">
 				<span class="mp_ajax_response"></span>
-				<a href="" id="save-variation-popup-data" class="button button-primary save-more-form"><?php _e( 'Speichern ', 'mp' ); ?></a>
+				<a href="" id="save-variation-popup-data" class="button button-primary save-more-form"><?php _e( 'Save ', 'mp' ); ?></a>
 				<a href="" class="preview button cancel"><?php _e( 'Abbrechen ', 'mp' ); ?></a>
 			</div>
 			<script>
@@ -364,7 +356,7 @@ class MP_Ajax {
 	/**
 	 * Process ajax login
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_nopriv_mp_ajax_login
 	 */
@@ -407,7 +399,7 @@ class MP_Ajax {
 	/**
 	 * Bulk edit products
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_mp_bulk_edit_product
 	 */
@@ -441,7 +433,7 @@ class MP_Ajax {
 	/**
 	 * Check  if an email address exists
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_nopriv_mp_check_if_email_exists
 	 */
@@ -456,7 +448,7 @@ class MP_Ajax {
 	/**
 	 * Check if an username exists
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @access wp_ajax_nopriv_mp_check_if_username_exists
 	 */
@@ -471,7 +463,7 @@ class MP_Ajax {
 	/**
 	 * Create a store page
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_mp_create_store_page
 	 */
@@ -494,7 +486,7 @@ class MP_Ajax {
 	/**
 	 * Look up an order by it's ID
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_mp_lookup_order, wp_ajax_nopriv_mp_lookup_order
 	 */
@@ -523,7 +515,7 @@ class MP_Ajax {
 	/**
 	 * Update product list
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_nopriv_mp_update_product_list, wp_ajax_mp_update_product_list
 	 */
@@ -572,7 +564,7 @@ class MP_Ajax {
 	/**
 	 * Update state dropdown list and determine if zip code field should be shown
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_mp_update_states_dropdown, wp_ajax_nopriv_mp_update_states_dropdown
 	 */
@@ -602,7 +594,7 @@ class MP_Ajax {
 	/**
 	 * Remove custom shipping method
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function mp_remove_custom_shipping_method() {

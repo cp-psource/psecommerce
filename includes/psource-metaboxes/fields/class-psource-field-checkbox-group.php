@@ -5,7 +5,7 @@ class PSOURCE_Field_Checkbox_Group extends PSOURCE_Field {
 	/**
 	 * Läuft auf Konstrukt der übergeordneten Klasse
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $args {
 	 * 		An array of arguments
@@ -28,7 +28,7 @@ class PSOURCE_Field_Checkbox_Group extends PSOURCE_Field {
 	/**
 	 * Displays the field
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param int $post_id
 	 */

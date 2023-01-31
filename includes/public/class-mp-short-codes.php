@@ -5,7 +5,7 @@ class MP_Short_Codes {
 	/**
 	 * Refers to a single instance of the class
 	 *12.3.20 alles fein DN
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Short_Codes {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -28,7 +28,7 @@ class MP_Short_Codes {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -77,7 +77,7 @@ class MP_Short_Codes {
 	 * Enqueue frontend styles and scripts for shortcodes
 	 * Useful when a shortcode is called on non-MP pages
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function shortcodes_frontend_styles_scripts() {
@@ -165,7 +165,7 @@ class MP_Short_Codes {
 	/**
 	 * Parse shortcode parameters
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @param array $atts The atts to parse.
 	 * @return array
@@ -189,7 +189,7 @@ class MP_Short_Codes {
 	/**
 	 * Display order lookup form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function mp_order_lookup_form_sc( $atts, $content = '' ) {
@@ -203,7 +203,7 @@ class MP_Short_Codes {
 	/**
 	 * Display order status
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $atts {
 	 * 		Optional, an array of attributes
@@ -223,7 +223,7 @@ class MP_Short_Codes {
 	/**
 	 * Display checkout form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function mp_checkout_sc( $atts, $content = null ) {
@@ -238,7 +238,7 @@ class MP_Short_Codes {
 	/**
 	 * Display cart contents
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function mp_cart_sc( $atts, $content = null ) {
