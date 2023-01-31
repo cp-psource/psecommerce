@@ -870,7 +870,7 @@ class MP_Multisite {
 	 * When using switch_to_blog $wp_rewrite permastructs don't get updated so
 	 * this is required to get the correct product url.
 	 *
-	 * See https://core.trac.wordpress.org/ticket/20861 for more info.
+	 * See https://core.trac.classicpress.org/ticket/20861 for more info.
 	 *
 	 * @since 3.0
 	 * @access public

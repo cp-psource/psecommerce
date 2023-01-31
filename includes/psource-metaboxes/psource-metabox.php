@@ -170,7 +170,7 @@ class PSOURCE_Metabox {
 
 		self::push_to_array( $data, $id, $is_closed );
 
-		// is_network_admin() doesn't work for ajax calls - see https://core.trac.wordpress.org/ticket/22589
+		// is_network_admin() doesn't work for ajax calls - see https://core.trac.classicpress.org/ticket/22589
 		if ( is_multisite() && preg_match( '#^' . network_admin_url() . '#i', $_SERVER['HTTP_REFERER'] ) ) {
 			update_site_option( $option, $data );
 		} else {

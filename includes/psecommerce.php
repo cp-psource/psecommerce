@@ -2,7 +2,7 @@
 /**
  * Plugin Name: PSeCommerce
  * Plugin URI:  https://n3rds.work/piestingtal_source/psecommerce-shopsystem/
- * Description: Das einfachste und dennoch mächtigste WordPress-E-Commerce-Plugin - Ob kleiner Onlineshop, Digitales Schaufenster, funktioniert auch perfekt mit BuddyPress und Multisite, um einen sozialen Marktplatz zu schaffen, auf dem Du einen Prozentsatz nehmen kannst! Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige Produkte hinzu.
+ * Description: Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin - Ob kleiner Onlineshop, Digitales Schaufenster, funktioniert auch perfekt mit BuddyPress und Multisite, um einen sozialen Marktplatz zu schaffen, auf dem Du einen Prozentsatz nehmen kannst! Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige Produkte hinzu.
  * Version:     1.5.1
  * Author:      DerN3rd (WMS N3rds@Work)
  * Author URI:  https://n3rds.work
@@ -452,7 +452,7 @@ class PSeCommerce {
 	 * Localization.
 	 */
 	function localization() {
-		// Load up the localization file if we're using WordPress in a different language.
+		// Load up the localization file if we're using ClassicPress in a different language.
 		// Place it in this plugin's "languages" folder and name it "mp-[value in wp-config].mo".
 		$mu_plugins = wp_get_mu_plugins();
 		$lang_dir   = dirname( plugin_basename( $this->_plugin_file ) ) . '/languages/';
@@ -591,7 +591,7 @@ class PSeCommerce {
 	}
 
 	/**
-	 * Called from WordPress when the admin page init process is invoked.
+	 * Called from ClassicPress when the admin page init process is invoked.
 	 *
 	 * @since 1.0
 	 */
@@ -802,7 +802,7 @@ class PSeCommerce {
 		  This is necessary, otherwise product cats and tags will return 404 errors
 		  due to how rewrite rules are generated for pages.
 
-		  @see http://wordpress.stackexchange.com/questions/4127/custom-taxonomy-and-pages-rewrite-slug-conflict-gives-404
+		  @see http://classicpress.stackexchange.com/questions/4127/custom-taxonomy-and-pages-rewrite-slug-conflict-gives-404
 		 */
 		if ( $post_id = mp_get_setting( 'pages->products' ) ) {
 			$page_structure = $wp_rewrite->get_page_permastruct();

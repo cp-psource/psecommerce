@@ -79,7 +79,7 @@ class MP_GDPR {
 		           username, email address, avatar and profile URLs, address and phone number. This data can be
 		           exported and removed.', 'mp' ),
 			__( 'Cookies', 'mp' ),
-			__( 'In addition to standard WordPress session cookies, this site might be setting an
+			__( 'In addition to standard ClassicPress session cookies, this site might be setting an
 		           additional cookie to remember your cart settings. This cookie will last for one year.', 'mp' )
 		);
 

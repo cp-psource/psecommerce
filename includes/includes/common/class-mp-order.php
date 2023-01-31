@@ -1201,7 +1201,7 @@ class MP_Order {
 				update_user_meta( $user_id, 'mp_shipping_info', $shipping_info );
 			} else {
 				/**
-				 * First time save, WordPress will trigger an error as when it query the old meta
+				 * First time save, ClassicPress will trigger an error as when it query the old meta
 				 * the count('') == 1, so it trying to located the 0 index, which can cause order uncomplete
 				 * force to silent
 				 */

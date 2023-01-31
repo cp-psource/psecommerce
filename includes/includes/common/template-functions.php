@@ -2482,69 +2482,58 @@ if ( ! function_exists( 'mp_product' ) ) {
 
 		$post = get_post();
 
-		if ( $image && $has_image && ! post_password_required( $post ) ) {
-			if ( ! $product->has_variations() ) {
-
-				if ( $values ) {
-
-					$return .= '<div class="mp_single_product_images">';
-
-					$return .= "<script>
-								jQuery(document).ready(function() {
-									jQuery('#mp-product-gallery').lightSlider({
-										gallery:true,
-										item:1,
-										loop:true,
-										thumbItem:5,
-										slideMargin:0,
-										enableDrag: true,
-										currentPagerPosition:'left',
-										" . $lightbox_code . "
-									});
-								});
-								</script>";
-
-					$return .= '<ul id="mp-product-gallery" class="mp_product_gallery">';
-
-					$values = explode( ',', $values );
-
-					if ( $image != "single" ) {
-						foreach ( $values as $value ) {
-
-							if ( preg_match( '/http:|https:/', $value ) ) {
-								$img_url = array( esc_url( $value ) );
-							} else {
-								//$img_url = wp_get_attachment_image_src( $value, $size );
-								$original_image = wp_get_attachment_image_src( $value, 'full' );
-								$img_url        = mp_resize_image( $value, $original_image[0], $size );
-							}
-
-							$return .= '<li data-thumb="' . $img_url[0] . '" data-src ="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
-						}
-					} else {
-						if ( ! empty( $values[0] ) ) {
-
-							if ( preg_match( '/http:|https:/', $values[0] ) ) {
-								$img_url = array( esc_url( $values[0] ) );
-							} else {
-								$original_image = wp_get_attachment_image_src( $values[0], 'full' );
-								$img_url        = mp_resize_image( $values[0], $original_image[0], $size );
-							}
-
-							$return .= '<li data-thumb="' . $img_url[0] . '" data-src ="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
-						}
-					}
-
-					$return .= '</ul><!-- end mp_product_gallery -->';
-
-					$return .= '</div><!-- end mp_single_product_images -->';
-				}
-			} else {
+		if ($image && $has_image && !post_password_required($post)) {
+			if (!$product->has_variations()) {
+			  if ($values) {
 				$return .= '<div class="mp_single_product_images">';
-				$return .= ( $variation ) ? $variation->image( false, 'single', $size, $image_alignment ) : $product->image( false, 'single', $size, $image_alignment );
+				$return .= "<script>
+				jQuery(document).ready(function() {
+				  jQuery('#mp-product-gallery').lightSlider({
+					gallery: true,
+					item: 1,
+					loop: true,
+					thumbItem: 5,
+					slideMargin: 0,
+					enableDrag: true,
+					currentPagerPosition: 'left',
+					$lightbox_code
+				  });
+				});
+				</script>";
+				$return .= '<ul id="mp-product-gallery" class="mp_product_gallery">';
+				$values = explode(',', $values);
+				if ($image !== "single") {
+				  if (!empty($values)) {
+					foreach ($values as $value) {
+					  if (preg_match('/http:|https:/', $value)) {
+						$img_url = [esc_url($value)];
+					  } else {
+						$original_image = wp_get_attachment_image_src($value, 'full');
+						$img_url = mp_resize_image($value, $original_image[0], $size);
+					  }
+					  $return .= '<li data-thumb="' . $img_url[0] . '" data-src="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
+					}
+				  }
+				} else {
+				  if (!empty($values[0])) {
+					if (preg_match('/http:|https:/', $values[0])) {
+					  $img_url = [esc_url($values[0])];
+					} else {
+					  $original_image = wp_get_attachment_image_src($values[0], 'full');
+					  $img_url = mp_resize_image($values[0], $original_image[0], $size);
+					}
+					$return .= '<li data-thumb="' . $img_url[0] . '" data-src="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
+				  }
+				}
+				$return .= '</ul><!-- end mp_product_gallery -->';
 				$return .= '</div><!-- end mp_single_product_images -->';
+			  }
+			} else {
+			  $return .= '<div class="mp_single_product_images">';
+			  $return .= ($variation) ? $variation->image(false, 'single', $size, $image_alignment) : $product->image(false, 'single', $size, $image_alignment);
+			  $return .= '</div><!-- end mp_single_product_images -->';
 			}
-		}
+		  }
 
 		if ( $image && ! post_password_required( $post ) ) {
 			$return .= '<div class="mp_single_product_details">';

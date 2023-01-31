@@ -3,7 +3,7 @@
 /**
  * PSeCommerce CubePoints Plugin
  *
- * Requires the CubePoints plugin: http://wordpress.org/extend/plugins/cubepoints/
+ * Requires the CubePoints plugin: http://classicpress.org/extend/plugins/cubepoints/
  *
  * @since 1.0
  *

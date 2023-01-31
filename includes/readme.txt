@@ -9,7 +9,7 @@ Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Das einfachste und dennoch mächtigste WordPress-E-Commerce-Plugin - Ob kleiner Onlineshop, Digitales Schaufenster, funktioniert auch perfekt mit BuddyPress und Multisite, um einen sozialen Marktplatz zu schaffen, auf dem Du einen Prozentsatz nehmen kannst! Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige Produkte hinzu.
+Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin - Ob kleiner Onlineshop, Digitales Schaufenster, funktioniert auch perfekt mit BuddyPress und Multisite, um einen sozialen Marktplatz zu schaffen, auf dem Du einen Prozentsatz nehmen kannst! Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige Produkte hinzu.
 
 == Description ==
 
@@ -34,7 +34,7 @@ Online Geld verdienen macht dieses mächtige Leichtgewicht von eCommerce Plugin 
 
 Mit unserem [A/B Test Plugin](https://n3rds.work/piestingtal_source/a-b-test-plugin/) holst Du mehr aus Deinem SEO.
 
-Wirf einen Blick in unser [PSOURCE Sortiment](https://n3rds.work/psource_kategorien/psource-plugins/) und hole noch mehr aus Deinem WordPress/ClassicPress!
+Wirf einen Blick in unser [PSOURCE Sortiment](https://n3rds.work/psource_kategorien/psource-plugins/) und hole noch mehr aus Deinem ClassicPress/ClassicPress!
 
 Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswork-digalize-das-piestingtal/newsletter-management/) über unsere Piestingtal.Source informiert!
 
@@ -89,7 +89,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Fixed: Angebotspreise akzeptieren nun das eingestellte Start/Enddatum
 
 = 1.4.0 = DerN3rd =
-* Update: jQuery für WordPress 5.5
+* Update: jQuery für ClassicPress 5.5
 
 = 1.3.9 = DerN3rd =
 * Update: jQuery Bibliotheken
