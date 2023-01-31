@@ -7985,7 +7985,7 @@ msgstr ""
 
 #: includes/common/class-mp-installer.php:653
 #: includes/includes/common/class-mp-installer.php:653
-msgid "Perform Update"
+msgid "Aktualisierung durchführen"
 msgstr ""
 
 #: includes/common/payment-gateways/wepay.php:146

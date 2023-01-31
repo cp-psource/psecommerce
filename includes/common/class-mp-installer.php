@@ -650,7 +650,7 @@ class MP_Installer {
 					}
 					?>
 					<p class="submit"><input class="button-primary" type="submit"
-											 value="<?php _e( 'Perform Update', 'mp' ); ?>"></p>
+											 value="<?php _e( 'Aktualisierung durchführen', 'mp' ); ?>"></p>
 				</form>
 				<?php
 			} else {

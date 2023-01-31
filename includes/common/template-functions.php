@@ -2603,7 +2603,7 @@ if ( ! function_exists( 'mp_product' ) ) {
 			$return .= $product->buy_button( false, 'single', $selected_atts );
 
 			if ( mp_get_setting( 'show_single_tags' ) == 1 ) {
-				$return .= mp_tag_list( $product_id, '<div class="mp_product_tags">' . __( 'Markiert in ', 'mp' ), ', ', '</div>' );
+				$return .= mp_tag_list( $product_id, '<div class="mp_product_tags">' . __( 'Markiert als ', 'mp' ), ', ', '</div>' );
 			}
 
 			$return .= '</div><!-- end mp_product_callout-->';
