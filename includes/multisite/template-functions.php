@@ -327,7 +327,7 @@ if ( ! function_exists( 'mp_global_list_products' ) ) {
 }
 
 if ( ! function_exists( 'mp_global_products_nav' ) ) {
-	function mp_global_products_nav( $echo = true, $per_page, $count ) {
+	function mp_global_products_nav( $per_page, $count, $echo = true ) {
 		$html      = '';
 		$paged     = 1;
 		$max_pages = ceil( $count / $per_page );

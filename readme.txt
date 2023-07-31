@@ -4,7 +4,7 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: ecommerce, onlineshop, multisite
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 3.5.1
+Stable tag: 3.5.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Aktuellen Hilfetab zum Handbuch eingefügt
 * Shopstatisitken mit Adminicon versehen
 * Shopstatistiken unter Shopeinstellungen platziert
+* PHP Deprecated:  Required parameter
 
 
 = 3.5.1 = DerN3rd =
