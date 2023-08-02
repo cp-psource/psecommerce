@@ -363,17 +363,6 @@ class MP_Setup_Wizard {
 					'required' => true,
 				),
 			) );
-
-			$metabox->add_field( 'text', array(
-				'name'		 => 'base_adress',
-				'label'		 => array( 'text' => __( 'Straße, Hausnummer', 'mp' ) ),
-				'custom'	 => array(
-					'style' => 'width:300px',
-				),
-				'validation' => array(
-					'required' => true,
-				),
-			) );
 	
 			$countries_without_postcode = array_keys( mp()->countries_no_postcode );
 			$metabox->add_field( 'text', array(
@@ -389,16 +378,6 @@ class MP_Setup_Wizard {
 					'action' => 'hide',
 				),
 				'validation'	 => array(
-					'required' => true,
-				),
-			) );
-			$metabox->add_field( 'text', array(
-				'name'		 => 'base_city',
-				'label'		 => array( 'text' => __( 'Stadt/Ort', 'mp' ) ),
-				'custom'	 => array(
-					'style' => 'width:300px',
-				),
-				'validation' => array(
 					'required' => true,
 				),
 			) );
@@ -419,7 +398,7 @@ class MP_Setup_Wizard {
 				'desc'                   => __( 'In diese Länder wirst Du verkaufen.', 'mp' ),
 				'options'                => mp_popular_country_list() + array( 'all_countries' => __( 'Alle Länder', 'mp' ) ) + mp_country_list(),
 				//all_countries|disabled
-				//'default_value'          => array( 'AT' => __( 'Österreich', 'mp' ) ),
+				'default_value'          => array( 'AT' => __( 'Österreich', 'mp' ) ),
 				'placeholder'            => __( 'Wähle Zielländer', 'mp' ),
 				/*
 				'format_dropdown_header' => '
@@ -488,13 +467,13 @@ class MP_Setup_Wizard {
 				'placeholder' => '10',
 				'conditional' => array(
 					'name'   => 'base_country',
-					'value'  => 'CA',
+					'value'  => 'AT',
 					'action' => 'hide',
 				),
 			) );
 
 			// Create field for each canadian province
-			foreach ( mp()->CA_provinces as $key => $label ) {
+			/*foreach ( mp()->CA_provinces as $label => $key ) {
 				$metabox->add_field( 'text', array(
 					'name'        => 'tax[canada_rate][' . $key . ']',
 					'desc'        => '<a target="_blank" href="http://en.wikipedia.org/wiki/Sales_taxes_in_Canada">' . __( 'Current Rates', 'mp' ) . '</a>',
@@ -507,7 +486,7 @@ class MP_Setup_Wizard {
 						'action' => 'show',
 					),
 				) );
-			}
+			}*/
 
 			$metabox->add_field( 'text', array(
 				'name'        => 'tax[label]',

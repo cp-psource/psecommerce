@@ -632,13 +632,14 @@ class MP_Admin_Multisite {
 	 */
 	public function __call( $method, $args ) {
 		switch ( $method ) {
-			case 'is_main_site' :
+			case 'is_main_site':
 				_deprecated_function( $method, '3.0', 'mp_is_main_site' );
 
-				return call_user_func_array( 'mp_is_main_site', $args );
+				// Call the global function directly
+				return mp_is_main_site();
 				break;
 
-			default :
+			default:
 				trigger_error( 'Error! MP_Admin_Multisite doesn\'t have a ' . $method . ' method.', E_USER_ERROR );
 				break;
 		}

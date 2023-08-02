@@ -145,40 +145,44 @@ class PSOURCE_Metabox {
 	 */
 	public static $did_run_once = false;
 
-	/**
-	 * Save the state of the metabox (open or closed)
-	 *
-	 * @since 1.0
-	 * @access public
-	 * @action wp_ajax_psource_metabox_save_state
-	 */
-	public static function ajax_save_state() {
-		$option    = 'psource_metabox_states';
-		$data      = get_option( $option, array() );
-		$id        = isset( $_POST['id'] ) ? $_POST['id'] : null;
-		$is_closed = isset( $_POST['closed'] ) ? $_POST['closed'] : null;
+/**
+ * Save the state of the metabox (open or closed)
+ *
+ * @since 1.0
+ * @access public
+ * @action wp_ajax_psource_metabox_save_state
+ */
+public static function ajax_save_state() {
+    $option    = 'psource_metabox_states';
+    $data      = get_option( $option, array() );
+    $id        = isset( $_POST['id'] ) ? $_POST['id'] : null;
+    $is_closed = isset( $_POST['closed'] ) ? $_POST['closed'] : null;
 
-		if ( is_null( $id ) || is_null( $is_closed ) ) {
-			return;
-		}
+    if ( is_null( $id ) || is_null( $is_closed ) ) {
+        return;
+    }
 
-		if ( $is_closed == 'true' ) {
-			$is_closed = true;
-		} else {
-			$is_closed = false;
-		}
+    if ( $is_closed == 'true' ) {
+        $is_closed = true;
+    } else {
+        $is_closed = false;
+    }
 
-		self::push_to_array( $data, $id, $is_closed );
+    // Create an instance of the class
+    $metabox = new PSOURCE_Metabox();
 
-		// is_network_admin() doesn't work for ajax calls - see https://core.trac.classicpress.org/ticket/22589
-		if ( is_multisite() && preg_match( '#^' . network_admin_url() . '#i', $_SERVER['HTTP_REFERER'] ) ) {
-			update_site_option( $option, $data );
-		} else {
-			update_option( $option, $data );
-		}
+    // Call the non-static method on the instance
+    $metabox->push_to_array( $data, $id, $is_closed );
 
-		die;
-	}
+    // is_network_admin() doesn't work for ajax calls - see https://core.trac.classicpress.org/ticket/22589
+    if ( is_multisite() && preg_match( '#^' . network_admin_url() . '#i', $_SERVER['HTTP_REFERER'] ) ) {
+        update_site_option( $option, $data );
+    } else {
+        update_option( $option, $data );
+    }
+
+    die;
+}
 
 	/**
 	 * Get all files from a given directory

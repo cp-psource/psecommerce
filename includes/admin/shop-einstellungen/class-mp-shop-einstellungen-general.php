@@ -427,7 +427,7 @@ class MP_Shop_Einstellungen_General {
 		$metabox->add_field( 'radio_group', array(
 			'name'			 => 'curr_decimal',
 			'label'			 => array( 'text' => __( 'Dezimalzahl in Preisen anzeigen', 'mp' ) ),
-			'default_value'	 => '1',
+			'default_value'	 => '2',
 			'orientation'	 => 'horizontal',
 			'options'		 => array(
 				'0'	 => '100',
@@ -457,15 +457,15 @@ class MP_Shop_Einstellungen_General {
 			'validation'	 => array(
 				'number' => true,
 			),
-			/*'conditional'	 => array(
+			'conditional'	 => array(
 				'name'	 => 'base_country',
-				'value'	 => 'CA',
-				'action' => 'hide',
-			),*/
+				'value'	 => 'AT',
+				'action' => 'show',
+			),
 		) );
 
 		// Create field for each canadian province
-		foreach ( mp()->CA_provinces as $key => $label ) {
+		/*foreach ( mp()->CA_provinces as $label => $key ) {
 			$metabox->add_field( 'text', array(
 				'name'			 => 'tax[canada_rate][' . $key . ']',
 				'desc'			 => '<a target="_blank" href="http://en.wikipedia.org/wiki/Sales_taxes_in_Canada">' . __( 'Aktuelle Steuersätze', 'mp' ) . '</a>',
@@ -475,10 +475,10 @@ class MP_Shop_Einstellungen_General {
 				'conditional'	 => array(
 					'name'	 => 'base_country',
 					'value'	 => 'CA',
-					'action' => 'show',
+					'action' => 'hide',
 				),
 			) );
-		}
+		}*/
 
 		$metabox->add_field( 'text', array(
 			'name'	 => 'tax[label]',
@@ -617,17 +617,6 @@ class MP_Shop_Einstellungen_General {
 				'required' => true,
 			),
 		) );
-
-		$metabox->add_field( 'text', array(
-				'name'		 => 'base_adress',
-				'label'		 => array( 'text' => __( 'Straße, Hausnummer', 'mp' ) ),
-				'custom'	 => array(
-					'style' => 'width:300px',
-				),
-				'validation' => array(
-					'required' => true,
-				),
-			) );
 	
 			$countries_without_postcode = array_keys( mp()->countries_no_postcode );
 			$metabox->add_field( 'text', array(
@@ -643,16 +632,6 @@ class MP_Shop_Einstellungen_General {
 					'action' => 'hide',
 				),
 				'validation'	 => array(
-					'required' => true,
-				),
-			) );
-			$metabox->add_field( 'text', array(
-				'name'		 => 'base_city',
-				'label'		 => array( 'text' => __( 'Stadt/Ort', 'mp' ) ),
-				'custom'	 => array(
-					'style' => 'width:300px',
-				),
-				'validation' => array(
 					'required' => true,
 				),
 			) );

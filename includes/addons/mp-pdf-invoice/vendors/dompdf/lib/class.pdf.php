@@ -1592,12 +1592,34 @@ EOT;
    * graphics state object
    */
   protected function o_extGState($id, $action, $options = "") {
-    static $valid_params = array("LW",  "LC",  "LC",  "LJ",  "ML",
-                                   "D",  "RI",  "OP",  "op",  "OPM",
-                                   "Font",  "BG",  "BG2",  "UCR",
-                                   "TR",  "TR2",  "HT",  "FL",
-                                   "SM",  "SA",  "BM",  "SMask",
-                                   "CA",  "ca",  "AIS",  "TK");
+    static $valid_params = array(
+      "LW",  
+      "LC",  
+      "LC",  
+      "LJ",  
+      "ML",                            
+      "D",  
+      "RI",  
+      "OP",  
+      "op",  
+      "OPM",                            
+      "Font",  
+      "BG",  
+      "BG2",  
+      "UCR",                            
+      "TR",  
+      "TR2",  
+      "HT",  
+      "FL",                             
+      "SM",  
+      "SA",  
+      "BM",  
+      "SMask",                            
+      "CA",  
+      "ca",  
+      "AIS",  
+      "TK"
+    );
 
     if ($action !== "new") {
       $o = & $this->objects[$id];

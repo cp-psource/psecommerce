@@ -1020,13 +1020,19 @@ class PSeCommerce {
 	 * @param $args
 	 * @return mixed
 	 */
-	public function __call( $method, $args ) {
+	/*public function __call( $method, $args ) {
 		switch ( $method ) {
-			case 'display_currency' :
+			case 'display_currency':
 				_deprecated_function( $method, '3.0', 'mp_display_currency' );
-
-				return call_user_func_array( 'mp_display_currency', $args );
-				break;
+	
+				// Check if the function exists and is callable before calling it
+				if ( is_callable( 'mp_display_currency' ) ) {
+					return call_user_func_array( 'mp_display_currency', $args );
+				} else {
+					// Handle the case where the function is not found or not callable
+					trigger_error( 'Error! The function mp_display_currency is not available or not callable.', E_USER_ERROR );
+					break;
+				}
 
 			case 'get_download_url' :
 				_deprecated_function( $method, '3.0', 'MP_Product::download_url' );
@@ -1035,11 +1041,17 @@ class PSeCommerce {
 				return $product->download_url( $args[1], false );
 				break;
 
-			case 'mail' :
+			case 'mail':
 				_deprecated_function( $method, '3.0', 'mp_send_email' );
-
-				return call_user_func_array( 'mp_send_email', $args );
-				break;
+		
+				// Check if the function exists and is callable before calling it
+				if ( is_callable( 'mp_send_email' ) ) {
+					return call_user_func_array( 'mp_send_email', $args );
+				} else {
+					// Handle the case where the function is not found or not callable
+					trigger_error( 'Error! The function mp_send_email is not available or not callable.', E_USER_ERROR );
+					break;
+				}
 
 			case 'order_notification' :
 				_deprecated_function( $method, '3.0', 'MP_Order::send_notifications' );
@@ -1070,11 +1082,17 @@ class PSeCommerce {
 				_deprecated_function( $method, '3.0', 'MP_Checkout::add_error OR MP_Checkout::get_error' );
 				break;
 
-			case 'is_valid_zip' :
+			case 'is_valid_zip':
 				_deprecated_function( $method, '3.0', 'mp_is_valid_zip' );
-
-				return call_user_func_array( 'mp_is_valid_zip', $args );
-				break;
+		
+				// Check if the function exists and is callable before calling it
+				if ( is_callable( 'mp_is_valid_zip' ) ) {
+					return call_user_func_array( 'mp_is_valid_zip', $args );
+				} else {
+					// Handle the case where the function is not found or not callable
+					trigger_error( 'Error! The function mp_is_valid_zip is not available or not callable.', E_USER_ERROR );
+					break;
+				}
 
 			case 'coupon_applicable' :
 				_deprecated_function( $method, '3.0', 'MP_Coupon::is_applicable' );
@@ -1098,55 +1116,97 @@ class PSeCommerce {
 				return $is_download_only;
 				break;
 
-			case 'get_setting' :
+			case 'get_setting':
 				_deprecated_function( $method, '3.0', 'mp_get_setting' );
-
-				return call_user_func_array( 'mp_get_setting', $args );
-				break;
-
-			case 'format_currency' :
+		
+				// Check if the function exists and is callable before calling it
+				if ( is_callable( 'mp_get_setting' ) ) {
+					return call_user_func_array( 'mp_get_setting', $args );
+				} else {
+					// Handle the case where the function is not found or not callable
+					trigger_error( 'Error! The function mp_get_setting is not available or not callable.', E_USER_ERROR );
+					break;
+				}
+		
+			case 'format_currency':
 				_deprecated_function( $method, '3.0', 'mp_format_currency' );
-
-				return call_user_func_array( 'mp_format_currency', $args );
-				break;
-
-			case 'format_date' :
+		
+				// Check if the function exists and is callable before calling it
+				if ( is_callable( 'mp_format_currency' ) ) {
+					return call_user_func_array( 'mp_format_currency', $args );
+				} else {
+					// Handle the case where the function is not found or not callable
+					trigger_error( 'Error! The function mp_format_currency is not available or not callable.', E_USER_ERROR );
+					break;
+				}
+		
+			case 'format_date':
 				_deprecated_function( $method, '3.0', 'mp_format_date' );
-
-				return call_user_func_array( 'mp_format_date', $args );
-				break;
-
-			case 'product_excerpt' :
+		
+				// Check if the function exists and is callable before calling it
+				if ( is_callable( 'mp_format_date' ) ) {
+					return call_user_func_array( 'mp_format_date', $args );
+				} else {
+					// Handle the case where the function is not found or not callable
+					trigger_error( 'Error! The function mp_format_date is not available or not callable.', E_USER_ERROR );
+					break;
+				}
+		
+			case 'product_excerpt':
 				_deprecated_function( $method, '3.0', 'mp_product_excerpt' );
-
-				return call_user_func_array( 'mp_product_excerpt', $args );
-				break;
-
-			case 'product_price' :
+		
+				// Check if the function exists and is callable before calling it
+				if ( is_callable( 'mp_product_excerpt' ) ) {
+					return call_user_func_array( 'mp_product_excerpt', $args );
+				} else {
+					// Handle the case where the function is not found or not callable
+					trigger_error( 'Error! The function mp_product_excerpt is not available or not callable.', E_USER_ERROR );
+					break;
+				}
+		
+			case 'product_price':
 				_deprecated_function( $method, '3.0', 'mp_product_price' );
-
-				return call_user_func_array( 'mp_product_price', $args );
-				break;
-
-			case 'shipping_price' :
+		
+				// Check if the function exists and is callable before calling it
+				if ( is_callable( 'mp_product_price' ) ) {
+					return call_user_func_array( 'mp_product_price', $args );
+				} else {
+					// Handle the case where the function is not found or not callable
+					trigger_error( 'Error! The function mp_product_price is not available or not callable.', E_USER_ERROR );
+					break;
+				}
+		
+			case 'shipping_price':
 				_deprecated_function( $method, '3.0', 'MP_Cart::shipping_total' );
 				$mp_cart = mp_cart();
-
-				return call_user_func_array( array( $mp_cart, 'shipping_total' ), $args );
-				break;
-
-			case 'tax_price' :
+		
+				// Check if the method exists in the $mp_cart object before calling it
+				if ( method_exists( $mp_cart, 'shipping_total' ) ) {
+					return call_user_func_array( array( $mp_cart, 'shipping_total' ), $args );
+				} else {
+					// Handle the case where the method is not found or not callable
+					trigger_error( 'Error! The method MP_Cart::shipping_total is not available or not callable.', E_USER_ERROR );
+					break;
+				}
+		
+			case 'tax_price':
 				_deprecated_function( $method, '3.0', 'MP_Cart::tax_total' );
 				$mp_cart = mp_cart();
-
-				return call_user_func_array( array( $mp_cart, 'tax_total' ), $args );
-				break;
+		
+				// Check if the method exists in the $mp_cart object before calling it
+				if ( method_exists( $mp_cart, 'tax_total' ) ) {
+					return call_user_func_array( array( $mp_cart, 'tax_total' ), $args );
+				} else {
+					// Handle the case where the method is not found or not callable
+					trigger_error( 'Error! The method MP_Cart::tax_total is not available or not callable.', E_USER_ERROR );
+					break;
+				}
 
 			default :
 				trigger_error( 'Error! PSeCommerce doesn\'t have a ' . $method . ' method.', E_USER_ERROR );
 				break;
 		}
-	}
+	}*/
 
 	/**
 	 * Initializes the class variables
