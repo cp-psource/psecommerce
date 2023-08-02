@@ -1020,7 +1020,7 @@ class PSeCommerce {
 	 * @param $args
 	 * @return mixed
 	 */
-	/*public function __call( $method, $args ) {
+	public function __call( $method, $args ) {
 		switch ( $method ) {
 			case 'display_currency':
 				_deprecated_function( $method, '3.0', 'mp_display_currency' );
@@ -1206,7 +1206,7 @@ class PSeCommerce {
 				trigger_error( 'Error! PSeCommerce doesn\'t have a ' . $method . ' method.', E_USER_ERROR );
 				break;
 		}
-	}*/
+	}
 
 	/**
 	 * Initializes the class variables
