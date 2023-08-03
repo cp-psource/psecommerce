@@ -226,15 +226,13 @@ class MP_Shortcode_Builder {
 					<h2><?php _e( 'Attribute', 'mp' ); ?></h2>
 					<?php
 					foreach ( $shortcodes as $shortcode => $label ) {
-					$func = 'display_' . $shortcode . '_attributes';
+						$func = 'display_' . $shortcode . '_attributes';
 
-					if ( method_exists( $this, $func ) ) {
-						// You can pass any arguments to the method using an array
-						$args = array(); // Fill this array with any necessary arguments
-						call_user_func_array( array( $this, $func ), $args );
+						if ( method_exists( $this, $func ) ) {
+							call_user_func( array( &$this, $func ) );
+						}
 					}
-				}
-				?>
+					?>
 				</div>
 				<?php $this->display_shortcode_builder_form_buttons(); ?>
 			</form>

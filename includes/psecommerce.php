@@ -1,18 +1,16 @@
 <?php
 /**
  * Plugin Name: PSeCommerce
- * Plugin URI:  https://n3rds.work/?piestingtal_source=psecommerce-shopsystem
- * Description: Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin
- * Version:     3.5.2
- * Requires at least: 4.9
+ * Plugin URI:  https://n3rds.work/piestingtal_source/psecommerce-shopsystem/
+ * Description: Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin - Ob kleiner Onlineshop, Digitales Schaufenster, funktioniert auch perfekt mit BuddyPress und Multisite, um einen sozialen Marktplatz zu schaffen, auf dem Du einen Prozentsatz nehmen kannst! Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige Produkte hinzu.
+ * Version:     1.5.1
  * Author:      DerN3rd (WMS N3rds@Work)
  * Author URI:  https://n3rds.work
  * Text Domain: mp
- * Domain Path: /languages
  */
 
 /*
-Copyright 20019-2023 Webmasterservice N3rds@Work (https://n3rds.work/)
+Copyright 20019-2021 Webmasterservice N3rds@Work (https://n3rds.work/)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as
@@ -27,28 +25,30 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA	02111-1307	USA
 
-Plugin Authors: DerN3rd (WMS N3rds@Work) Marko Miljus (Incsub), Aaron Edwards (Incsub), Hoang Ngo (Incsub), Jonathan Cowher (Incsub), Ricardo Freitas (Incsub), Cvetan Cvetanov (Incsub), Julien Zerbib (Incsub), Sabri Bouchaala (Incsub), Emmanuel Laborin (Incsub)
+Plugin Authors: DerN3rd (WMS N3rds@Work) DerN3rd (WMS N@W), DerN3rd (WMS N@W), Hoang Ngo (Incsub), Jonathan Cowher (Incsub), Ricardo Freitas (Incsub), Cvetan Cvetanov (Incsub), Julien Zerbib (Incsub), Sabri Bouchaala (Incsub), Emmanuel Laborin (Incsub)
 */
-require 'psource/psource-plugin-update/psource-plugin-updater.php';
-use Psource\PluginUpdateChecker\v5\PucFactory;
-$MyUpdateChecker = PucFactory::buildUpdateChecker(
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+$MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=psecommerce', 
 	__FILE__, 
 	'psecommerce' 
 );
 
-define( 'MP_VERSION', '3.5.2' );
+// Beenden, wenn direkt darauf zugegriffen wird
+if ( !defined( 'ABSPATH' ) ) exit;
 
+
+define( 'MP_VERSION', '1.5.1' );
 
 /**
- * Main class PSeCommerce.
+ * Hauptklasse PSeCommerce.
  */
 class PSeCommerce {
 
 	/**
-	 * Refers to the post types that PSeCommerce uses
+	 * Bezieht sich auf die Posttypen, die PSeCommerce verwendet
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access public
 	 * @var array
 	 */
@@ -56,18 +56,18 @@ class PSeCommerce {
 	var $post_types = array( 'mp_product', 'product', 'mp_product_variation' );
 
 	/**
-	 * Refers to the single instance of the class
+	 * Bezieht sich auf die einzelne Instanz der Klasse
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access private
 	 * @var object
 	 */
 	private static $_instance = null;
 
 	/**
-	 * Refers to the absolute path to the plugin's main file
+	 * Bezieht sich auf den absoluten Pfad zur Hauptdatei des Plugins
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access private
 	 * @var string
 	 */
@@ -76,7 +76,7 @@ class PSeCommerce {
 	/**
 	 * Refers to the absolute url to the plugin's directory
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access private
 	 * @var string
 	 */
@@ -85,7 +85,7 @@ class PSeCommerce {
 	/**
 	 * Refers to the absolute path to the plugin's directory
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access private
 	 * @var string
 	 */
@@ -101,7 +101,7 @@ class PSeCommerce {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access public
 	 * @return object
 	 */
@@ -116,7 +116,7 @@ class PSeCommerce {
 	/**
 	 * Gets an absolute path to the plugin's base directory
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access private
 	 *
 	 * @param string $path (optional) Will be appended onto the base directory.
@@ -130,7 +130,7 @@ class PSeCommerce {
 	/**
 	 * Gets an absolute url to the plugin's base directory
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access private
 	 *
 	 * @param string $path (optional) Will be appended onto the base directory.
@@ -145,7 +145,7 @@ class PSeCommerce {
 	/**
 	 * Register custom post types, taxonomies and stati
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access public
 	 * @uses $wp_version
 	 */
@@ -346,7 +346,7 @@ class PSeCommerce {
 	/**
 	 * Load payment and shipping gateways
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access public
 	 */
 	public function load_plugins() {
@@ -371,7 +371,7 @@ class PSeCommerce {
 	/**
 	 * Constructor function
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -593,7 +593,7 @@ class PSeCommerce {
 	/**
 	 * Called from ClassicPress when the admin page init process is invoked.
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 */
 	function mp_admin_init() {
 		if ( is_multisite() ) {
@@ -610,7 +610,7 @@ class PSeCommerce {
 	/**
 	 * Adds a 'settings' link on the plugin links.
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @param array $links links for this plugin.
 	 * @return array $links links including Settings link
 	 */
@@ -706,7 +706,7 @@ class PSeCommerce {
 	/**
 	 * Register add ons
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access public
 	 */
 	public function register_addons() {
@@ -775,7 +775,7 @@ class PSeCommerce {
 		/**
 		 * Fires after all internal addons have been registered
 		 *
-		 * @since 3.0
+		 * @since 1.0
 		 * @access public
 		 */
 		do_action( 'psecommerce/register_addons' );
@@ -887,7 +887,7 @@ class PSeCommerce {
 	/**
 	 * Maybe flush rewrite rules.
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access public
 	 * @action init
 	 */
@@ -906,7 +906,7 @@ class PSeCommerce {
 	 * Before 3.0 only shipping info was captured. This function will return the
 	 * shipping info if billing info doesn't exist for the given user.
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access public
 	 * @param $value
 	 * @param int    $user_id      User ID.
@@ -943,7 +943,7 @@ class PSeCommerce {
 	/**
 	 * Include necessary files
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access public
 	 */
 	public function includes() {
@@ -1012,9 +1012,9 @@ class PSeCommerce {
 	}
 
 	/**
-	 * Catch deprecated functions.
+	 * Fange veraltete Funktionen ab.
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access public
 	 * @param $method
 	 * @param $args
@@ -1151,7 +1151,7 @@ class PSeCommerce {
 	/**
 	 * Initializes the class variables
 	 *
-	 * @since 3.0
+	 * @since 1.0
 	 * @access private
 	 */
 	private function _init_vars() {
@@ -1167,7 +1167,7 @@ class PSeCommerce {
 		/**
 		 * Filter the currencies list
 		 *
-		 * @since 3.0
+		 * @since 1.0
 		 *
 		 * @param array $this ->currencies An array of available currencies
 		 */
