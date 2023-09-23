@@ -3,8 +3,13 @@
  *
  * @since 1.0
  */
-String.prototype.escapeSelector = function() {
+//Incomplete string escaping or encoding
+/*String.prototype.escapeSelector = function() {
     return this.replace(/(:|\.|\[|\])/g, "\\$1");
+};*/
+String.prototype.escapeSelector = function() {
+    // Verwenden Sie die String.replace-Methode mit einer Regex, um die Zeichen zu escapen.
+    return this.replace(/([:.\[\]\\\\])/g, '\\\\$1');
 };
 
 var mp_cart = {};

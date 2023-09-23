@@ -45,7 +45,9 @@
                 return BigText.STYLE_ID + '-' + id;
             },
             generateStyleTag: function(id, css) {
-                return $('<style>' + css.join('\n') + '</style>').attr('id', id);
+                var styleTag = $('<style>').attr('id', id);
+                styleTag.text(css.join('\n'));
+                return styleTag;
             },
             clearCss: function(id) {
                 var styleId = BigText.getStyleId(id);

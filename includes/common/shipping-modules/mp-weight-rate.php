@@ -144,7 +144,7 @@ class MP_Shipping_Weight_Rate extends MP_Shipping_API {
 				) );
 				$layers->add_sub_field( 'text', array(
 					'name' => 'hi_ak',
-					'label' => array( 'text' => __( 'Hawaii and Alaska', 'mp' ) ),
+					'label' => array( 'text' => __( 'Hawaii und Alaska', 'mp' ) ),
 					'validation' => array(
 						'required' => true,
 						'number' => true,
