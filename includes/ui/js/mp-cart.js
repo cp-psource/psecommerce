@@ -9,7 +9,7 @@
 };*/
 String.prototype.escapeSelector = function() {
     // Verwenden Sie die String.replace-Methode mit einer Regex, um die Zeichen zu escapen.
-    return this.replace(/([:.\[\]])/g, '\\$1');
+    return this.replace(/([:.\[\]\\\\])/g, '\\\\$1');
 };
 
 var mp_cart = {};
