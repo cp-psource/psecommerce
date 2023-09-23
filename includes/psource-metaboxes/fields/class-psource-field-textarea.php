@@ -5,7 +5,7 @@ class PSOURCE_Field_Textarea extends PSOURCE_Field {
 	/**
 	 * Displays the field
 	 *12.3.20 alles fein DN
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param int $post_id
 	 */

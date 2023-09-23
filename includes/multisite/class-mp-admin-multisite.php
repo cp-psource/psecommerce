@@ -5,7 +5,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Refers to the current build of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var int
 	 */
@@ -23,7 +23,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -38,7 +38,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -82,7 +82,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Force check the global gateway
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter psource_field/get_value/gateways[allowed][ {global_gateway} ]
 	 */
@@ -96,15 +96,15 @@ class MP_Admin_Multisite {
 	 * When changing the network_store_page value update the product_category and
 	 * product_tag slug that is shown before those fields.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_field/print_scripts/network_store_page
 	 */
 	public function print_network_store_page_scripts( $field ) {
 		?>
 		<script type="text/javascript">
-			jQuery(function($) {
-				$('.mp-create-page-button').on("click", function (e) {
+			jQuery(document).ready(function ($) {
+				$('.mp-create-page-button').click(function (e) {
 					e.preventDefault();
 
 					var $this = $(this),
@@ -131,7 +131,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Enqueue admin styles and scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action admin_enqueue_scripts
 	 */
@@ -145,7 +145,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Initialize metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_metaboxes() {
@@ -162,7 +162,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Initialize general settings metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_general_settings_metabox() {
@@ -186,7 +186,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Display global currency information
 	 *
-	 * @since 1.1.3
+	 * @since 3.1.3
 	 * @access public
 	 */
 	public function init_global_currency_metabox(){
@@ -295,8 +295,8 @@ class MP_Admin_Multisite {
 		if ( is_network_admin() ) {
 			?>
 			<script type="text/javascript">
-				jQuery(function($) {
-					$('.mp_index_products').on("click", function () {
+				jQuery(document).ready(function ($) {
+					$('.mp_index_products').click(function () {
 						var that = $(this);
 						$.ajax({
 							type: 'POST',
@@ -340,7 +340,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Initialize global gateway metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_global_gateway_settings_metabox() {
@@ -380,7 +380,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Initialize gateway permissions metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_gateway_permissions_metabox() {
@@ -405,7 +405,7 @@ class MP_Admin_Multisite {
 		/**
 		 * Filter the gateway permissions options list
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 *
 		 * @param array $options_permissions An array of options.
@@ -428,7 +428,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Initialize theme permissions metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_theme_permissions_metabox() {
@@ -437,7 +437,7 @@ class MP_Admin_Multisite {
 			'page_slugs'       => array( 'network-shop-einstellungen' ),
 			'title'            => __( 'Theme Berechtigungen', 'mp' ),
 			'site_option_name' => 'mp_network_settings',
-			'desc'             => __( 'Festlegen von Theme-Zugriffsberechtigungen für Netzwerkspeicher. Speichere für ein benutzerdefiniertes CSS-Thema Deine CSS-Datei mit dem Header <strong> PSeCommerce Theme: NAME </strong> im Ordner <strong> wp-content/psecommerce-styles/ </strong>, damit es in dieser Liste angezeigt wird. Erfahre <a href="https://n3rds.work/docs/psecommerce-theme-erstellen/"target=_blank">hier</a> mehr', 'mp' ),
+			'desc'             => __( 'Festlegen von Theme-Zugriffsberechtigungen für Netzwerkspeicher. Speichere für ein benutzerdefiniertes CSS-Thema Deine CSS-Datei mit dem Header <strong> PSeCommerce Theme: NAME </strong> im Ordner <strong> /psecommerce/ui/themes/ </strong>, damit es in dieser Liste angezeigt wird.', 'mp' ),
 			'order'            => 15,
 		) );
 
@@ -451,7 +451,7 @@ class MP_Admin_Multisite {
 		/**
 		 * Filter the theme permissions options list
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 *
 		 * @param array $options_permissions An array of options.
@@ -471,7 +471,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Add menu items to the network admin menu
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function add_menu_items() {
@@ -484,7 +484,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Displays the network settings form/metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function network_store_settings() {
@@ -500,7 +500,7 @@ class MP_Admin_Multisite {
 					/**
 					 * Render PSOURCE Metabox settings
 					 *
-					 * @since 1.0
+					 * @since 3.0
 					 */
 					do_action( 'psource_metabox/render_settings_metaboxes' );
 					?>
@@ -513,7 +513,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Pages for network cart (marketplace,marketplace/categories etc)
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_network_pages() {
@@ -557,7 +557,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Display "create page" button next to a given field
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * filter psource_field/after_field
 	 */
@@ -593,7 +593,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Print scripts for creating store page
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_field/print_scripts
 	 */
@@ -603,8 +603,8 @@ class MP_Admin_Multisite {
 		}
 		?>
 		<script type="text/javascript">
-			jQuery(function($) {
-				$('.mp-create-page-button').on("click", function (e) {
+			jQuery(document).ready(function ($) {
+				$('.mp-create-page-button').click(function (e) {
 					e.preventDefault();
 
 					var $this = $(this),
@@ -633,7 +633,7 @@ class MP_Admin_Multisite {
 	public function __call( $method, $args ) {
 		switch ( $method ) {
 			case 'is_main_site' :
-				_deprecated_function( $method, '1.0', 'mp_is_main_site' );
+				_deprecated_function( $method, '3.0', 'mp_is_main_site' );
 
 				return call_user_func_array( 'mp_is_main_site', $args );
 				break;
@@ -647,7 +647,7 @@ class MP_Admin_Multisite {
 	/**
 	 * Update blog_public state to 1 on blog status change
 	 *
-	 * @since 1.1.2
+	 * @since 3.1.2
 	 * @access public
 	 *
 	 */

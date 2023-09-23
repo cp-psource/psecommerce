@@ -1,5 +1,4 @@
-;(function(window, $)
-{
+;(function(window, $){
     var counter = 0,
         $headCache = $('head'),
         oldBigText = window.BigText,
@@ -17,76 +16,70 @@
                 ol: '> li',
                 ul: '> li'
             },
-            noConflict: function(restore)
-            {
+            noConflict: function(restore) {
                 if(restore) {
                     $.fn.bigtext = oldjQueryMethod;
                     window.BigText = oldBigText;
                 }
                 return BigText;
             },
-            init: function()
-            {
+            init: function(){
                 if(!$('#'+BigText.GLOBAL_STYLE_ID).length) {
                     $headCache.append(BigText.generateStyleTag(BigText.GLOBAL_STYLE_ID, ['.bigtext * { white-space: nowrap; }',
                                                                                     '.bigtext .' + BigText.EXEMPT_CLASS + ', .bigtext .' + BigText.EXEMPT_CLASS + ' * { white-space: normal; }']));
                 }
             },
-            bindResize: function(eventName, resizeFunction)
-            {
-                if($.throttle) {
-                    // https://github.com/cowboy/jquery-throttle-debounce
-                    $(window).unbind(eventName).bind(eventName, $.throttle(100, resizeFunction));
+            bindResize: function(eventName, resizeFunction) {
+                if ($.throttle) {
+                  // Verwende `off` anstelle von `unbind`, um sicherzustellen, dass das Ereignis tatsächlich entfernt wird.
+                  $(window).off(eventName).on(eventName, $.throttle(100, resizeFunction));
                 } else {
-                    if($.fn.smartresize) {
-                        // https://github.com/lrbabe/jquery-smartresize/
-                        eventName = 'smartresize.' + eventName;
-                    }
-                    $(window).unbind(eventName).bind(eventName, resizeFunction);
+                  if ($.fn.smartresize) {
+                    eventName = 'smartresize.' + eventName;
+                  }
+                  // Verwende `off` anstelle von `unbind`, um sicherzustellen, dass das Ereignis tatsächlich entfernt wird.
+                  $(window).off(eventName).on(eventName, resizeFunction);
                 }
             },
-            getStyleId: function(id)
-            {
+            getStyleId: function(id) {
                 return BigText.STYLE_ID + '-' + id;
             },
-            generateStyleTag: function(id, css)
-            {
+            generateStyleTag: function(id, css) {
                 return $('<style>' + css.join('\n') + '</style>').attr('id', id);
             },
-            clearCss: function(id)
-            {
+            clearCss: function(id) {
                 var styleId = BigText.getStyleId(id);
                 $('#' + styleId).remove();
             },
-            generateCss: function(id, linesFontSizes, lineWordSpacings, minFontSizes)
-            {
+            generateCss: function(id, linesFontSizes, lineWordSpacings, minFontSizes) {
                 var css = [];
-
                 BigText.clearCss(id);
-
-                for(var j=0, k=linesFontSizes.length; j<k; j++) {
-                    css.push('#' + id + ' .' + BigText.LINE_CLASS_PREFIX + j + ' {' + 
-                        (minFontSizes[j] ? ' white-space: normal;' : '') + 
-                        (linesFontSizes[j] ? ' font-size: ' + linesFontSizes[j] + 'px; line-height: ' + linesFontSizes[j] + 'px;' : '') + 
-                        (lineWordSpacings[j] ? ' word-spacing: ' + lineWordSpacings[j] + 'px;' : '') +
-                        '}');
+                for(var j=0; j<linesFontSizes.length; j++) {
+                    var lineClass = '.' + BigText.LINE_CLASS_PREFIX + j;
+                    var lineCSS = [];
+                    if(minFontSizes[j]) {
+                        lineCSS.push('white-space: normal;');
+                    }
+                    if(linesFontSizes[j]) {
+                        lineCSS.push('font-size: ' + linesFontSizes[j] + 'px');
+                        lineCSS.push('line-height: ' + linesFontSizes[j] + 'px');
+                    }
+                    if(lineWordSpacings[j]) {
+                        lineCSS.push('word-spacing: ' + lineWordSpacings[j] + 'px');
+                    }
+                    css.push('#' + id + lineClass + ' {' + lineCSS.join('; ') + '}');
                 }
-
                 return BigText.generateStyleTag(BigText.getStyleId(id), css);
             },
-            jQueryMethod: function(options)
-            {
+            jQueryMethod: function(options) {
                 BigText.init();
-        
                 options = $.extend({
                             minfontsize: BigText.DEFAULT_MIN_FONT_SIZE_PX,
                             maxfontsize: BigText.DEFAULT_MAX_FONT_SIZE_PX,
                             childSelector: '',
                             resize: true
                         }, options || {});
-            
-                return this.each(function()
-                {
+                return this.each(function() {
                     var $t = $(this).addClass('bigtext'),
                         childSelector = options.childSelector ||
                                     BigText.childSelectors[this.tagName.toLowerCase()] ||
@@ -100,16 +93,14 @@
                     }
         
                     if(options.resize) {
-                        BigText.bindResize('resize.bigtext-event-' + id, function()
-                        {
+                        BigText.bindResize('resize.bigtext-event-' + id, function() {
                             BigText.jQueryMethod.call($('#' + id), options);
                         });
                     }
         
                     BigText.clearCss(id);
         
-                    $t.find(childSelector).addClass(function(lineNumber, className)
-                    {
+                    $t.find(childSelector).addClass(function(lineNumber, className) {
                         // remove existing line classes.
                         return [className.replace(new RegExp('\\b' + BigText.LINE_CLASS_PREFIX + '\\d+\\b'), ''),
                                 BigText.LINE_CLASS_PREFIX + lineNumber].join(' ');
@@ -121,8 +112,7 @@
             }
         };
 
-    function testLineDimensions($line, maxWidth, property, size, interval, units)
-    {
+    function testLineDimensions($line, maxWidth, property, size, interval, units) {
         var width;
         $line.css(property, size + units);
 
@@ -147,8 +137,7 @@
         return false;
     }
 
-    function calculateSizes($t, childSelector, maxWidth, maxFontSize, minFontSize)
-    {
+    function calculateSizes($t, childSelector, maxWidth, maxFontSize, minFontSize) {
         var $c = $t.clone(true)
                     .addClass('bigtext-cloned')
                     .css({

@@ -25,7 +25,7 @@ class MP_Gateway_AuthorizeNet_AIM extends MP_Gateway_API {
 	/**
 	 * Refers to the gateways currencies
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var array
 	 */
@@ -41,7 +41,7 @@ class MP_Gateway_AuthorizeNet_AIM extends MP_Gateway_API {
 	/**
 	 * Runs when your class is instantiated. Use to setup your plugin instead of __construct()
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function on_creation() {
@@ -72,7 +72,7 @@ class MP_Gateway_AuthorizeNet_AIM extends MP_Gateway_API {
 	/**
 	 * Updates the gateway settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $settings
 	 * @return array $settings
@@ -90,7 +90,7 @@ class MP_Gateway_AuthorizeNet_AIM extends MP_Gateway_API {
 	/**
 	 * Return fields you need to add to the top of the payment screen, like your credit card info fields
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $cart. Contains the cart contents for the current blog, global cart if mp()->global_cart is true
 	 * @param array $shipping_info. Contains shipping info and email in case you need it
@@ -209,7 +209,7 @@ class MP_Gateway_AuthorizeNet_AIM extends MP_Gateway_API {
 	/**
 	 * Init settings metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function init_settings_metabox() {

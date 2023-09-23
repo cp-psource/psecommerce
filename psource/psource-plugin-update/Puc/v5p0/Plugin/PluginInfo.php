@@ -87,7 +87,7 @@ if ( !class_exists(PluginInfo::class, false) ):
 
 
 		/**
-		 * Transform plugin info into the format used by the native WordPress.org API
+		 * Transform plugin info into the format used by the native ClassicPress.org API
 		 *
 		 * @return object
 		 */
@@ -95,7 +95,7 @@ if ( !class_exists(PluginInfo::class, false) ):
 			$info = new \stdClass;
 
 			//The custom update API is built so that many fields have the same name and format
-			//as those returned by the native WordPress.org API. These can be assigned directly.
+			//as those returned by the native ClassicPress.org API. These can be assigned directly.
 			$sameFormat = array(
 				'name', 'slug', 'version', 'requires', 'tested', 'rating', 'upgrade_notice',
 				'num_ratings', 'downloaded', 'active_installs', 'homepage', 'last_updated',
@@ -116,7 +116,7 @@ if ( !class_exists(PluginInfo::class, false) ):
 
 			if ( !empty($this->banners) ) {
 				//WP expects an array with two keys: "high" and "low". Both are optional.
-				//Docs: https://wordpress.org/plugins/about/faq/#banners
+				//Docs: https://classicpress.org/plugins/about/faq/#banners
 				$info->banners = is_object($this->banners) ? get_object_vars($this->banners) : $this->banners;
 				$info->banners = array_intersect_key($info->banners, array('high' => true, 'low' => true));
 			}

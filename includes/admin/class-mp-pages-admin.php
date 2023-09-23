@@ -4,7 +4,7 @@ class MP_Pages_Admin {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -13,7 +13,7 @@ class MP_Pages_Admin {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -27,7 +27,7 @@ class MP_Pages_Admin {
 	/**
 	 * Init edit-page metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_metaboxes() {
@@ -37,7 +37,7 @@ class MP_Pages_Admin {
 	/**
 	 * Init the
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_page_settings_metabox() {
@@ -78,7 +78,7 @@ class MP_Pages_Admin {
 	/**
 	 * Save the store_page field value
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_field/save_value/store_page
 	 * @uses $wpdb
@@ -102,7 +102,7 @@ class MP_Pages_Admin {
 	/**
 	 * Get the store_page field value
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_field/get_value/store_page
 	 */
@@ -119,7 +119,7 @@ class MP_Pages_Admin {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {

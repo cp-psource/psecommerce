@@ -5,7 +5,7 @@ class MP_Shop_Einstellungen_Admin {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Shop_Einstellungen_Admin {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -28,7 +28,7 @@ class MP_Shop_Einstellungen_Admin {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -79,7 +79,7 @@ class MP_Shop_Einstellungen_Admin {
 	/**
 	 * Set menu item parent file
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action parent_file
 	 */
@@ -97,7 +97,7 @@ class MP_Shop_Einstellungen_Admin {
 	/**
 	 * Add items to the admin menu
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wp_version
 	 */
@@ -149,7 +149,7 @@ class MP_Shop_Einstellungen_Admin {
 	/**
 	 * Add help tab to current screen
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function add_help_tab() {
@@ -159,7 +159,7 @@ class MP_Shop_Einstellungen_Admin {
 	/**
 	 * Print scripts for setting the active admin menu item when on the product tag page
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function print_product_tag_scripts() {
@@ -178,7 +178,7 @@ class MP_Shop_Einstellungen_Admin {
 	/**
 	 * Print scripts for setting the active admin menu item when on the product category page
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function print_product_category_scripts() {
@@ -197,7 +197,7 @@ class MP_Shop_Einstellungen_Admin {
 	/**
 	 * Gets an appropriate message by it's key
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function get_message_by_key( $key ) {
@@ -212,7 +212,7 @@ class MP_Shop_Einstellungen_Admin {
 	/**
 	 * Displays the settings form/metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function display_settings_form() {
@@ -283,14 +283,14 @@ class MP_Shop_Einstellungen_Admin {
 					/**
 					 * Render PSOURCE Metabox settings
 					 *
-					 * @since 1.0
+					 * @since 3.0
 					 */
 					do_action( 'psource_metabox/render_settings_metaboxes' );
 
 					/**
 					 * Render settings
 					 *
-					 * @since 1.0
+					 * @since 3.0
 					 */
 					do_action( 'mp_render_settings/' . mp_get_current_screen()->id );
 					?>

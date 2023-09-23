@@ -611,8 +611,9 @@ input.mp_inline_temp_value{
     padding-right: 20px;
     padding-top: 12px;
     padding-bottom: 12px;
-    position: relative;
+    position: absolute;
     bottom: 0;
+    width: 90%;
     background-color: #fff;
     z-index: 99999;
 }

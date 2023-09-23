@@ -5,7 +5,7 @@ class MP_Installer {
 	/**
 	 * Refers to the single instance of the class.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var object
 	 */
@@ -14,7 +14,7 @@ class MP_Installer {
 	/**
 	 * Gets the single instance of the class.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -29,7 +29,7 @@ class MP_Installer {
 	/**
 	 * Constructor.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	private function __construct() {
@@ -50,7 +50,7 @@ class MP_Installer {
 	/**
 	 * Enqueue db update scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function enqueue_db_update_scripts() {
@@ -281,7 +281,7 @@ class MP_Installer {
 					//we need to check, if term is numeric, treat it
 					if ( is_numeric( $variation_term_vals[1] ) ) {
 						//usually this is the term name, check if not exist, we will create with a prefix on slug,
-						//to force it to string, as when WordPress using the term_exist, it will priority the ID than slug, which can cause wrong import
+						//to force it to string, as when ClassicPress using the term_exist, it will priority the ID than slug, which can cause wrong import
 						$slug = $variation_term_vals[1] . '_mp_attr';
 						if ( ! term_exists( $slug ) ) {
 							$tid = wp_insert_term( $variation_term_vals[1], $variation_term_vals[0], array(
@@ -349,7 +349,7 @@ class MP_Installer {
 	/**
 	 * Update product postmeta
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_mp_update_product_postmeta
 	 */
@@ -359,7 +359,7 @@ class MP_Installer {
 		}
 
 		$old_version = get_option( 'mp_previous_version' );
-		if ( version_compare( $old_version, '1.0.0.3', '<=' ) || mp_get_post_value( 'force_upgrade', 0 ) ) {
+		if ( version_compare( $old_version, '3.0.0.3', '<=' ) || mp_get_post_value( 'force_upgrade', 0 ) ) {
 			$update_fix_needed = true;
 		} else {
 			$update_fix_needed = false;
@@ -396,7 +396,7 @@ class MP_Installer {
 			$post_id = get_the_ID();
 
 			$variations = get_post_meta( $post_id, 'mp_var_name', true );
-			if ( $variations && is_array( $variations ) && true == $update_fix_needed ) {//need update since it used mp_var_name post meta which is not used in the 1.0 version
+			if ( $variations && is_array( $variations ) && true == $update_fix_needed ) {//need update since it used mp_var_name post meta which is not used in the 3.0 version
 				if ( count( $variations ) > 1 ) {
 					//It's a variation product
 
@@ -407,11 +407,9 @@ class MP_Installer {
 						$product_type = 'digital';
 					} elseif ( ! empty( $mp_product_link ) ) {
 						$product_type = 'external';
-					} elseif ( ! empty( $mp_product_link ) ){
-							$product_type = 'freedownload';
 					} else {
 						$product_type = 'physical';
-					} 
+					}
 
 					update_post_meta( $post_id, 'product_type', $product_type );
 
@@ -435,8 +433,6 @@ class MP_Installer {
 						$product_type = 'digital';
 					} elseif ( ! empty( $mp_product_link ) ) {
 						$product_type = 'external';
-					} elseif ( ! empty( $mp_product_link ) ) {
-						$product_type = 'freedownload';
 					} else {
 						$product_type = 'physical';
 
@@ -472,7 +468,7 @@ class MP_Installer {
 				//Update sales count
 				$this->update_sales_count( $post_id );
 
-			} else { //update for 1.0 and 1.0.0.1
+			} else { //update for 3.0 and 3.0.0.1
 				$post_thumbnail = get_post_thumbnail_id( $post_id );
 				if ( is_numeric( $post_thumbnail ) ) {
 					update_post_meta( $post_id, 'mp_product_images', $post_thumbnail );
@@ -503,7 +499,7 @@ class MP_Installer {
 	/**
 	 * Update tax settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $settings
@@ -525,13 +521,13 @@ class MP_Installer {
 	/**
 	 * Add admin menu items and enqueue scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action admin_menu
 	 */
 	public function add_menu_items() {
 		if ( get_option( 'mp_db_update_required' ) || mp_get_get_value( 'force_upgrade', 0 ) == 1 ) {
-			add_submenu_page( 'shop-einstellungen', __( 'Daten aktualisieren', 'mp' ), __( 'Daten aktualisieren', 'mp' ), 'activate_plugins', 'mp-db-update', array(
+			add_submenu_page( 'shop-einstellungen', __( 'Update Data', 'mp' ), __( 'Update Data', 'mp' ), 'activate_plugins', 'mp-db-update', array(
 				&$this,
 				'db_update_page',
 			) );
@@ -541,7 +537,7 @@ class MP_Installer {
 	/**
 	 * Update sales count if undefined
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function update_sales_count( $post_id ) {
@@ -555,7 +551,7 @@ class MP_Installer {
 	/**
 	 * Add term_order column to $wpdb->terms table
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wpdb
 	 */
@@ -572,7 +568,7 @@ class MP_Installer {
 	/**
 	 * Add post_status column to $wpdb->mp_products table
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wpdb
 	 */
@@ -593,7 +589,7 @@ class MP_Installer {
 	/**
 	 * Display the db update page
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wpdb
 	 */
@@ -608,7 +604,7 @@ class MP_Installer {
 
 			<?php
 			$old_version = get_option( 'mp_previous_version' );
-			if ( version_compare( $old_version, '1.0.0.3', '<=' ) || mp_get_post_value( 'force_upgrade', 0 ) ) {
+			if ( version_compare( $old_version, '3.0.0.3', '<=' ) || mp_get_post_value( 'force_upgrade', 0 ) ) {
 				$update_fix_needed = true;
 			} else {
 				$update_fix_needed = false;
@@ -648,7 +644,7 @@ class MP_Installer {
 					if ( is_multisite() ) {
 						?>
 						<p class="mp-important">
-							<strong><?php _e( 'Bitte aktualisiere jede Unterwebsite in Deinem WordPress-Netzwerk, auf der Du eine ältere Version des PSeCommerce-Plugins hast.', 'mp' ); ?></strong>
+							<strong><?php _e( 'Bitte aktualisiere jede Unterwebsite in Deinem ClassicPress-Netzwerk, auf der Du eine ältere Version des PSeCommerce-Plugins hast.', 'mp' ); ?></strong>
 						</p>
 						<?php
 					}
@@ -669,7 +665,7 @@ class MP_Installer {
 	/**
 	 * Display data update notice
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action admin_notices
 	 */
@@ -684,7 +680,7 @@ class MP_Installer {
 	/**
 	 * Runs the installer code.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function run() {
@@ -724,36 +720,36 @@ class MP_Installer {
 				$this->update_2923();
 			}
 
-			//1.0 update
-			if ( version_compare( $old_version, '1.0.0.2', '<' ) || ( false !== $force_version && version_compare( $force_version, '1.0.0.2', '<' ) ) ) {
+			//3.0 update
+			if ( version_compare( $old_version, '3.0.0.2', '<' ) || ( false !== $force_version && version_compare( $force_version, '3.0.0.2', '<' ) ) ) {
 				$settings = $this->update_3000( $settings );
 			}
 
-			//1.0.0.3 need data from 1.0
-			if ( ( version_compare( $old_version, '1.0.0.3', '<' ) || ( false !== $force_version && version_compare( $force_version, '1.0.0.3', '<' ) ) ) ) {
+			//3.0.0.3 need data from 3.0
+			if ( ( version_compare( $old_version, '3.0.0.3', '<' ) || ( false !== $force_version && version_compare( $force_version, '3.0.0.3', '<' ) ) ) ) {
 				$settings = $this->update_3003( $settings );
 				update_option( 'mp_settings', $settings );
 				//we will remove the mp_db_update_required, so user can re run the wizard
 				update_option( 'mp_db_update_required', 1 );
 			}
 
-			//1.0 update
-			if ( version_compare( $old_version, '1.0.0.8', '<' ) || ( false !== $force_version && version_compare( $force_version, '1.0.0.8', '<' ) ) ) {
+			//3.0 update
+			if ( version_compare( $old_version, '3.0.0.8', '<' ) || ( false !== $force_version && version_compare( $force_version, '3.0.0.8', '<' ) ) ) {
 				$settings = $this->update_3007( $settings );
 			}
 
-			//1.0 update
-			if ( version_compare( $old_version, '1.1.3', '<' ) || ( false !== $force_version && version_compare( $force_version, '1.1.3', '<' ) ) ) {
+			//3.0 update
+			if ( version_compare( $old_version, '3.1.3', '<' ) || ( false !== $force_version && version_compare( $force_version, '3.1.3', '<' ) ) ) {
 				$settings = $this->update_312( $settings );
 			}
 
-			// 1.2.5 update.
-			if ( version_compare( $old_version, '1.2.6', '<' ) || ( false !== $force_version && version_compare( $force_version, '1.2.6', '<' ) ) ) {
+			// 3.2.5 update.
+			if ( version_compare( $old_version, '3.2.6', '<' ) || ( false !== $force_version && version_compare( $force_version, '3.2.6', '<' ) ) ) {
 				$this->update_326();
 			}
 
-			// 1.2.8 update.
-			if ( version_compare( $old_version, '1.2.8', '<' ) || ( false !== $force_version && version_compare( $force_version, '1.2.8', '<' ) ) ) {
+			// 3.2.8 update.
+			if ( version_compare( $old_version, '3.2.8', '<' ) || ( false !== $force_version && version_compare( $force_version, '3.2.8', '<' ) ) ) {
 				$this->upgrade_328();
 			}
 		} // End if().
@@ -776,7 +772,7 @@ class MP_Installer {
 	/**
 	 * Creates the product attributes table.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wpdb
 	 */
@@ -814,7 +810,7 @@ class MP_Installer {
 	/**
 	 * Adds the cart widget to the default/first sidebar.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action widgets_init
 	 */
@@ -825,7 +821,7 @@ class MP_Installer {
 	/**
 	 * Updates presentation settings.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $settings
@@ -859,7 +855,7 @@ class MP_Installer {
 	/**
 	 * Updates notification settings.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $settings
@@ -893,9 +889,9 @@ class MP_Installer {
 	/**
 	 * Creates a backup of the mp_settings and mp_coupons options.
 	 *
-	 * In the event that a user needs to rollback to a plugin version < 1.0 this data can be used to restore legacy settings.
+	 * In the event that a user needs to rollback to a plugin version < 3.0 this data can be used to restore legacy settings.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $settings
@@ -913,7 +909,7 @@ class MP_Installer {
 	/**
 	 * Add store custom capabilities to admin users
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action after_switch_theme
 	 */
@@ -935,7 +931,7 @@ class MP_Installer {
 	}
 
 	/**
-	 * When user run into this upgrade, which mean we already having the 1.0.0.2 upgrade
+	 * When user run into this upgrade, which mean we already having the 3.0.0.2 upgrade
 	 */
 	public function update_3003( $settings ) {
 		//update missing shipping data
@@ -978,7 +974,7 @@ class MP_Installer {
 			foreach ( $methods as $use ) {
 				if ( isset( $data[ $use ] ) ) {
 					//this mean the old data uses this
-					//convert to 1.0 key
+					//convert to 3.0 key
 					$use_30 = str_replace( '-', '_', $use );
 					switch ( $use_30 ) {
 						case 'table_rate':
@@ -1029,11 +1025,11 @@ class MP_Installer {
 		}
 		$current_gateways = mp_get_setting( 'gateways->allowed', array() );
 		/**
-		 * if client upgrade from < 1.0, the allowed will not same format like 1.0,
+		 * if client upgrade from < 3.0, the allowed will not same format like 3.0,
 		 * so we have to check
 		 */
 		if ( count( array_diff( $old_gateways, $current_gateways ) ) == 0 ) {
-			//this is from below 1.0
+			//this is from below 3.0
 			$current_gateways = array_combine( array_values( $old_gateways ), array_values( $old_gateways ) );
 			foreach ( $current_gateways as $key => $val ) {
 				$new_key                      = str_replace( '-', '_', $key );
@@ -1238,7 +1234,7 @@ class MP_Installer {
 	/**
 	 * Alter multisite table columns, add blog_id and public columns
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function alter_mp_term_relationships_table() {
@@ -1259,7 +1255,7 @@ class MP_Installer {
 	/**
 	 * Update sort_price if silently on version check
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function update_sort_price( $settings ) {
@@ -1290,9 +1286,9 @@ class MP_Installer {
 	}
 
 	/**
-	 * Runs on 1.1.2 update.
+	 * Runs on 3.1.2 update.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $settings
@@ -1306,9 +1302,9 @@ class MP_Installer {
 	}
 
 	/**
-	 * Runs on 1.0.0.7 update.
+	 * Runs on 3.0.0.7 update.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $settings
@@ -1322,9 +1318,9 @@ class MP_Installer {
 	}
 
 	/**
-	 * Runs on 1.0 update.
+	 * Runs on 3.0 update.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $settings
@@ -1343,7 +1339,7 @@ class MP_Installer {
 			$settings['currency'] = 'TRY';
 		}
 
-		//set theme to new default 1.0 theme
+		//set theme to new default 3.0 theme
 		$settings['store_theme'] = 'default';
 
 		return $settings;
@@ -1352,7 +1348,7 @@ class MP_Installer {
 	/**
 	 * Runs on 2.9.2.3 update to fix low inventory emails not being sent.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function update_2923() {
@@ -1365,7 +1361,7 @@ class MP_Installer {
 	/**
 	 * Runs on 2.1.4 update to fix price sorts.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function update_214() {
@@ -1396,11 +1392,11 @@ class MP_Installer {
 	}
 
 	/**
-	 * Update to version 1.2.6.
+	 * Update to version 3.2.6.
 	 *
 	 * Fixes problem with sorting variable products and missing sort_price.
 	 *
-	 * @since 1.2.6
+	 * @since 3.2.6
 	 * @access private
 	 */
 	private function update_326() {
@@ -1427,11 +1423,11 @@ class MP_Installer {
 
 
 	/**
-	 * Update to version 1.2.8.
+	 * Update to version 3.2.8.
 	 *
 	 * Adds enabled options for sending all notification types.
 	 *
-	 * @since 1.2.8
+	 * @since 3.2.8
 	 * @access private
 	 */
 	private function upgrade_328() {
@@ -1456,7 +1452,7 @@ class MP_Installer {
 	/**
 	 * Set flag that db update is required
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	protected function _db_update_required() {

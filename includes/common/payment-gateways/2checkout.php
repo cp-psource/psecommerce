@@ -1,7 +1,7 @@
 <?php
 /*
 PSeCommerce 2Checkout Gateway Plugin
-Author: DerN3rd (WMS N@W)
+Author: S H Mohanjith (Incsub), Marko Miljus (Incsub)
 */
 
 class MP_Gateway_2Checkout extends MP_Gateway_API {
@@ -31,7 +31,7 @@ class MP_Gateway_2Checkout extends MP_Gateway_API {
 	/**
 	 * Refers to the gateways currencies
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var array
 	 */
@@ -86,7 +86,7 @@ class MP_Gateway_2Checkout extends MP_Gateway_API {
 	/**
 	 * Filter the address fields array
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter mp_checkout/address_fields_array
 	 */
@@ -108,7 +108,7 @@ class MP_Gateway_2Checkout extends MP_Gateway_API {
 	/**
 	 * Updates the gateway settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $settings
 	 * @return array
@@ -315,7 +315,7 @@ class MP_Gateway_2Checkout extends MP_Gateway_API {
 	/**
 	 * Init settings metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function init_settings_metabox() {

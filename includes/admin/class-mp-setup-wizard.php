@@ -5,7 +5,7 @@ class MP_Setup_Wizard {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -261,7 +261,7 @@ class MP_Setup_Wizard {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -276,7 +276,7 @@ class MP_Setup_Wizard {
 	/**
 	 * Display setup wizard nag message
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action admin_notices
 	 */
@@ -294,7 +294,7 @@ class MP_Setup_Wizard {
 	/**
 	 * Init metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_metaboxes() {
@@ -364,7 +364,7 @@ class MP_Setup_Wizard {
 				),
 			) );
 
-			/*$metabox->add_field( 'text', array(
+			$metabox->add_field( 'text', array(
 				'name'		 => 'base_adress',
 				'label'		 => array( 'text' => __( 'Straße, Hausnummer', 'mp' ) ),
 				'custom'	 => array(
@@ -373,7 +373,7 @@ class MP_Setup_Wizard {
 				'validation' => array(
 					'required' => true,
 				),
-			) );*/
+			) );
 	
 			$countries_without_postcode = array_keys( mp()->countries_no_postcode );
 			$metabox->add_field( 'text', array(
@@ -392,12 +392,11 @@ class MP_Setup_Wizard {
 					'required' => true,
 				),
 			) );
-
 			$metabox->add_field( 'text', array(
-				'name'       => 'zip_label',
-				'label'      => array( 'text' => __( 'Postleitzahl Label', 'mp' ) ),
-				'custom'     => array(
-					'style' => 'max-width: 300px',
+				'name'		 => 'base_city',
+				'label'		 => array( 'text' => __( 'Stadt/Ort', 'mp' ) ),
+				'custom'	 => array(
+					'style' => 'width:300px',
 				),
 				'validation' => array(
 					'required' => true,
@@ -674,7 +673,7 @@ class MP_Setup_Wizard {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -794,7 +793,7 @@ class MP_Setup_Wizard {
 	/**
 	 * Find currency base on country
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function determine_currency() {

@@ -74,7 +74,7 @@ class PSOURCE_Field_WYSIWYG extends PSOURCE_Field {
 	public function print_scripts() {
 		?>
 <script type="text/javascript">
-jQuery(function($) {
+jQuery(document).ready(function($){
 	$(document).on('psource_repeater_field/start_sort', function(e, $group){
 		$group.find('.wp-editor-area').each(function(){
 			tinymce.execCommand('mceRemoveEditor', false, $(this).attr('id'));
@@ -102,7 +102,7 @@ jQuery(function($) {
 		find all instances of old id and replace with new id. this is key to certain editor
 		functions (e.g. mode switching) working correctly.
 		*/
-		$wrap.find('[id*="' + oldId + '"]').addBack().each(function(){
+		$wrap.find('[id*="' + oldId + '"]').andSelf().each(function(){
 			var $this = $(this);
 					id = $this.attr('id');
 			$this.attr('id', id.replace(oldId, newId));

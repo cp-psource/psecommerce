@@ -66,7 +66,7 @@ if ( !class_exists(Extension::class, false) ):
 		 * the update checking process works as expected.
 		 */
 		public function ajaxCheckNow() {
-			//phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce is checked in preAjaxRequest().
+			//phpcs:ignore ClassicPress.Security.NonceVerification.Missing -- Nonce is checked in preAjaxRequest().
 			if ( !isset($_POST['uid']) || ($_POST['uid'] !== $this->updateChecker->getUniqueName('uid')) ) {
 				return;
 			}
@@ -74,7 +74,7 @@ if ( !class_exists(Extension::class, false) ):
 			$update = $this->updateChecker->checkForUpdates();
 			if ( $update !== null ) {
 				echo "An update is available:";
-				//phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r -- For debugging output.
+				//phpcs:ignore ClassicPress.PHP.DevelopmentFunctions.error_log_print_r -- For debugging output.
 				echo '<pre>', esc_html(print_r($update, true)), '</pre>';
 			} else {
 				echo 'No updates found.';
@@ -101,7 +101,7 @@ if ( !class_exists(Extension::class, false) ):
 							$httpError = $item['httpResponse'];
 							/** @var \WP_Error $httpError */
 							printf(
-								'<dt>WordPress HTTP API error:</dt><dd>%s (<code>%s</code>)</dd>',
+								'<dt>ClassicPress HTTP API error:</dt><dd>%s (<code>%s</code>)</dd>',
 								esc_html($httpError->get_error_message()),
 								esc_html($httpError->get_error_code())
 							);
@@ -149,9 +149,9 @@ if ( !class_exists(Extension::class, false) ):
 			}
 			check_ajax_referer('puc-ajax');
 
-			//phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.runtime_configuration_error_reporting -- Part of a debugging feature.
+			//phpcs:ignore ClassicPress.PHP.DiscouragedPHPFunctions.runtime_configuration_error_reporting -- Part of a debugging feature.
 			error_reporting(E_ALL);
-			//phpcs:ignore WordPress.PHP.IniSet.display_errors_Blacklisted
+			//phpcs:ignore ClassicPress.PHP.IniSet.display_errors_Blacklisted
 			@ini_set('display_errors', 'On');
 		}
 
@@ -171,7 +171,7 @@ if ( !class_exists(Extension::class, false) ):
 		private function getLibraryUrl($filePath) {
 			$absolutePath = realpath(dirname(__FILE__) . '/../../../' . ltrim($filePath, '/'));
 
-			//Where is the library located inside the WordPress directory structure?
+			//Where is the library located inside the ClassicPress directory structure?
 			$absolutePath = PucFactory::normalizePath($absolutePath);
 
 			$pluginDir = PucFactory::normalizePath(WP_PLUGIN_DIR);

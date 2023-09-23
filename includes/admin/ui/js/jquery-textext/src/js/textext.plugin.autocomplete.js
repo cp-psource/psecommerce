@@ -306,7 +306,7 @@
 
 			$(self).data('container', container);
 			
-			$(document.body).on("click", function(e) 
+			$(document.body).click(function(e) 
 			{
 				if (self.isDropdownVisible() && !self.withinWrapElement(e.target))
 					self.trigger(EVENT_HIDE_DROPDOWN);
@@ -1105,6 +1105,6 @@
 	 */
 	p.withinWrapElement = function(element) 
 	{
-		return this.core().wrapElement().find(element).length > 0;
+		return this.core().wrapElement().find(element).size() > 0;
 	}
 })(jQuery);

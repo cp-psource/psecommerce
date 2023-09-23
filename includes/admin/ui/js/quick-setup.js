@@ -1,37 +1,37 @@
-jQuery(function($) {
+jQuery(document).ready(function ($) {
 	var $form = $( "form#mp-main-form" );
 
 	// Tabs
 	$('#mp-quick-setup-tabs').tabs();
 
-	$('#mp-quick-setup-tab-locations .mp_tab_navigation .mp_button_tab_nav-next').on("click", function (e) {
+	$('#mp-quick-setup-tab-locations .mp_tab_navigation .mp_button_tab_nav-next').click(function (e) {
 		e.preventDefault();
         if ( $form.valid() ) {
 			$('#mp-quick-setup-tabs').tabs({active: 1});
         }
 	});
 
-	$('#mp-quick-setup-tab-currency-and-tax .mp_tab_navigation .mp_button_tab_nav-next').on("click", function (e) {
+	$('#mp-quick-setup-tab-currency-and-tax .mp_tab_navigation .mp_button_tab_nav-next').click(function (e) {
 		$('#mp-quick-setup-tabs').tabs({active: 2});
 		e.preventDefault();
 	});
 
-	$('#mp-quick-setup-tab-metric-system .mp_tab_navigation .mp_button_tab_nav-next').on("click", function (e) {
+	$('#mp-quick-setup-tab-metric-system .mp_tab_navigation .mp_button_tab_nav-next').click(function (e) {
 		$('#mp-quick-setup-tabs').tabs({active: 3});
 		e.preventDefault();
 	});
 
-	$('#mp-quick-setup-tab-currency-and-tax .mp_tab_navigation .mp_button_tab_nav-prev').on("click", function (e) {
+	$('#mp-quick-setup-tab-currency-and-tax .mp_tab_navigation .mp_button_tab_nav-prev').click(function (e) {
 		$('#mp-quick-setup-tabs').tabs({active: 0});
 		e.preventDefault();
 	});
 
-	$('#mp-quick-setup-tab-metric-system .mp_tab_navigation .mp_button_tab_nav-prev').on("click", function (e) {
+	$('#mp-quick-setup-tab-metric-system .mp_tab_navigation .mp_button_tab_nav-prev').click(function (e) {
 		$('#mp-quick-setup-tabs').tabs({active: 1});
 		e.preventDefault();
 	});
 
-	$('#mp-quick-setup-tab-payment-gateway .mp_tab_navigation .mp_button_tab_nav-prev').on("click", function (e) {
+	$('#mp-quick-setup-tab-payment-gateway .mp_tab_navigation .mp_button_tab_nav-prev').click(function (e) {
 		$('#mp-quick-setup-tabs').tabs({active: 2});
 		e.preventDefault();
 	});
@@ -70,7 +70,7 @@ jQuery(function($) {
 		$('#mp-settings-shipping-plugin-flat_rate').on('load', window.location.href + ' #mp-settings-shipping-plugin-flat_rate');
 	});
 
-	$('#mp-quick-setup-tab-metric-system').on("click", 'input[name="mp_charge_shipping"]', function () {
+	$('#mp-quick-setup-tab-metric-system').on('click', 'input[name="mp_charge_shipping"]', function () {
 		if ($(this).val() == 1) {
 			$('.mp_tab_content_details-shipping').slideDown();
 		} else {
@@ -78,7 +78,7 @@ jQuery(function($) {
 		}
 	});
 	$('input[name="mp_charge_shipping"]:checked').click();
-	$('#mp-quick-setup-tab-payment-gateway').on("click", 'input[name="wizard_payment"]', function () {
+	$('#mp-quick-setup-tab-payment-gateway').on('click', 'input[name="wizard_payment"]', function () {
 		if ($(this).val() != 'other') {
 			$('.mp_tab_content_details-payment-gateway').slideUp();
 		} else {

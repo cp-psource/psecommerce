@@ -2,9 +2,9 @@
 	var initLayout = function() {
 		var hash = window.location.hash.replace('#', '');
 		var currentTab = $('ul.navigationTabs a')
-							.on("click", showTab)
+							.bind('click', showTab)
 							.filter('a[rel=' + hash + ']');
-		if (currentTab.length == 0) {
+		if (currentTab.size() == 0) {
 			currentTab = $('ul.navigationTabs a:first');
 		}
 		showTab.apply(currentTab.get(0));
@@ -18,7 +18,7 @@
 		});
 		$('#colorpickerHolder2>div').css('position', 'absolute');
 		var widt = false;
-		$('#colorSelector2').on("click", function() {
+		$('#colorSelector2').bind('click', function() {
 			$('#colorpickerHolder2').stop().animate({height: widt ? 0 : 173}, 500);
 			widt = !widt;
 		});
@@ -31,7 +31,7 @@
 				$(this).ColorPickerSetColor(this.value);
 			}
 		})
-		.on('keyup', function(){
+		.bind('keyup', function(){
 			$(this).ColorPickerSetColor(this.value);
 		});
 		$('#colorSelector').ColorPicker({

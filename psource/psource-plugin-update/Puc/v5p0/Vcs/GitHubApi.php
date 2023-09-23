@@ -351,7 +351,7 @@ if ( !class_exists(GitHubApi::class, false) ):
 			$this->accessToken = is_string($credentials) ? $credentials : null;
 
 			//Optimization: Instead of filtering all HTTP requests, let's do it only when
-			//WordPress is about to download an update.
+			//ClassicPress is about to download an update.
 			add_filter('upgrader_pre_download', array($this, 'addHttpRequestFilter'), 10, 1); //WP 3.7+
 		}
 
@@ -400,7 +400,7 @@ if ( !class_exists(GitHubApi::class, false) ):
 		 */
 		public function addHttpRequestFilter($result) {
 			if ( !$this->downloadFilterAdded && $this->isAuthenticationEnabled() ) {
-				//phpcs:ignore WordPressVIPMinimum.Hooks.RestrictedHooks.http_request_args -- The callback doesn't change the timeout.
+				//phpcs:ignore ClassicPressVIPMinimum.Hooks.RestrictedHooks.http_request_args -- The callback doesn't change the timeout.
 				add_filter('http_request_args', array($this, 'setUpdateDownloadHeaders'), 10, 2);
 				add_action('requests-requests.before_redirect', array($this, 'removeAuthHeaderFromRedirects'), 10, 4);
 				$this->downloadFilterAdded = true;
@@ -422,7 +422,7 @@ if ( !class_exists(GitHubApi::class, false) ):
 		 * @return array
 		 */
 		public function setUpdateDownloadHeaders($requestArgs, $url = '') {
-			//Is WordPress trying to download one of our release assets?
+			//Is ClassicPress trying to download one of our release assets?
 			if ( $this->releaseAssetsEnabled && (strpos($url, $this->getAssetApiBaseUrl()) !== false) ) {
 				$requestArgs['headers']['Accept'] = 'application/octet-stream';
 			}

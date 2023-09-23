@@ -97,7 +97,7 @@ class MP_Shipping_Pickup extends MP_Shipping_API {
 	/**
 	 * Add additional shipping fields
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter mp_checkout/address_fields_array
 	 * @param array $fields
@@ -124,7 +124,7 @@ class MP_Shipping_Pickup extends MP_Shipping_API {
 	/**
 	 * Initialize the settings metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_settings_metabox() {

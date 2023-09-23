@@ -45,7 +45,7 @@ class PSOURCE_Field_File_List extends PSOURCE_Field {
 	public function enqueue_scripts() {
 		wp_enqueue_script('media-upload');
 
-		// 1.5 media gallery
+		// 3.5 media gallery
 		if ( function_exists('wp_enqueue_media') && ! did_action('wp_enqueue_media') ) {
             wp_enqueue_media();
 		}
@@ -54,17 +54,17 @@ class PSOURCE_Field_File_List extends PSOURCE_Field {
 	/**
 	 * Print necessary field javascript.
 	 *
-	 * @since 1.2.4
+	 * @since 3.2.4
 	 * @access public
 	 */
 	public function print_scripts() {
         ?>
         <script type="text/javascript">
-        jQuery(function($) {
+        jQuery(document).ready(function($){
             /*
             * Show the media library popup
             */
-            $('.psource-fields').on("click", '.psource-field-file-select', function(e){
+            $('.psource-fields').on('click', '.psource-field-file-select', function(e){
                 e.preventDefault();
 
                 var $this = $(this),
@@ -104,7 +104,7 @@ class PSOURCE_Field_File_List extends PSOURCE_Field {
             });
 
             //Add field button
-            $('.psource-fields .add-file').on("click", function(e) {
+            $('.psource-fields .add-file').click(function(e) {
                 e.preventDefault();
                 var newInput = $(".psource-fields .file-list .file:first").clone();
                 newInput.find("input").val('');
@@ -114,7 +114,7 @@ class PSOURCE_Field_File_List extends PSOURCE_Field {
             });
 
             //Remove field button
-            $(document).on("click",'.psource-fields .remove-file',function(e) {
+            $(document).on('click','.psource-fields .remove-file',function(e) {
                 e.preventDefault();
                 $(this).parent().remove();
             });
@@ -128,7 +128,7 @@ class PSOURCE_Field_File_List extends PSOURCE_Field {
 	/**
 	 * Displays the field.
 	 *
-	 * @since 1.2.4
+	 * @since 3.2.4
 	 * @access public
 	 * @param int $post_id
 	 */

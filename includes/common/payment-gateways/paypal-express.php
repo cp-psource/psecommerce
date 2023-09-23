@@ -40,7 +40,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * List of supported currencies
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var array
 	 */
@@ -75,7 +75,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * List of support locales
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var array
 	 */
@@ -115,7 +115,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Process an API call
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $method
 	 * @param array $request
@@ -155,7 +155,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Take NVPString and convert it to an associative array and it will decode the response
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @return array
 	 */
@@ -168,7 +168,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Prepare the parameters for the DoExpressCheckoutPayment API Call
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 *
 	 * @param string $token
@@ -179,7 +179,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 		$request       = array_merge( $saved_request, array(
 			'TOKEN'   => $token,
 			'PAYERID' => $payer_id,
-			//'BUTTONSOURCE' => 'psource_SP',
+			//'BUTTONSOURCE' => 'incsub_SP',
 		) );
 
 		return $this->_api_call( 'DoExpressCheckoutPayment', $request );
@@ -188,7 +188,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Get error string from result array
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $result
@@ -209,7 +209,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Prepare the parameters for the GetExpressCheckoutDetails API Call
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @return array
 	 */
@@ -224,7 +224,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Redirect to PayPal site
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $token A token as supplied by SetExpressCheckout API call
 	 *
@@ -239,7 +239,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Prepare the parameters for the SetExpressCheckout API Call
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 */
 	protected function _set_express_checkout_deprecated( $cart, $billing_info, $shipping_info, $order_id ) {
@@ -342,7 +342,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	 * @param $order_id
 	 *
 	 * @return array
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	protected function _set_express_checkout( MP_Cart $cart, $billing_info, $shipping_info, $order_id ) {
 		$blog_id                 = $current_blog_id = get_current_blog_id();
@@ -545,7 +545,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Force check the force_check_mode
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter psource_field/get_value/gateways[paypal_express][mode]
 	 */
@@ -562,7 +562,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Updates the gateway settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param array $settings
@@ -593,7 +593,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Init network settings metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function init_network_settings_metabox() {
@@ -635,7 +635,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Init settings metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function init_settings_metabox() {
@@ -669,7 +669,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Both network settings and blog setting use these same fields
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param PSOURCE_Metabox $metabox
@@ -754,7 +754,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 	/**
 	 * Get the confirm order html
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter mp_checkout/confirm_order_html/{plugin_name}
 	 */

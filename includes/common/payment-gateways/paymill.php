@@ -31,7 +31,7 @@ class MP_Gateway_Paymill extends MP_Gateway_API {
 	/**
 	 * The gateway's currencies
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var array
 	 */
@@ -138,7 +138,7 @@ class MP_Gateway_Paymill extends MP_Gateway_API {
 
 	/* Initialize the settings metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 
@@ -203,7 +203,7 @@ class MP_Gateway_Paymill extends MP_Gateway_API {
 	/**
 	 * Updates the gateway settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $settings
 	 * @return array

@@ -372,7 +372,8 @@ class Text_Frame_Reflower extends Frame_Reflower {
       /*foreach($words as &$word) {
         $word = Font_Metrics::get_text_width($word, $font, $size, $word_spacing, $char_spacing);
       }*/
-      array_walk($words, function( &$val , $str , $font ) {$val = Font_Metrics::get_text_width($str, "'.addslashes($font).'", '.$size.', '.$word_spacing.', '.$char_spacing.');});
+      array_walk($words, create_function('&$val,$str',
+                                         '$val = Font_Metrics::get_text_width($str, "'.addslashes($font).'", '.$size.', '.$word_spacing.', '.$char_spacing.');'));
       arsort($words);
       $min = reset($words);
       break;
@@ -382,7 +383,8 @@ class Text_Frame_Reflower extends Frame_Reflower {
       /*foreach($words as &$word) {
         $word = Font_Metrics::get_text_width($word, $font, $size, $word_spacing, $char_spacing);
       }*/
-      array_walk($lines, function( &$val , $str , $font ) {$val = Font_Metrics::get_text_width($str, "'.addslashes($font).'", '.$size.', '.$word_spacing.', '.$char_spacing.');});
+      array_walk($lines, create_function('&$val,$str',
+                                         '$val = Font_Metrics::get_text_width($str, "'.addslashes($font).'", '.$size.', '.$word_spacing.', '.$char_spacing.');'));
 
       arsort($lines);
       $min = reset($lines);
@@ -412,8 +414,8 @@ class Text_Frame_Reflower extends Frame_Reflower {
       /*foreach($words as &$word) {
         $word = Font_Metrics::get_text_width($word, $font, $size, $word_spacing, $char_spacing);
       }*/
-      /*array_walk($lines, create_function('&$val,$str', '$val = Font_Metrics::get_text_width($str, "'.$font.'", '.$size.', '.$word_spacing.', '.$char_spacing.');'));*/ 
-      array_walk($lines, function( &$val , $str , $font ) {$val = Font_Metrics::get_text_width($str, "'.$font.'", '.$size.', '.$word_spacing.', '.$char_spacing.');});
+      array_walk($lines, create_function('&$val,$str',
+                                         '$val = Font_Metrics::get_text_width($str, "'.$font.'", '.$size.', '.$word_spacing.', '.$char_spacing.');'));
       arsort($lines);
       reset($lines);
       $str = key($lines);

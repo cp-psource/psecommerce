@@ -7,7 +7,7 @@ class MP_Products_Screen {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -16,7 +16,7 @@ class MP_Products_Screen {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -31,7 +31,7 @@ class MP_Products_Screen {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -82,7 +82,7 @@ class MP_Products_Screen {
 	/**
 	 * Add a filter by category column on the product page
 	 *
-	 * @since   1.2.3
+	 * @since   3.2.3
 	 */
 	public function filter_by_category() {
 		global $typenow, $wp_query;
@@ -104,7 +104,7 @@ class MP_Products_Screen {
 	/**
 	 * Filter products by the selected category
 	 *
-	 * @since   1.2.3
+	 * @since   3.2.3
 	 * @param   object $query Query object.
 	 */
 	public function parse_category_filter_query( $query ) {
@@ -126,7 +126,7 @@ class MP_Products_Screen {
 	/**
 	 * Enqueues admin javascript/css
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function enqueue_styles_scripts() {
@@ -137,7 +137,7 @@ class MP_Products_Screen {
 	/**
 	 * Print js related to displaying/hiding of product attributes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action in_admin_footer
 	 */
@@ -169,7 +169,7 @@ class MP_Products_Screen {
 					});
 				};
 
-				$(function() {
+				$(document).ready(function () {
 					toggleProductAttributes();
 					$inputs.on('change', toggleProductAttributes);
 				});
@@ -181,16 +181,15 @@ class MP_Products_Screen {
 	/**
 	 * Maybe hide some core metaboxes.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_field/print_scripts/has_variations
 	 */
 	public function maybe_hide_core_metaboxes() {
 		?>
 		<script type="text/javascript">
-			jQuery(function($) {
-				//$('[name="has_variations"]').change(function () {
-				$('[name="has_variations"]').on('change', function () {
+			jQuery(document).ready(function ($) {
+				$('[name="has_variations"]').change(function () {
 					var $elms = $('#postimagediv, #postdivrich, #postexcerpt');
 
 					if ($(this).prop('checked')) {
@@ -210,7 +209,7 @@ class MP_Products_Screen {
 	/**
 	 * Set mp_flush_rewrites_30 to 1 after saving/publishing new product.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 *
 	 * @param int     $post_id   Post ID.
@@ -255,7 +254,7 @@ class MP_Products_Screen {
 	/**
 	 * Save the custom quick edit form fields.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action save_post
 	 *
@@ -320,7 +319,7 @@ class MP_Products_Screen {
 	/**
 	 * Purge variations transient after post update
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action save_post
 	 *
@@ -353,7 +352,7 @@ class MP_Products_Screen {
 	/**
 	 * Delete variations when deleting a product
 	 *
-	 * @since 1.1.3
+	 * @since 3.1.3
 	 * @access public
 	 * @action delete_post
 	 *
@@ -379,7 +378,7 @@ class MP_Products_Screen {
 	/**
 	 * Enqueue quick/bulk edit script
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action admin_print_scripts-edit.php
 	 */
@@ -397,7 +396,7 @@ class MP_Products_Screen {
 	/**
 	 * Display the custom quick edit box
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action quick_edit_custom_box
 	 *
@@ -418,7 +417,7 @@ class MP_Products_Screen {
 	/**
 	 * Display the custom bulk edit box
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action bulk_edit_custom_box
 	 *
@@ -448,7 +447,7 @@ class MP_Products_Screen {
 	/**
 	 * Filter the product admin columns
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter manage_product_posts_columns, manage_mp_product_posts_columns
 	 * @return array
@@ -472,7 +471,7 @@ class MP_Products_Screen {
 	/**
 	 * Display data for each product admin column
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action manage_product_posts_custom_column, manage_mp_product_posts_custom_column
 	 */
@@ -631,7 +630,7 @@ class MP_Products_Screen {
 	/**
 	 * Initialize metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_metaboxes() {
@@ -647,7 +646,7 @@ class MP_Products_Screen {
 	/**
 	 * Remove add-new submenu item from store admin menu
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function remove_menu_items() {
@@ -659,7 +658,7 @@ class MP_Products_Screen {
 	/**
 	 * Saves the product attributes to the database
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter psource_field/save_value/product_attr_*
 	 */
@@ -673,7 +672,7 @@ class MP_Products_Screen {
 	/**
 	 * Gets the product variations from the database and formats for repeater field
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter psource_field/get_value/variations
 	 */
@@ -820,12 +819,12 @@ class MP_Products_Screen {
 		if ( mp_update_setting( 'inventory_threshhold', mp_get_post_value( 'inventory_threshhold' ) ) ) {
 			$response_array = array(
 				'status'         => 'success',
-				'status_message' => __( 'Option erfolgreich gespeichert.', 'mp' )
+				'status_message' => __( 'Option saved successfully.', 'mp' )
 			);
 		} else {
 			$response_array = array(
 				'status'         => 'fail',
-				'status_message' => __( 'Option kann nicht gespeichert werden. Versuche es nochmal.', 'mp' ),
+				'status_message' => __( 'Option cannot be saved. Try again.', 'mp' ),
 			);
 		}
 
@@ -836,9 +835,9 @@ class MP_Products_Screen {
 			$output .= '<table class="wp-list-table widefat fixed striped posts">
 					<thead>
 						<tr>
-							<th scope="col" id="mp_product_name" class="manage-column column-tags">' . __( 'Produkt Name', 'mp' ) . '</th>
+							<th scope="col" id="mp_product_name" class="manage-column column-tags">' . __( 'Product Name', 'mp' ) . '</th>
 							<th scope="col" id="mp_variation_name" class="manage-column column-tags">' . __( 'Variation', 'mp' ) . '</th>
-							<th scope="col" id="mp_stock_level" class="manage-column column-tags">' . __( 'Lagerbestand', 'mp' ) . '</th>
+							<th scope="col" id="mp_stock_level" class="manage-column column-tags">' . __( 'Stock Level', 'mp' ) . '</th>
 						</tr>
 					</thead>
 
@@ -894,7 +893,7 @@ class MP_Products_Screen {
 			$output . '</tbody>
 				</table>';
 		} else {
-			$output .= '<p>' . __( 'Keine Produkte ausverkauft.', 'mp' ) . '</p>';
+			$output .= '<p>' . __( 'No products out of stock.', 'mp' ) . '</p>';
 		}
 
 		$response_array['output']          = $output;
@@ -1018,7 +1017,7 @@ class MP_Products_Screen {
 
 		$response_array = array(
 			'status'         => 'success',
-			'status_message' => __( 'Änderungen erfolgreich gespeichert', 'mp' )
+			'status_message' => __( 'Changes saved successfully', 'mp' )
 		);
 
 		do_action( 'mp_edit_variation_post_data', $post_id, $_POST );
@@ -1030,7 +1029,7 @@ class MP_Products_Screen {
 	/**
 	 * Save inline changed data for variations
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wpdb
 	 */
@@ -1134,7 +1133,7 @@ class MP_Products_Screen {
 	/**
 	 * Hide content editor from admin for products with variations
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action init
 	 */
@@ -1158,7 +1157,7 @@ class MP_Products_Screen {
 	 * Add new terms if don't exist
 	 * Add new taxonomies if don't exist
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action init
 	 * @uses $wpdb
@@ -1326,7 +1325,7 @@ class MP_Products_Screen {
 	/**
 	 * Saves the product variations to the database
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter psource_field/save_value/variations
 	 * @uses $wpdb
@@ -1348,7 +1347,7 @@ class MP_Products_Screen {
 				if ( false === strpos( $variation_id, '_' ) ) {
 					$variation_id = $ids[] = wp_insert_post( array(
 						'post_content' => mp_arr_get_value( 'description', $fields, '' ),
-						'post_title'   => 'Produktvariation von ' . $post_id,
+						'post_title'   => 'Product Variation of ' . $post_id,
 						'post_status'  => 'publish',
 						'post_type'    => MP_Product::get_variations_post_type(),
 						'post_parent'  => $post_id,
@@ -1410,7 +1409,7 @@ WHERE $delete_where"
 	/**
 	 * Initializes the related products metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_related_products_metabox() {
@@ -1437,41 +1436,40 @@ WHERE $delete_where"
 	/**
 	 * Initializes the featured product metabox
 	 *
-	 * @since 1.0.0.8
+	 * @since 3.0.0.8
 	 * @access public
 	 */
 	public function init_featured_product_metabox() {
 		$metabox = new PSOURCE_Metabox( apply_filters( 'mp_metabox_array_mp-featured_product-metabox', array(
 			'id'        => 'mp-featured-product-metabox',
-			'title'     => __( 'Empfohlenes Produkt', 'mp' ),
+			'title'     => __( 'Empfohlene Produkte', 'mp' ),
 			'post_type' => MP_Product::get_post_type(),
 			'context'   => 'side',
 		) ) );
 
 		$metabox->add_field( 'checkbox', apply_filters( 'mp_add_field_array_featured', array(
 			'name'    => 'featured',
-			'message' => __( 'Ist es ein wichtiges Produkt?', 'mp' ),
+			'message' => __( 'Ist empfohlen?', 'mp' ),
 		) ) );
 	}
 
 	/**
 	 * Initializes the product type metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_product_type_metabox() {
 		$metabox = new PSOURCE_Metabox( apply_filters( 'mp_metabox_array_mp-product-type-metabox', array(
 			'id'        => 'mp-product-type-metabox',
-			'title'     => sprintf( __( 'Produktart %1$s(Physisches Produkt, Digital usw.)%2$s', 'mp' ), '<span class="mp_meta_small_desc">', '</span>' ),
+			'title'     => sprintf( __( 'Produktart %1$s(Physisches Produkt, digital usw.)%2$s', 'mp' ), '<span class="mp_meta_small_desc">', '</span>' ),
 			'post_type' => MP_Product::get_post_type(),
 			'context'   => 'normal',
 		) ) );
 
 		$product_kinds = array(
-			'physical'     => __( 'Physisches Produkt', 'mp' ),
-			'digital'      => __( 'Digitaler Download', 'mp' ),
-            'freedownload' => __( 'Gratis Download', 'mp' ),
+			'physical'     => __( 'Physical / Tangible Product', 'mp' ),
+			'digital'      => __( 'Digitaler Download', 'mp' )
 		);
 
 		$post_id = isset( $_GET['post'] ) ? $_GET['post'] : 0;
@@ -1481,10 +1479,6 @@ WHERE $delete_where"
 		if ( ! $has_variations ) {
 			$product_kinds['external'] = __( 'Externer/Affiliate Link', 'mp' );
 		}
-
-		/*if ( ! $has_variations ) {
-			$product_kinds['freedownload'] = __( 'Gratis Download', 'mp' );
-		}*/
 
 		$metabox->add_field( 'select', apply_filters( 'mp_add_field_array_product_type', array(
 			'name'          => 'product_type',
@@ -1629,11 +1623,11 @@ WHERE $delete_where"
 				'placeholder'				 => __( 'Steuersatz', 'mp' ),
 				'default_value'				 => '',
 				'desc'						 => __( 'Wenn Du möchtest, dass dieses Produkt einen speziellen Steuersatz verwendet, gib diesen hier ein. Wenn Du das Symbol "%" weglässt, wird der Preis als fester Betrag für jedes dieser Produkte im Warenkorb des Benutzers berechnet.', 'mp' ),
-				'conditional'				 => array(
+				/*'conditional'				 => array(
 					'name'	 => 'product_type',
 					'value'	 => array( 'physical', 'digital' ),
 					'action' => 'show',
-				),
+				),*/
 				'conditional'				 => array(
 					'name'	 => 'charge_tax',
 					'value'	 => 1,
@@ -1843,28 +1837,6 @@ WHERE $delete_where"
 			))
 		);
 
-		$metabox->add_field( apply_filters( 'mp_product_file_url_type','file' ),
-			apply_filters( 'mp_add_field_array_file_url', array(
-				'name'         	=> 'file_url',
-				'label'        	=> array( 'text' => __( 'Datei URL', 'mp' ) ),
-				//'placeholder'	=> __( 'Choose a file', 'mp' ),
-				'button_label' 	=> 'Wähle eine Datei aus',
-				'conditional'  	=> array(
-					'action'   	=> 'show',
-					'operator' 	=> 'AND',
-					array(
-						'name'  => 'product_type',
-						'value' => 'freedownload',
-					),
-					array(
-						'name'  => 'has_variation',
-						'value' => 'no',
-					),
-				),
-				'class'        	=> 'mp-product-field-50 mp-blank-bg'
-			))
-		);
-
 		$metabox->add_field( 'text', apply_filters( 'mp_add_field_array_external_url', array(
 			'name'         => 'external_url',
 			'label'        => array( 'text' => __( 'Externer Link', 'mp' ) ),
@@ -1889,7 +1861,7 @@ WHERE $delete_where"
 	/**
 	 * Initializes the product type metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_product_images_metabox() {
@@ -1950,7 +1922,7 @@ WHERE $delete_where"
 	/**
 	 * Initializes the product details metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_product_details_metabox() {
@@ -2182,7 +2154,7 @@ WHERE $delete_where"
 	/**
 	 * Initializes the product variation metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_variations_metabox() {
@@ -2498,7 +2470,7 @@ WHERE $delete_where"
 	/**
 	 * Add custom title placeholder to product edit screen
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter enter_title_here
 	 */
@@ -2513,7 +2485,7 @@ WHERE $delete_where"
 	/**
 	 * Remove metaboxes from the single product admin page
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action admin_menu
 	 */

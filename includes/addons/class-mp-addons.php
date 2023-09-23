@@ -4,7 +4,7 @@ class MP_Addons {
 	/**
 	 * Refers to the registered addons
 	 *12.3.20 Alles Fein DN
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var array
 	 */
@@ -13,7 +13,7 @@ class MP_Addons {
 	/**
 	 * Refers to the enabled addons
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @var array
 	 */
@@ -22,7 +22,7 @@ class MP_Addons {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -31,7 +31,7 @@ class MP_Addons {
 	/**
 	 * Determine if an addon has settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param string $addon The class name of the addon to check.
 	 * @return bool
@@ -44,7 +44,7 @@ class MP_Addons {
 	/**
 	 * Disable add-on
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array/string $addons
 	 */
@@ -57,7 +57,7 @@ class MP_Addons {
 				/**
 				 * Fires after an addon is disabled
 				 *
-				 * @since 1.0
+				 * @since 3.0
 				 */
 				do_action( 'mp_addons/disable' . $addon_obj->class );
 			}
@@ -69,7 +69,7 @@ class MP_Addons {
 	/**
 	 * Enable add-on
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array/string $addons
 	 */
@@ -85,7 +85,7 @@ class MP_Addons {
                                 /**
                                   * Fires after an addon is enabled
                                   *
-                                  * @since 1.0
+                                  * @since 3.0
                                   */
                                 do_action( 'mp_addons/enable/' . $addon_obj->class );
 
@@ -100,7 +100,7 @@ class MP_Addons {
 	/**
 	 * Get an add-on object from it's class name
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param string $class The class name of the add-on.
 	 * @return object The add-on. False, if add-on is not found.
@@ -112,7 +112,7 @@ class MP_Addons {
 	/**
 	 * Get all registered add-ons
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return array
 	 */
@@ -123,7 +123,7 @@ class MP_Addons {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -137,7 +137,7 @@ class MP_Addons {
 	/**
 	 * Check if an addon is enabled
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function is_addon_enabled( $class ) {
@@ -147,7 +147,7 @@ class MP_Addons {
 	/**
 	 * Register an add-on
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $args {
 	 *		An array of arguments.
@@ -174,7 +174,7 @@ class MP_Addons {
 	/**
 	 * Set enabled addons
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 * @action init, switch_blog
 	 */
@@ -190,7 +190,7 @@ class MP_Addons {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -205,7 +205,7 @@ if ( ! function_exists( 'mp_addons' ) ) :
 	/**
 	 * Get the instance of the MP_Addons class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @return MP_Addons
 	 */
 	function mp_addons() {

@@ -86,7 +86,7 @@ class PSOURCE_Field_Post_Select extends PSOURCE_Field {
 	/**
 	 * Search by title only
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter posts_search
 	 * @param string $search
@@ -124,7 +124,7 @@ class PSOURCE_Field_Post_Select extends PSOURCE_Field {
 	/**
 	 * Prints scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function print_scripts() {
@@ -222,7 +222,7 @@ class PSOURCE_Field_Post_Select extends PSOURCE_Field {
 	 * @access public
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script( 'psource-field-select2', mp_plugin_url( 'vendors/select2/select2.min.js' ), array( 'jquery' ), MP_VERSION );
+		wp_enqueue_script( 'psource-field-select2', PSOURCE_Metabox::class_url( 'ui/select2/select2.min.js' ), array( 'jquery' ), PSOURCE_METABOX_VERSION );
 	}
 
 	/**
@@ -232,7 +232,7 @@ class PSOURCE_Field_Post_Select extends PSOURCE_Field {
 	 * @access public
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style( 'psource-field-select2', mp_plugin_url( 'vendors/select2/select2.css' ), array(), MP_VERSION );
+		wp_enqueue_style( 'psource-field-select2', PSOURCE_Metabox::class_url( 'ui/select2/select2.css' ), array(), PSOURCE_METABOX_VERSION );
 	}
 
 }

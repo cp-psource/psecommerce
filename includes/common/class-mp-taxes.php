@@ -19,7 +19,7 @@ class MP_Taxes {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -39,8 +39,7 @@ class MP_Taxes {
 	 *
 	 * @return array
 	 */
-	/*public function calculate( $price, $inclusive_tax = false, $applied_rates ) {*/ //PhP8 Deprecated
-		public function calculate( $price, $inclusive_tax = false, $applied_rates = null ) {
+	public function calculate( $price, $applied_rates, $inclusive_tax = false ) {
 		$taxes = array();
 		if ( $inclusive_tax ) {
 			$taxes = $this->calc_inclusive_taxes( $price, $applied_rates );

@@ -70,7 +70,7 @@ class MP_Gateway_Worker_AuthorizeNet_AIM {
 		/**
 		 * Set the number of retries
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @param int $retries The current number of retries.
 		 */
 		$retries = apply_filters( 'mp_gateway/authorizenet_aim/api_retries', 1 );

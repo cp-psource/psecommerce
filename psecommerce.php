@@ -1,12 +1,14 @@
 <?php
 /**
  * Plugin Name: PSeCommerce
- * Plugin URI:  https://n3rds.work/piestingtal_source/psecommerce-shopsystem/
- * Description: Das einfachste und dennoch mächtigste WordPress-E-Commerce-Plugin - Ob kleiner Onlineshop, Digitales Schaufenster, funktioniert auch perfekt mit BuddyPress und Multisite, um einen sozialen Marktplatz zu schaffen, auf dem Du einen Prozentsatz nehmen kannst! Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige Produkte hinzu.
- * Version:     1.5.6
+ * Plugin URI:  https://n3rds.work/?piestingtal_source=psecommerce-shopsystem
+ * Description: Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin
+ * Version:     3.5.2
+ * Requires at least: 4.9
  * Author:      DerN3rd (WMS N3rds@Work)
  * Author URI:  https://n3rds.work
  * Text Domain: mp
+ * Domain Path: /languages
  */
 
 /*
@@ -25,9 +27,8 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA	02111-1307	USA
 
-Plugin Authors: DerN3rd (WMS N3rds@Work) DerN3rd (WMS N@W), DerN3rd (WMS N@W), Hoang Ngo (Incsub), Jonathan Cowher (Incsub), Ricardo Freitas (Incsub), Cvetan Cvetanov (Incsub), Julien Zerbib (Incsub), Sabri Bouchaala (Incsub), Emmanuel Laborin (Incsub)
+Plugin Authors: DerN3rd (WMS N3rds@Work) Marko Miljus (Incsub), Aaron Edwards (Incsub), Hoang Ngo (Incsub), Jonathan Cowher (Incsub), Ricardo Freitas (Incsub), Cvetan Cvetanov (Incsub), Julien Zerbib (Incsub), Sabri Bouchaala (Incsub), Emmanuel Laborin (Incsub)
 */
-
 require 'psource/psource-plugin-update/psource-plugin-updater.php';
 use Psource\PluginUpdateChecker\v5\PucFactory;
 $MyUpdateChecker = PucFactory::buildUpdateChecker(
@@ -36,17 +37,18 @@ $MyUpdateChecker = PucFactory::buildUpdateChecker(
 	'psecommerce' 
 );
 
-define( 'MP_VERSION', '1.5.6' );
+define( 'MP_VERSION', '3.5.2' );
+
 
 /**
- * Hauptklasse PSeCommerce.
+ * Main class PSeCommerce.
  */
 class PSeCommerce {
 
 	/**
-	 * Bezieht sich auf die Posttypen, die PSeCommerce verwendet
+	 * Refers to the post types that PSeCommerce uses
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var array
 	 */
@@ -54,18 +56,18 @@ class PSeCommerce {
 	var $post_types = array( 'mp_product', 'product', 'mp_product_variation' );
 
 	/**
-	 * Bezieht sich auf die einzelne Instanz der Klasse
+	 * Refers to the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
 	private static $_instance = null;
 
 	/**
-	 * Bezieht sich auf den absoluten Pfad zur Hauptdatei des Plugins
+	 * Refers to the absolute path to the plugin's main file
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var string
 	 */
@@ -74,7 +76,7 @@ class PSeCommerce {
 	/**
 	 * Refers to the absolute url to the plugin's directory
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var string
 	 */
@@ -83,7 +85,7 @@ class PSeCommerce {
 	/**
 	 * Refers to the absolute path to the plugin's directory
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var string
 	 */
@@ -99,7 +101,7 @@ class PSeCommerce {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -114,7 +116,7 @@ class PSeCommerce {
 	/**
 	 * Gets an absolute path to the plugin's base directory
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 *
 	 * @param string $path (optional) Will be appended onto the base directory.
@@ -128,7 +130,7 @@ class PSeCommerce {
 	/**
 	 * Gets an absolute url to the plugin's base directory
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 *
 	 * @param string $path (optional) Will be appended onto the base directory.
@@ -143,7 +145,7 @@ class PSeCommerce {
 	/**
 	 * Register custom post types, taxonomies and stati
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @uses $wp_version
 	 */
@@ -199,9 +201,9 @@ class PSeCommerce {
 				'parent_item'                => __( 'Übergeordnetes Produkt-Tag', 'mp' ),
 				'parent_item_colon'          => __( 'Übergeordnetes Produkt-Tag:', 'mp' ),
 				'search_items'               => __( 'Produkt-Tags suchen', 'mp' ),
-				'separate_items_with_commas' => __( 'Produkt-Tags durch Kommas trennen', 'mp' ),
+				'separate_items_with_commas' => __( 'Produktetiketten durch Kommas trennen', 'mp' ),
 				'add_or_remove_items'        => __( 'Produkt-Tags hinzufügen oder entfernen', 'mp' ),
-				'choose_from_most_used'      => __( 'Wähle aus den am häufigsten verwendeten Produkt-Tags', 'mp' ),
+				'choose_from_most_used'      => __( 'Wähle aus den am häufigsten verwendeten Produktetiketten', 'mp' ),
 				'not_found'                  => __( 'Keine Produkt-Tags gefunden', 'mp' ),
 			),
 			'capabilities'      => array(
@@ -223,7 +225,7 @@ class PSeCommerce {
 			'labels'             => array(
 				'name'               => __( 'Produkte', 'mp' ),
 				'singular_name'      => __( 'Produkt', 'mp' ),
-				'menu_name'          => __( 'Shop-Board', 'mp' ),
+				'menu_name'          => __( 'Shop', 'mp' ),
 				'all_items'          => __( 'Produkte', 'mp' ),
 				'add_new'            => __( 'Neues Produkt hinzufügen', 'mp' ),
 				'add_new_item'       => __( 'Neues Produkt hinzufügen', 'mp' ),
@@ -344,7 +346,7 @@ class PSeCommerce {
 	/**
 	 * Load payment and shipping gateways
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function load_plugins() {
@@ -369,7 +371,7 @@ class PSeCommerce {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -450,7 +452,7 @@ class PSeCommerce {
 	 * Localization.
 	 */
 	function localization() {
-		// Load up the localization file if we're using WordPress in a different language.
+		// Load up the localization file if we're using ClassicPress in a different language.
 		// Place it in this plugin's "languages" folder and name it "mp-[value in wp-config].mo".
 		$mu_plugins = wp_get_mu_plugins();
 		$lang_dir   = dirname( plugin_basename( $this->_plugin_file ) ) . '/languages/';
@@ -589,9 +591,9 @@ class PSeCommerce {
 	}
 
 	/**
-	 * Called from WordPress when the admin page init process is invoked.
+	 * Called from ClassicPress when the admin page init process is invoked.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	function mp_admin_init() {
 		if ( is_multisite() ) {
@@ -608,7 +610,7 @@ class PSeCommerce {
 	/**
 	 * Adds a 'settings' link on the plugin links.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @param array $links links for this plugin.
 	 * @return array $links links including Settings link
 	 */
@@ -704,7 +706,7 @@ class PSeCommerce {
 	/**
 	 * Register add ons
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function register_addons() {
@@ -773,7 +775,7 @@ class PSeCommerce {
 		/**
 		 * Fires after all internal addons have been registered
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 */
 		do_action( 'psecommerce/register_addons' );
@@ -782,7 +784,7 @@ class PSeCommerce {
 	/**
 	 * Add rewrite rules.
 	 *
-	 * @since  1.0
+	 * @since  3.0
 	 * @access public
 	 * @uses   $wp_rewrite
 	 * @param  array $rewrite_rules  Rewrite rules.
@@ -800,7 +802,7 @@ class PSeCommerce {
 		  This is necessary, otherwise product cats and tags will return 404 errors
 		  due to how rewrite rules are generated for pages.
 
-		  @see http://wordpress.stackexchange.com/questions/4127/custom-taxonomy-and-pages-rewrite-slug-conflict-gives-404
+		  @see http://classicpress.stackexchange.com/questions/4127/custom-taxonomy-and-pages-rewrite-slug-conflict-gives-404
 		 */
 		if ( $post_id = mp_get_setting( 'pages->products' ) ) {
 			$page_structure = $wp_rewrite->get_page_permastruct();
@@ -843,7 +845,7 @@ class PSeCommerce {
 	/**
 	 * Add custom query vars
 	 *
-	 * @since  1.0
+	 * @since  3.0
 	 * @access public
 	 * @param  array $vars  Variables.
 	 * @filter query_vars
@@ -862,7 +864,7 @@ class PSeCommerce {
 	/**
 	 * Make sure images use https protocol when displaying content over ssl.
 	 *
-	 * @since  1.0
+	 * @since  3.0
 	 * @access public
 	 * @param  string $url      URL.
 	 * @param  int    $post_id  Post Id.
@@ -885,7 +887,7 @@ class PSeCommerce {
 	/**
 	 * Maybe flush rewrite rules.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action init
 	 */
@@ -901,10 +903,10 @@ class PSeCommerce {
 	/**
 	 * Get user billing info.
 	 *
-	 * Before 1.0 only shipping info was captured. This function will return the
+	 * Before 3.0 only shipping info was captured. This function will return the
 	 * shipping info if billing info doesn't exist for the given user.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param $value
 	 * @param int    $user_id      User ID.
@@ -941,7 +943,7 @@ class PSeCommerce {
 	/**
 	 * Include necessary files
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function includes() {
@@ -1010,9 +1012,9 @@ class PSeCommerce {
 	}
 
 	/**
-	 * Fange veraltete Funktionen ab.
+	 * Catch deprecated functions.
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param $method
 	 * @param $args
@@ -1021,61 +1023,61 @@ class PSeCommerce {
 	public function __call( $method, $args ) {
 		switch ( $method ) {
 			case 'display_currency' :
-				_deprecated_function( $method, '1.0', 'mp_display_currency' );
+				_deprecated_function( $method, '3.0', 'mp_display_currency' );
 
 				return call_user_func_array( 'mp_display_currency', $args );
 				break;
 
 			case 'get_download_url' :
-				_deprecated_function( $method, '1.0', 'MP_Product::download_url' );
+				_deprecated_function( $method, '3.0', 'MP_Product::download_url' );
 				$product = new MP_Product( $args[0] );
 
 				return $product->download_url( $args[1], false );
 				break;
 
 			case 'mail' :
-				_deprecated_function( $method, '1.0', 'mp_send_email' );
+				_deprecated_function( $method, '3.0', 'mp_send_email' );
 
 				return call_user_func_array( 'mp_send_email', $args );
 				break;
 
 			case 'order_notification' :
-				_deprecated_function( $method, '1.0', 'MP_Order::send_notifications' );
+				_deprecated_function( $method, '3.0', 'MP_Order::send_notifications' );
 				$order = new MP_Order( $args[0] );
 				$order->send_notifications();
 				break;
 
 			case 'get_order' :
-				_deprecated_function( $method, '1.0', 'MP_Order' );
+				_deprecated_function( $method, '3.0', 'MP_Order' );
 				break;
 
 			case 'low_stock_notification' :
-				_deprecated_function( $method, '1.0', 'MP_Product::low_stock_notification' );
+				_deprecated_function( $method, '3.0', 'MP_Product::low_stock_notification' );
 				break;
 
 			case 'create_order' :
-				_deprecated_function( $method, '1.0', 'MP_Order::save' );
+				_deprecated_function( $method, '3.0', 'MP_Order::save' );
 				break;
 
 			case 'generate_order_id' :
-				_deprecated_function( $method, '1.0', 'MP_Order::get_id' );
+				_deprecated_function( $method, '3.0', 'MP_Order::get_id' );
 				$order = new MP_Order();
 
 				return $order->get_id();
 				break;
 
 			case 'cart_checkout_error' :
-				_deprecated_function( $method, '1.0', 'MP_Checkout::add_error OR MP_Checkout::get_error' );
+				_deprecated_function( $method, '3.0', 'MP_Checkout::add_error OR MP_Checkout::get_error' );
 				break;
 
 			case 'is_valid_zip' :
-				_deprecated_function( $method, '1.0', 'mp_is_valid_zip' );
+				_deprecated_function( $method, '3.0', 'mp_is_valid_zip' );
 
 				return call_user_func_array( 'mp_is_valid_zip', $args );
 				break;
 
 			case 'coupon_applicable' :
-				_deprecated_function( $method, '1.0', 'MP_Coupon::is_applicable' );
+				_deprecated_function( $method, '3.0', 'MP_Coupon::is_applicable' );
 				$is_applicable = false;
 
 				if ( class_exists( 'MP_Coupon' ) ) {
@@ -1087,7 +1089,7 @@ class PSeCommerce {
 				break;
 
 			case 'download_only_cart' :
-				//_deprecated_function( $method, '1.0', 'MP_Cart::is_download_only' );
+				//_deprecated_function( $method, '3.0', 'MP_Cart::is_download_only' );
 				$cart = MP_Cart::get_instance();
 				$cart->set_id( $args[0] );
 				$is_download_only = $cart->is_download_only();
@@ -1097,44 +1099,44 @@ class PSeCommerce {
 				break;
 
 			case 'get_setting' :
-				_deprecated_function( $method, '1.0', 'mp_get_setting' );
+				_deprecated_function( $method, '3.0', 'mp_get_setting' );
 
 				return call_user_func_array( 'mp_get_setting', $args );
 				break;
 
 			case 'format_currency' :
-				_deprecated_function( $method, '1.0', 'mp_format_currency' );
+				_deprecated_function( $method, '3.0', 'mp_format_currency' );
 
 				return call_user_func_array( 'mp_format_currency', $args );
 				break;
 
 			case 'format_date' :
-				_deprecated_function( $method, '1.0', 'mp_format_date' );
+				_deprecated_function( $method, '3.0', 'mp_format_date' );
 
 				return call_user_func_array( 'mp_format_date', $args );
 				break;
 
 			case 'product_excerpt' :
-				_deprecated_function( $method, '1.0', 'mp_product_excerpt' );
+				_deprecated_function( $method, '3.0', 'mp_product_excerpt' );
 
 				return call_user_func_array( 'mp_product_excerpt', $args );
 				break;
 
 			case 'product_price' :
-				_deprecated_function( $method, '1.0', 'mp_product_price' );
+				_deprecated_function( $method, '3.0', 'mp_product_price' );
 
 				return call_user_func_array( 'mp_product_price', $args );
 				break;
 
 			case 'shipping_price' :
-				_deprecated_function( $method, '1.0', 'MP_Cart::shipping_total' );
+				_deprecated_function( $method, '3.0', 'MP_Cart::shipping_total' );
 				$mp_cart = mp_cart();
 
 				return call_user_func_array( array( $mp_cart, 'shipping_total' ), $args );
 				break;
 
 			case 'tax_price' :
-				_deprecated_function( $method, '1.0', 'MP_Cart::tax_total' );
+				_deprecated_function( $method, '3.0', 'MP_Cart::tax_total' );
 				$mp_cart = mp_cart();
 
 				return call_user_func_array( array( $mp_cart, 'tax_total' ), $args );
@@ -1149,7 +1151,7 @@ class PSeCommerce {
 	/**
 	 * Initializes the class variables
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function _init_vars() {
@@ -1165,7 +1167,7 @@ class PSeCommerce {
 		/**
 		 * Filter the currencies list
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param array $this ->currencies An array of available currencies
 		 */

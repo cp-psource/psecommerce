@@ -28,7 +28,7 @@ class MP_Gateway_Simplify extends MP_Gateway_API {
 	/**
 	 * Enqueue necessary scripts for checkout
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_enqueue_scripts
 	 */
@@ -47,7 +47,7 @@ class MP_Gateway_Simplify extends MP_Gateway_API {
 	/**
 	 * Display the payment form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $cart. Contains the cart contents for the current blog
 	 * @param array $shipping_info. Contains shipping info and email in case you need it
@@ -59,7 +59,7 @@ class MP_Gateway_Simplify extends MP_Gateway_API {
 	/**
 	 * Initialize the settings metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_settings_metabox() {
@@ -108,7 +108,7 @@ class MP_Gateway_Simplify extends MP_Gateway_API {
 	/**
 	 * Updates the gateway settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @param array $settings
 	 * @return array
@@ -130,7 +130,7 @@ class MP_Gateway_Simplify extends MP_Gateway_API {
 	/**
 	 * Print checkout scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function print_checkout_scripts() {

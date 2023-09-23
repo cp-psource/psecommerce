@@ -33,7 +33,7 @@ class MP_Shipping_Table_Rate extends MP_Shipping_API {
   /**
    * Get rates sorted by price from highest to lowest
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @return array
    */
@@ -46,7 +46,7 @@ class MP_Shipping_Table_Rate extends MP_Shipping_API {
   /**
    * Filter the rates field value
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    */
   public function get_rates_value( $value, $post_id, $raw, $field ) {
@@ -60,7 +60,7 @@ class MP_Shipping_Table_Rate extends MP_Shipping_API {
   /**
    * Sort rates from highest to lowest
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @param array $a
    * @param array $b
@@ -80,7 +80,7 @@ class MP_Shipping_Table_Rate extends MP_Shipping_API {
   /**
    * Initialize the settings metabox
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    */
   public function init_settings_metabox() {
@@ -196,7 +196,7 @@ class MP_Shipping_Table_Rate extends MP_Shipping_API {
 	/**
    * Updates the plugin settings
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @param array $settings
    * @return array
@@ -218,7 +218,7 @@ class MP_Shipping_Table_Rate extends MP_Shipping_API {
 	/**
 	 * Sanitize rates before saving
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_field/sanitize_for_db
 	 */

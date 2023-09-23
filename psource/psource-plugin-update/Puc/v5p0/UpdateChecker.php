@@ -193,7 +193,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 		/**
 		 * Explicitly allow HTTP requests to the metadata URL.
 		 *
-		 * WordPress has a security feature where the HTTP API will reject all requests that are sent to
+		 * ClassicPress has a security feature where the HTTP API will reject all requests that are sent to
 		 * another site hosted on the same server as the current site (IP match), a local host, or a local
 		 * IP, unless the host exactly matches the current site.
 		 *
@@ -343,7 +343,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 			//Let plugins/themes modify the update.
 			$update = apply_filters($this->getUniqueName('request_update_result'), $update, $httpResult);
 
-			$this->fixSupportedWordpressVersion($update);
+			$this->fixSupportedClassicpressVersion($update);
 
 			if ( isset($update, $update->translations) ) {
 				//Keep only those translation updates that apply to this site.
@@ -355,14 +355,14 @@ if ( !class_exists(UpdateChecker::class, false) ):
 
 		/**
 		 * The "Tested up to" field in the plugin metadata is supposed to be in the form of "major.minor",
-		 * while WordPress core's list_plugin_updates() expects the $update->tested field to be an exact
+		 * while ClassicPress core's list_plugin_updates() expects the $update->tested field to be an exact
 		 * version, e.g. "major.minor.patch", to say it's compatible. In other case it shows
 		 * "Compatibility: Unknown".
-		 * The function mimics how wordpress.org API crafts the "tested" field out of "Tested up to".
+		 * The function mimics how classicpress.org API crafts the "tested" field out of "Tested up to".
 		 *
 		 * @param Metadata|null $update
 		 */
-		protected function fixSupportedWordpressVersion(Metadata $update = null) {
+		protected function fixSupportedClassicpressVersion(Metadata $update = null) {
 			if ( !isset($update->tested) || !preg_match('/^\d++\.\d++$/', $update->tested) ) {
 				return;
 			}
@@ -432,7 +432,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 		 */
 		public function triggerError($message, $errorType) {
 			if ( $this->isDebugModeEnabled() ) {
-				//phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Only happens in debug mode.
+				//phpcs:ignore ClassicPress.PHP.DevelopmentFunctions.error_log_trigger_error -- Only happens in debug mode.
 				trigger_error(esc_html($message), $errorType);
 			}
 		}
@@ -533,7 +533,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 			}
 
 			if ( !empty($update) ) {
-				//Let plugins filter the update info before it's passed on to WordPress.
+				//Let plugins filter the update info before it's passed on to ClassicPress.
 				$update = apply_filters($this->getUniqueName('pre_inject_update'), $update);
 				$updates = $this->addUpdateToList($updates, $update->toWpFormat());
 			} else {
@@ -576,7 +576,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 
 		/**
 		 * See this post for more information:
-		 * @link https://make.wordpress.org/core/2020/07/30/recommended-usage-of-the-updates-api-to-support-the-auto-updates-ui-for-plugins-and-themes-in-wordpress-5-5/
+		 * @link https://make.classicpress.org/core/2020/07/30/recommended-usage-of-the-updates-api-to-support-the-auto-updates-ui-for-plugins-and-themes-in-classicpress-5-5/
 		 *
 		 * @param \stdClass|null $updates
 		 * @return \stdClass
@@ -610,7 +610,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 
 		/**
 		 * Get the key that will be used when adding updates to the update list that's maintained
-		 * by the WordPress core. The list is always an associative array, but the key is different
+		 * by the ClassicPress core. The list is always an associative array, but the key is different
 		 * for plugins and themes.
 		 *
 		 * @return string
@@ -620,11 +620,11 @@ if ( !class_exists(UpdateChecker::class, false) ):
 		/**
 		 * Should we show available updates?
 		 *
-		 * Usually the answer is "yes", but there are exceptions. For example, WordPress doesn't
+		 * Usually the answer is "yes", but there are exceptions. For example, ClassicPress doesn't
 		 * support automatic updates installation for mu-plugins, so PUC usually won't show update
 		 * notifications in that case. See the plugin-specific subclass for details.
 		 *
-		 * Note: This method only applies to updates that are displayed (or not) in the WordPress
+		 * Note: This method only applies to updates that are displayed (or not) in the ClassicPress
 		 * admin. It doesn't affect APIs like requestUpdate and getUpdate.
 		 *
 		 * @return bool
@@ -783,7 +783,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 		}
 
 		/**
-		 * Insert translation updates into the list maintained by WordPress.
+		 * Insert translation updates into the list maintained by ClassicPress.
 		 *
 		 * @param stdClass $updates
 		 * @return stdClass
@@ -802,7 +802,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 				$updates->translations = array();
 			}
 
-			//In case there's a name collision with a plugin or theme hosted on wordpress.org,
+			//In case there's a name collision with a plugin or theme hosted on classicpress.org,
 			//remove any preexisting updates that match our thing.
 			$updates->translations = array_values(array_filter(
 				$updates->translations,
@@ -816,7 +816,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 						'type' => $this->translationType,
 						'slug' => $this->directoryName,
 						'autoupdate' => 0,
-						//AFAICT, WordPress doesn't actually use the "version" field for anything.
+						//AFAICT, ClassicPress doesn't actually use the "version" field for anything.
 						//But lets make sure it's there, just in case.
 						'version' => isset($update->version) ? $update->version : ('1.' . strtotime($update->updated)),
 					),
@@ -872,7 +872,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 		/**
 		 * Rename the update directory to match the existing plugin/theme directory.
 		 *
-		 * When WordPress installs a plugin or theme update, it assumes that the ZIP file will contain
+		 * When ClassicPress installs a plugin or theme update, it assumes that the ZIP file will contain
 		 * exactly one directory, and that the directory name will be the same as the directory where
 		 * the plugin or theme is currently installed.
 		 *
@@ -884,7 +884,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 		 * @access protected
 		 *
 		 * @param string $source The directory to copy to /wp-content/plugins or /wp-content/themes. Usually a subdirectory of $remoteSource.
-		 * @param string $remoteSource WordPress has extracted the update to this directory.
+		 * @param string $remoteSource ClassicPress has extracted the update to this directory.
 		 * @param \WP_Upgrader $upgrader
 		 * @return string|WP_Error
 		 */
@@ -897,7 +897,7 @@ if ( !class_exists(UpdateChecker::class, false) ):
 				return $source;
 			}
 
-			//If WordPress is upgrading anything other than our plugin/theme, leave the directory name unchanged.
+			//If ClassicPress is upgrading anything other than our plugin/theme, leave the directory name unchanged.
 			if ( !$this->isBeingUpgraded($upgrader) ) {
 				return $source;
 			}
@@ -906,8 +906,8 @@ if ( !class_exists(UpdateChecker::class, false) ):
 			$correctedSource = trailingslashit($remoteSource) . $this->directoryName . '/';
 			if ( $source !== $correctedSource ) {
 				//The update archive should contain a single directory that contains the rest of plugin/theme files.
-				//Otherwise, WordPress will try to copy the entire working directory ($source == $remoteSource).
-				//We can't rename $remoteSource because that would break WordPress code that cleans up temporary files
+				//Otherwise, ClassicPress will try to copy the entire working directory ($source == $remoteSource).
+				//We can't rename $remoteSource because that would break ClassicPress code that cleans up temporary files
 				//after update.
 				if ( $this->isBadDirectoryStructure($remoteSource) ) {
 					return new WP_Error(

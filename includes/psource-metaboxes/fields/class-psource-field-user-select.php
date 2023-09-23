@@ -45,7 +45,7 @@ class PSOURCE_Field_User_Select extends PSOURCE_Field {
 	/**
 	 * Prints scripts
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function print_scripts() {
@@ -143,7 +143,7 @@ class PSOURCE_Field_User_Select extends PSOURCE_Field {
 					initSelect2();
 				} );
 
-				$(function() {
+				$( document ).ready( function() {
 					initSelect2();
 				} );
 			}( jQuery ) );
@@ -224,7 +224,7 @@ class PSOURCE_Field_User_Select extends PSOURCE_Field {
 	 */
 	public function enqueue_scripts() {
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'psource-field-select2', mp_plugin_url( 'vendors/select2/select2.min.js' ), array( 'jquery' ), MP_VERSION );
+		wp_enqueue_script( 'psource-field-select2', PSOURCE_Metabox::class_url( 'ui/select2/select2.min.js' ), array( 'jquery' ), PSOURCE_METABOX_VERSION );
 	}
 
 	/**
@@ -234,7 +234,7 @@ class PSOURCE_Field_User_Select extends PSOURCE_Field {
 	 * @access public
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style( 'psource-field-select2', mp_plugin_url( 'vendors/select2/select2.css' ), array(), MP_VERSION );
+		wp_enqueue_style( 'psource-field-select2', PSOURCE_Metabox::class_url( 'ui/select2/select2.css' ), array(), PSOURCE_METABOX_VERSION );
 	}
 
 }

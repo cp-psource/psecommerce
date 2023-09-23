@@ -6,7 +6,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -15,7 +15,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -29,7 +29,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Gets an updated currency symbol based upon a given currency code
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action wp_ajax_mp_update_currency
 	 */
@@ -45,7 +45,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Constructor function
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -66,7 +66,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Initialize metaboxes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_metaboxes() {
@@ -82,7 +82,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Update the product post type
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_metabox/settings_metabox_saved
 	 * @uses $wpdb
@@ -110,7 +110,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Formats the tax rate value from decimal to percentage
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter psource_field/get_value
 	 * @return string
@@ -122,7 +122,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Formats the tax rate value from percentage to decimal prior to saving to db
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @filter psource_field/sanitize_for_db
 	 * @return string
@@ -134,7 +134,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Prints javascript for updating the currency symbol when user updates the currency value
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_field/print_scripts/currency
 	 */
@@ -176,7 +176,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Prints javascript for updating the base_province dropdown when user updates the base_country value
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action psource_field/print_scripts/base_country
 	 */
@@ -214,7 +214,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Init advanced settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_advanced_settings() {
@@ -242,7 +242,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Init download settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_download_settings() {
@@ -272,7 +272,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Init misc settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_misc_settings() {
@@ -371,7 +371,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Init currency settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_currency_settings() {
@@ -439,7 +439,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Init tax settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_tax_settings() {
@@ -538,7 +538,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Init digital products settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_digital_settings() {
@@ -572,7 +572,7 @@ class MP_Shop_Einstellungen_General {
 	/**
 	 * Init location settings
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_location_settings() {
@@ -618,6 +618,16 @@ class MP_Shop_Einstellungen_General {
 			),
 		) );
 
+		$metabox->add_field( 'text', array(
+				'name'		 => 'base_adress',
+				'label'		 => array( 'text' => __( 'Straße, Hausnummer', 'mp' ) ),
+				'custom'	 => array(
+					'style' => 'width:300px',
+				),
+				'validation' => array(
+					'required' => true,
+				),
+			) );
 	
 			$countries_without_postcode = array_keys( mp()->countries_no_postcode );
 			$metabox->add_field( 'text', array(
@@ -636,10 +646,9 @@ class MP_Shop_Einstellungen_General {
 					'required' => true,
 				),
 			) );
-			
 			$metabox->add_field( 'text', array(
-				'name'		 => 'zip_label',
-				'label'		 => array( 'text' => __( 'PLZ Label', 'mp' ) ),
+				'name'		 => 'base_city',
+				'label'		 => array( 'text' => __( 'Stadt/Ort', 'mp' ) ),
 				'custom'	 => array(
 					'style' => 'width:300px',
 				),

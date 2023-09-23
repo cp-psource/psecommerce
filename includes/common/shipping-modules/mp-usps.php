@@ -2,7 +2,7 @@
 
 /*
 PSeCommerce USPS Calculated Shipping Plugin
-Author: DerN3rd (WMS N@W)
+Author: Arnold Bailey (Incsub)
 */
 
 class MP_Shipping_USPS extends MP_Shipping_API_Calculated {
@@ -153,7 +153,7 @@ class MP_Shipping_USPS extends MP_Shipping_API_Calculated {
 	/**
 	 * Initialize the settings metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init_settings_metabox() {
@@ -570,8 +570,7 @@ class MP_Shipping_USPS extends MP_Shipping_API_Calculated {
 	 * return array $shipping_options
 	 */
 	function ratev4_request() {
-		/*$shipping_options = array_filter( $this->get_setting( 'services', array() ), create_function( '$enabled', 'return ( $enabled );' ) );*/
-		$shipping_options = array_filter( $this->get_setting( 'services', array() ), function( $enabled ) {return ( $enabled );} );
+		$shipping_options = array_filter( $this->get_setting( 'services', array() ), create_function( '$enabled', 'return ( $enabled );' ) );
 
 		if ( count( $shipping_options ) == 0 ) {
 			//no services enabled - bail
@@ -734,8 +733,7 @@ class MP_Shipping_USPS extends MP_Shipping_API_Calculated {
 	 * return array $shipping_options
 	 */
 	function ratev2_request() {
-		/*$shipping_options = array_filter( $this->get_setting( 'intl_services', array() ), create_function( '$val', 'return ($val == 1);' ) );*/
-		$shipping_options = array_filter( $this->get_setting( 'intl_services', array() ), function( $val ) {return ($val == 1);} );
+		$shipping_options = array_filter( $this->get_setting( 'intl_services', array() ), create_function( '$val', 'return ($val == 1);' ) );
 
 		if ( count( $shipping_options ) == 0 ) {
 			//no services enabled - bail

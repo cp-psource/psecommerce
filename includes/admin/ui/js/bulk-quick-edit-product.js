@@ -59,7 +59,7 @@
 
 	}
 	
-	$('#the-list').on("click", '#bulk_edit', function(e){
+	$('#the-list').on('click', '#bulk_edit', function(e){
 		var $bulk_row = $('#bulk-edit'),
 				post_ids = new Array(),
 				price = $bulk_row.find('[name="product_price"]').val(),

@@ -3,7 +3,7 @@
 /**
  * PSeCommerce eWay Gateway Plugin
  *
- * @since 1.0
+ * @since 3.0
  *
  * @package PSeCommerce
  */
@@ -12,7 +12,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 	/**
 	 * Build of the gateway plugin
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @var int
 	 */
@@ -21,7 +21,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
   /**
    * Private gateway slug. Lowercase alpha (a-z) and dashes (-) only please!
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var string
    */
@@ -30,7 +30,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 	/**
    * Name of your gateway, for the admin side.
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var string
    */
@@ -39,7 +39,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 	/**
    * Public name of your gateway, for lists and such.
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var string
    */
@@ -48,7 +48,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 	/**
    * Url for an image for your checkout method. Displayed on checkout form if set.
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var string
    */
@@ -57,7 +57,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 	/**
    * Url for an submit button image for your checkout method. Displayed on checkout form if set.
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var string
    */
@@ -66,7 +66,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 	/**
    * Whether or not ssl is needed for checkout page.
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var string
    */
@@ -75,7 +75,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 	/**
    * Always contains the url to send payment notifications to if needed by your gateway. Populated by the parent class.
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var string
    */
@@ -84,7 +84,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 	/**
    * Whether if this is the only enabled gateway it can skip the payment_form step.
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var string
    */
@@ -93,7 +93,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
   /**
    * The API base url
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var string
    */
@@ -102,7 +102,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
   /**
    * The gateway's currencies
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var array
    */
@@ -121,7 +121,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
   /**
    * The gateway's locales
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var array
    */
@@ -258,7 +258,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 	/**
 	 * Display the payment form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
    * @param array $cart. Contains the cart contents for the current blog
    * @param array $shipping_info. Contains shipping info and email in case you need it
@@ -270,7 +270,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
   /**
    * Process order confirmation before page loads (e.g. verify callback data, etc)
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @action mp_checkout/confirm_order/{plugin_name}
    */
@@ -320,7 +320,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
   /**
    * Updates the gateway settings
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @param array $settings
    * @return array
@@ -342,7 +342,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
   /**
    * Initialize the settings metabox
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    */
   public function init_settings_metabox() {

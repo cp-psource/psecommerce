@@ -1,5 +1,5 @@
 ( function( $ ) {
-	jQuery(function($) {
+	jQuery(document).ready(function($){
 		var setActiveAdminMenu = function(){
 			$('#menu-posts-product, #menu-posts-product > a, #menu-posts-mp_product, #menu-posts-mp_product > a')
 				.addClass('wp-menu-open wp-has-current-submenu')
@@ -80,7 +80,7 @@
 		};
 		
 		var initCustomerInfoLightbox = function() {
-			$( '.column-mp_orders_name' ).find( 'a' ).on("click", function() {
+			$( '.column-mp_orders_name' ).find( 'a' ).click( function() {
 				$.colorbox( {
 					href : $( this ).parent().find( '.mp-customer-info-lb' ),
 					inline : true,
@@ -92,7 +92,7 @@
 		};
 
 		var handleOtherShippingMethod = function () {
-			$('select[name="mp[tracking_info][shipping_method]"]').on('change', function (e) {
+			$('select[name="mp[tracking_info][shipping_method]"]').change(function (e) {
 				if ($(this).val() == 'other') {
 					$('.mp-order-custom-shipping-method').removeClass('mp-hide');
 				} else {
@@ -116,7 +116,7 @@
 		};
 
 		var removeCustomShippingMethod = function () {
-			$('.mp-remove-custom-carrier').on("click", function (e) {
+			$('.mp-remove-custom-carrier').click(function (e) {
 				e.preventDefault();
 				var selected = $('select[name="mp[tracking_info][shipping_method]"]').val();
 				var that = $(this);

@@ -1,5 +1,5 @@
 (function($){
-	$(function($) {
+	$(document).ready(function($){
 		initShortCodeBuilder();
 		initColorbox();
 		initSelect2();
@@ -8,7 +8,7 @@
 	});
 
 	var initToolTips = function(){
-		$('.mp-tooltip').on("click", function(){
+		$('.mp-tooltip').click(function(){
 			var $this = $(this),
 					$button = $this.find('.mp-tooltip-button');
 
@@ -22,7 +22,7 @@
 			});
 		});
 
-		$('.mp-tooltip').on("click", '.mp-tooltip-button', function(e){
+		$('.mp-tooltip').on('click', '.mp-tooltip-button', function(e){
 			e.preventDefault();
 			e.stopPropagation();
 			$(this).parent().fadeOut(250);
@@ -32,7 +32,7 @@
  	var initShortCodeBuilder = function() {
 		var $form = $('#mp-shortcode-builder-form');
 
-		$form.find('[name="shortcode"]').on('change', function(){
+		$form.find('[name="shortcode"]').change(function(){
 			var $table = $('#' + $(this).val().replace(/_/g, '-') + '-shortcode');
 
 			if ( $table.length == 0 ) {
@@ -86,7 +86,7 @@
 	};
 
 	var initColorbox = function() {
-		$('body').on("click", '.mp-shortcode-builder-button', function(){
+		$('body').on('click', '.mp-shortcode-builder-button', function(){
 			var $this = $(this);
 
 			$.colorbox({

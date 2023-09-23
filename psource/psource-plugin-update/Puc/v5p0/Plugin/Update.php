@@ -74,7 +74,7 @@ if ( !class_exists(Update::class, false) ):
 		}
 
 		/**
-		 * Transform the update into the format used by WordPress native plugin API.
+		 * Transform the update into the format used by ClassicPress native plugin API.
 		 *
 		 * @return object
 		 */
@@ -93,7 +93,7 @@ if ( !class_exists(Update::class, false) ):
 
 			if ( !empty($this->icons) && is_array($this->icons) ) {
 				//This should be an array with up to 4 keys: 'svg', '1x', '2x' and 'default'.
-				//Docs: https://developer.wordpress.org/plugins/wordpress-org/plugin-assets/#plugin-icons
+				//Docs: https://developer.classicpress.org/plugins/classicpress-org/plugin-assets/#plugin-icons
 				$icons = array_intersect_key(
 					$this->icons,
 					array('svg' => true, '1x' => true, '2x' => true, 'default' => true)
@@ -101,7 +101,7 @@ if ( !class_exists(Update::class, false) ):
 				if ( !empty($icons) ) {
 					$update->icons = $icons;
 
-					//It appears that the 'default' icon isn't used anywhere in WordPress 4.9,
+					//It appears that the 'default' icon isn't used anywhere in ClassicPress 4.9,
 					//but lets set it just in case a future release needs it.
 					if ( !isset($update->icons['default']) ) {
 						$update->icons['default'] = current($update->icons);

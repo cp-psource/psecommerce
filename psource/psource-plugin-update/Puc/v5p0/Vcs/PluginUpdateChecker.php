@@ -77,7 +77,7 @@ if ( !class_exists(PluginUpdateChecker::class, false) ):
 			}
 
 			//Get headers from the main plugin file in this branch/tag. Its "Version" header and other metadata
-			//are what the WordPress install will actually see after upgrading, so they take precedence over releases/tags.
+			//are what the ClassicPress install will actually see after upgrading, so they take precedence over releases/tags.
 			$mainPluginFile = basename($this->pluginFile);
 			$remotePlugin = $api->getRemoteFile($mainPluginFile, $ref);
 			if ( !empty($remotePlugin) ) {
@@ -85,7 +85,7 @@ if ( !class_exists(PluginUpdateChecker::class, false) ):
 				$this->setInfoFromHeader($remoteHeader, $info);
 			}
 
-			//Try parsing readme.txt. If it's formatted according to WordPress.org standards, it will contain
+			//Try parsing readme.txt. If it's formatted according to ClassicPress.org standards, it will contain
 			//a lot of useful information like the required/tested WP version, changelog, and so on.
 			if ( $this->readmeTxtExistsLocally() ) {
 				$this->setInfoFromRemoteReadme($ref, $info);
@@ -188,7 +188,7 @@ if ( !class_exists(PluginUpdateChecker::class, false) ):
 		 *
 		 * The icons should be in a subdirectory named "assets". Supported image formats
 		 * and file names are described here:
-		 * @link https://developer.wordpress.org/plugins/wordpress-org/plugin-assets/#plugin-icons
+		 * @link https://developer.classicpress.org/plugins/classicpress-org/plugin-assets/#plugin-icons
 		 *
 		 * @param Plugin\PluginInfo $pluginInfo
 		 */
@@ -217,7 +217,7 @@ if ( !class_exists(PluginUpdateChecker::class, false) ):
 		 *
 		 * The banners should be in a subdirectory named "assets". Supported image formats
 		 * and file names are described here:
-		 * @link https://developer.wordpress.org/plugins/wordpress-org/plugin-assets/#plugin-headers
+		 * @link https://developer.classicpress.org/plugins/classicpress-org/plugin-assets/#plugin-headers
 		 *
 		 * @param Plugin\PluginInfo $pluginInfo
 		 */

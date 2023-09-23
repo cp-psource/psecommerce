@@ -6,7 +6,7 @@ if ( ! function_exists( 'mp' ) ) :
 	/**
 	 * Returns the PSeCommerce instance
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @return object
 	 */
 	function mp() {
@@ -39,7 +39,7 @@ if ( ! function_exists( 'mp_get_api_timeout' ) ) :
 	/**
 	 * Get the number of seconds before an API call should timeout
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access protected
 	 *
 	 * @param string $key Optional, a unique key for the timeout.
@@ -50,7 +50,7 @@ if ( ! function_exists( 'mp_get_api_timeout' ) ) :
 		/**
 		 * Filter the api timeout
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param int $timeout The current timeout value.
 		 */
@@ -68,7 +68,7 @@ if ( ! function_exists( 'mp_filter_email' ) ) :
 	/**
 	 * Replace short codes in email messages with dynamic content
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses $blog_id
 	 *
 	 * @param MP_Order $order An MP_Order object.
@@ -222,45 +222,45 @@ if ( ! function_exists( 'mp_filter_email' ) ) :
 
 		// If actually shipped show method, else customer's shipping choice.
 		if ( $order->get_meta( 'mp_shipping_info->method' ) && $order->get_meta( 'mp_shipping_info->method' != 'other' ) ) {
-			$shipping_billing_info .= '<strong>' . __( 'Versandart:', 'mp' ) . '</strong> ' . $carrier;
+			$shipping_billing_info .= '<strong>' . __( 'Shipping Method:', 'mp' ) . '</strong> ' . $carrier;
 			// If using calculated shipping, show the carrier and shipping option selected
 		} elseif ( $order->get_meta( 'mp_shipping_info->shipping_sub_option' ) &&  !is_array( $order->get_meta( 'mp_shipping_info->shipping_option' ) ) ) {
-			$shipping_billing_info .= '<strong>' . __( 'Versandart:', 'mp' ) . '</strong> ' . strtoupper( $order->get_meta( 'mp_shipping_info->shipping_option' ) ) . ' ' . $order->get_meta( 'mp_shipping_info->shipping_sub_option' );
+			$shipping_billing_info .= '<strong>' . __( 'Shipping Method:', 'mp' ) . '</strong> ' . strtoupper( $order->get_meta( 'mp_shipping_info->shipping_option' ) ) . ' ' . $order->get_meta( 'mp_shipping_info->shipping_sub_option' );
 		} else {
-			$shipping_billing_info .= '<strong>' . __( 'Versandart:', 'mp' ) . '</strong> ' . $carrier;
+			$shipping_billing_info .= '<strong>' . __( 'Shipping Method:', 'mp' ) . '</strong> ' . $carrier;
 		}
 
 		if ( $order->get_meta( 'mp_shipping_info->tracking_num' ) ) {
-			$shipping_billing_info .= "<br /><strong>" . __( 'Trackingcode:', 'mp' ) . '</strong> ' . $order->get_meta( 'mp_shipping_info->tracking_num' );
+			$shipping_billing_info .= "<br /><strong>" . __( 'Tracking Number:', 'mp' ) . '</strong> ' . $order->get_meta( 'mp_shipping_info->tracking_num' );
 		}
 
 		// Special Instructions
 		if ( $order->get_meta( 'mp_shipping_info->special_instructions' ) ) {
-			$shipping_billing_info .= "<br /><strong>" . __( 'Spezielle Anweisungen:', 'mp' ) . ':</strong>' . wordwrap( $order->get_meta( 'mp_shipping_info->special_instructions' ) );
+			$shipping_billing_info .= "<br /><strong>" . __( 'Special Instructions:', 'mp' ) . ':</strong>' . wordwrap( $order->get_meta( 'mp_shipping_info->special_instructions' ) );
 		}
 
 		$order_notes = '';
 		if ( $order->get_meta( 'mp_order_notes' ) ) {
-			$order_notes = '<strong>' . __( 'Bestellhinweise:', 'mp' ) . ':</strong>' . wordwrap( $order->get_meta( 'mp_order_notes' ) ) . "<br />\n";
+			$order_notes = '<strong>' . __( 'Order Notes:', 'mp' ) . ':</strong>' . wordwrap( $order->get_meta( 'mp_order_notes' ) ) . "<br />\n";
 		}
 
 		// Payment Info
-		$payment_info = '<strong>' . __( 'Zahlungsmethode:', 'mp' ) . '</strong> ' . $order->get_meta( 'mp_payment_info->gateway_public_name' ) . "<br />\n";
+		$payment_info = '<strong>' . __( 'Payment Method:', 'mp' ) . '</strong> ' . $order->get_meta( 'mp_payment_info->gateway_public_name' ) . "<br />\n";
 
 		if ( $order->get_meta( 'mp_payment_info->method' ) ) {
-			$payment_info .= '<strong>' . __( 'Zahlungsart:', 'mp' ) . '</strong> ' . $order->get_meta( 'mp_payment_info->method' ) . "<br />\n";
+			$payment_info .= '<strong>' . __( 'Payment Type:', 'mp' ) . '</strong> ' . $order->get_meta( 'mp_payment_info->method' ) . "<br />\n";
 		}
 
 		if ( $order->get_meta( 'mp_payment_info->transaction_id' ) ) {
-			$payment_info .= '<strong>' . __( 'Transaktions-ID:', 'mp' ) . '</strong> ' . $order->get_meta( 'mp_payment_info->transaction_id' ) . "<br />\n";
+			$payment_info .= '<strong>' . __( 'Transaction ID:', 'mp' ) . '</strong> ' . $order->get_meta( 'mp_payment_info->transaction_id' ) . "<br />\n";
 		}
 
-		$payment_info .= '<strong>' . __( 'Zahlungsbetrag:', 'mp' ) . '</strong> ' . mp_format_currency( $currency, $order->get_meta( 'mp_payment_info->total' ) ) . "<br /><br />\n";
+		$payment_info .= '<strong>' . __( 'Payment Total:', 'mp' ) . '</strong> ' . mp_format_currency( $currency, $order->get_meta( 'mp_payment_info->total' ) ) . "<br /><br />\n";
 
 		if ( $order->post_status == 'order_paid' || $order->post_status == 'order_shipped' ) {
-			$payment_info .= __( 'Deine Zahlung für diese Bestellung ist abgeschlossen.', 'mp' );
+			$payment_info .= __( 'Your payment for this order is complete.', 'mp' );
 		} else {
-			$payment_info .= __( 'Deine Zahlung für diese Bestellung ist noch nicht abgeschlossen. Hier der neuste Stand:', 'mp' ) . "\n";
+			$payment_info .= __( 'Your payment for this order is not yet complete. Here is the latest status:', 'mp' ) . "\n";
 			$statuses = $order->get_meta( 'mp_payment_info->status' );
 			krsort( $statuses ); //sort with latest status at the top
 			$status    = reset( $statuses );
@@ -311,7 +311,7 @@ if ( ! function_exists( 'mp_quote_it' ) ) :
 	/**
 	 * Wrap string in single or double quotes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $text The text to wrap.
 	 * @param string $type Optional, either "single" or "double". Defaults to "double".
@@ -393,7 +393,7 @@ if ( ! function_exists( 'mp_cart' ) ) :
 	/**
 	 * Get the MP_Cart instance
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	function mp_cart() {
 		if ( ! class_exists( 'MP_Cart' ) ) {
@@ -410,7 +410,7 @@ if ( ! function_exists( 'mp_checkout' ) ) :
 	/**
 	 * Get the MP_Checkout instance
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	function mp_checkout() {
 		if ( ! class_exists( 'MP_Checkout' ) ) {
@@ -427,7 +427,7 @@ if ( ! function_exists( 'mp_countries' ) ) :
 	/**
 	 * Gets the whole country list
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @return array
 	 */
 	function mp_countries() {
@@ -436,7 +436,7 @@ if ( ! function_exists( 'mp_countries' ) ) :
 		/**
 		 * Filter the all countries list
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param array $countries The default countries.
 		 */
@@ -451,7 +451,7 @@ if ( ! function_exists( 'mp_country_list' ) ) :
 	/**
 	 * Gets the country list without the popular countries
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @return array
 	 */
 	function mp_country_list() {
@@ -474,7 +474,7 @@ if ( ! function_exists( 'mp_popular_country_list' ) ) :
 	/**
 	 * Gets the popular country list
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @return array
 	 */
 	function mp_popular_country_list() {
@@ -484,7 +484,7 @@ if ( ! function_exists( 'mp_popular_country_list' ) ) :
 		/**
 		 * Filter the popular countries list
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param array $countries The default popular countries.
 		 */
@@ -506,7 +506,7 @@ if ( ! function_exists( 'mp_get_states' ) ) :
 	/**
 	 * Gets the states/regions/provinces for a given country
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $country The country code.
 	 *
@@ -522,7 +522,7 @@ if ( ! function_exists( 'mp_get_states' ) ) :
 		/**
 		 * Filter the state/province list
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param array $list The current state/province list.
 		 * @param string $country The current country.
@@ -538,7 +538,7 @@ if ( ! function_exists( 'mp_get_theme_list' ) ) :
 	/**
 	 * Get a list of MP themes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function mp_get_theme_list() {
@@ -575,7 +575,7 @@ if ( ! function_exists( 'mp_get_theme_list' ) ) :
 		/**
 		 * Filter the theme list
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param array $theme_list An array of themes.
 		 * @param array $allowed_theme An array of allowed themes.
@@ -591,7 +591,7 @@ if ( ! function_exists( 'mp_is_valid_zip' ) ) :
 	/**
 	 * Check if zipcode is valid
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $zip
 	 * @param string $country
@@ -622,7 +622,7 @@ if ( ! function_exists( 'mp_get_dir_files' ) ) :
 	/**
 	 * Get all files from a given directory
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $dir The full path of the directory
 	 * @param string $ext Get only files with a given extension. Set to NULL to get all files.
@@ -655,7 +655,7 @@ if ( ! function_exists( 'mp_include_dir' ) ) :
 	/**
 	 * Includes all files in a given directory
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $dir The directory to work with
 	 * @param string $ext Only include files with this extension
@@ -677,7 +677,7 @@ if ( ! function_exists( 'mp_get_current_screen' ) ) :
 	/**
 	 * Safely gets the $current_screen object even before the current_screen hook is fired
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses $current_screen, $hook_suffix, $pagenow, $taxnow, $typenow
 	 * @return object
 	 */
@@ -754,7 +754,7 @@ if ( ! function_exists( 'mp_admin' ) ) :
 	/**
 	 * Returns the MP_Admin instance
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @return object
 	 */
 	function mp_admin() {
@@ -772,7 +772,7 @@ if ( ! function_exists( 'mp_public' ) ) :
 	/**
 	 * Returns the MP_Public instance
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @return object
 	 */
 	function mp_public() {
@@ -790,7 +790,7 @@ if ( ! function_exists( 'mp_doing_ajax' ) ) :
 	/**
 	 * Checks if an ajax action is currently being executed
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses DOING_AJAX
 	 *
 	 * @param string $action Optional, the ajax action to check.
@@ -812,7 +812,7 @@ if ( ! function_exists( 'mp_doing_autosave' ) ) :
 	/**
 	 * Checks if an autosave action is currently being executed
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses DOING_AUTOSAVE
 	 * @return bool
 	 */
@@ -828,7 +828,7 @@ if ( ! function_exists( 'array_replace_recursive' ) ) :
 	/**
 	 * Recursively replace one array with another. Provides compatibility for PHP version < 5.3
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param array $array
 	 * @param array $array1 The values from this array will overwrite the values from $array
@@ -878,7 +878,7 @@ if ( ! function_exists( 'debug_to_console' ) ) :
 	/**
 	 * Send a log to the browser console
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	function debug_to_console( $data ) {
@@ -896,7 +896,7 @@ if ( ! function_exists( 'mp_arr_get_value' ) ) :
 	/**
 	 * Safely retrieve a value from an array
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses mp_arr_search()
 	 *
 	 * @param string $key (e.g. key1->key2->key3)
@@ -921,7 +921,7 @@ if ( ! function_exists( 'mp_get_cookie_value' ) ) :
 	/**
 	 * Safely retreives a value from the $_COOKIE array
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses mp_arr_get_value()
 	 *
 	 * @param string $key (e.g. key1->key2->key3)
@@ -940,7 +940,7 @@ if ( ! function_exists( 'mp_get_get_value' ) ) :
 	/**
 	 * Safely retreives a value from the $_GET array
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses mp_arr_get_value()
 	 *
 	 * @param string $key (e.g. key1->key2->key3)
@@ -959,7 +959,7 @@ if ( ! function_exists( 'mp_get_post_value' ) ) :
 	/**
 	 * Safely retreives a value from the $_POST array
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses mp_arr_get_value()
 	 *
 	 * @param string $key (e.g. key1->key2->key3)
@@ -978,7 +978,7 @@ if ( ! function_exists( 'mp_get_request_value' ) ) :
 	/**
 	 * Safely retreives a value from the $_REQUEST array
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses mp_arr_get_value()
 	 *
 	 * @param string $key (e.g. key1->key2->key3)
@@ -1024,7 +1024,7 @@ if ( ! function_exists( 'mp_get_setting' ) ) :
 	 *
 	 * An easy way to get to our settings array without undefined indexes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses mp_arr_search()
 	 *
 	 * @param string $key A setting key, or -> separated list of keys to go multiple levels into an array
@@ -1051,7 +1051,7 @@ if ( ! function_exists( 'mp_get_network_setting' ) ) :
 	 *
 	 * An easy way to get to our settings array without undefined indexes
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses mp_arr_search()
 	 *
 	 * @param string $key A setting key, or -> separated list of keys to go multiple levels into an array
@@ -1081,7 +1081,7 @@ if ( ! function_exists( 'mp_arr_search' ) ) :
 	/**
 	 * Searches an array multidimensional array for a specific path (if it exists)
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param array $array The array we want to search
 	 * @param string $path The path we want to check for (e.g. key1->key2->key3 = $array[key1][key2][key3])
@@ -1108,7 +1108,7 @@ if ( ! function_exists( 'mp_register_addon' ) ) :
 	/**
 	 * Wrapper function for MP_Addons::register()
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param array $args
 	 */
@@ -1123,7 +1123,7 @@ if ( ! function_exists( 'mp_update_setting' ) ) :
 	/**
 	 * Update a specific setting
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $key The key to update
 	 * @param mixed $value The value to use
@@ -1148,7 +1148,7 @@ if ( ! function_exists( 'mp_update_session_value' ) ) :
 	 * Use them any where else and they will not work as the session is only started
 	 * on these pages!
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $key The key to update
 	 * @param mixed $value The value to use
@@ -1166,7 +1166,7 @@ if ( ! function_exists( 'mp_update_network_setting' ) ) :
 	/**
 	 * Update a specific network setting
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $key The key to update
 	 * @param mixed $value The value to use
@@ -1216,7 +1216,7 @@ if ( ! function_exists( 'mp_plugin_url' ) ) :
 	/**
 	 * Returns a url with given path relative to the plugin's root
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $path
 	 *
@@ -1233,7 +1233,7 @@ if ( ! function_exists( 'mp_plugin_dir' ) ) :
 	/**
 	 * Returns a path with given path relative to the plugin's root
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param string $path
 	 *
@@ -1270,7 +1270,7 @@ if ( ! function_exists( 'mp_array_to_attributes' ) ) :
 	/**
 	 * Convert an array of attributes to an html string
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param array $attributes
 	 *
@@ -1292,7 +1292,7 @@ if ( ! function_exists( 'mp_is_main_site' ) ) :
 	/**
 	 * Checks if the current blog is the main site
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses $wpdb
 	 */
 	function mp_is_main_site() {
@@ -1312,7 +1312,7 @@ if ( ! function_exists( 'mp_is_post_indexer_installed' ) ) :
 	/**
 	 * Check if Post Indexer plugin is installed
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @return bool
 	 */
 	function mp_is_post_indexer_installed() {
@@ -1326,7 +1326,7 @@ if ( ! function_exists( 'mp_root_blog_id' ) ) :
 	/**
 	 * Get the root blog id
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @uses $current_site
 	 */
 	function mp_root_blog_id() {
@@ -1346,7 +1346,7 @@ if ( ! function_exists( 'mp_get_store_caps' ) ) :
 	/**
 	 * Get store capabilities
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @return array
 	 */
 	function mp_get_store_caps() {

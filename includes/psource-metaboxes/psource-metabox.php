@@ -140,7 +140,7 @@ class PSOURCE_Metabox {
 	/**
 	 * If the run once actions/methods have been run
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public static $did_run_once = false;
@@ -170,7 +170,7 @@ class PSOURCE_Metabox {
 
 		self::push_to_array( $data, $id, $is_closed );
 
-		// is_network_admin() doesn't work for ajax calls - see https://core.trac.wordpress.org/ticket/22589
+		// is_network_admin() doesn't work for ajax calls - see https://core.trac.classicpress.org/ticket/22589
 		if ( is_multisite() && preg_match( '#^' . network_admin_url() . '#i', $_SERVER['HTTP_REFERER'] ) ) {
 			update_site_option( $option, $data );
 		} else {
@@ -351,7 +351,7 @@ class PSOURCE_Metabox {
 			$id = $field->get_id();
 			?>
 			<script type="text/javascript">
-				jQuery(function($) {
+				jQuery(function ($) {
 					$('body').on('change', '#<?php echo $id ?>', function () {
 						var that = $(this);
 						var name = '<?php echo $field->get_name() ?>';
@@ -430,7 +430,7 @@ class PSOURCE_Metabox {
 	/**
 	 * Allow metaboxes to be rendered directly underneath the title field
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @action edit_form_after_title
 	 * @uses $post, $wp_meta_boxes;
@@ -729,14 +729,14 @@ class PSOURCE_Metabox {
 	/**
 	 * Displays before-metabox content
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function before_settings_metabox() {
 		/**
 		 * Runs right before the metabox is displayed
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param PSOURCE_Metabox The current metabox
 		 */
@@ -747,14 +747,14 @@ class PSOURCE_Metabox {
 	/**
 	 * Displays after-metabox content
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function after_settings_metabox() {
 		/**
 		 * Runs right after the metabox is displayed and before the submit button
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param PSOURCE_Metabox The current metabox
 		 */
@@ -932,7 +932,7 @@ class PSOURCE_Metabox {
 		/**
 		 * Runs right before save_fields is run, but after nonces have been verified.
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param PSOURCE_Metabox $this The current metabox
 		 */
@@ -978,7 +978,7 @@ class PSOURCE_Metabox {
 			/**
 			 * Fires after the settings metabox has been saved.
 			 *
-			 * @since 1.0
+			 * @since 3.0
 			 *
 			 * @param PSOURCE_Metabox $this The metabox that was saved.
 			 */
@@ -989,7 +989,7 @@ class PSOURCE_Metabox {
 				/**
 				 * Fires after all of the settings metaboxes have been saved
 				 *
-				 * @since 1.0
+				 * @since 3.0
 				 */
 				do_action( 'psource_metabox/after_all_settings_metaboxes_saved' );
 				do_action( 'psource_metabox/after_all_settings_metaboxes_saved/' . $_REQUEST['page'] );
@@ -1019,7 +1019,7 @@ class PSOURCE_Metabox {
 			/**
 			 * Fires after the appropriate nonce's have been verified for fields to tie into.
 			 *
-			 * @since 1.0
+			 * @since 3.0
 			 *
 			 * @param int $post_id Post ID.
 			 */
@@ -1046,7 +1046,7 @@ class PSOURCE_Metabox {
 	/**
 	 * Check if the metabox is an active settings metabox
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return bool
 	 */

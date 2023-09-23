@@ -31,7 +31,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Refers to the registered gateways set by add_gateway()
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access private
 		 */
 		private static $_gateways = array();
@@ -39,7 +39,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Refers to the active gateways
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access private
 		 */
 		private static $_active_gateways = array();
@@ -47,7 +47,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Registers a gateway
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 */
 		public static function register_gateway( $plugin_name, $args ) {
@@ -57,7 +57,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Gets all of the registered gateways
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @return array
 		 */
@@ -65,7 +65,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 			/**
 			 * Filter the list of registered gateways
 			 *
-			 * @since 1.0
+			 * @since 3.0
 			 * @param array An array of registered gateways.
 			 */
 			return apply_filters( 'mp_gateway_api/get_gateways', self::$_gateways );
@@ -74,7 +74,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Loads the active gateways
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @return array
 		 */
@@ -120,7 +120,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Gets the active gateways
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @return array
 		 */
@@ -131,7 +131,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Generats the appropriate metabox ID for the gateway
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access private
 		 */
 		public final function generate_metabox_id() {
@@ -145,7 +145,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Setup gateway - use instead of __construct()
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 */
 		public function on_creation() {
@@ -155,7 +155,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Display the payment form
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @param array $cart. Contains the cart contents for the current blog
 		 * @param array $shipping_info. Contains shipping info and email in case you need it
@@ -167,7 +167,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Check if gateway is set to force SSL and, if so, redirect to SSL checkout
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @action wp
 		 * @uses $post
@@ -185,7 +185,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Maybe print checkout scripts
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @action wp_footer
 		 */
@@ -198,7 +198,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Print checkout scripts
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 */
 		function print_checkout_scripts() {
@@ -231,7 +231,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Process order confirmation before page loads (e.g. verify callback data, etc)
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @action mp_checkout/confirm_order/{plugin_name}
 		 */
@@ -250,7 +250,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Get the default CC payment form
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access protected
 		 * @param bool $use_names Optional, whether to give the input names or not. Defaults to true.
 		 * @return string
@@ -280,7 +280,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Calculate the CRC of an item
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access protected
 		 * @param mixed $item
 		 * @return string
@@ -296,7 +296,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Generate the IPN URL
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access protected
 		 */
 		protected function _generate_ipn_url() {
@@ -307,7 +307,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Generate the cancel checkout url
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access protected
 		 */
 		function _generate_checkout_cancel_url() {
@@ -317,7 +317,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Generate the checkout return url
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access protected
 		 */
 		function _generate_checkout_return_url() {
@@ -352,7 +352,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Initialize the settings metabox
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 */
 		public function init_settings_metabox() {
@@ -362,7 +362,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Initialize the network settings metabox
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 */
 		public function init_network_settings_metabox() {
@@ -372,7 +372,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Get the confirm order html
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @filter mp_checkout/confirm_order_html/{plugin_name}
 		 */
@@ -383,7 +383,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Generates an appropriate field name
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @param string $name The name of the field (e.g. name->subname1->subname2).
 		 * @return string
@@ -401,7 +401,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Gets a setting specific to the gateway
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @param string $setting
 		 * @param mixed $default
@@ -414,7 +414,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Gets a network setting specific to the gateway
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @param string $setting
 		 * @param mixed $default
@@ -427,7 +427,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Determines if the gateway settings needs to be updated
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 */
 		public final function maybe_update() {
@@ -442,7 +442,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 		/**
 		 * Updates the gateway settings
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 * @access public
 		 * @param array $settings
 		 * @return array

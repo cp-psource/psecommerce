@@ -42,7 +42,7 @@ class PSOURCE_Field_Colorpicker extends PSOURCE_Field {
 	public function print_scripts() {
 		?>
 		<script type="text/javascript">
-		jQuery(function($) {
+		jQuery(document).ready(function($) {
 			$('.psource-field-colorpicker-input').each(function(){
 				var that = $(this);
 				$(this).ColorPicker({
@@ -57,7 +57,7 @@ class PSOURCE_Field_Colorpicker extends PSOURCE_Field {
 						that.val(hex);
 
 					}
-				}).on('keyup', function(){
+				}).bind('keyup', function(){
 					$(this).ColorPickerSetColor(this.value);
 				});
 			})

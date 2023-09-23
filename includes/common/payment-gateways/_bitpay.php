@@ -3,7 +3,7 @@
 /**
  * PSeCommerce Bitpay Gateway
  *
- * @since 1.0
+ * @since 3.0
  * @package PSeCommerce
  * @subpackage Bitway Gateway
  */
@@ -47,7 +47,7 @@ class MP_Gateway_Bitpay extends MP_Gateway_API {
   /**
    * Updates the gateway settings
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @param array $settings
    * @return array
@@ -128,7 +128,7 @@ class MP_Gateway_Bitpay extends MP_Gateway_API {
   /**
    * Process order confirmation before page loads (e.g. verify callback data, etc)
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @action mp_checkout/confirm_order/{plugin_name}
    */
@@ -210,7 +210,7 @@ class MP_Gateway_Bitpay extends MP_Gateway_API {
   /**
    * Init settings metaboxes
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    */
   function init_settings_metabox() {

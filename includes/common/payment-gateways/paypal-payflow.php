@@ -34,7 +34,7 @@ class MP_Gateway_PayPal_Payflow extends MP_Gateway_API {
   /**
    * Gateway currencies
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @var array
    */
@@ -80,7 +80,7 @@ class MP_Gateway_PayPal_Payflow extends MP_Gateway_API {
   /**
    * Updates the gateway settings
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    * @param array $settings
    * @return array
@@ -112,7 +112,7 @@ class MP_Gateway_PayPal_Payflow extends MP_Gateway_API {
 	/**
 	 * Display the payment form
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
    * @param array $cart. Contains the cart contents for the current blog
    * @param array $shipping_info. Contains shipping info and email in case you need it
@@ -288,7 +288,7 @@ class MP_Gateway_PayPal_Payflow extends MP_Gateway_API {
     // Billing Info
     $payment->setParameter( 'TENDER', 'C');
     $payment->setParameter( 'TRXTYPE', 'S');
-	  $payment->setParameter( 'BUTTONSOURCE', 'psource_SP');
+	  $payment->setParameter( 'BUTTONSOURCE', 'incsub_SP');
     $payment->setParameter( 'AMT', $total );
 
     $payment->setParameter( 'CURRENCY', $this->currencyCode );
@@ -366,7 +366,7 @@ class MP_Gateway_PayPal_Payflow extends MP_Gateway_API {
   /**
    * Initialize the settings metabox
    *
-   * @since 1.0
+   * @since 3.0
    * @access public
    */
   public function init_settings_metabox() {

@@ -2,7 +2,7 @@
 /**
  * Class MP_Shop_Einstellungen_Import
  *
- * @since   1.2.3
+ * @since   3.2.3
  * @package PSeCommerce
  */
 
@@ -10,14 +10,14 @@ if ( ! class_exists( 'MP_Shop_Einstellungen_Import' ) ) {
 	return;
 }
 
-// Load WordPress export API.
+// Load ClassicPress export API.
 require_once( ABSPATH . 'wp-admin/includes/export.php' );
 
 class MP_Shop_Einstellungen_Import {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since   1.2.3
+	 * @since   3.2.3
 	 * @access  private
 	 * @var     object
 	 */
@@ -26,7 +26,7 @@ class MP_Shop_Einstellungen_Import {
 	/**
 	 * Constructor function
 	 *
-	 * @since   1.2.3
+	 * @since   3.2.3
 	 * @access  private
 	 */
 	private function __construct() {
@@ -45,11 +45,11 @@ class MP_Shop_Einstellungen_Import {
 	/**
 	 * Hook into the import process to create missing taxonomies.
 	 *
-	 * Here we filter through all terms and see if WordPress has a registered taxonomy for the term. If there is
-	 * a taxonomy (usually there is one for tags and categories) - we pass it on to WordPress importer. If no
+	 * Here we filter through all terms and see if ClassicPress has a registered taxonomy for the term. If there is
+	 * a taxonomy (usually there is one for tags and categories) - we pass it on to ClassicPress importer. If no
 	 * texonomy is found, that means it is an attribute for a variable product and we need to add it manually.
 	 *
-	 * @since  1.2.4
+	 * @since  3.2.4
 	 * @param  array $terms  Array of WP_Term objects.
 	 * @return array $terms  Array of WP_Term objects.
 	 */
@@ -72,7 +72,7 @@ class MP_Shop_Einstellungen_Import {
 			} // End if().
 		} // End foreach().
 
-		// Everything else can be parsed by WordPress importer.
+		// Everything else can be parsed by ClassicPress importer.
 		return $terms;
 
 	}
@@ -84,7 +84,7 @@ class MP_Shop_Einstellungen_Import {
 	 * During import these posts will be treated as duplicates and not be imported. We need to manually add them
 	 * to the database.
 	 *
-	 * @since  1.2.4
+	 * @since  3.2.4
 	 * @param  int   $post_exists  Post ID, or 0 if post did not exist.
 	 * @param  array $post         The post array to be inserted.
 	 * @return int   $post_exists  Post ID, or 0 if post did not exist.
@@ -103,7 +103,7 @@ class MP_Shop_Einstellungen_Import {
 	/**
 	 * Process attributes for variable products.
 	 *
-	 * @since  1.2.4
+	 * @since  3.2.4
 	 * @param  array  $metakeys  Post meta data.
 	 * @param  int    $post_id   Post ID.
 	 * @return array
@@ -131,7 +131,7 @@ class MP_Shop_Einstellungen_Import {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since   1.2.3
+	 * @since   3.2.3
 	 * @return  object
 	 */
 	public static function get_instance() {
@@ -144,7 +144,7 @@ class MP_Shop_Einstellungen_Import {
 	/**
 	 * Process import/export form actions
 	 *
-	 * @since   1.2.3
+	 * @since   3.2.3
 	 */
 	public static function process_form() {
 		if ( ! empty( $_POST['mp-store-exporter'] ) ) { // Input var okay.
@@ -190,7 +190,7 @@ class MP_Shop_Einstellungen_Import {
 	 * Location settings, tax settings, currency settings, digital settings, download settings, miscellaneous settings
 	 * and advanced settings.
 	 *
-	 * @since   1.2.3
+	 * @since   3.2.3
 	 * @access  private
 	 * @param   string $option_name Where to find the plugin settings. Default 'mp_settings'.
 	 * @return  string
@@ -209,18 +209,18 @@ class MP_Shop_Einstellungen_Import {
 	}
 
 	/**
-	 * Check to see if the WordPress importer is installed
+	 * Check to see if the ClassicPress importer is installed
 	 *
-	 * First check if the WordPress importer is installed and activated. If not activated - we activate it and run it.
+	 * First check if the ClassicPress importer is installed and activated. If not activated - we activate it and run it.
 	 * If not install, we redirect to installation.
 	 *
-	 * @since   1.2.3
+	 * @since   3.2.3
 	 * @access  private
-	 * @param   string $importer Slug for the importer. Default 'wordpress-importer'.
-	 * @param   string $importer_name Name of the importer. Default 'WordPress'.
+	 * @param   string $importer Slug for the importer. Default 'classicpress-importer'.
+	 * @param   string $importer_name Name of the importer. Default 'ClassicPress'.
 	 * @return  string $action Link for running the importer.
 	 */
-	private static function get_importer( $importer = 'wordpress-importer', $importer_name = 'WordPress' ) {
+	private static function get_importer( $importer = 'classicpress-importer', $importer_name = 'ClassicPress' ) {
 		if ( file_exists( WP_PLUGIN_DIR . '/' . $importer ) ) {
 			// Looks like an importer is installed, but not active.
 			$plugins = get_plugins( '/' . $importer );
@@ -275,7 +275,7 @@ class MP_Shop_Einstellungen_Import {
 	/**
 	 * Prepare header for export.
 	 *
-	 * @since   1.2.3
+	 * @since   3.2.3
 	 * @access  private
 	 */
 	private static function prepare_heder() {
@@ -286,7 +286,7 @@ class MP_Shop_Einstellungen_Import {
 		$date = date( 'Y-m-d' );
 		$wp_filename = $sitename . 'psecommerce.' . $date . '.xml';
 		/**
-		 * WordPress filter
+		 * ClassicPress filter
 		 *
 		 * Filters the export filename.
 		 *
@@ -306,7 +306,7 @@ class MP_Shop_Einstellungen_Import {
 	/**
 	 * Display import/export page
 	 *
-	 * @since   1.2.3
+	 * @since   3.2.3
 	 */
 	public function display_settings() {
 		$options = base64_encode( $this->get_settings() );
@@ -325,7 +325,7 @@ class MP_Shop_Einstellungen_Import {
 			<input type="submit" class="button" name="mp-store-export" id="mp-store-export" value="<?php esc_attr_e( 'Einstellungen in Datei exportieren', 'mp' ); ?>">
 			<h2><?php esc_html_e( 'Produkte importieren/exportieren', 'mp' ); ?></h2>
 			<p>
-				<?php esc_html_e( 'Der Importvorgang verwendet das WordPress-Importer-Plugin.', 'mp' ); ?>
+				<?php esc_html_e( 'Der Importvorgang verwendet das ClassicPress-Importer-Plugin.', 'mp' ); ?>
 			</p>
 			<?php echo self::get_importer(); ?>
 			<input type="submit" class="button" name="mp-store-export-products" id="mp-store-export-products" value="<?php esc_attr_e( 'Exportieren Sie Produkte in eine Datei', 'mp' ); ?>">
@@ -339,7 +339,7 @@ class MP_Shop_Einstellungen_Import {
 	 * @since 2.1.0
 	 * @access private
 	 *
-	 * @global wpdb    $wpdb WordPress database abstraction object.
+	 * @global wpdb    $wpdb ClassicPress database abstraction object.
 	 * @global WP_Post $post Global `$post`.
 	 */
 	private static function export_products() {
@@ -356,7 +356,7 @@ class MP_Shop_Einstellungen_Import {
 		/**
 		 * Fires at the beginning of an export, before any headers are sent.
 		 *
-		 * @since 1.3.0
+		 * @since 2.3.0
 		 *
 		 * @param array $args An array of export arguments.
 		 */
@@ -423,7 +423,7 @@ function wxr_site_url() {
 	// Multisite: the base URL.
 	if ( is_multisite() )
 		return network_home_url();
-	// WordPress (single site): the blog URL.
+	// ClassicPress (single site): the blog URL.
 	else
 		return get_bloginfo_rss( 'url' );
 }
@@ -490,9 +490,9 @@ function wxr_term_meta( $term ) {
 /**
  * Output list of authors with posts
  *
- * @since 1.1.0
+ * @since 3.1.0
  *
- * @global wpdb $wpdb WordPress database abstraction object.
+ * @global wpdb $wpdb ClassicPress database abstraction object.
  *
  * @param array $post_ids Array of post IDs to filter the query by. Optional.
  */
@@ -528,7 +528,7 @@ function wxr_authors_list( array $post_ids = null ) {
 /**
  * Output list of market press product attributes in XML tag format
  *
- * @since 1.2.4
+ * @since 3.2.4
  */
 /*
 function wxr_product_attributes() {
@@ -550,7 +550,7 @@ function wxr_product_attributes() {
 /**
  * Output list of taxonomy terms, in XML tag format, associated with a post
  *
- * @since 1.3.0
+ * @since 2.3.0
  */
 function wxr_post_taxonomy() {
 	$post = get_post();
@@ -581,11 +581,11 @@ add_filter( 'wxr_export_skip_postmeta', 'wxr_filter_postmeta', 10, 2 );
 echo '<?xml version="1.0" encoding="' . get_bloginfo('charset') . "\" ?>\n"; ?>
 <?php the_generator( 'export' ); ?>
 <rss version="2.0"
-	 xmlns:excerpt="http://wordpress.org/export/<?php echo WXR_VERSION; ?>/excerpt/"
+	 xmlns:excerpt="http://classicpress.org/export/<?php echo WXR_VERSION; ?>/excerpt/"
 	 xmlns:content="http://purl.org/rss/1.0/modules/content/"
 	 xmlns:wfw="http://wellformedweb.org/CommentAPI/"
 	 xmlns:dc="http://purl.org/dc/elements/1.1/"
-	 xmlns:wp="http://wordpress.org/export/<?php echo WXR_VERSION; ?>/"
+	 xmlns:wp="http://classicpress.org/export/<?php echo WXR_VERSION; ?>/"
 >
 
 	<channel>
@@ -690,7 +690,7 @@ echo '<?xml version="1.0" encoding="' . get_bloginfo('charset') . "\" ?>\n"; ?>
 							 * Returning a truthy value to the filter will skip the current meta
 							 * object from being exported.
 							 *
-							 * @since 1.3.0
+							 * @since 3.3.0
 							 *
 							 * @param bool   $skip     Whether to skip the current post meta. Default false.
 							 * @param string $meta_key Current meta key.

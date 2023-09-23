@@ -10,7 +10,7 @@ class MP_PDF_Invoice_Addon {
 	/**
 	 * Refers to a single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 * @var object
 	 */
@@ -19,7 +19,7 @@ class MP_PDF_Invoice_Addon {
 	/**
 	 * Gets the single instance of the class
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 * @return object
 	 */
@@ -32,7 +32,7 @@ class MP_PDF_Invoice_Addon {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 3.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -43,7 +43,7 @@ class MP_PDF_Invoice_Addon {
 	/**
 	 * Init all the needed
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 * @access public
 	 */
 	public function init() {
@@ -59,7 +59,7 @@ class MP_PDF_Invoice_Addon {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	public function generate_pdf() {
 		$order_id = mp_get_get_value( 'order_id', null );
@@ -152,7 +152,7 @@ class MP_PDF_Invoice_Addon {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	public function add_meta_box() {
 		add_meta_box( 'mp-order-pdf-metabox', __( 'Exportiere PDF', 'mp' ), array(
@@ -165,7 +165,7 @@ class MP_PDF_Invoice_Addon {
 	 * @param $html
 	 * @param $order
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	public function pdf_buttons_order_status( $html, $order ) {
 
@@ -179,7 +179,7 @@ class MP_PDF_Invoice_Addon {
 	/**
 	 * @param $post
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	public function show_ipn_button_on_order_admin_detail( $post ) {
 		echo MP_PDF_Invoice::show_button( $post->ID, MP_PDF_Invoice::PDF_INVOICE ) . '&nbsp;';
@@ -187,7 +187,7 @@ class MP_PDF_Invoice_Addon {
 	}
 
 	/**
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	public function view_settings() {
 		$metabox = new PSOURCE_Metabox( array(

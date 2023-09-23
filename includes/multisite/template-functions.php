@@ -310,7 +310,7 @@ if ( ! function_exists( 'mp_global_list_products' ) ) {
 		/**
 		 * Filter product list html
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $content The current html content.
 		 * @param array $args The arguments passed to mp_list_products
@@ -327,7 +327,7 @@ if ( ! function_exists( 'mp_global_list_products' ) ) {
 }
 
 if ( ! function_exists( 'mp_global_products_nav' ) ) {
-	function mp_global_products_nav( $echo = true, $per_page, $count ) {
+	function mp_global_products_nav( $per_page, $count, $echo = true ) {
 		$html      = '';
 		$paged     = 1;
 		$max_pages = ceil( $count / $per_page );
@@ -364,7 +364,7 @@ if ( ! function_exists( 'mp_global_products_nav' ) ) {
 		/**
 		 * Filter the products nav html
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $html
 		 * @param WP_Query $custom_query
@@ -384,7 +384,7 @@ if ( ! function_exists( 'mp_global_products_filter' ) ) :
 	/**
 	 * Display product filters
 	 *
-	 * @since 1.0
+	 * @since 3.0
 	 *
 	 * @param bool $hidden Are the filters hidden or visible?
 	 * @param int $per_page The number of posts per page
@@ -581,7 +581,7 @@ if ( ! function_exists( '_mp3_global_products_html' ) ) {
 
 				$html .= '
 				<div class="mp_product_item' . ( ( 'grid' == $view ) ? ' mp_product_item-col-' . $per_row : '' ) . '">
-					<div itemscope itemtype="http://schema.org/Product" class="mp_product' . ( ( strlen( $img ) > 0 ) ? ' mp_product-has-image' . $align_class : '' ) . ' ' . implode( ' ', $class ) . '">
+					<div itemscope itemtype="http://schema.org/Product" class="mp_product' . ( ( strlen( $img ) > 0 ) ? ' mp_product-has-image' . $align_class : '' ) . ' ' . implode( $class, ' ' ) . '">
 						' . $img . '
 						<div class="mp_product_details">
 
@@ -630,7 +630,7 @@ if ( ! function_exists( '_mp3_global_products_html' ) ) {
 		/**
 		 * Filter the product list html content
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $html .
 		 * @param WP_Query $custom_query .
@@ -755,7 +755,7 @@ if ( ! function_exists( '_mp_global_products_html' ) ) {
 		/**
 		 * Filter the product list html content
 		 *
-		 * @since 1.0
+		 * @since 3.0
 		 *
 		 * @param string $html .
 		 * @param WP_Query $custom_query .
@@ -832,7 +832,7 @@ if ( ! function_exists( '_mp_global_tags_cloud' ) ) {
 				$html .= '<a href="' . mp_global_taxonomy_url( $row->slug, $taxonomy ) . '" class="tag-link tag-link-' . $row->term_id . '" title="">' . $row->name . '</a> ';
 			}
 		} else {
-			$html .= __( 'Keine Tags', 'mp' );
+			$html .= __( 'No Tags', 'mp' );
 		}
 		$html .= '</div>';
 
