@@ -697,11 +697,6 @@ the specific language governing permissions and limitations under the Apache Lic
                 .appendTo(document.body);
 
             this.containerId="s2id_"+(opts.element.attr("id") || "autogen"+nextUid());
-            //Incomplete string escaping or encoding
-            /*this.containerEventName= this.containerId
-                .replace(/([.])/g, '_')
-                .replace(/([;&,\-\.\+\*\~':"\!\^#$%@\[\]\(\)=>\|])/g, '\\$1');
-            this.container.attr("id", this.containerId);*/
             this.containerEventName = this.containerId
                 .replace(/([.])/g, '_')
                 .replace(/([;&,\-\.\+\*\~':"\!\^#$%@\[\]\(\)=>\|\\])/g, '\\$1');
