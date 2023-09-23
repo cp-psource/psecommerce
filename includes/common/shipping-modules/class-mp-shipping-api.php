@@ -180,7 +180,7 @@ if ( !class_exists( 'MP_Shipping_API' ) ) {
 		function calculate_shipping( $price, $total, $cart, $address1, $address2, $zip, $city, $state, $country,
 							   $selected_option ) {
 			//it is required to override this method
-			wp_die( __( "Du musst die Methode compute_shipping() in Deinem {$this->public_name} Versand-Plugin überschreiben!", 'mp' ) );
+			wp_die( __( "You must override the calculate_shipping() method in your {$this->public_name} shipping plugin!", 'mp' ) );
 		}
 
 		/**
@@ -224,7 +224,7 @@ if ( !class_exists( 'MP_Shipping_API' ) ) {
 					$pounds	 = $oz		 = '';
 				}
 				?>
-				<?php _e( 'Produktgewicht:', 'mp' ); ?><br />
+				<?php _e( 'Product Weight:', 'mp' ); ?><br />
 				<label><input type="text" size="2" name="mp_shipping_weight_pounds" value="<?php echo $pounds; ?>" /> <?php _e( 'Pfund', 'mp' ); ?></label><br />
 				<label><input type="text" size="2" name="mp_shipping_weight_oz" value="<?php echo $oz; ?>" /> <?php _e( 'Unzen', 'mp' ); ?></label>
 				<?php

@@ -994,7 +994,7 @@ endif;
 
 
 if ( ! function_exists( 'mp_get_session_value' ) ) :
-	session_start();
+
 	/**
 	 * Safely retreives a value from the $_SESSION array
 	 *
@@ -1011,8 +1011,12 @@ if ( ! function_exists( 'mp_get_session_value' ) ) :
 	 * @return mixed
 	 */
 	function mp_get_session_value( $key, $default = false ) {
-		mp_public()->start_session();
-
+		mp_public()->session_start();
+        //Löst den Hinweis Undefined variable: _SESSION
+		//Löst den Hinweis Undefined variable: _SESSION
+		//$key = isset($key) ? $key : '';
+		//$default = isset($default) ? $default: '';
+		$_SESSION = isset($_SESSION) ? $_SESSION: '';
 		return mp_arr_get_value( $key, $_SESSION, $default );
 	}
 

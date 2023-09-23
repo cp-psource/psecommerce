@@ -6125,20 +6125,10 @@ function remove( elem, selector, keepData ) {
 	return elem;
 }
 
-jQuery.extend({
-    htmlPrefilter: function (html) {
-        // Verwende eine negative Vorwärtsreferenz im regulären Ausdruck, um nur unsichere Tags zu erkennen
-        return html.replace(rxhtmlTag, function (match, openTag, closeTag) {
-            // Überprüfe, ob das offene und schließende Tag übereinstimmen
-            if (openTag.toLowerCase() === closeTag.toLowerCase()) {
-                // Nur unsichere Tags bearbeiten, alle anderen unverändert lassen
-                return match;
-            } else {
-                // Für unsichere Tags umwandeln
-                return "<" + openTag + "></" + closeTag + ">";
-            }
-        });
-    },
+jQuery.extend( {
+	htmlPrefilter: function( html ) {
+		return html.replace( rxhtmlTag, "<$1></$2>" );
+	},
 
 	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
 		var destElements, node, clone, i, srcElements,

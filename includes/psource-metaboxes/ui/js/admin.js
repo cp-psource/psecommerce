@@ -127,22 +127,12 @@ jQuery.validator.addMethod( 'lessthan', function( value, element, param ) {
     var testConditionals = function( conditionals, $obj ) {
         var numValids = 0;
 
-        //Incomplete string escaping or encoding
-        /*$.each( conditionals, function( i, conditional ) {
+        $.each( conditionals, function( i, conditional ) {
             if ( conditional.name.indexOf( '[' ) >= 0 && $obj.closest( '.psource-subfield-group' ).length ) {
                 var nameParts = conditional.name.split( '[' );
                 var $input = $obj.closest( '.psource-subfield-group' ).find( '[name^="' + nameParts[0] + '"][name*="[' + nameParts[1].replace( ']', '' ) + ']"]' );
             } else {
                 var $input = $( '[name="' + conditional.name + '"]' );
-            }*/
-        $.each( conditionals, function( i, conditional ) {
-            if (conditional.name.indexOf('[') >= 0 && $obj.closest('.psource-subfield-group').length) {
-                var nameParts = conditional.name.split('[');
-                var sanitizedPart = nameParts[1].replace(/\]/g, ''); // Entferne alle "]" Zeichen
-                var $input = $obj.closest('.psource-subfield-group').find('[name^="' + nameParts[0] + '"][name*="[' + sanitizedPart + ']"]');
-            } else {
-                var sanitizedName = conditional.name.replace(/"/g, ''); // Entferne alle doppelten Anführungszeichen
-                var $input = $('[name="' + sanitizedName + '"]');
             }
 
             if ( !$input.is( ':radio' ) && !$input.is( ':checkbox' ) && !$input.is( 'select' ) ) {
