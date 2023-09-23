@@ -108,7 +108,7 @@ class MP_Shop_Einstellungen_Admin {
 		$cap = apply_filters( 'mp_store_settings_cap', 'manage_store_settings' );
 
 		
-		add_menu_page( __( 'Shopeinstellungen', 'mp' ), __( 'Shop Einstellungen', 'mp' ), $cap, 'shop-einstellungen', $wp_version, 'dashicons-store', 99.33 );
+		add_menu_page( __( 'Shopeinstellungen', 'mp' ), __( 'Shop Einstellungen', 'mp' ), $cap, 'shop-einstellungen', null, 'dashicons-store', 99.33 );
 		
 		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Basiseinstellungen', 'mp' ), __( 'Basiseinstellungen', 'mp' ), $cap, 'shop-einstellungen', array( &$this, 'display_settings_form' ) );
 		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Shopdarstellung', 'mp' ), __( 'Shopdarstellung', 'mp' ), $cap, 'shop-einstellungen-presentation', array( &$this, 'display_settings_form' ) );
