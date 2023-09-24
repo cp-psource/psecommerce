@@ -53,6 +53,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 = 3.5.4 = DerN3rd =
 
 * Fix Unsafe expansion of self-closing HTML tag
+* Fix: PHP Fatal error:  Uncaught Error: Non-static method
 
 = 3.5.3 = DerN3rd =
 

@@ -168,7 +168,11 @@ class PSOURCE_Metabox {
 			$is_closed = false;
 		}
 
-		self::push_to_array( $data, $id, $is_closed );
+		// Erstellen Sie eine Instanz der PSOURCE_Metabox-Klasse
+		$metabox = new PSOURCE_Metabox();
+
+		// Rufen Sie die push_to_array()-Methode auf der Instanz auf
+		$metabox->push_to_array( $data, $id, $is_closed );
 
 		// is_network_admin() doesn't work for ajax calls - see https://core.trac.classicpress.org/ticket/22589
 		if ( is_multisite() && preg_match( '#^' . network_admin_url() . '#i', $_SERVER['HTTP_REFERER'] ) ) {
