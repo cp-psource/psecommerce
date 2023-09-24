@@ -1,7 +1,7 @@
 {
   "name": "psecommerce",
   "private": true,
-  "version": "3.5.2",
+  "version": "3.5.3",
   "main": "psecommerce.php",
   "author": "WMS N@W",
   "license": "GPL-2.0",
