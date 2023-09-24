@@ -50,6 +50,10 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 3.5.4 = DerN3rd =
+
+* Fix Unsafe expansion of self-closing HTML tag
+
 = 3.5.3 = DerN3rd =
 
 * Fix code scanning alert - Unsafe HTML constructed
