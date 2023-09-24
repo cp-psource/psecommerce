@@ -1,7 +1,7 @@
 === PSeCommerce ===
 Contributors: DerN3rd (WMS N@W)
 Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/
-Tags: ecommerce, onlineshop, multisite
+Tags: ecommerce, onlineshop, multisite, marketpress
 Requires at least: 4.9
 Tested up to: 5.6
 Stable tag: 3.5.2
@@ -13,8 +13,8 @@ Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin - Ob klein
 
 == Description ==
 
-PSeCommerce basiert auf dem Quellcode von MarketPress. MarketPress war der Vorgänger von WooCommerce und wurde von WPMUDEV 2019
-entgültig eingestellt und erhält keine Updates mehr. Da wir immer schon lieber mit MarketPress gearbeitet haben, da es sehr
+PSeCommerce basiert auf dem Quellcode von PSeCommerce. PSeCommerce war der Vorgänger von WooCommerce und wurde von WPMUDEV 2019
+entgültig eingestellt und erhält keine Updates mehr. Da wir immer schon lieber mit PSeCommerce gearbeitet haben, da es sehr
 Anpassungsfähig ist und einem alle Basics für das eCommerce bereitstellt ohne dabei überladen zu sein, mit irgendwelchen PRO Features zu
 nerven, etv. PSeCommerce ist ebenso OpenSource und absolut Kostenfrei und jeder darf sich an der weiteren Entwicklung beteiligen oder 
 mithilfe der mächtigen API eigene Erweiterungen und Plugins zur Verfügung stellen.
