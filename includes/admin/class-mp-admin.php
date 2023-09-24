@@ -160,7 +160,7 @@ class MP_Admin {
 		get_current_screen()->add_help_tab( array(
 			'id'		 => 'psecommerce-help',
 			'title'		 => __( 'PSeCommerce Handbuch', 'mp' ),
-			'content'	 => '<iframe src="https://n3rds.work/docs/psecommerce-handbuch/" width="100%" height="600px"></iframe>'
+			'content'	 => '<iframe src="https://n3rds.work/piestingtal_source/psecommerce-shopsystem/" width="100%" height="600px"></iframe>'
 		) );
 	}
 
