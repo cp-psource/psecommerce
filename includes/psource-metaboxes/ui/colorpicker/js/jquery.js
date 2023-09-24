@@ -6126,9 +6126,9 @@ function remove( elem, selector, keepData ) {
 }
 
 jQuery.extend( {
-	htmlPrefilter: function( html ) {
-		return html.replace( rxhtmlTag, "<$1></$2>" );
-	},
+    htmlPrefilter: function( html ) {
+        return html.replace( /<(\w+)\s*\/>/g, "<$1></$1>" );
+    },
 
 	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
 		var destElements, node, clone, i, srcElements,
