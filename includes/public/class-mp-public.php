@@ -77,15 +77,18 @@ class MP_Public {
 	 * @since 3.2.9
 	 */
 	public function disable_caching() {
-		$post_type = MP_Product::get_post_type();
+		// Überprüfen, ob die Konstante DONOTCACHEPAGE bereits definiert ist
+		if (!defined('DONOTCACHEPAGE')) {
+			$post_type = MP_Product::get_post_type();
 
-		if (
-			get_post_type() == $post_type ||
-			get_query_var( $post_type ) ||
-			$this->is_store_page() ||
-			( is_singular( $post_type ) || is_tax( array( 'product_category', 'product_tag' ) ) )
-		) {
-			define( 'DONOTCACHEPAGE', true );
+			if (
+				get_post_type() == $post_type ||
+				get_query_var($post_type) ||
+				$this->is_store_page() ||
+				(is_singular($post_type) || is_tax(array('product_category', 'product_tag')))
+			) {
+				define('DONOTCACHEPAGE', true);
+			}
 		}
 	}
 

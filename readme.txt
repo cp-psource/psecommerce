@@ -54,6 +54,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 * Fix Unsafe expansion of self-closing HTML tag
 * Fix: PHP Fatal error:  Uncaught Error: Non-static method
+* Fix: Constant DONOTCACHEPAGE already defined
 
 = 3.5.3 = DerN3rd =
 
