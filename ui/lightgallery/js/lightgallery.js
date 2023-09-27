@@ -1,1057 +1,1234 @@
-(function($, window, document, undefined) {
+/** Polyfill the CustomEvent() constructor functionality in Internet Explorer 9 and higher */
+(function() {
 
-    'use strict';
-
-    var defaults = {
-
-        mode: 'lg-slide',
-
-        // Ex : 'ease'
-        cssEasing: 'cubic-bezier(0.25, 0, 0.25, 1)',
-
-        //'for jquery animation'
-        easing: 'linear',
-        speed: 600,
-        height: '100%',
-        width: '100%',
-        addClass: '',
-        startClass: 'lg-start-zoom',
-        backdropDuration: 150,
-        hideBarsDelay: 6000,
-
-        useLeft: false,
-
-        closable: true,
-        loop: true,
-        escKey: true,
-        keyPress: true,
-        controls: true,
-        slideEndAnimatoin: true,
-        hideControlOnEnd: false,
-        mousewheel: true,
-
-        // .lg-item || '.lg-sub-html'
-        appendSubHtmlTo: '.lg-sub-html',
-
-        /**
-         * @desc number of preload slides
-         * will exicute only after the current slide is fully loaded.
-         *
-         * @ex you clicked on 4th image and if preload = 1 then 3rd slide and 5th
-         * slide will be loaded in the background after the 4th slide is fully loaded..
-         * if preload is 2 then 2nd 3rd 5th 6th slides will be preloaded.. ... ...
-         *
-         */
-        preload: 1,
-        showAfterLoad: true,
-        selector: '',
-        nextHtml: '',
-        prevHtml: '',
-
-        // 0, 1
-        index: false,
-
-        iframeMaxWidth: '100%',
-
-        download: true,
-        counter: true,
-        appendCounterTo: '.lg-toolbar',
-
-        swipeThreshold: 50,
-        enableSwipe: true,
-        enableDrag: true,
-
-        dynamic: false,
-        dynamicEl: [],
-        galleryId: 1
-    };
-
-    function Plugin(element, options) {
-
-        // Current lightGallery element
-        this.el = element;
-
-        // Current jquery element
-        this.$el = $(element);
-
-        // lightGallery settings
-        this.s = $.extend({}, defaults, options);
-
-        // lightGallery modules
-        this.modules = {};
-
-        // false when lightgallery complete first slide;
-        this.lGalleryOn = false;
-
-        this.lgBusy = false;
-
-        // Timeout function for hiding controls;
-        this.hideBartimeout = false;
-
-        // To determine browser supports for touch events;
-        this.isTouch = ('ontouchstart' in document.documentElement);
-
-        // DIsable hideControlOnEnd if sildeEndAnimation is true
-        if (this.s.slideEndAnimatoin) {
-            this.s.hideControlOnEnd = false;
-        }
-
-        // Gallery items
-        if (this.s.dynamic) {
-            this.$items = this.s.dynamicEl;
-        } else {
-            if (this.s.selector === 'this') {
-                this.$items = this.$el;
-            } else if (this.s.selector !== '') {
-                this.$items = this.$el.find($(this.s.selector));
-            } else {
-                this.$items = this.$el.children();
-            }
-        }
-
-        // .lg-item
-        this.$slide = '';
-
-        // .lg-outer
-        this.$outer = '';
-
-        this.init();
-
-        return this;
+    if (typeof window.CustomEvent === 'function') {
+        return false;
     }
 
-    Plugin.prototype.init = function() {
+    function CustomEvent(event, params) {
+        params = params || {
+            bubbles: false,
+            cancelable: false,
+            detail: undefined
+        };
+        var evt = document.createEvent('CustomEvent');
+        evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+        return evt;
+    }
 
-        var _this = this;
+    CustomEvent.prototype = window.Event.prototype;
 
-        // s.preload should not be more than $item.length
-        if (_this.s.preload > _this.$items.length) {
-            _this.s.preload = _this.$items.length;
-        }
+    window.CustomEvent = CustomEvent;
+})();
 
-        // if dynamic option is enabled execute immediately
-        var _hash = window.location.hash;
-        if (_hash.indexOf('lg=' + this.s.galleryId) > 0) {
+import utils from './lg-utils';
+window.utils = utils;
+window.lgData = {
+    uid: 0
+};
 
-            _this.index = parseInt(_hash.split('&slide=')[1], 10);
+window.lgModules = {};
+var defaults = {
 
-            $('body').addClass('lg-from-hash');
-            if (!$('body').hasClass('lg-on')) {
-                setTimeout(function() {
-                    _this.build(_this.index);
-                    $('body').addClass('lg-on');
-                });
-            }
-        }
+    mode: 'lg-slide',
 
-        if (_this.s.dynamic) {
+    // Ex : 'ease'
+    cssEasing: 'ease',
 
-            _this.$el.trigger('onBeforeOpen.lg');
+    //'for jquery animation'
+    easing: 'linear',
+    speed: 600,
+    height: '100%',
+    width: '100%',
+    addClass: '',
+    startClass: 'lg-start-zoom',
+    backdropDuration: 150,
 
-            _this.index = _this.s.index || 0;
+    // Set 0, if u don't want to hide the controls 
+    hideBarsDelay: 6000,
 
-            // prevent accidental double execution
-            if (!$('body').hasClass('lg-on')) {
-                setTimeout(function() {
-                    _this.build(_this.index);
-                    $('body').addClass('lg-on');
-                });
+    useLeft: false,
+
+    // aria-labelledby attribute fot gallery
+    ariaLabelledby: '',
+
+    //aria-describedby attribute for gallery
+    ariaDescribedby: '',
+
+    closable: true,
+    loop: true,
+    escKey: true,
+    keyPress: true,
+    controls: true,
+    slideEndAnimatoin: true,
+    hideControlOnEnd: false,
+    mousewheel: false,
+
+    getCaptionFromTitleOrAlt: true,
+
+    // .lg-item || '.lg-sub-html'
+    appendSubHtmlTo: '.lg-sub-html',
+
+    subHtmlSelectorRelative: false,
+
+    /**
+     * @desc number of preload slides
+     * will exicute only after the current slide is fully loaded.
+     *
+     * @ex you clicked on 4th image and if preload = 1 then 3rd slide and 5th
+     * slide will be loaded in the background after the 4th slide is fully loaded..
+     * if preload is 2 then 2nd 3rd 5th 6th slides will be preloaded.. ... ...
+     *
+     */
+    preload: 1,
+    showAfterLoad: true,
+    selector: '',
+    selectWithin: '',
+    nextHtml: '',
+    prevHtml: '',
+
+    // 0, 1
+    index: false,
+
+    iframeMaxWidth: '100%',
+
+    download: true,
+    counter: true,
+    appendCounterTo: '.lg-toolbar',
+
+    swipeThreshold: 50,
+    enableSwipe: true,
+    enableDrag: true,
+
+    dynamic: false,
+    dynamicEl: [],
+    galleryId: 1,
+    supportLegacyBrowser: true
+};
+
+function Plugin(element, options) {
+
+    // Current lightGallery element
+    this.el = element;
+
+    // lightGallery settings
+    this.s = Object.assign({}, defaults, options);
+
+    // When using dynamic mode, ensure dynamicEl is an array
+    if (this.s.dynamic && this.s.dynamicEl !== 'undefined' && this.s.dynamicEl.constructor === Array && !this.s.dynamicEl.length) {
+        throw ('When using dynamic mode, you must also define dynamicEl as an Array.');
+    }
+
+    // lightGallery modules
+    this.modules = {};
+
+    // false when lightgallery complete first slide;
+    this.lGalleryOn = false;
+
+    this.lgBusy = false;
+
+    // Timeout function for hiding controls;
+    this.hideBartimeout = false;
+
+    // To determine browser supports for touch events;
+    this.isTouch = ('ontouchstart' in document.documentElement);
+
+    // Disable hideControlOnEnd if sildeEndAnimation is true
+    if (this.s.slideEndAnimatoin) {
+        this.s.hideControlOnEnd = false;
+    }
+
+    this.items = [];
+
+    // Gallery items
+    if (this.s.dynamic) {
+        this.items = this.s.dynamicEl;
+    } else {
+        if (this.s.selector === 'this') {
+            this.items.push(this.el);
+        } else if (this.s.selector !== '') {
+            if (this.s.selectWithin) {
+                this.items = document.querySelector(this.s.selectWithin).querySelectorAll(this.s.selector);
+            } else {
+                this.items = this.el.querySelectorAll(this.s.selector);
             }
         } else {
+            this.items = this.el.children;
+        }
+    }
 
-            // Using different namespace for click because click event should not unbind if selector is same object('this')
-            _this.$items.on('click.lgcustom', function(event) {
+    // .lg-item
 
-                // For IE8
-                try {
-                    event.preventDefault();
-                    event.preventDefault();
-                } catch (er) {
-                    event.returnValue = false;
-                }
+    this.___slide = '';
 
-                _this.$el.trigger('onBeforeOpen.lg');
+    // .lg-outer
+    this.outer = '';
 
-                _this.index = _this.s.index || _this.$items.index(this);
+    this.init();
 
-                // prevent accidental double execution
-                if (!$('body').hasClass('lg-on')) {
-                    _this.build(_this.index);
-                    $('body').addClass('lg-on');
-                }
+    return this;
+}
+
+Plugin.prototype.init = function() {
+
+    var _this = this;
+
+    // s.preload should not be more than $item.length
+    if (_this.s.preload > _this.items.length) {
+        _this.s.preload = _this.items.length;
+    }
+
+    // if dynamic option is enabled execute immediately
+    var _hash = window.location.hash;
+    if (_hash.indexOf('lg=' + this.s.galleryId) > 0) {
+
+        _this.index = parseInt(_hash.split('&slide=')[1], 10);
+
+        utils.addClass(document.body, 'lg-from-hash');
+        if (!utils.hasClass(document.body, 'lg-on')) {
+            utils.addClass(document.body, 'lg-on');
+            setTimeout(function() {
+                _this.build(_this.index);
             });
         }
+    }
 
-    };
+    if (_this.s.dynamic) {
 
-    Plugin.prototype.build = function(index) {
+        utils.trigger(this.el, 'onBeforeOpen');
 
-        var _this = this;
+        _this.index = _this.s.index || 0;
 
-        _this.structure();
-
-        // module constructor
-        $.each($.fn.lightGallery.modules, function(key) {
-            _this.modules[key] = new $.fn.lightGallery.modules[key](_this.el);
-        });
-
-        // initiate slide function
-        _this.slide(index, false, false);
-
-        if (_this.s.keyPress) {
-            _this.keyPress();
-        }
-
-        if (_this.$items.length > 1) {
-
-            _this.arrow();
-
+        // prevent accidental double execution
+        if (!utils.hasClass(document.body, 'lg-on')) {
+            utils.addClass(document.body, 'lg-on');
             setTimeout(function() {
-                _this.enableDrag();
-                _this.enableSwipe();
-            }, 50);
+                _this.build(_this.index);
+            });
+        }
+    } else {
 
-            if (_this.s.mousewheel) {
-                _this.mousewheel();
-            }
+        for (var i = 0; i < _this.items.length; i++) {
+
+            /*jshint loopfunc: true */
+            (function(index) {
+
+                // Using different namespace for click because click event should not unbind if selector is same object('this')
+                utils.on(_this.items[index], 'click.lgcustom', (e) => {
+
+                    e.preventDefault();
+
+                    utils.trigger(_this.el, 'onBeforeOpen');
+
+                    _this.index = _this.s.index || index;
+
+                    if (!utils.hasClass(document.body, 'lg-on')) {
+                        _this.build(_this.index);
+                        utils.addClass(document.body, 'lg-on');
+                    }
+                });
+
+            })(i);
+
         }
 
-        _this.counter();
+    }
 
-        _this.closeGallery();
+};
 
-        _this.$el.trigger('onAfterOpen.lg');
+Plugin.prototype.build = function(index) {
 
-        // Hide controllers if mouse doesn't move for some period
-        _this.$outer.on('mousemove.lg click.lg touchstart.lg', function() {
+    var _this = this;
 
-            _this.$outer.removeClass('lg-hide-items');
+    _this.structure();
 
+    for (var key in window.lgModules) {
+        _this.modules[key] = new window.lgModules[key](_this.el);
+    }
+
+    // initiate slide function
+    _this.slide(index, false, false);
+
+    if (_this.s.keyPress) {
+        _this.keyPress();
+    }
+
+    if (_this.items.length > 1) {
+
+        _this.arrow();
+
+        setTimeout(function() {
+            _this.enableDrag();
+            _this.enableSwipe();
+        }, 50);
+
+        if (_this.s.mousewheel) {
+            _this.mousewheel();
+        }
+    }
+
+    _this.counter();
+
+    _this.closeGallery();
+
+    utils.trigger(_this.el, 'onAfterOpen');
+
+    // Hide controllers if mouse doesn't move for some period
+    if(_this.s.hideBarsDelay > 0) {
+
+        // Hide controls if user doesn't use mouse or touch after opening gallery
+        const initialHideBarTimeout = setTimeout(function() {
+            utils.addClass(_this.outer, 'lg-hide-items');
+        }, _this.s.hideBarsDelay);
+        utils.on(_this.outer, 'mousemove.lg click.lg touchstart.lg', function() {
+            
+            // Cancel initalHideBarTimout if user uses mouse or touch events
+            // Before it fires
+            clearTimeout(initialHideBarTimeout);
+            
+            utils.removeClass(_this.outer, 'lg-hide-items');
+    
             clearTimeout(_this.hideBartimeout);
-
+    
             // Timeout will be cleared on each slide movement also
             _this.hideBartimeout = setTimeout(function() {
-                _this.$outer.addClass('lg-hide-items');
+                utils.addClass(_this.outer, 'lg-hide-items');
             }, _this.s.hideBarsDelay);
-
+    
         });
+    }
 
-    };
+};
 
-    Plugin.prototype.structure = function() {
-        var list = '';
-        var controls = '';
-        var i = 0;
-        var subHtmlCont = '';
-        var template;
-        var _this = this;
+Plugin.prototype.structure = function() {
+    var list = '';
+    var controls = '';
+    var i = 0;
+    var subHtmlCont = '';
+    var template;
+    var _this = this;
 
-        $('body').append('<div class="lg-backdrop"></div>');
-        $('.lg-backdrop').css('transition-duration', this.s.backdropDuration + 'ms');
+    document.body.insertAdjacentHTML('beforeend', '<div class="lg-backdrop"></div>');
+    utils.setVendor(document.querySelector('.lg-backdrop'), 'TransitionDuration', this.s.backdropDuration + 'ms');
 
-        // Create gallery items
-        for (i = 0; i < this.$items.length; i++) {
-            list += '<div class="lg-item"></div>';
-        }
+    // Create gallery items
+    for (i = 0; i < this.items.length; i++) {
+        list += '<div class="lg-item"></div>';
+    }
 
-        // Create controlls
-        if (this.s.controls && this.$items.length > 1) {
-            controls = '<div class="lg-actions">' +
-                '<div class="lg-prev lg-icon">' + this.s.prevHtml + '</div>' +
-                '<div class="lg-next lg-icon">' + this.s.nextHtml + '</div>' +
-                '</div>';
-        }
-
-        if (this.s.appendSubHtmlTo === '.lg-sub-html') {
-            subHtmlCont = '<div class="lg-sub-html"></div>';
-        }
-
-        template = '<div class="lg-outer ' + this.s.addClass + ' ' + this.s.startClass + '">' +
-            '<div class="lg" style="width:' + this.s.width + '; height:' + this.s.height + '">' +
-            '<div class="lg-inner">' + list + '</div>' +
-            '<div class="lg-toolbar group">' +
-            '<span class="lg-close lg-icon"></span>' +
-            '</div>' +
-            controls +
-            subHtmlCont +
-            '</div>' +
+    // Create controlls
+    if (this.s.controls && this.items.length > 1) {
+        controls = '<div class="lg-actions">' +
+            '<button type="button" aria-label="Previous slide" class="lg-prev lg-icon">' + this.s.prevHtml + '</button>' +
+            '<button type="button" aria-label="Next slide" class="lg-next lg-icon">' + this.s.nextHtml + '</button>' +
             '</div>';
+    }
 
-        $('body').append(template);
-        this.$outer = $('.lg-outer');
-        this.$slide = this.$outer.find('.lg-item');
+    if (this.s.appendSubHtmlTo === '.lg-sub-html') {
+        subHtmlCont = '<div role="status" aria-live="polite" class="lg-sub-html"></div>';
+    }
 
-        if (this.s.useLeft) {
-            this.$outer.addClass('lg-use-left');
-        } else {
-            this.$outer.addClass('lg-use-css3');
-        }
+    var ariaLabelledby = this.s.ariaLabelledby ?
+        'aria-labelledby="' + this.s.ariaLabelledby + '"' : '';
+    var ariaDescribedby = this.s.ariaDescribedby ?
+        'aria-describedby="' + this.s.ariaDescribedby + '"' : '';
 
-        // For fixed height gallery
-        _this.setTop();
-        $(window).on('resize.lg orientationchange.lg', function() {
-            setTimeout(function() {
-                _this.setTop();
-            }, 100);
-        });
+    template = '<div tabindex="-1" aria-modal="true" ' + ariaLabelledby + ' ' + ariaDescribedby + ' role="dialog" class="lg-outer ' + this.s.addClass + ' ' + this.s.startClass + '">' +
+        '<div class="lg" style="width:' + this.s.width + '; height:' + this.s.height + '">' +
+        '<div class="lg-inner">' + list + '</div>' +
+        '<div class="lg-toolbar lg-group">' +
+        '<button type="button" aria-label="Close gallery" class="lg-close lg-icon"></button>' +
+        '</div>' +
+        controls +
+        subHtmlCont +
+        '</div>' +
+        '</div>';
 
-        // add class lg-current to remove initial transition
-        this.$slide.eq(this.index).addClass('lg-current');
+    document.body.insertAdjacentHTML('beforeend', template);
+    this.outer = document.querySelector('.lg-outer');
+    this.outer.focus();
+    this.___slide = this.outer.querySelectorAll('.lg-item');
 
-        // add Class for css support and transition mode
-        if (this.doCss()) {
-            this.$outer.addClass('lg-css3');
-        } else {
-            this.$outer.addClass('lg-css');
-        }
+    if (this.s.useLeft) {
+        utils.addClass(this.outer, 'lg-use-left');
 
-        this.$outer.addClass(this.s.mode);
-
-        if (this.s.enableDrag && this.$items.length > 1) {
-            this.$outer.addClass('lg-grab');
-        }
-
-        if (this.s.showAfterLoad) {
-            this.$outer.addClass('lg-show-after-load');
-        }
-
-        if (this.doCss()) {
-            var $inner = this.$outer.find('.lg-inner');
-            $inner.css('transition-timing-function', this.s.cssEasing);
-            $inner.css('transition-duration', this.s.speed + 'ms');
-        }
-
-        $('.lg-backdrop').addClass('in');
-
-        setTimeout(function() {
-            _this.$outer.addClass('lg-visible');
-        }, this.s.backdropDuration);
-
-        if (this.s.download) {
-            this.$outer.find('.lg-toolbar').append('<a id="lg-download" target="_blank" download class="lg-download lg-icon"></a>');
-        }
-
-    };
+        // Set mode lg-slide if use left is true;
+        this.s.mode = 'lg-slide';
+    } else {
+        utils.addClass(this.outer, 'lg-use-css3');
+    }
 
     // For fixed height gallery
-    Plugin.prototype.setTop = function() {
-        if (this.s.height !== '100%') {
-            var wH = $(window).height();
-            var top = (wH - parseInt(this.s.height, 10)) / 2;
-            var $lGallery = this.$outer.find('.lg');
-            if (wH >= parseInt(this.s.height, 10)) {
-                $lGallery.css('top', top + 'px');
-            } else {
-                $lGallery.css('top', '0px');
+    _this.setTop();
+    utils.on(window, 'resize.lg orientationchange.lg', function() {
+        setTimeout(function() {
+            _this.setTop();
+        }, 100);
+    });
+
+    // add class lg-current to remove initial transition
+    utils.addClass(this.___slide[this.index], 'lg-current');
+
+    // add Class for css support and transition mode
+    if (this.doCss()) {
+        utils.addClass(this.outer, 'lg-css3');
+    } else {
+        utils.addClass(this.outer, 'lg-css');
+
+        // Set speed 0 because no animation will happen if browser doesn't support css3
+        this.s.speed = 0;
+    }
+
+    utils.addClass(this.outer, this.s.mode);
+
+    if (this.s.enableDrag && this.items.length > 1) {
+        utils.addClass(this.outer, 'lg-grab');
+    }
+
+    if (this.s.showAfterLoad) {
+        utils.addClass(this.outer, 'lg-show-after-load');
+    }
+
+    if (this.doCss()) {
+        let inner = this.outer.querySelector('.lg-inner');
+        utils.setVendor(inner, 'TransitionTimingFunction', this.s.cssEasing);
+        utils.setVendor(inner, 'TransitionDuration', this.s.speed + 'ms');
+    }
+
+    setTimeout(function() {
+        utils.addClass(document.querySelector('.lg-backdrop'), 'in');
+    });
+
+
+    setTimeout(function() {
+        utils.addClass(_this.outer, 'lg-visible');
+    }, this.s.backdropDuration);
+
+    if (this.s.download) {
+        this.outer.querySelector('.lg-toolbar').insertAdjacentHTML('beforeend', '<a id="lg-download" aria-label="Download" target="_blank" download class="lg-download lg-icon"></a>');
+    }
+
+    // Store the current scroll top value to scroll back after closing the gallery..
+    this.prevScrollTop = (document.documentElement.scrollTop || document.body.scrollTop)
+
+};
+
+// For fixed height gallery
+Plugin.prototype.setTop = function() {
+    if (this.s.height !== '100%') {
+        let wH = window.innerHeight;
+        let top = (wH - parseInt(this.s.height, 10)) / 2;
+        let lGallery = this.outer.querySelector('.lg');
+        if (wH >= parseInt(this.s.height, 10)) {
+            lGallery.style.top = top + 'px';
+        } else {
+            lGallery.style.top = '0px';
+        }
+    }
+};
+
+// Find css3 support
+Plugin.prototype.doCss = function() {
+    // check for css animation support
+    var support = function() {
+        var transition = ['transition', 'MozTransition', 'WebkitTransition', 'OTransition', 'msTransition', 'KhtmlTransition'];
+        var root = document.documentElement;
+        var i = 0;
+        for (i = 0; i < transition.length; i++) {
+            if (transition[i] in root.style) {
+                return true;
             }
         }
     };
 
-    // Find css3 support
-    Plugin.prototype.doCss = function() {
-        // check for css animation support
-        var support = function() {
-            var transition = ['transition', 'MozTransition', 'WebkitTransition', 'OTransition', 'msTransition', 'KhtmlTransition'];
-            var root = document.documentElement;
-            var i = 0;
-            for (i = 0; i < transition.length; i++) {
-                if (transition[i] in root.style) {
-                    return true;
-                }
-            }
+    if (support()) {
+        return true;
+    }
+
+    return false;
+};
+
+/**
+ *  @desc Check the given src is video
+ *  @param {String} src
+ *  @return {Object} video type
+ *  Ex:{ youtube  :  ["//www.youtube.com/watch?v=c0asJgSyxcY", "c0asJgSyxcY"] }
+ */
+Plugin.prototype.isVideo = function(src, index) {
+
+    var html;
+    if (this.s.dynamic) {
+        html = this.s.dynamicEl[index].html;
+    } else {
+        html = this.items[index].getAttribute('data-html');
+    }
+
+    if (!src && html) {
+        return {
+            html5: true
         };
+    }
 
-        if (support()) {
-            return true;
-        }
+    var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com|be-nocookie\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-\_\%]+)/i);
+    var vimeo = src.match(/\/\/(?:www\.)?(?:player\.)?vimeo.com\/(?:video\/)?([0-9a-z\-_]+)/i);
+    var dailymotion = src.match(/\/\/(?:www\.)?dai.ly\/([0-9a-z\-_]+)/i);
+    var vk = src.match(/\/\/(?:www\.)?(?:vk\.com|vkontakte\.ru)\/(?:video_ext\.php\?)(.*)/i);
 
-        return false;
-    };
+    if (youtube) {
+        return {
+            youtube: youtube
+        };
+    } else if (vimeo) {
+        return {
+            vimeo: vimeo
+        };
+    } else if (dailymotion) {
+        return {
+            dailymotion: dailymotion
+        };
+    } else if (vk) {
+        return {
+            vk: vk
+        };
+    }
+};
 
-    /**
-     *  @desc Check the given src is video
-     *  @param {String} src
-     *  @return {Object} video type
-     *  Ex:{ youtube  :  ["//www.youtube.com/watch?v=c0asJgSyxcY", "c0asJgSyxcY"] }
-     */
-    Plugin.prototype.isVideo = function(src, index) {
+/**
+ *  @desc Create image counter
+ *  Ex: 1/10
+ */
+Plugin.prototype.counter = function() {
+    if (this.s.counter) {
+        this.outer.querySelector(this.s.appendCounterTo).insertAdjacentHTML('beforeend', '<div id="lg-counter" role="status" aria-live="polite"><span id="lg-counter-current">' + (parseInt(this.index, 10) + 1) + '</span> / <span id="lg-counter-all">' + this.items.length + '</span></div>');
+    }
+};
 
-        var html;
-        if (this.s.dynamic) {
-            html = this.s.dynamicEl[index].html;
-        } else {
-            html = this.$items.eq(index).attr('data-html');
-        }
-
-        if (!src && html) {
-            return {
-                html5: true
-            };
-        }
-
-        var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-]+)/i);
-        var vimeo = src.match(/\/\/(?:www\.)?vimeo.com\/([0-9a-z\-_]+)/i);
-        var dailymotion = src.match(/\/\/(?:www\.)?dai.ly\/([0-9a-z\-_]+)/i);
-
-        if (youtube) {
-            return {
-                youtube: youtube
-            };
-        } else if (vimeo) {
-            return {
-                vimeo: vimeo
-            };
-        } else if (dailymotion) {
-            return {
-                dailymotion: dailymotion
-            };
-        }
-    };
-
-    /**
-     *  @desc Create image counter
-     *  Ex: 1/10
-     */
-    Plugin.prototype.counter = function() {
-        if (this.s.counter) {
-            $(this.s.appendCounterTo).append('<div id="lg-counter"><span id="lg-counter-current">' + (parseInt(this.index, 10) + 1) + '</span> / <span id="lg-counter-all">' + this.$items.length + '</span></div>');
-        }
-    };
-
-    /**
-     *  @desc add sub-html into the slide
-     *  @param {Number} index - index of the slide
-     */
-    Plugin.prototype.addHtml = function(index) {
-        var subHtml = null;
-        if (this.s.dynamic) {
-            subHtml = this.s.dynamicEl[index].subHtml;
-        } else {
-            subHtml = this.$items.eq(index).attr('data-sub-html');
-        }
-
-        if (typeof subHtml !== 'undefined' && subHtml !== null) {
-
-            // get first letter of subhtml
-            // if first letter starts with . or # get the html form the jQuery object
-            var fL = subHtml.substring(0, 1);
-            if (fL === '.' || fL === '#') {
-                subHtml = $(subHtml).html();
-            } else {
-                subHtml = subHtml;
+/**
+ *  @desc add sub-html into the slide
+ *  @param {Number} index - index of the slide
+ */
+Plugin.prototype.addHtml = function(index) {
+    var subHtml = null;
+    var currentEle;
+    if (this.s.dynamic) {
+        subHtml = this.s.dynamicEl[index].subHtml;
+    } else {
+        currentEle = this.items[index];
+        subHtml = currentEle.getAttribute('data-sub-html');
+        if (this.s.getCaptionFromTitleOrAlt && !subHtml) {
+            subHtml = currentEle.getAttribute('title');
+            if (subHtml && currentEle.querySelector('img')) {
+                subHtml = currentEle.querySelector('img').getAttribute('alt');
             }
-        } else {
-            subHtml = '';
         }
+    }
 
-        if (this.s.appendSubHtmlTo === '.lg-sub-html') {
-            this.$outer.find(this.s.appendSubHtmlTo).html(subHtml);
+    if (typeof subHtml !== 'undefined' && subHtml !== null) {
 
-            // Add lg-empty-html class if title doesn't exist
-            if (subHtml === '') {
-                this.$outer.find(this.s.appendSubHtmlTo).addClass('lg-empty-html');
+        // get first letter of subhtml
+        // if first letter starts with . or # get the html form the jQuery object
+        var fL = subHtml.substring(0, 1);
+        if (fL === '.' || fL === '#') {
+            if (this.s.subHtmlSelectorRelative && !this.s.dynamic) {
+                subHtml = currentEle.querySelector(subHtml).innerHTML;
             } else {
-                this.$outer.find(this.s.appendSubHtmlTo).removeClass('lg-empty-html');
+                subHtml = document.querySelector(subHtml).innerHTML;
             }
+        }
+    } else {
+        subHtml = '';
+    }
+
+    if (this.s.appendSubHtmlTo === '.lg-sub-html') {
+        this.outer.querySelector(this.s.appendSubHtmlTo).innerHTML = subHtml;
+    } else {
+        this.___slide[index].insertAdjacentHTML('beforeend', subHtml);
+    }
+
+    // Add lg-empty-html class if title doesn't exist
+    if (typeof subHtml !== 'undefined' && subHtml !== null) {
+        if (subHtml === '') {
+            utils.addClass(this.outer.querySelector(this.s.appendSubHtmlTo), 'lg-empty-html');
         } else {
-            this.$slide.eq(index).append(subHtml);
+            utils.removeClass(this.outer.querySelector(this.s.appendSubHtmlTo), 'lg-empty-html');
+        }
+    }
+
+    utils.trigger(this.el, 'onAfterAppendSubHtml', {
+        index: index
+    });
+};
+
+/**
+ *  @desc Preload slides
+ *  @param {Number} index - index of the slide
+ */
+Plugin.prototype.preload = function(index) {
+    var i = 1;
+    var j = 1;
+    for (i = 1; i <= this.s.preload; i++) {
+        if (i >= this.items.length - index) {
+            break;
         }
 
-        this.$el.trigger('onAfterAppendSubHtml.lg', [index]);
-    };
+        this.loadContent(index + i, false, 0);
+    }
 
-    /**
-     *  @desc Preload slides
-     *  @param {Number} index - index of the slide
-     */
-    Plugin.prototype.preload = function(index) {
-        var i = 1;
-        var j = 1;
-        for (i = 1; i <= this.s.preload; i++) {
-            if (i >= this.$items.length - index) {
+    for (j = 1; j <= this.s.preload; j++) {
+        if (index - j < 0) {
+            break;
+        }
+
+        this.loadContent(index - j, false, 0);
+    }
+};
+
+/**
+ *  @desc Load slide content into slide.
+ *  @param {Number} index - index of the slide.
+ *  @param {Boolean} rec - if true call loadcontent() function again.
+ *  @param {Boolean} delay - delay for adding complete class. it is 0 except first time.
+ */
+Plugin.prototype.loadContent = function(index, rec, delay) {
+
+    var _this = this;
+    var _hasPoster = false;
+    var _img;
+    var _src;
+    var _poster;
+    var _srcset;
+    var _sizes;
+    var _html;
+    var _alt;
+    var getResponsiveSrc = function(srcItms) {
+        var rsWidth = [];
+        var rsSrc = [];
+        for (var i = 0; i < srcItms.length; i++) {
+            var __src = srcItms[i].split(' ');
+
+            // Manage empty space
+            if (__src[0] === '') {
+                __src.splice(0, 1);
+            }
+
+            rsSrc.push(__src[0]);
+            rsWidth.push(__src[1]);
+        }
+
+        var wWidth = window.innerWidth;
+        for (var j = 0; j < rsWidth.length; j++) {
+            if (parseInt(rsWidth[j], 10) > wWidth) {
+                _src = rsSrc[j];
                 break;
             }
-
-            this.loadContent(index + i, false, 0);
-        }
-
-        for (j = 1; j <= this.s.preload; j++) {
-            if (index - j < 0) {
-                break;
-            }
-
-            this.loadContent(index - j, false, 0);
         }
     };
 
-    /**
-     *  @desc Load slide content into slide.
-     *  @param {Number} index - index of the slide.
-     *  @param {Boolean} rec - if true call loadcontent() function again.
-     *  @param {Boolean} delay - delay for adding complete class. it is 0 except first time.
-     */
-    Plugin.prototype.loadContent = function(index, rec, delay) {
+    if (_this.s.dynamic) {
 
-        var _this = this;
-        var _hasPoster = false;
-        var _$img;
-        var _src;
-        var _poster;
-        var _srcset;
-        var _sizes;
-        var _html;
-        var getResponsiveSrc = function(srcItms) {
-            var rsWidth = [];
-            var rsSrc = [];
-            for (var i = 0; i < srcItms.length; i++) {
-                var __src = srcItms[i].split(' ');
-
-                // Manage empty space
-                if (__src[0] === '') {
-                    __src.splice(0, 1);
-                }
-
-                rsSrc.push(__src[0]);
-                rsWidth.push(__src[1]);
-            }
-
-            var wWidth = $(window).width();
-            for (var j = 0; j < rsWidth.length; j++) {
-                if (parseInt(rsWidth[j], 10) > wWidth) {
-                    _src = rsSrc[j];
-                    break;
-                }
-            }
-        };
-
-        if (_this.s.dynamic) {
-
-            if (_this.s.dynamicEl[index].poster) {
-                _hasPoster = true;
-                _poster = _this.s.dynamicEl[index].poster;
-            }
-
-            _html = _this.s.dynamicEl[index].html;
-            _src = _this.s.dynamicEl[index].src;
-
-            if (_this.s.dynamicEl[index].responsive) {
-                var srcDyItms = _this.s.dynamicEl[index].responsive.split(',');
-                getResponsiveSrc(srcDyItms);
-            }
-
-            _srcset = _this.s.dynamicEl[index].srcset;
-            _sizes = _this.s.dynamicEl[index].sizes;
-
-        } else {
-
-            if (_this.$items.eq(index).attr('data-poster')) {
-                _hasPoster = true;
-                _poster = _this.$items.eq(index).attr('data-poster');
-            }
-
-            _html = _this.$items.eq(index).attr('data-html');
-            _src = _this.$items.eq(index).attr('href') || _this.$items.eq(index).attr('data-src');
-
-            if (_this.$items.eq(index).attr('data-responsive')) {
-                var srcItms = _this.$items.eq(index).attr('data-responsive').split(',');
-                getResponsiveSrc(srcItms);
-            }
-
-            _srcset = _this.$items.eq(index).attr('data-srcset');
-            _sizes = _this.$items.eq(index).attr('data-sizes');
-
+        if (_this.s.dynamicEl[index].poster) {
+            _hasPoster = true;
+            _poster = _this.s.dynamicEl[index].poster;
         }
 
-        //if (_src || _srcset || _sizes || _poster) {
+        _html = _this.s.dynamicEl[index].html;
+        _src = _this.s.dynamicEl[index].src;
+        _alt = _this.s.dynamicEl[index].alt;
 
-        var iframe = false;
-        if (_this.s.dynamic) {
-            if (_this.s.dynamicEl[index].iframe) {
-                iframe = true;
-            }
-        } else {
-            if (_this.$items.eq(index).attr('data-iframe') === 'true') {
-                iframe = true;
-            }
+        if (_this.s.dynamicEl[index].responsive) {
+            var srcDyItms = _this.s.dynamicEl[index].responsive.split(',');
+            getResponsiveSrc(srcDyItms);
         }
 
-        var _isVideo = _this.isVideo(_src, index);
-        if (!_this.$slide.eq(index).hasClass('lg-loaded')) {
-            if (iframe) {
-                _this.$slide.eq(index).prepend('<div class="lg-video-cont" style="max-width:' + _this.s.iframeMaxWidth + '"><div class="lg-video"><iframe class="lg-object" frameborder="0" src="' + _src + '"  allowfullscreen="true"></iframe></div></div>');
-            } else if (_hasPoster) {
-                var videoClass = '';
-                if (_isVideo && _isVideo.youtube) {
-                    videoClass = 'lg-has-youtube';
-                } else if (_isVideo && _isVideo.vimeo) {
-                    videoClass = 'lg-has-vimeo';
-                } else {
-                    videoClass = 'lg-has-html5';
-                }
+        _srcset = _this.s.dynamicEl[index].srcset;
+        _sizes = _this.s.dynamicEl[index].sizes;
 
-                _this.$slide.eq(index).prepend('<div class="lg-video-cont ' + videoClass + ' "><div class="lg-video"><span class="lg-video-play"></span><img class="lg-object lg-has-poster" src="' + _poster + '" /></div></div>');
+    } else {
 
-            } else if (_isVideo) {
-                _this.$slide.eq(index).prepend('<div class="lg-video-cont "><div class="lg-video"></div></div>');
-                _this.$el.trigger('hasVideo.lg', [index, _src, _html]);
+        if (_this.items[index].getAttribute('data-poster')) {
+            _hasPoster = true;
+            _poster = _this.items[index].getAttribute('data-poster');
+        }
+
+        _html = _this.items[index].getAttribute('data-html');
+        _src = _this.items[index].getAttribute('href') || _this.items[index].getAttribute('data-src');
+        _alt = _this.items[index].getAttribute('title');
+
+        if (_this.items[index].querySelector('img')) {
+            _alt = _alt || _this.items[index].querySelector('img').getAttribute('alt');
+        }
+
+        if (_this.items[index].getAttribute('data-responsive')) {
+            var srcItms = _this.items[index].getAttribute('data-responsive').split(',');
+            getResponsiveSrc(srcItms);
+        }
+
+        _srcset = _this.items[index].getAttribute('data-srcset');
+        _sizes = _this.items[index].getAttribute('data-sizes');
+
+    }
+
+    //if (_src || _srcset || _sizes || _poster) {
+
+    var iframe = false;
+    if (_this.s.dynamic) {
+        if (_this.s.dynamicEl[index].iframe) {
+            iframe = true;
+        }
+    } else {
+        if (_this.items[index].getAttribute('data-iframe') === 'true') {
+            iframe = true;
+        }
+    }
+
+    var _isVideo = _this.isVideo(_src, index);
+    if (!utils.hasClass(_this.___slide[index], 'lg-loaded')) {
+        if (iframe) {
+            _this.___slide[index].insertAdjacentHTML('afterbegin', '<div class="lg-video-cont" style="max-width:' + _this.s.iframeMaxWidth + '"><div class="lg-video"><iframe class="lg-object" frameborder="0" src="' + _src + '"  allowfullscreen="true"></iframe></div></div>');
+        } else if (_hasPoster) {
+            var videoClass = '';
+            if (_isVideo && _isVideo.youtube) {
+                videoClass = 'lg-has-youtube';
+            } else if (_isVideo && _isVideo.vimeo) {
+                videoClass = 'lg-has-vimeo';
             } else {
-                _this.$slide.eq(index).prepend('<div class="lg-img-wrap"> <img class="lg-object lg-image" src="' + _src + '" /> </div>');
+                videoClass = 'lg-has-html5';
             }
 
-            _this.$el.trigger('onAferAppendSlide.lg', [index]);
+            _this.___slide[index].insertAdjacentHTML('beforeend', '<div class="lg-video-cont ' + videoClass + ' "><div class="lg-video"><span class="lg-video-play"></span><img class="lg-object lg-has-poster" src="' + _poster + '" /></div></div>');
 
-            _$img = _this.$slide.eq(index).find('.lg-object');
-            if (_sizes) {
-                _$img.attr('sizes', _sizes);
-            }
+        } else if (_isVideo) {
+            _this.___slide[index].insertAdjacentHTML('beforeend', '<div class="lg-video-cont "><div class="lg-video"></div></div>');
+            utils.trigger(_this.el, 'hasVideo', {
+                index: index,
+                src: _src,
+                html: _html
+            });
+        } else {
+            _alt = _alt ? 'alt="' + _alt + '"' : '';
+            _this.___slide[index].insertAdjacentHTML('beforeend', '<div class="lg-img-wrap"><img class="lg-object lg-image" ' + _alt + ' src="' + _src + '" /></div>');
+        }
 
-            if (_srcset) {
-                _$img.attr('srcset', _srcset);
+        utils.trigger(_this.el, 'onAferAppendSlide', {
+            index: index
+        });
+
+        _img = _this.___slide[index].querySelector('.lg-object');
+        if (_sizes) {
+            _img.setAttribute('sizes', _sizes);
+        }
+
+        if (_srcset) {
+            _img.setAttribute('srcset', _srcset);
+
+            if (this.s.supportLegacyBrowser) {
                 try {
                     picturefill({
-                        elements: [_$img[0]]
+                        elements: [_img[0]]
                     });
                 } catch (e) {
-                    console.error('Make sure you have included Picturefill version 2');
+                    console.warn('If you want srcset to be supported for older browsers, ' +
+                        'please include picturefil javascript library in your document.');
+                }
+            }
+        }
+
+        if (this.s.appendSubHtmlTo !== '.lg-sub-html') {
+            _this.addHtml(index);
+        }
+
+        utils.addClass(_this.___slide[index], 'lg-loaded');
+    }
+
+    utils.on(_this.___slide[index].querySelector('.lg-object'), 'load.lg error.lg', function() {
+
+        // For first time add some delay for displaying the start animation.
+        var _speed = 0;
+
+        // Do not change the delay value because it is required for zoom plugin.
+        // If gallery opened from direct url (hash) speed value should be 0
+        if (delay && !utils.hasClass(document.body, 'lg-from-hash')) {
+            _speed = delay;
+        }
+
+        setTimeout(function() {
+            utils.addClass(_this.___slide[index], 'lg-complete');
+
+            utils.trigger(_this.el, 'onSlideItemLoad', {
+                index: index,
+                delay: delay || 0
+            });
+        }, _speed);
+
+    });
+
+    // @todo check load state for html5 videos
+    if (_isVideo && _isVideo.html5 && !_hasPoster) {
+        utils.addClass(_this.___slide[index], 'lg-complete');
+    }
+
+    if (rec === true) {
+        if (!utils.hasClass(_this.___slide[index], 'lg-complete')) {
+            utils.on(_this.___slide[index].querySelector('.lg-object'), 'load.lg error.lg', function() {
+                _this.preload(index);
+            });
+        } else {
+            _this.preload(index);
+        }
+    }
+
+    //}
+};
+
+/**
+*   @desc slide function for lightgallery
+    ** Slide() gets call on start
+    ** ** Set lg.on true once slide() function gets called.
+    ** Call loadContent() on slide() function inside setTimeout
+    ** ** On first slide we do not want any animation like slide of fade
+    ** ** So on first slide( if lg.on if false that is first slide) loadContent() should start loading immediately
+    ** ** Else loadContent() should wait for the transition to complete.
+    ** ** So set timeout s.speed + 50
+<=> ** loadContent() will load slide content in to the particular slide
+    ** ** It has recursion (rec) parameter. if rec === true loadContent() will call preload() function.
+    ** ** preload will execute only when the previous slide is fully loaded (images iframe)
+    ** ** avoid simultaneous image load
+<=> ** Preload() will check for s.preload value and call loadContent() again accoring to preload value
+    ** loadContent()  <====> Preload();
+
+*   @param {Number} index - index of the slide
+*   @param {Boolean} fromTouch - true if slide function called via touch event or mouse drag
+*   @param {Boolean} fromThumb - true if slide function called via thumbnail click
+*/
+Plugin.prototype.slide = function(index, fromTouch, fromThumb) {
+
+    var _prevIndex = 0;
+    for (var i = 0; i < this.___slide.length; i++) {
+        if (utils.hasClass(this.___slide[i], 'lg-current')) {
+            _prevIndex = i;
+            break;
+        }
+    }
+
+    var _this = this;
+
+    // Prevent if multiple call
+    // Required for hsh plugin
+    if (_this.lGalleryOn && (_prevIndex === index)) {
+        return;
+    }
+
+    var _length = this.___slide.length;
+    var _time = _this.lGalleryOn ? this.s.speed : 0;
+    var _next = false;
+    var _prev = false;
+
+    if (!_this.lgBusy) {
+
+        if (this.s.download) {
+            var _src;
+            if (_this.s.dynamic) {
+                _src = _this.s.dynamicEl[index].downloadUrl !== false && (_this.s.dynamicEl[index].downloadUrl || _this.s.dynamicEl[index].src);
+            } else {
+                _src = _this.items[index].getAttribute('data-download-url') !== 'false' && (_this.items[index].getAttribute('data-download-url') || _this.items[index].getAttribute('href') || _this.items[index].getAttribute('data-src'));
+
+            }
+
+            if (_src) {
+                document.getElementById('lg-download').setAttribute('href', _src);
+                utils.removeClass(_this.outer, 'lg-hide-download');
+            } else {
+                utils.addClass(_this.outer, 'lg-hide-download');
+            }
+        }
+
+        utils.trigger(_this.el, 'onBeforeSlide', {
+            prevIndex: _prevIndex,
+            index: index,
+            fromTouch: fromTouch,
+            fromThumb: fromThumb
+        });
+
+        _this.lgBusy = true;
+
+        clearTimeout(_this.hideBartimeout);
+
+        // Add title if this.s.appendSubHtmlTo === lg-sub-html
+        if (this.s.appendSubHtmlTo === '.lg-sub-html') {
+
+            // wait for slide animation to complete
+            setTimeout(function() {
+                _this.addHtml(index);
+            }, _time);
+        }
+
+        this.arrowDisable(index);
+
+        if (!fromTouch) {
+
+            // remove all transitions
+            utils.addClass(_this.outer, 'lg-no-trans');
+
+            for (var j = 0; j < this.___slide.length; j++) {
+                utils.removeClass(this.___slide[j], 'lg-prev-slide');
+                utils.removeClass(this.___slide[j], 'lg-next-slide');
+            }
+
+            if (index < _prevIndex) {
+                _prev = true;
+                if ((index === 0) && (_prevIndex === _length - 1) && !fromThumb) {
+                    _prev = false;
+                    _next = true;
+                }
+            } else if (index > _prevIndex) {
+                _next = true;
+                if ((index === _length - 1) && (_prevIndex === 0) && !fromThumb) {
+                    _prev = true;
+                    _next = false;
                 }
             }
 
-            if (this.s.appendSubHtmlTo !== '.lg-sub-html') {
-                _this.addHtml(index);
+            if (_prev) {
+
+                //prevslide
+                utils.addClass(this.___slide[index], 'lg-prev-slide');
+                utils.addClass(this.___slide[_prevIndex], 'lg-next-slide');
+            } else if (_next) {
+
+                // next slide
+                utils.addClass(this.___slide[index], 'lg-next-slide');
+                utils.addClass(this.___slide[_prevIndex], 'lg-prev-slide');
             }
 
-            _this.$slide.eq(index).addClass('lg-loaded');
+            // give 50 ms for browser to add/remove class
+            setTimeout(function() {
+                utils.removeClass(_this.outer.querySelector('.lg-current'), 'lg-current');
+
+                //_this.$slide.eq(_prevIndex).removeClass('lg-current');
+                utils.addClass(_this.___slide[index], 'lg-current');
+
+                // reset all transitions
+                utils.removeClass(_this.outer, 'lg-no-trans');
+            }, 50);
+        } else {
+
+            var touchPrev = index - 1;
+            var touchNext = index + 1;
+
+            if ((index === 0) && (_prevIndex === _length - 1)) {
+
+                // next slide
+                touchNext = 0;
+                touchPrev = _length - 1;
+            } else if ((index === _length - 1) && (_prevIndex === 0)) {
+
+                // prev slide
+                touchNext = 0;
+                touchPrev = _length - 1;
+            }
+
+            utils.removeClass(_this.outer.querySelector('.lg-prev-slide'), 'lg-prev-slide');
+            utils.removeClass(_this.outer.querySelector('.lg-current'), 'lg-current');
+            utils.removeClass(_this.outer.querySelector('.lg-next-slide'), 'lg-next-slide');
+            utils.addClass(_this.___slide[touchPrev], 'lg-prev-slide');
+            utils.addClass(_this.___slide[touchNext], 'lg-next-slide');
+            utils.addClass(_this.___slide[index], 'lg-current');
         }
 
-        _this.$slide.eq(index).find('.lg-object').on('load.lg error.lg', function() {
-
-            // For first time add some delay for displaying the start animation.
-            var _speed = 0;
-
-            // Do not change the delay value because it is required for zoom plugin.
-            // If gallery opened from direct url (hash) speed value should be 0
-            if (delay && !$('body').hasClass('lg-from-hash')) {
-                _speed = delay;
-            }
+        if (_this.lGalleryOn) {
+            setTimeout(function() {
+                _this.loadContent(index, true, 0);
+            }, this.s.speed + 50);
 
             setTimeout(function() {
-                _this.$slide.eq(index).addClass('lg-complete');
-                _this.$el.trigger('onSlideItemLoad.lg', [index, delay || 0]);
-            }, _speed);
-
-        });
-
-        // @todo check load state for html5 videos
-        if (_isVideo && _isVideo.html5 && !_hasPoster) {
-            _this.$slide.eq(index).addClass('lg-complete');
-        }
-
-        if (rec === true) {
-            if (!_this.$slide.eq(index).hasClass('lg-complete')) {
-                _this.$slide.eq(index).find('.lg-object').on('load.lg error.lg', function() {
-                    _this.preload(index);
-                });
-            } else {
-                _this.preload(index);
-            }
-        }
-
-        //}
-    };
-
-    /**
-    *   @desc slide function for lightgallery
-        ** Slide() gets call on start
-        ** ** Set lg.on true once slide() function gets called.
-        ** Call loadContent() on slide() function inside setTimeout
-        ** ** On first slide we do not want any animation like slide of fade
-        ** ** So on first slide( if lg.on if false that is first slide) loadContent() should start loading immediately
-        ** ** Else loadContent() should wait for the transition to complete.
-        ** ** So set timeout s.speed + 50
-    <=> ** loadContent() will load slide content in to the particular slide
-        ** ** It has recursion (rec) parameter. if rec === true loadContent() will call preload() function.
-        ** ** preload will execute only when the previous slide is fully loaded (images iframe)
-        ** ** avoid simultaneous image load
-    <=> ** Preload() will check for s.preload value and call loadContent() again accoring to preload value
-        ** loadContent()  <====> Preload();
-
-    *   @param {Number} index - index of the slide
-    *   @param {Boolean} fromTouch - true if slide function called via touch event or mouse drag
-    *   @param {Boolean} fromThumb - true if slide function called via thumbnail click
-    */
-    Plugin.prototype.slide = function(index, fromTouch, fromThumb) {
-
-        var _prevIndex = this.$outer.find('.lg-current').index();
-        var _this = this;
-
-        // Prevent if multiple call
-        // Required for hsh plugin
-        if (_this.lGalleryOn && (_prevIndex === index)) {
-            return;
-        }
-
-        var _length = this.$slide.length;
-        var _time = _this.lGalleryOn ? this.s.speed : 0;
-        var _next = false;
-        var _prev = false;
-
-        if (!_this.lgBusy) {
-
-            this.$el.trigger('onBeforeSlide.lg', [_prevIndex, index, fromTouch, fromThumb]);
-
-            _this.lgBusy = true;
-
-            clearTimeout(_this.hideBartimeout);
-
-            // Add title if this.s.appendSubHtmlTo === lg-sub-html
-            if (this.s.appendSubHtmlTo === '.lg-sub-html') {
-
-                // wait for slide animation to complete
-                setTimeout(function() {
-                    _this.addHtml(index);
-                }, _time);
-            }
-
-            this.arrowDisable(index);
-
-            if (!fromTouch) {
-
-                // remove all transitions
-                _this.$outer.addClass('lg-no-trans');
-
-                this.$slide.removeClass('lg-prev-slide lg-next-slide');
-
-                if (index < _prevIndex) {
-                    _prev = true;
-                    if ((index === 0) && (_prevIndex === _length - 1) && !fromThumb) {
-                        _prev = false;
-                        _next = true;
-                    }
-                } else if (index > _prevIndex) {
-                    _next = true;
-                    if ((index === _length - 1) && (_prevIndex === 0) && !fromThumb) {
-                        _prev = true;
-                        _next = false;
-                    }
-                }
-
-                if (_prev) {
-
-                    //prevslide
-                    this.$slide.eq(index).addClass('lg-prev-slide');
-                    this.$slide.eq(_prevIndex).addClass('lg-next-slide');
-                } else if (_next) {
-
-                    // next slide
-                    this.$slide.eq(index).addClass('lg-next-slide');
-                    this.$slide.eq(_prevIndex).addClass('lg-prev-slide');
-                }
-
-                // give 50 ms for browser to add/remove class
-                setTimeout(function() {
-                    _this.$slide.removeClass('lg-current');
-
-                    //_this.$slide.eq(_prevIndex).removeClass('lg-current');
-                    _this.$slide.eq(index).addClass('lg-current');
-
-                    // reset all transitions
-                    _this.$outer.removeClass('lg-no-trans');
-                }, 50);
-            } else {
-
-                var touchPrev = index - 1;
-                var touchNext = index + 1;
-
-                if ((index === 0) && (_prevIndex === _length - 1)) {
-
-                    // next slide
-                    touchNext = 0;
-                    touchPrev = _length - 1;
-                } else if ((index === _length - 1) && (_prevIndex === 0)) {
-
-                    // prev slide
-                    touchNext = 0;
-                    touchPrev = _length - 1;
-                }
-
-                this.$slide.removeClass('lg-prev-slide lg-current lg-next-slide');
-                _this.$slide.eq(touchPrev).addClass('lg-prev-slide');
-                _this.$slide.eq(touchNext).addClass('lg-next-slide');
-                _this.$slide.eq(index).addClass('lg-current');
-            }
-
-            if (_this.lGalleryOn) {
-                setTimeout(function() {
-                    _this.loadContent(index, true, 0);
-                }, this.s.speed + 50);
-
-                setTimeout(function() {
-                    _this.lgBusy = false;
-                    _this.$el.trigger('onAfterSlide.lg', [_prevIndex, index, fromTouch, fromThumb]);
-                }, this.s.speed);
-
-                // Support non css3 browser
-                if (!_this.doCss()) {
-                    _this.$slide.fadeOut(_this.s.speed);
-                    _this.$slide.eq(index).fadeIn(_this.s.speed);
-                }
-            } else {
-                _this.loadContent(index, true, _this.s.backdropDuration);
-
                 _this.lgBusy = false;
-                _this.$el.trigger('onAfterSlide.lg', [_prevIndex, index, fromTouch, fromThumb]);
+                utils.trigger(_this.el, 'onAfterSlide', {
+                    prevIndex: _prevIndex,
+                    index: index,
+                    fromTouch: fromTouch,
+                    fromThumb: fromThumb
+                });
+            }, this.s.speed);
 
-                // Support non css3 browser
-                if (!_this.doCss()) {
-                    _this.$slide.fadeOut(50);
-                    _this.$slide.eq(index).fadeIn(50);
-                }
-            }
-
-            if (this.s.download) {
-                var _src;
-                if (_this.s.dynamic) {
-                    _src = _this.s.dynamicEl[index].downloadUrl || _this.s.dynamicEl[index].src;
-                } else {
-                    _src = _this.$items.eq(index).attr('data-download-url') || _this.$items.eq(index).attr('href') || _this.$items.eq(index).attr('data-src');
-
-                }
-
-                $('#lg-download').attr('href', _src);
-            }
-
-            _this.lGalleryOn = true;
-
-            if (this.s.counter) {
-                $('#lg-counter-current').text(index + 1);
-            }
-
-        }
-
-    };
-
-    /**
-     *  @desc Go to next slide
-     *  @param {Boolean} fromTouch - true if slide function called via touch event
-     */
-    Plugin.prototype.goToNextSlide = function(fromTouch) {
-        var _this = this;
-        if (!_this.lgBusy) {
-            if ((_this.index + 1) < _this.$slide.length) {
-                _this.index++;
-                _this.$el.trigger('onBeforeNextSlide.lg', [_this.index]);
-                _this.slide(_this.index, fromTouch, false);
-            } else {
-                if (_this.s.loop) {
-                    _this.index = 0;
-                    _this.$el.trigger('onBeforeNextSlide.lg', [_this.index]);
-                    _this.slide(_this.index, fromTouch, false);
-                } else if (_this.s.slideEndAnimatoin) {
-                    _this.$outer.addClass('lg-right-end');
-                    setTimeout(function() {
-                        _this.$outer.removeClass('lg-right-end');
-                    }, 400);
-                }
-            }
-        }
-    };
-
-    /**
-     *  @desc Go to previous slide
-     *  @param {Boolean} fromTouch - true if slide function called via touch event
-     */
-    Plugin.prototype.goToPrevSlide = function(fromTouch) {
-        var _this = this;
-        if (!_this.lgBusy) {
-            if (_this.index > 0) {
-                _this.index--;
-                _this.$el.trigger('onBeforePrevSlide.lg', [_this.index, fromTouch]);
-                _this.slide(_this.index, fromTouch, false);
-            } else {
-                if (_this.s.loop) {
-                    _this.index = _this.$items.length - 1;
-                    _this.$el.trigger('onBeforePrevSlide.lg', [_this.index, fromTouch]);
-                    _this.slide(_this.index, fromTouch, false);
-                } else if (_this.s.slideEndAnimatoin) {
-                    _this.$outer.addClass('lg-left-end');
-                    setTimeout(function() {
-                        _this.$outer.removeClass('lg-left-end');
-                    }, 400);
-                }
-            }
-        }
-    };
-
-    Plugin.prototype.keyPress = function() {
-        var _this = this;
-        if (this.$items.length > 1) {
-            $(window).on('keyup.lg', function(e) {
-                if (_this.$items.length > 1) {
-                    if (e.keyCode === 37) {
-                        e.preventDefault();
-                        _this.goToPrevSlide();
-                    }
-
-                    if (e.keyCode === 39) {
-                        e.preventDefault();
-                        _this.goToNextSlide();
-                    }
-                }
-            });
-        }
-
-        $(window).on('keydown.lg', function(e) {
-            if (_this.s.escKey === true && e.keyCode === 27) {
-                e.preventDefault();
-                if (!_this.$outer.hasClass('lg-thumb-open')) {
-                    _this.destroy();
-                } else {
-                    _this.$outer.removeClass('lg-thumb-open');
-                }
-            }
-        });
-    };
-
-    Plugin.prototype.arrow = function() {
-        var _this = this;
-        this.$outer.find('.lg-prev').on('click.lg', function() {
-            _this.goToPrevSlide();
-        });
-
-        this.$outer.find('.lg-next').on('click.lg', function() {
-            _this.goToNextSlide();
-        });
-    };
-
-    Plugin.prototype.arrowDisable = function(index) {
-
-        // Disable arrows if s.hideControlOnEnd is true
-        if (!this.s.loop && this.s.hideControlOnEnd) {
-            if ((index + 1) < this.$slide.length) {
-                this.$outer.find('.lg-next').removeAttr('disabled').removeClass('disabled');
-            } else {
-                this.$outer.find('.lg-next').attr('disabled', 'disabled').addClass('disabled');
-            }
-
-            if (index > 0) {
-                this.$outer.find('.lg-prev').removeAttr('disabled').removeClass('disabled');
-            } else {
-                this.$outer.find('.lg-prev').attr('disabled', 'disabled').addClass('disabled');
-            }
-        }
-    };
-
-    Plugin.prototype.setTranslate = function($el, xValue, yValue) {
-        // jQuery supports Automatic CSS prefixing since jQuery 1.8.0
-        if (this.s.useLeft) {
-            $el.css('left', xValue);
         } else {
-            $el.css({
-                transform: 'translate3d(' + (xValue) + 'px, ' + yValue + 'px, 0px)'
+            _this.loadContent(index, true, _this.s.backdropDuration);
+
+            _this.lgBusy = false;
+            utils.trigger(_this.el, 'onAfterSlide', {
+                prevIndex: _prevIndex,
+                index: index,
+                fromTouch: fromTouch,
+                fromThumb: fromThumb
             });
         }
-    };
 
-    Plugin.prototype.touchMove = function(startCoords, endCoords) {
+        _this.lGalleryOn = true;
 
-        var distance = endCoords - startCoords;
+        if (this.s.counter) {
+            if (document.getElementById('lg-counter-current')) {
+                document.getElementById('lg-counter-current').innerHTML = index + 1;
+            }
+        }
 
+    }
+
+};
+
+/**
+ *  @desc Go to next slide
+ *  @param {Boolean} fromTouch - true if slide function called via touch event
+ */
+Plugin.prototype.goToNextSlide = function(fromTouch) {
+    var _this = this;
+    if (!_this.lgBusy) {
+        if ((_this.index + 1) < _this.___slide.length) {
+            _this.index++;
+            utils.trigger(_this.el, 'onBeforeNextSlide', {
+                index: _this.index
+            });
+            _this.slide(_this.index, fromTouch, false);
+        } else {
+            if (_this.s.loop) {
+                _this.index = 0;
+                utils.trigger(_this.el, 'onBeforeNextSlide', {
+                    index: _this.index
+                });
+                _this.slide(_this.index, fromTouch, false);
+            } else if (_this.s.slideEndAnimatoin) {
+                utils.addClass(_this.outer, 'lg-right-end');
+                setTimeout(function() {
+                    utils.removeClass(_this.outer, 'lg-right-end');
+                }, 400);
+            }
+        }
+    }
+};
+
+/**
+ *  @desc Go to previous slide
+ *  @param {Boolean} fromTouch - true if slide function called via touch event
+ */
+Plugin.prototype.goToPrevSlide = function(fromTouch) {
+    var _this = this;
+    if (!_this.lgBusy) {
+        if (_this.index > 0) {
+            _this.index--;
+            utils.trigger(_this.el, 'onBeforePrevSlide', {
+                index: _this.index,
+                fromTouch: fromTouch
+            });
+            _this.slide(_this.index, fromTouch, false);
+        } else {
+            if (_this.s.loop) {
+                _this.index = _this.items.length - 1;
+                utils.trigger(_this.el, 'onBeforePrevSlide', {
+                    index: _this.index,
+                    fromTouch: fromTouch
+                });
+                _this.slide(_this.index, fromTouch, false);
+            } else if (_this.s.slideEndAnimatoin) {
+                utils.addClass(_this.outer, 'lg-left-end');
+                setTimeout(function() {
+                    utils.removeClass(_this.outer, 'lg-left-end');
+                }, 400);
+            }
+        }
+    }
+};
+
+Plugin.prototype.keyPress = function() {
+    var _this = this;
+    if (this.items.length > 1) {
+        utils.on(window, 'keyup.lg', function(e) {
+            if (_this.items.length > 1) {
+                if (e.keyCode === 37) {
+                    e.preventDefault();
+                    _this.goToPrevSlide();
+                }
+
+                if (e.keyCode === 39) {
+                    e.preventDefault();
+                    _this.goToNextSlide();
+                }
+            }
+        });
+    }
+
+    utils.on(window, 'keydown.lg', function(e) {
+        if (_this.s.escKey === true && e.keyCode === 27) {
+            e.preventDefault();
+            if (!utils.hasClass(_this.outer, 'lg-thumb-open')) {
+                _this.destroy();
+            } else {
+                utils.removeClass(_this.outer, 'lg-thumb-open');
+            }
+        }
+    });
+};
+
+Plugin.prototype.arrow = function() {
+    var _this = this;
+    utils.on(this.outer.querySelector('.lg-prev'), 'click.lg', function() {
+        _this.goToPrevSlide();
+    });
+
+    utils.on(this.outer.querySelector('.lg-next'), 'click.lg', function() {
+        _this.goToNextSlide();
+    });
+};
+
+Plugin.prototype.arrowDisable = function(index) {
+
+    // Disable arrows if s.hideControlOnEnd is true
+    if (!this.s.loop && this.s.hideControlOnEnd) {
+        let next = this.outer.querySelector('.lg-next');
+        let prev = this.outer.querySelector('.lg-prev');
+        if ((index + 1) < this.___slide.length) {
+            next.removeAttribute('disabled');
+            utils.removeClass(next, 'disabled');
+        } else {
+            next.setAttribute('disabled', 'disabled');
+            utils.addClass(next, 'disabled');
+        }
+
+        if (index > 0) {
+            prev.removeAttribute('disabled');
+            utils.removeClass(prev, 'disabled');
+        } else {
+            prev.setAttribute('disabled', 'disabled');
+            utils.addClass(prev, 'disabled');
+        }
+    }
+};
+
+Plugin.prototype.setTranslate = function(el, xValue, yValue) {
+    // jQuery supports Automatic CSS prefixing since jQuery 1.8.0
+    if (this.s.useLeft) {
+        el.style.left = xValue;
+    } else {
+        utils.setVendor(el, 'Transform', 'translate3d(' + (xValue) + 'px, ' + yValue + 'px, 0px)');
+    }
+};
+
+Plugin.prototype.touchMove = function(startCoords, endCoords) {
+
+    var distance = endCoords - startCoords;
+
+    if (Math.abs(distance) > 15) {
         // reset opacity and transition duration
-        this.$outer.addClass('lg-dragging');
+        utils.addClass(this.outer, 'lg-dragging');
 
         // move current slide
-        this.setTranslate(this.$slide.eq(this.index), distance, 0);
+        this.setTranslate(this.___slide[this.index], distance, 0);
 
         // move next and prev slide with current slide
-        this.setTranslate($('.lg-prev-slide'), -this.$slide.eq(this.index).width() + distance, 0);
-        this.setTranslate($('.lg-next-slide'), this.$slide.eq(this.index).width() + distance, 0);
-    };
+        this.setTranslate(document.querySelector('.lg-prev-slide'), -this.___slide[this.index].clientWidth + distance, 0);
+        this.setTranslate(document.querySelector('.lg-next-slide'), this.___slide[this.index].clientWidth + distance, 0);
+    }
+};
 
-    Plugin.prototype.touchEnd = function(distance) {
-        var _this = this;
+Plugin.prototype.touchEnd = function(distance) {
+    var _this = this;
 
-        // keep slide animation for any mode while dragg/swipe
-        if (_this.s.mode !== 'lg-slide') {
-            _this.$outer.addClass('lg-slide');
+    // keep slide animation for any mode while dragg/swipe
+    if (_this.s.mode !== 'lg-slide') {
+        utils.addClass(_this.outer, 'lg-slide');
+    }
+
+    for (var i = 0; i < this.___slide.length; i++) {
+        if (!utils.hasClass(this.___slide[i], 'lg-current') && !utils.hasClass(this.___slide[i], 'lg-prev-slide') && !utils.hasClass(this.___slide[i], 'lg-next-slide')) {
+            this.___slide[i].style.opacity = '0';
+        }
+    }
+
+    // set transition duration
+    setTimeout(function() {
+        utils.removeClass(_this.outer, 'lg-dragging');
+        if ((distance < 0) && (Math.abs(distance) > _this.s.swipeThreshold)) {
+            _this.goToNextSlide(true);
+        } else if ((distance > 0) && (Math.abs(distance) > _this.s.swipeThreshold)) {
+            _this.goToPrevSlide(true);
+        } else if (Math.abs(distance) < 5) {
+
+            // Trigger click if distance is less than 5 pix
+            utils.trigger(_this.el, 'onSlideClick');
         }
 
-        this.$slide.not('.lg-current, .lg-prev-slide, .lg-next-slide').css('opacity', '0');
+        for (var i = 0; i < _this.___slide.length; i++) {
+            _this.___slide[i].removeAttribute('style');
+        }
+    });
 
-        // set transition duration
-        setTimeout(function() {
-            _this.$outer.removeClass('lg-dragging');
-            if ((distance < 0) && (Math.abs(distance) > _this.s.swipeThreshold)) {
-                _this.goToNextSlide(true);
-            } else if ((distance > 0) && (Math.abs(distance) > _this.s.swipeThreshold)) {
-                _this.goToPrevSlide(true);
-            } else if (Math.abs(distance) < 5) {
+    // remove slide class once drag/swipe is completed if mode is not slide
+    setTimeout(function() {
+        if (!utils.hasClass(_this.outer, 'lg-dragging') && _this.s.mode !== 'lg-slide') {
+            utils.removeClass(_this.outer, 'lg-slide');
+        }
+    }, _this.s.speed + 100);
 
-                // Trigger click if distance is less than 5 pix
-                _this.$el.trigger('onSlideClick.lg');
-            }
+};
 
-            _this.$slide.removeAttr('style');
-        });
+Plugin.prototype.enableSwipe = function() {
+    var _this = this;
+    var startCoords = 0;
+    var endCoords = 0;
+    var isMoved = false;
 
-        // remove slide class once drag/swipe is completed if mode is not slide
-        setTimeout(function() {
-            if (!_this.$outer.hasClass('lg-dragging') && _this.s.mode !== 'lg-slide') {
-                _this.$outer.removeClass('lg-slide');
-            }
-        }, _this.s.speed + 100);
+    if (_this.s.enableSwipe && _this.isTouch && _this.doCss()) {
 
-    };
-
-    Plugin.prototype.enableSwipe = function() {
-        var _this = this;
-        var startCoords = 0;
-        var endCoords = 0;
-        var isMoved = false;
-
-        if (_this.s.enableSwipe && _this.isTouch && _this.doCss()) {
-
-            _this.$slide.on('touchstart.lg', function(e) {
-                if (!_this.$outer.hasClass('lg-zoomed') && !_this.lgBusy) {
+        for (var i = 0; i < _this.___slide.length; i++) {
+            /*jshint loopfunc: true */
+            utils.on(_this.___slide[i], 'touchstart.lg', function(e) {
+                if (!utils.hasClass(_this.outer, 'lg-zoomed') && !_this.lgBusy) {
                     e.preventDefault();
                     _this.manageSwipeClass();
-                    startCoords = e.originalEvent.targetTouches[0].pageX;
+                    startCoords = e.targetTouches[0].pageX;
                 }
             });
+        }
 
-            _this.$slide.on('touchmove.lg', function(e) {
-                if (!_this.$outer.hasClass('lg-zoomed')) {
+        for (var j = 0; j < _this.___slide.length; j++) {
+            /*jshint loopfunc: true */
+            utils.on(_this.___slide[j], 'touchmove.lg', function(e) {
+                if (!utils.hasClass(_this.outer, 'lg-zoomed')) {
                     e.preventDefault();
-                    endCoords = e.originalEvent.targetTouches[0].pageX;
+                    endCoords = e.targetTouches[0].pageX;
                     _this.touchMove(startCoords, endCoords);
                     isMoved = true;
                 }
             });
+        }
 
-            _this.$slide.on('touchend.lg', function() {
-                if (!_this.$outer.hasClass('lg-zoomed')) {
+        for (var k = 0; k < _this.___slide.length; k++) {
+            /*jshint loopfunc: true */
+            utils.on(_this.___slide[k], 'touchend.lg', function() {
+                if (!utils.hasClass(_this.outer, 'lg-zoomed')) {
                     if (isMoved) {
                         isMoved = false;
                         _this.touchEnd(endCoords - startCoords);
                     } else {
-                        _this.$el.trigger('onSlideClick.lg');
+                        utils.trigger(_this.el, 'onSlideClick');
                     }
                 }
             });
         }
+    }
 
-    };
+};
 
-    Plugin.prototype.enableDrag = function() {
-        var _this = this;
-        var startCoords = 0;
-        var endCoords = 0;
-        var isDraging = false;
-        var isMoved = false;
-        if (_this.s.enableDrag && !_this.isTouch && _this.doCss()) {
-            _this.$slide.on('mousedown.lg', function(e) {
+Plugin.prototype.enableDrag = function() {
+    var _this = this;
+    var startCoords = 0;
+    var endCoords = 0;
+    var isDraging = false;
+    var isMoved = false;
+    if (_this.s.enableDrag && !_this.isTouch && _this.doCss()) {
+        for (var i = 0; i < _this.___slide.length; i++) {
+            /*jshint loopfunc: true */
+            utils.on(_this.___slide[i], 'mousedown.lg', function(e) {
                 // execute only on .lg-object
-                if (!_this.$outer.hasClass('lg-zoomed')) {
-                    if ($(e.target).hasClass('lg-object') || $(e.target).hasClass('lg-video-play')) {
+                if (!utils.hasClass(_this.outer, 'lg-zoomed')) {
+                    if (utils.hasClass(e.target, 'lg-object') || utils.hasClass(e.target, 'lg-video-play')) {
                         e.preventDefault();
 
                         if (!_this.lgBusy) {
@@ -1060,1246 +1237,220 @@
                             isDraging = true;
 
                             // ** Fix for webkit cursor issue https://code.google.com/p/chromium/issues/detail?id=26723
-                            _this.$outer.scrollLeft += 1;
-                            _this.$outer.scrollLeft -= 1;
+                            _this.outer.scrollLeft += 1;
+                            _this.outer.scrollLeft -= 1;
 
                             // *
 
-                            _this.$outer.removeClass('lg-grab').addClass('lg-grabbing');
+                            utils.removeClass(_this.outer, 'lg-grab');
+                            utils.addClass(_this.outer, 'lg-grabbing');
 
-                            _this.$el.trigger('onDragstart.lg');
+                            utils.trigger(_this.el, 'onDragstart');
                         }
 
                     }
                 }
             });
-
-            $(window).on('mousemove.lg', function(e) {
-                if (isDraging) {
-                    isMoved = true;
-                    endCoords = e.pageX;
-                    _this.touchMove(startCoords, endCoords);
-                    _this.$el.trigger('onDragmove.lg');
-                }
-            });
-
-            $(window).on('mouseup.lg', function(e) {
-                if (isMoved) {
-                    isMoved = false;
-                    _this.touchEnd(endCoords - startCoords);
-                    _this.$el.trigger('onDragend.lg');
-                } else if ($(e.target).hasClass('lg-object') || $(e.target).hasClass('lg-video-play')) {
-                    _this.$el.trigger('onSlideClick.lg');
-                }
-
-                // Prevent execution on click
-                if (isDraging) {
-                    isDraging = false;
-                    _this.$outer.removeClass('lg-grabbing').addClass('lg-grab');
-                }
-            });
-
-        }
-    };
-
-    Plugin.prototype.manageSwipeClass = function() {
-        var touchNext = this.index + 1;
-        var touchPrev = this.index - 1;
-        var length = this.$slide.length;
-        if (this.s.loop) {
-            if (this.index === 0) {
-                touchPrev = length - 1;
-            } else if (this.index === length - 1) {
-                touchNext = 0;
-            }
         }
 
-        this.$slide.removeClass('lg-next-slide lg-prev-slide');
-        if (touchPrev > -1) {
-            this.$slide.eq(touchPrev).addClass('lg-prev-slide');
-        }
-
-        this.$slide.eq(touchNext).addClass('lg-next-slide');
-    };
-
-    Plugin.prototype.mousewheel = function() {
-        var _this = this;
-        _this.$outer.on('mousewheel.lg', function(e) {
-            if (e.deltaY > 0) {
-                _this.goToPrevSlide();
-            } else {
-                _this.goToNextSlide();
-            }
-
-            e.preventDefault();
-        });
-
-    };
-
-    Plugin.prototype.closeGallery = function() {
-
-        var _this = this;
-        var mousedown = false;
-        this.$outer.find('.lg-close').on('click.lg', function() {
-            _this.destroy();
-        });
-
-        if (_this.s.closable) {
-
-            // If you drag the slide and release outside gallery gets close on chrome
-            // for preventing this check mousedown and mouseup happened on .lg-item or lg-outer
-            _this.$outer.on('mousedown.lg', function(e) {
-
-                if ($(e.target).is('.lg-outer') || $(e.target).is('.lg-item ') || $(e.target).is('.lg-img-wrap')) {
-                    mousedown = true;
-                } else {
-                    mousedown = false;
-                }
-
-            });
-
-            _this.$outer.on('mouseup.lg', function(e) {
-
-                if ($(e.target).is('.lg-outer') || $(e.target).is('.lg-item ') || $(e.target).is('.lg-img-wrap') && mousedown) {
-                    if (!_this.$outer.hasClass('lg-dragging')) {
-                        _this.destroy();
-                    }
-                }
-
-            });
-
-        }
-
-    };
-
-    Plugin.prototype.destroy = function(d) {
-
-        var _this = this;
-
-        _this.$el.trigger('onBeforeClose.lg');
-
-        /**
-         * if d is false or undefined destroy will only close the gallery
-         * plugins instance remains with the element
-
-         * if d is true destroy will completely remove the plugin
-         */
-
-        if (d) {
-            this.$items.off('click.lg click.lgcustom');
-            $.removeData(_this.el, 'lightGallery');
-        }
-
-        // Unbind all events added by lightGallery
-        this.$el.off('.lg.tm');
-
-        // Distroy all lightGallery modules
-        $.each($.fn.lightGallery.modules, function(key) {
-            if (_this.modules[key]) {
-                _this.modules[key].destroy();
-            }
-        });
-
-        this.lGalleryOn = false;
-
-        clearTimeout(_this.hideBartimeout);
-        this.hideBartimeout = false;
-        $(window).off('.lg');
-        $('body').removeClass('lg-on lg-from-hash');
-
-        if (_this.$outer) {
-            _this.$outer.removeClass('lg-visible');
-        }
-
-        $('.lg-backdrop').removeClass('in');
-
-        setTimeout(function() {
-            if (_this.$outer) {
-                _this.$outer.remove();
-            }
-
-            $('.lg-backdrop').remove();
-
-            _this.$el.trigger('onCloseAfter.lg');
-        }, _this.s.backdropDuration + 50);
-    };
-
-    $.fn.lightGallery = function(options) {
-        return this.each(function() {
-            if (!$.data(this, 'lightGallery')) {
-                $.data(this, 'lightGallery', new Plugin(this, options));
-            } else {
-                try {
-                    $(this).data('lightGallery').init();
-                } catch (err) {
-                    console.error('lightGallery has not initiated properly');
-                }
-            }
-        });
-    };
-
-    $.fn.lightGallery.modules = {};
-
-})(jQuery, window, document);
-
-(function($, window, document, undefined) {
-
-    'use strict';
-
-    var defaults = {
-        thumbnail: true,
-
-        animateThumb: true,
-        currentPagerPosition: 'middle',
-
-        thumbWidth: 100,
-        thumbContHeight: 100,
-        thumbMargin: 5,
-
-        exThumbImage: false,
-        showThumbByDefault: true,
-        toogleThumb: true,
-
-        enableThumbDrag: true,
-        enableThumbSwipe: true,
-        swipeThreshold: 50,
-
-        loadYoutubeThumbnail: true,
-        youtubeThumbSize: 1,
-
-        loadVimeoThumbnail: true,
-        vimeoThumbSize: 'thumbnail_small',
-
-        loadDailymotionThumbnail: true
-    };
-
-    var Thumbnail = function(element) {
-
-        // get lightGallery core plugin data
-        this.core = $(element).data('lightGallery');
-
-        // extend module default settings with lightGallery core settings
-        this.core.s = $.extend({}, defaults, this.core.s);
-
-        this.$el = $(element);
-        this.$thumbOuter = null;
-        this.thumbOuterWidth = 0;
-        this.thumbTotalWidth = (this.core.$items.length * (this.core.s.thumbWidth + this.core.s.thumbMargin));
-        this.thumbIndex = this.core.index;
-
-        // Thumbnail animation value
-        this.left = 0;
-
-        this.init();
-
-        return this;
-    };
-
-    Thumbnail.prototype.init = function() {
-        if (this.core.s.thumbnail && this.core.$items.length > 1) {
-            if (this.core.s.showThumbByDefault) {
-                this.core.$outer.addClass('lg-thumb-open');
-            }
-
-            this.build();
-            if (this.core.s.animateThumb) {
-                if (this.core.s.enableThumbDrag && !this.core.isTouch && this.core.doCss()) {
-                    this.enableThumbDrag();
-                }
-
-                if (this.core.s.enableThumbSwipe && this.core.isTouch && this.core.doCss()) {
-                    this.enableThumbSwipe();
-                }
-
-                this.thumbClickable = false;
-            } else {
-                this.thumbClickable = true;
-            }
-
-            this.toogle();
-            this.thumbkeyPress();
-        }
-    };
-
-    Thumbnail.prototype.build = function() {
-        var _this = this;
-        var thumbList = '';
-        var vimeoErrorThumbSize = '';
-        var $thumb;
-        var html = '<div class="lg-thumb-outer">' +
-            '<div class="lg-thumb group">' +
-            '</div>' +
-            '</div>';
-
-        switch (this.core.s.vimeoThumbSize) {
-            case 'thumbnail_large':
-                vimeoErrorThumbSize = '640';
-                break;
-            case 'thumbnail_medium':
-                vimeoErrorThumbSize = '200x150';
-                break;
-            case 'thumbnail_small':
-                vimeoErrorThumbSize = '100x75';
-        }
-
-        _this.core.$outer.addClass('lg-has-thumb');
-
-        _this.core.$outer.find('.lg').append(html);
-
-        _this.$thumbOuter = _this.core.$outer.find('.lg-thumb-outer');
-        _this.thumbOuterWidth = _this.$thumbOuter.width();
-
-        if (_this.core.s.animateThumb) {
-            _this.core.$outer.find('.lg-thumb').css({
-                width: _this.thumbTotalWidth + 'px',
-                position: 'relative'
-            });
-        }
-
-        if (this.core.s.animateThumb) {
-            _this.$thumbOuter.css('height', _this.core.s.thumbContHeight + 'px');
-        }
-
-        function getThumb(src, thumb, index) {
-            var isVideo = _this.core.isVideo(src, index) || {};
-            var thumbImg;
-            var vimeoId = '';
-
-            if (isVideo.youtube || isVideo.vimeo || isVideo.dailymotion) {
-                if (isVideo.youtube) {
-                    if (_this.core.s.loadYoutubeThumbnail) {
-                        thumbImg = '//img.youtube.com/vi/' + isVideo.youtube[1] + '/' + _this.core.s.youtubeThumbSize + '.jpg';
-                    } else {
-                        thumbImg = thumb;
-                    }
-                } else if (isVideo.vimeo) {
-                    if (_this.core.s.loadVimeoThumbnail) {
-                        thumbImg = '//i.vimeocdn.com/video/error_' + vimeoErrorThumbSize + '.jpg';
-                        vimeoId = isVideo.vimeo[1];
-                    } else {
-                        thumbImg = thumb;
-                    }
-                } else if (isVideo.dailymotion) {
-                    if (_this.core.s.loadDailymotionThumbnail) {
-                        thumbImg = '//www.dailymotion.com/thumbnail/video/' + isVideo.dailymotion[1];
-                    } else {
-                        thumbImg = thumb;
-                    }
-                }
-            } else {
-                thumbImg = thumb;
-            }
-
-            thumbList += '<div data-vimeo-id="' + vimeoId + '" class="lg-thumb-item" style="width:' + _this.core.s.thumbWidth + 'px; margin-right: ' + _this.core.s.thumbMargin + 'px"><img src="' + thumbImg + '" /></div>';
-            vimeoId = '';
-        }
-
-        if (_this.core.s.dynamic) {
-            for (var i = 0; i < _this.core.s.dynamicEl.length; i++) {
-                getThumb(_this.core.s.dynamicEl[i].src, _this.core.s.dynamicEl[i].thumb, i);
-            }
-        } else {
-            _this.core.$items.each(function(i) {
-
-                if (!_this.core.s.exThumbImage) {
-                    getThumb($(this).attr('href') || $(this).attr('data-src'), $(this).find('img').attr('src'), i);
-                } else {
-                    getThumb($(this).attr('href') || $(this).attr('data-src'), $(this).attr(_this.core.s.exThumbImage), i);
-                }
-
-            });
-        }
-
-        _this.core.$outer.find('.lg-thumb').html(thumbList);
-
-        $thumb = _this.core.$outer.find('.lg-thumb-item');
-
-        // Load vimeo thumbnails
-        $thumb.each(function() {
-            var $this = $(this);
-            var vimeoVideoId = $this.attr('data-vimeo-id');
-
-            if (vimeoVideoId) {
-                $.getJSON('http://www.vimeo.com/api/v2/video/' + vimeoVideoId + '.json?callback=?', {
-                    format: 'json'
-                }, function(data) {
-                    $this.find('img').attr('src', data[0][_this.core.s.vimeoThumbSize]);
-                });
-            }
-        });
-
-        // manage active class for thumbnail
-        $thumb.eq(_this.core.index).addClass('active');
-        _this.core.$el.on('onBeforeSlide.lg.tm', function() {
-            $thumb.removeClass('active');
-            $thumb.eq(_this.core.index).addClass('active');
-        });
-
-        $thumb.on('click.lg touchend.lg', function() {
-            var _$this = $(this);
-            setTimeout(function() {
-
-                // In IE9 and bellow touch does not support
-                // Go to slide if browser does not support css transitions
-                if ((_this.thumbClickable && !_this.core.lgBusy) || !_this.core.doCss()) {
-                    _this.core.index = _$this.index();
-                    _this.core.slide(_this.core.index, false, true);
-                }
-            }, 50);
-        });
-
-        _this.core.$el.on('onBeforeSlide.lg.tm', function() {
-            _this.animateThumb(_this.core.index);
-        });
-
-        $(window).on('resize.lg.thumb orientationchange.lg.thumb', function() {
-            setTimeout(function() {
-                _this.animateThumb(_this.core.index);
-                _this.thumbOuterWidth = _this.$thumbOuter.width();
-            }, 200);
-        });
-
-    };
-
-    Thumbnail.prototype.setTranslate = function(value) {
-        // jQuery supports Automatic CSS prefixing since jQuery 1.8.0
-        this.core.$outer.find('.lg-thumb').css({
-            transform: 'translate3d(-' + (value) + 'px, 0px, 0px)'
-        });
-    };
-
-    Thumbnail.prototype.animateThumb = function(index) {
-        var $thumb = this.core.$outer.find('.lg-thumb');
-        if (this.core.s.animateThumb) {
-            var position;
-            switch (this.core.s.currentPagerPosition) {
-                case 'left':
-                    position = 0;
-                    break;
-                case 'middle':
-                    position = (this.thumbOuterWidth / 2) - (this.core.s.thumbWidth / 2);
-                    break;
-                case 'right':
-                    position = this.thumbOuterWidth - this.core.s.thumbWidth;
-            }
-            this.left = ((this.core.s.thumbWidth + this.core.s.thumbMargin) * index - 1) - position;
-            if (this.left > (this.thumbTotalWidth - this.thumbOuterWidth)) {
-                this.left = this.thumbTotalWidth - this.thumbOuterWidth;
-            }
-
-            if (this.left < 0) {
-                this.left = 0;
-            }
-
-            if (this.core.lGalleryOn) {
-                if (!$thumb.hasClass('on')) {
-                    this.core.$outer.find('.lg-thumb').css('transition-duration', this.core.s.speed + 'ms');
-                }
-
-                if (!this.core.doCss()) {
-                    $thumb.animate({
-                        left: -this.left + 'px'
-                    }, this.core.s.speed);
-                }
-            } else {
-                if (!this.core.doCss()) {
-                    $thumb.css('left', -this.left + 'px');
-                }
-            }
-
-            this.setTranslate(this.left);
-
-        }
-    };
-
-    // Enable thumbnail dragging and swiping
-    Thumbnail.prototype.enableThumbDrag = function() {
-
-        var _this = this;
-        var startCoords = 0;
-        var endCoords = 0;
-        var isDraging = false;
-        var isMoved = false;
-        var tempLeft = 0;
-
-        _this.$thumbOuter.addClass('lg-grab');
-
-        _this.core.$outer.find('.lg-thumb').on('mousedown.lg.thumb', function(e) {
-            if (_this.thumbTotalWidth > _this.thumbOuterWidth) {
-                // execute only on .lg-object
-                e.preventDefault();
-                startCoords = e.pageX;
-                isDraging = true;
-
-                // ** Fix for webkit cursor issue https://code.google.com/p/chromium/issues/detail?id=26723
-                _this.core.$outer.scrollLeft += 1;
-                _this.core.$outer.scrollLeft -= 1;
-
-                // *
-                _this.thumbClickable = false;
-                _this.$thumbOuter.removeClass('lg-grab').addClass('lg-grabbing');
-            }
-        });
-
-        $(window).on('mousemove.lg.thumb', function(e) {
+        utils.on(window, 'mousemove.lg', function(e) {
             if (isDraging) {
-                tempLeft = _this.left;
                 isMoved = true;
                 endCoords = e.pageX;
-
-                _this.$thumbOuter.addClass('lg-dragging');
-
-                tempLeft = tempLeft - (endCoords - startCoords);
-
-                if (tempLeft > (_this.thumbTotalWidth - _this.thumbOuterWidth)) {
-                    tempLeft = _this.thumbTotalWidth - _this.thumbOuterWidth;
-                }
-
-                if (tempLeft < 0) {
-                    tempLeft = 0;
-                }
-
-                // move current slide
-                _this.setTranslate(tempLeft);
-
+                _this.touchMove(startCoords, endCoords);
+                utils.trigger(_this.el, 'onDragmove');
             }
         });
 
-        $(window).on('mouseup.lg.thumb', function() {
+        utils.on(window, 'mouseup.lg', function(e) {
             if (isMoved) {
                 isMoved = false;
-                _this.$thumbOuter.removeClass('lg-dragging');
-
-                _this.left = tempLeft;
-
-                if (Math.abs(endCoords - startCoords) < _this.core.s.swipeThreshold) {
-                    _this.thumbClickable = true;
-                }
-
-            } else {
-                _this.thumbClickable = true;
+                _this.touchEnd(endCoords - startCoords);
+                utils.trigger(_this.el, 'onDragend');
+            } else if (utils.hasClass(e.target, 'lg-object') || utils.hasClass(e.target, 'lg-video-play')) {
+                utils.trigger(_this.el, 'onSlideClick');
             }
 
+            // Prevent execution on click
             if (isDraging) {
                 isDraging = false;
-                _this.$thumbOuter.removeClass('lg-grabbing').addClass('lg-grab');
+                utils.removeClass(_this.outer, 'lg-grabbing');
+                utils.addClass(_this.outer, 'lg-grab');
             }
         });
 
-    };
+    }
+};
 
-    Thumbnail.prototype.enableThumbSwipe = function() {
-        var _this = this;
-        var startCoords = 0;
-        var endCoords = 0;
-        var isMoved = false;
-        var tempLeft = 0;
+Plugin.prototype.manageSwipeClass = function() {
+    var touchNext = this.index + 1;
+    var touchPrev = this.index - 1;
+    var length = this.___slide.length;
+    if (this.s.loop) {
+        if (this.index === 0) {
+            touchPrev = length - 1;
+        } else if (this.index === length - 1) {
+            touchNext = 0;
+        }
+    }
 
-        _this.core.$outer.find('.lg-thumb').on('touchstart.lg', function(e) {
-            if (_this.thumbTotalWidth > _this.thumbOuterWidth) {
-                e.preventDefault();
-                startCoords = e.originalEvent.targetTouches[0].pageX;
-                _this.thumbClickable = false;
-            }
-        });
+    for (var i = 0; i < this.___slide.length; i++) {
+        utils.removeClass(this.___slide[i], 'lg-next-slide');
+        utils.removeClass(this.___slide[i], 'lg-prev-slide');
+    }
 
-        _this.core.$outer.find('.lg-thumb').on('touchmove.lg', function(e) {
-            if (_this.thumbTotalWidth > _this.thumbOuterWidth) {
-                e.preventDefault();
-                endCoords = e.originalEvent.targetTouches[0].pageX;
-                isMoved = true;
+    if (touchPrev > -1) {
+        utils.addClass(this.___slide[touchPrev], 'lg-prev-slide');
+    }
 
-                _this.$thumbOuter.addClass('lg-dragging');
+    utils.addClass(this.___slide[touchNext], 'lg-next-slide');
+};
 
-                tempLeft = _this.left;
+Plugin.prototype.mousewheel = function() {
+    var _this = this;
+    utils.on(_this.outer, 'mousewheel.lg', function(e) {
 
-                tempLeft = tempLeft - (endCoords - startCoords);
+        if (!e.deltaY) {
+            return;
+        }
 
-                if (tempLeft > (_this.thumbTotalWidth - _this.thumbOuterWidth)) {
-                    tempLeft = _this.thumbTotalWidth - _this.thumbOuterWidth;
-                }
-
-                if (tempLeft < 0) {
-                    tempLeft = 0;
-                }
-
-                // move current slide
-                _this.setTranslate(tempLeft);
-
-            }
-        });
-
-        _this.core.$outer.find('.lg-thumb').on('touchend.lg', function() {
-            if (_this.thumbTotalWidth > _this.thumbOuterWidth) {
-
-                if (isMoved) {
-                    isMoved = false;
-                    _this.$thumbOuter.removeClass('lg-dragging');
-                    if (Math.abs(endCoords - startCoords) < _this.core.s.swipeThreshold) {
-                        _this.thumbClickable = true;
-                    }
-
-                    _this.left = tempLeft;
-                } else {
-                    _this.thumbClickable = true;
-                }
-            } else {
-                _this.thumbClickable = true;
-            }
-        });
-
-    };
-
-    Thumbnail.prototype.toogle = function() {
-        var _this = this;
-        if (_this.core.s.toogleThumb) {
-            _this.core.$outer.addClass('lg-can-toggle');
-            _this.$thumbOuter.append('<span class="lg-toogle-thumb lg-icon"></span>');
-            _this.core.$outer.find('.lg-toogle-thumb').on('click.lg', function() {
-                _this.core.$outer.toggleClass('lg-thumb-open');
-            });
+        if (e.deltaY > 0) {
+            _this.goToPrevSlide();
         } else {
-            if (_this.core.s.animateThumb) {
-                _this.core.$outer.addClass('lg-cant-toggle');
-            }
-        }
-    };
-
-    Thumbnail.prototype.thumbkeyPress = function() {
-        var _this = this;
-        $(window).on('keydown.lg.thumb', function(e) {
-            if (e.keyCode === 38) {
-                e.preventDefault();
-                _this.core.$outer.addClass('lg-thumb-open');
-            } else if (e.keyCode === 40) {
-                e.preventDefault();
-                _this.core.$outer.removeClass('lg-thumb-open');
-            }
-        });
-    };
-
-    Thumbnail.prototype.destroy = function() {
-        if (this.core.s.thumbnail && this.core.$items.length > 1) {
-            $(window).off('resize.lg.thumb orientationchange.lg.thumb keydown.lg.thumb');
-            this.$thumbOuter.remove();
-            this.core.$outer.removeClass('lg-has-thumb');
-        }
-    };
-
-    $.fn.lightGallery.modules.Thumbnail = Thumbnail;
-
-})(jQuery, window, document);
-
-/**
- * Zoom Plugin
- * @version 1.2.0
- * @author Sachin N - @sachinchoolur
- * @license MIT License (MIT)
- */
-(function($, window, document, undefined) {
-
-    'use strict';
-
-    var defaults = {
-        scale: 1,
-        zoom: true,
-        enableZoomAfter: 300
-    };
-
-    var Zoom = function(element) {
-
-        this.core = $(element).data('lightGallery');
-
-        this.core.s = $.extend({}, defaults, this.core.s);
-
-        if (this.core.s.zoom && this.core.doCss()) {
-            this.init();
-
-            // Store the zoomable timeout value just to clear it while closing
-            this.zoomabletimeout = false;
-
-            // Set the initial value center 
-            this.pageX = $(window).width() / 2;
-            this.pageY = ($(window).height() / 2) + $(window).scrollTop();
+            _this.goToNextSlide();
         }
 
-        return this;
-    };
+        e.preventDefault();
+    });
 
-    Zoom.prototype.init = function() {
+};
 
-        var _this = this;
-        var zoomIcons = '<span id="lg-zoom-in" class="lg-icon"></span><span id="lg-zoom-out" class="lg-icon"></span>';
+Plugin.prototype.closeGallery = function() {
 
-        this.core.$outer.find('.lg-toolbar').append(zoomIcons);
+    var _this = this;
+    var mousedown = false;
+    utils.on(this.outer.querySelector('.lg-close'), 'click.lg', function() {
+        _this.destroy();
+    });
 
-        // Add zoomable class
-        _this.core.$el.on('onSlideItemLoad.lg.tm.zoom', function(event, index, delay) {
+    if (_this.s.closable) {
 
-            // delay will be 0 except first time
-            var _speed = _this.core.s.enableZoomAfter + delay;
+        // If you drag the slide and release outside gallery gets close on chrome
+        // for preventing this check mousedown and mouseup happened on .lg-item or lg-outer
+        utils.on(_this.outer, 'mousedown.lg', function(e) {
 
-            // set _speed value 0 if gallery opened from direct url and if it is first slide
-            if ($('body').hasClass('lg-from-hash') && delay) {
-
-                // will execute only once 
-                _speed = 0;
+            if (utils.hasClass(e.target, 'lg-outer') || utils.hasClass(e.target, 'lg-item') || utils.hasClass(e.target, 'lg-img-wrap')) {
+                mousedown = true;
             } else {
-
-                // Remove lg-from-hash to enable starting animation.
-                $('body').removeClass('lg-from-hash');
+                mousedown = false;
             }
 
-            _this.zoomabletimeout = setTimeout(function() {
-                _this.core.$slide.eq(index).addClass('lg-zoomable');
-            }, _speed + 30);
         });
 
-        var scale = 1;
-        /**
-         * @desc Image zoom
-         * Translate the wrap and scale the image to get better user experience
-         *
-         * @param {String} scaleVal - Zoom decrement/increment value
-         */
-        var zoom = function(scaleVal) {
+        utils.on(_this.outer, 'mouseup.lg', function(e) {
 
-            var $image = _this.core.$outer.find('.lg-current .lg-image');
-            var _x;
-            var _y;
-
-            // Find offset manually to avoid issue after zoom
-            var offsetX = ($(window).width() - $image.width()) / 2;
-            var offsetY = (($(window).height() - $image.height()) / 2) + $(window).scrollTop();
-
-            _x = _this.pageX - offsetX;
-            _y = _this.pageY - offsetY;
-
-            var x = (scaleVal - 1) * (_x);
-            var y = (scaleVal - 1) * (_y);
-
-            $image.css('transform', 'scale3d(' + scaleVal + ', ' + scaleVal + ', 1)').attr('data-scale', scaleVal);
-
-            $image.parent().css('transform', 'translate3d(-' + x + 'px, -' + y + 'px, 0)').attr('data-x', x).attr('data-y', y);
-        };
-
-        var callScale = function() {
-            if (scale > 1) {
-                _this.core.$outer.addClass('lg-zoomed');
-            } else {
-                _this.resetZoom();
-            }
-
-            if (scale < 1) {
-                scale = 1;
-            }
-
-            zoom(scale);
-        };
-
-        // event triggered after appending slide content
-        _this.core.$el.on('onAferAppendSlide.lg.tm.zoom', function(event, index) {
-
-            // Get the current element
-            var $image = _this.core.$slide.eq(index).find('.lg-image');
-
-            $image.dblclick(function(event) {
-
-                var w = $image.width();
-                var nw = _this.core.$items.eq(index).attr('data-width') || $image[0].naturalWidth || w;
-                var _scale;
-
-                if (_this.core.$outer.hasClass('lg-zoomed')) {
-                    scale = 1;
-                } else {
-                    if (nw > w) {
-                        _scale = nw / w;
-                        scale = _scale || 2;
-                    }
-                }
-
-                _this.pageX = event.pageX;
-                _this.pageY = event.pageY;
-                callScale();
-                setTimeout(function() {
-                    _this.core.$outer.removeClass('lg-grabbing').addClass('lg-grab');
-                }, 10);
-            });
-
-        });
-
-        // Update zoom on resize and orientationchange
-        $(window).on('resize.lg.zoom scroll.lg.zoom orientationchange.lg.zoom', function() {
-            _this.pageX = $(window).width() / 2;
-            _this.pageY = ($(window).height() / 2) + $(window).scrollTop();
-            zoom(scale);
-        });
-
-        $('#lg-zoom-out').on('click.lg', function() {
-            if (_this.core.$outer.find('.lg-current .lg-image').length) {
-                scale -= _this.core.s.scale;
-                callScale();
-            }
-        });
-
-        $('#lg-zoom-in').on('click.lg', function() {
-            if (_this.core.$outer.find('.lg-current .lg-image').length) {
-                scale += _this.core.s.scale;
-                callScale();
-            }
-        });
-
-        // Reset zoom on slide change
-        _this.core.$el.on('onBeforeSlide.lg.tm', function() {
-            _this.resetZoom();
-        });
-
-        // Drag option after zoom
-        if (!_this.core.isTouch) {
-            _this.zoomDrag();
-        }
-
-        if (_this.core.isTouch) {
-            _this.zoomSwipe();
-        }
-
-    };
-
-    // Reset zoom effect
-    Zoom.prototype.resetZoom = function() {
-        this.core.$outer.removeClass('lg-zoomed');
-        this.core.$slide.find('.lg-img-wrap').removeAttr('style data-x data-y');
-        this.core.$slide.find('.lg-image').removeAttr('style data-scale');
-
-        // Reset pagx pagy values to center
-        this.pageX = $(window).width() / 2;
-        this.pageY = ($(window).height() / 2) + $(window).scrollTop();
-    };
-
-    Zoom.prototype.zoomSwipe = function() {
-        var _this = this;
-        var startCoords = {};
-        var endCoords = {};
-        var isMoved = false;
-
-        // Allow x direction drag
-        var allowX = false;
-
-        // Allow Y direction drag
-        var allowY = false;
-
-        _this.core.$slide.on('touchstart.lg', function(e) {
-
-            if (_this.core.$outer.hasClass('lg-zoomed')) {
-                var $image = _this.core.$slide.eq(_this.core.index).find('.lg-object');
-
-                allowY = $image.outerHeight() * $image.attr('data-scale') > _this.core.$outer.find('.lg').height();
-                allowX = $image.outerWidth() * $image.attr('data-scale') > _this.core.$outer.find('.lg').width();
-                if ((allowX || allowY)) {
-                    e.preventDefault();
-                    startCoords = {
-                        x: e.originalEvent.targetTouches[0].pageX,
-                        y: e.originalEvent.targetTouches[0].pageY
-                    };
+            if (utils.hasClass(e.target, 'lg-outer') || utils.hasClass(e.target, 'lg-item') || utils.hasClass(e.target, 'lg-img-wrap') && mousedown) {
+                if (!utils.hasClass(_this.outer, 'lg-dragging')) {
+                    _this.destroy();
                 }
             }
 
         });
 
-        _this.core.$slide.on('touchmove.lg', function(e) {
+    }
 
-            if (_this.core.$outer.hasClass('lg-zoomed')) {
+};
 
-                var _$el = _this.core.$slide.eq(_this.core.index).find('.lg-img-wrap');
-                var distanceX;
-                var distanceY;
+Plugin.prototype.destroy = function(d) {
 
-                e.preventDefault();
-                isMoved = true;
-                endCoords = e.originalEvent.targetTouches[0].pageX;
+    var _this = this;
 
-                endCoords = {
-                    x: e.originalEvent.targetTouches[0].pageX,
-                    y: e.originalEvent.targetTouches[0].pageY
-                };
+    if (!d) {
+        utils.trigger(_this.el, 'onBeforeClose');
+    }
 
-                // reset opacity and transition duration
-                _this.core.$outer.addClass('lg-zoom-dragging');
-
-                if (allowY) {
-                    distanceY = (-Math.abs(_$el.attr('data-y'))) + (endCoords.y - startCoords.y);
-                } else {
-                    distanceY = -Math.abs(_$el.attr('data-y'));
-                }
-
-                if (allowX) {
-                    distanceX = (-Math.abs(_$el.attr('data-x'))) + (endCoords.x - startCoords.x);
-                } else {
-                    distanceX = -Math.abs(_$el.attr('data-x'));
-                }
-
-                _$el.css('transform', 'translate3d(' + distanceX + 'px, ' + distanceY + 'px, 0)');
-
-            }
-
-        });
-
-        _this.core.$slide.on('touchend.lg', function() {
-            if (_this.core.$outer.hasClass('lg-zoomed')) {
-                if (isMoved) {
-                    isMoved = false;
-                    _this.core.$outer.removeClass('lg-zoom-dragging');
-                    _this.touchendZoom(startCoords, endCoords, allowX, allowY);
-
-                }
-            }
-        });
-
-    };
-
-    Zoom.prototype.zoomDrag = function() {
-
-        var _this = this;
-        var startCoords = {};
-        var endCoords = {};
-        var isDraging = false;
-        var isMoved = false;
-
-        // Allow x direction drag
-        var allowX = false;
-
-        // Allow Y direction drag
-        var allowY = false;
-
-        _this.core.$slide.on('mousedown.lg.zoom', function(e) {
-
-            // execute only on .lg-object
-            var $image = _this.core.$slide.eq(_this.core.index).find('.lg-object');
-
-            allowY = $image.outerHeight() * $image.attr('data-scale') > _this.core.$outer.find('.lg').height();
-            allowX = $image.outerWidth() * $image.attr('data-scale') > _this.core.$outer.find('.lg').width();
-
-            if (_this.core.$outer.hasClass('lg-zoomed')) {
-                if ($(e.target).hasClass('lg-object') && (allowX || allowY)) {
-                    e.preventDefault();
-                    startCoords = {
-                        x: e.pageX,
-                        y: e.pageY
-                    };
-
-                    isDraging = true;
-
-                    // ** Fix for webkit cursor issue https://code.google.com/p/chromium/issues/detail?id=26723
-                    _this.core.$outer.scrollLeft += 1;
-                    _this.core.$outer.scrollLeft -= 1;
-
-                    _this.core.$outer.removeClass('lg-grab').addClass('lg-grabbing');
-                }
-            }
-        });
-
-        $(window).on('mousemove.lg.zoom', function(e) {
-            if (isDraging) {
-                var _$el = _this.core.$slide.eq(_this.core.index).find('.lg-img-wrap');
-                var distanceX;
-                var distanceY;
-
-                isMoved = true;
-                endCoords = {
-                    x: e.pageX,
-                    y: e.pageY
-                };
-
-                // reset opacity and transition duration
-                _this.core.$outer.addClass('lg-zoom-dragging');
-
-                if (allowY) {
-                    distanceY = (-Math.abs(_$el.attr('data-y'))) + (endCoords.y - startCoords.y);
-                } else {
-                    distanceY = -Math.abs(_$el.attr('data-y'));
-                }
-
-                if (allowX) {
-                    distanceX = (-Math.abs(_$el.attr('data-x'))) + (endCoords.x - startCoords.x);
-                } else {
-                    distanceX = -Math.abs(_$el.attr('data-x'));
-                }
-
-                _$el.css('transform', 'translate3d(' + distanceX + 'px, ' + distanceY + 'px, 0)');
-            }
-        });
-
-        $(window).on('mouseup.lg.zoom', function(e) {
-
-            if (isDraging) {
-                isDraging = false;
-                _this.core.$outer.removeClass('lg-zoom-dragging');
-
-                // Fix for chrome mouse move on click
-                if (isMoved && ((startCoords.x !== endCoords.x) || (startCoords.y !== endCoords.y))) {
-                    endCoords = {
-                        x: e.pageX,
-                        y: e.pageY
-                    };
-                    _this.touchendZoom(startCoords, endCoords, allowX, allowY);
-
-                }
-
-                isMoved = false;
-            }
-
-            _this.core.$outer.removeClass('lg-grabbing').addClass('lg-grab');
-
-        });
-    };
-
-    Zoom.prototype.touchendZoom = function(startCoords, endCoords, allowX, allowY) {
-
-        var _this = this;
-        var _$el = _this.core.$slide.eq(_this.core.index).find('.lg-img-wrap');
-        var $image = _this.core.$slide.eq(_this.core.index).find('.lg-object');
-        var distanceX = (-Math.abs(_$el.attr('data-x'))) + (endCoords.x - startCoords.x);
-        var distanceY = (-Math.abs(_$el.attr('data-y'))) + (endCoords.y - startCoords.y);
-        var minY = (_this.core.$outer.find('.lg').height() - $image.outerHeight()) / 2;
-        var maxY = Math.abs(($image.outerHeight() * Math.abs($image.attr('data-scale'))) - _this.core.$outer.find('.lg').height() + minY);
-        var minX = (_this.core.$outer.find('.lg').width() - $image.outerWidth()) / 2;
-        var maxX = Math.abs(($image.outerWidth() * Math.abs($image.attr('data-scale'))) - _this.core.$outer.find('.lg').width() + minX);
-
-        if (allowY) {
-            if (distanceY <= -maxY) {
-                distanceY = -maxY;
-            } else if (distanceY >= -minY) {
-                distanceY = -minY;
-            }
-        }
-
-        if (allowX) {
-            if (distanceX <= -maxX) {
-                distanceX = -maxX;
-            } else if (distanceX >= -minX) {
-                distanceX = -minX;
-            }
-        }
-
-        if (allowY) {
-            _$el.attr('data-y', Math.abs(distanceY));
-        } else {
-            distanceY = -Math.abs(_$el.attr('data-y'));
-        }
-
-        if (allowX) {
-            _$el.attr('data-x', Math.abs(distanceX));
-        } else {
-            distanceX = -Math.abs(_$el.attr('data-x'));
-        }
-
-        _$el.css('transform', 'translate3d(' + distanceX + 'px, ' + distanceY + 'px, 0)');
-    };
-
-    Zoom.prototype.destroy = function() {
-
-        var _this = this;
-
-        // Unbind all events added by lightGallery zoom plugin
-        _this.core.$el.off('.lg.zoom');
-        $(window).off('.lg.zoom');
-        _this.core.$slide.off('.lg.zoom');
-        _this.core.$el.off('.lg.tm.zoom');
-        _this.resetZoom();
-        clearTimeout(_this.zoomabletimeout);
-        _this.zoomabletimeout = false;
-    };
-
-    $.fn.lightGallery.modules.zoom = Zoom;
-
-})(jQuery, window, document);
-
-/**
- * Autoplay Plugin
- * @version 1.2.0
- * @author Sachin N - @sachinchoolur
- * @license MIT License (MIT)
- */
-
-(function($, window, document, undefined) {
-
-    'use strict';
-
-    var defaults = {
-        autoplay: false,
-        pause: 5000,
-        progressBar: true,
-        fourceAutoplay: false,
-        autoplayControls: true,
-        appendAutoplayControlsTo: '.lg-toolbar'
-    };
+    document.body.scrollTop = _this.prevScrollTop;
+    document.documentElement.scrollTop = _this.prevScrollTop;
 
     /**
-     * Creates the autoplay plugin.
-     * @param {object} element - lightGallery element
+     * if d is false or undefined destroy will only close the gallery
+     * plugins instance remains with the element
+     *
+     * if d is true destroy will completely remove the plugin
      */
-    var Autoplay = function(element) {
 
-        this.core = $(element).data('lightGallery');
+    if (d) {
+        if (!_this.s.dynamic) {
+            // only when not using dynamic mode is $items a jquery collection
 
-        this.$el = $(element);
-
-        // Exicute only if items are above 1
-        if (this.core.$items.length < 2) {
-            return false;
+            for (var i = 0; i < this.items.length; i++) {
+                utils.off(this.items[i], '.lg');
+                utils.off(this.items[i], '.lgcustom');
+            }
         }
 
-        this.core.s = $.extend({}, defaults, this.core.s);
-        this.interval = false;
+        let lguid = _this.el.getAttribute('lg-uid');
+        delete window.lgData[lguid];
+        _this.el.removeAttribute('lg-uid');
+    }
 
-        // Identify if slide happened from autoplay
-        this.fromAuto = true;
+    // Unbind all events added by lightGallery
+    utils.off(this.el, '.lgtm');
 
-        // Identify if autoplay canceled from touch/drag
-        this.canceledOnTouch = false;
-
-        // save fourceautoplay value
-        this.fourceAutoplayTemp = this.core.s.fourceAutoplay;
-
-        // do not allow progress bar if browser does not support css3 transitions
-        if (!this.core.doCss()) {
-            this.core.s.progressBar = false;
+    // Distroy all lightGallery modules
+    for (var key in window.lgModules) {
+        if (_this.modules[key]) {
+            _this.modules[key].destroy(d);
         }
+    }
 
-        this.init();
+    this.lGalleryOn = false;
 
-        return this;
-    };
+    clearTimeout(_this.hideBartimeout);
+    this.hideBartimeout = false;
+    utils.off(window, '.lg');
+    utils.removeClass(document.body, 'lg-on');
+    utils.removeClass(document.body, 'lg-from-hash');
 
-    Autoplay.prototype.init = function() {
-        var _this = this;
+    if (_this.outer) {
+        utils.removeClass(_this.outer, 'lg-visible');
+    }
 
-        // append autoplay controls
-        if (_this.core.s.autoplayControls) {
-            _this.controls();
+    utils.removeClass(document.querySelector('.lg-backdrop'), 'in');
+    setTimeout(function() {
+        try {
+            if (_this.outer) {
+                _this.outer.parentNode.removeChild(_this.outer);
+            }
+
+            if (document.querySelector('.lg-backdrop')) {
+                document.querySelector('.lg-backdrop').parentNode.removeChild(document.querySelector('.lg-backdrop'));
+            }
+
+            if (!d) {
+                utils.trigger(_this.el, 'onCloseAfter');
+            }
+            _this.el.focus();
+        } catch (err) {}
+
+    }, _this.s.backdropDuration + 50);
+};
+
+window.lightGallery = function(el, options) {
+    if (!el) {
+        return;
+    }
+
+    try {
+        if (!el.getAttribute('lg-uid')) {
+            let uid = 'lg' + window.lgData.uid++;
+            window.lgData[uid] = new Plugin(el, options);
+            el.setAttribute('lg-uid', uid);
+        } else {
+            window.lgData[el.getAttribute('lg-uid')].init();
         }
-
-        // Create progress bar
-        if (_this.core.s.progressBar) {
-            _this.core.$outer.find('.lg').append('<div class="lg-progress-bar"><div class="lg-progress"></div></div>');
-        }
-
-        // set progress
-        _this.progress();
-
-        // Start autoplay
-        if (_this.core.s.autoplay) {
-            _this.startlAuto();
-        }
-
-        // cancel interval on touchstart and dragstart
-        _this.$el.on('onDragstart.lg.tm touchstart.lg.tm', function() {
-            if (_this.interval) {
-                _this.cancelAuto();
-                _this.canceledOnTouch = true;
-            }
-        });
-
-        // restore autoplay if autoplay canceled from touchstart / dragstart
-        _this.$el.on('onDragend.lg.tm touchend.lg.tm onSlideClick.lg.tm', function() {
-            if (!_this.interval && _this.canceledOnTouch) {
-                _this.startlAuto();
-                _this.canceledOnTouch = false;
-            }
-        });
-
-    };
-
-    Autoplay.prototype.progress = function() {
-
-        var _this = this;
-        var _$progressBar;
-        var _$progress;
-
-        _this.$el.on('onBeforeSlide.lg.tm', function() {
-
-            // start progress bar animation
-            if (_this.core.s.progressBar && _this.fromAuto) {
-                _$progressBar = _this.core.$outer.find('.lg-progress-bar');
-                _$progress = _this.core.$outer.find('.lg-progress');
-                if (_this.interval) {
-                    _$progress.removeAttr('style');
-                    _$progressBar.removeClass('lg-start');
-                    setTimeout(function() {
-                        _$progress.css('transition', 'width ' + (_this.core.s.speed + _this.core.s.pause) + 'ms ease 0s');
-                        _$progressBar.addClass('lg-start');
-                    }, 20);
-                }
-            }
-
-            // Remove setinterval if slide is trigered manualy and fourceautoplay is false
-            if (!_this.fromAuto && !_this.core.s.fourceAutoplay) {
-                _this.cancelAuto();
-            }
-
-            _this.fromAuto = false;
-
-        });
-    };
-
-    // Manage autoplay via play/stop buttons
-    Autoplay.prototype.controls = function() {
-        var _this = this;
-        var _html = '<span class="lg-autoplay-button lg-icon"></span>';
-
-        // Append autoplay controls
-        $(this.core.s.appendAutoplayControlsTo).append(_html);
-
-        _this.core.$outer.find('.lg-autoplay-button').on('click.lg', function() {
-            if ($(_this.core.$outer).hasClass('lg-show-autoplay')) {
-                _this.cancelAuto();
-                _this.core.s.fourceAutoplay = false;
-            } else {
-                if (!_this.interval) {
-                    _this.startlAuto();
-                    _this.core.s.fourceAutoplay = _this.fourceAutoplayTemp;
-                }
-            }
-        });
-    };
-
-    // Autostart gallery
-    Autoplay.prototype.startlAuto = function() {
-        var _this = this;
-
-        _this.core.$outer.find('.lg-progress').css('transition', 'width ' + (_this.core.s.speed + _this.core.s.pause) + 'ms ease 0s');
-        _this.core.$outer.addClass('lg-show-autoplay');
-        _this.core.$outer.find('.lg-progress-bar').addClass('lg-start');
-
-        _this.interval = setInterval(function() {
-            if (_this.core.index + 1 < _this.core.$items.length) {
-                _this.core.index = _this.core.index;
-            } else {
-                _this.core.index = -1;
-            }
-
-            _this.core.index++;
-            _this.fromAuto = true;
-            _this.core.slide(_this.core.index, false, false);
-        }, _this.core.s.speed + _this.core.s.pause);
-    };
-
-    // cancel  Autostart
-    Autoplay.prototype.cancelAuto = function() {
-        clearInterval(this.interval);
-        this.interval = false;
-        this.core.$outer.find('.lg-progress').removeAttr('style');
-        this.core.$outer.removeClass('lg-show-autoplay');
-        this.core.$outer.find('.lg-progress-bar').removeClass('lg-start');
-    };
-
-    Autoplay.prototype.destroy = function() {
-
-        this.cancelAuto();
-        this.core.$outer.find('.lg-progress-bar').remove();
-    };
-
-    $.fn.lightGallery.modules.autoplay = Autoplay;
-
-})(jQuery, window, document);
+    } catch (err) {
+        console.error('lightGallery has not initiated properly', err);
+    }
+};
 
