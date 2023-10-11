@@ -330,7 +330,11 @@ if ( ! function_exists( 'mp_global_products_nav' ) ) {
 	function mp_global_products_nav( $per_page, $count, $echo = true ) {
 		$html      = '';
 		$paged     = 1;
-		$max_pages = ceil( $count / $per_page );
+		if ($per_page > 0) {
+			$max_pages = ceil($count / $per_page);
+		} else {
+			$max_pages = 0; // Oder einen anderen Wert, je nachdem, was in diesem Fall angemessen ist.
+		}
 
 		if ( $max_pages > 1 ) {
 			$big = 999999999;

@@ -2,7 +2,7 @@
 
 /*
   PSeCommerce Manual Payments Gateway Plugin
-  Author: Aaron Edwards (Incsub)
+  Author: DerN3rd (WMS N@W)
  */
 
 class MP_Gateway_ManualPayments extends MP_Gateway_API {
