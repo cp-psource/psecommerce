@@ -50,7 +50,11 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
-= 3.5.4 = DerN3rd =
+= 3.5.5 =
+
+Fix: session.start wird nun korrekt ausgelöst
+
+= 3.5.4 =
 
 * Fix Unsafe expansion of self-closing HTML tag
 * Fix: PHP Fatal error:  Uncaught Error: Non-static method
@@ -58,13 +62,13 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Fix: session_start(): Session cannot be started
 * Fix: PHP Fatal error:  Uncaught DivisionByZeroError
 
-= 3.5.3 = DerN3rd =
+= 3.5.3 =
 
 * Fix code scanning alert - Unsafe HTML constructed
 * Fix code scanning alert - Incomplete string escaping or encoding
 * Fix Shopsettings Page
 
-= 3.5.2 = DerN3rd =
+= 3.5.2 =
 
 * Neues Icon für Shop-Einstellungen
 * Bessere Position für Shop-Einstellungen Menü im Dashboard
@@ -74,7 +78,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * PHP Deprecated:  Required parameter
 
 
-= 3.5.1 = DerN3rd =
+= 3.5.1 =
 
 * Fixes deprecated create_function
 * CSS Anpassung Lightbox (Adminbar-Versetzung)
@@ -82,32 +86,32 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Verbesserungen der Texte & Korrekturen
 * Der Shortcode-Builder ist nun etwas verständlicher
 
-= 3.4.9 = DerN3rd =
+= 3.4.9 =
 
 * Es können jetzt Gratis-Downloads zum direkten Herunterladen angeboten werden
 
-= 3.4.7 = DerN3rd =
+= 3.4.7 =
 
 * PSeCommerce-Frontend ist nun ein eigenständiges Plugin
 * Erweiterung für Statisik eingefügt
 * Weitere Anpassungen auf PhP7.5
 
-= 3.4.6 = DerN3rd =
+= 3.4.6 =
 
 * Wir haben an der Performance-Schraube gedreht
 * Weiteren veralteten Code überarbeitet
 * Verbesserte Übersetzungen und Texte
 
-= 3.4.1 = DerN3rd =
+= 3.4.1 =
 * Fixed: Angebotspreise akzeptieren nun das eingestellte Start/Enddatum
 
-= 3.4.0 = DerN3rd =
+= 3.4.0 =
 * Update: jQuery für ClassicPress 5.5
 
-= 3.3.9 = DerN3rd =
+= 3.3.9 =
 * Update: jQuery Bibliotheken
 
-= 3.3.8 = DerN3rd =
+= 3.3.8 =
 * Neu: In der Erweiterung PDF Rechnung können nun Rechtliche Hinweise und Kontaktdaten angegeben werden
 * Fixed: Probleme bei der Darstellung der PDF Rechnungen
 * Übersetzungen: Weiter verbessert, Übersetzungsstand 80%
@@ -115,7 +119,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Neu: Erstelle eigene CSS Files um Deinem Shop ein einzigartiges Aussehen zu verpassen
 * Neu: Erweiterung eingefügt um Produkt-Kommentare zu erlauben
 
-= 3.3.5 = DerN3rd =
+= 3.3.5 =
 * Fixed: Übersetzungen
 
 = 1.0.0 =
