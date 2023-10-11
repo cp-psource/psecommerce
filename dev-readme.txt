@@ -1,5 +1,5 @@
 === PSeCommerce - WordPress eCommerce  ===
-Contributors: WPMUDEV
+Contributors: WMS N@W
 Tags: E-commerce, ecommerce, storefront, sell, store, shopping, cart, payment gateways, digital downloads, online store
 Requires at least: 3.7
 Requires PHP: 5.2
@@ -18,7 +18,6 @@ Sell everything from digital downloads to physical goods in all shapes and sizes
 
 No need to spend hundreds of dollars purchasing add-ons or special licenses. PSeCommerce brings together the power of dozens of different plugins in one solid standalone ecommerce product.
 
-[youtube http://www.youtube.com/watch?v=4QX1P7e-9dw&hd=1]
 
 = Features = 
 
@@ -105,13 +104,6 @@ Go viral with the included Pinterest, Facebook and Twitter share buttons. PSeCom
 = Automated Inventory Manager =
 When youвЂ™re running out of any of your products, PSeCommerce will let you know when itвЂ™s time to restock вЂ“ or automatically hide products when they are no longer available.
 
-= Setup Wizard Included =
-ItвЂ™s big and powerful but donвЂ™t worry...the PSeCommerce setup wizard will walk you through setting up your store, step-by-step, so you donвЂ™t have to think about whatвЂ™s going on behind the scenes.
-
-If you run into any problems getting started, <a href="https://premium.wpmudev.org/project/e-commerce/#usage">PSeCommerce</a> is well documented and our support team is available around the clock to answer any questions you may have.
-
-So what are you waiting for? Get started with <a href="http://premium.wpmudev.org/project/e-commerce/">PSeCommerce ecommerce</a> today. Everything you need to start and grow your online store.
-
 
 == Installation ==
 = To Install: =
@@ -120,17 +112,7 @@ So what are you waiting for? Get started with <a href="http://premium.wpmudev.or
 2.  Unzip the file into a folder on your hard drive
 3.  Upload the `/wordpress-ecommerce/` folder to the `/wp-content/plugins/` folder on your site
 4.  Visit your Dashboard -> Plugins and Activate it there.
-
-= To Set Up And Configure PSeCommerce =
-* You can find <a href='http://premium.wpmudev.org/project/e-commerce/#usage'>in-depth setup and usage instructions with screenshots here &raquo;</a>
-
-= Importing products from the WP e-Commerce plugin =
-You can import products directly into PSeCommerce from WP e-Commerce
-
-1.  Activate WP e-Commerce and PSeCommerce plugins
-2.  Go to Site Admin>Products>Store Settings and click the tab for "WP e-Commerce Importer"
-3.  Select 'Import Now'.
-4.  You should see a success message letting you know the process has been completed.
+5.  You should see a success message letting you know the process has been completed.
 
 == Frequently Asked Questions ==
 
