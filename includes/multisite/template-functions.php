@@ -585,18 +585,18 @@ if ( ! function_exists( '_mp3_global_products_html' ) ) {
 
 				$html .= '
 				<div class="mp_product_item' . ( ( 'grid' == $view ) ? ' mp_product_item-col-' . $per_row : '' ) . '">
-					<div itemscope itemtype="http://schema.org/Product" class="mp_product' . ( ( strlen( $img ) > 0 ) ? ' mp_product-has-image' . $align_class : '' ) . ' ' . implode( $class, ' ' ) . '">
+					<div itemscope itemtype="http://schema.org/Product" class="mp_product' . ( ( strlen( $img ) > 0 ) ? ' mp_product-has-image' . $align_class : '' ) . ' ' . implode(' ', $class) . '">
 						' . $img . '
 						<div class="mp_product_details">
 
 							<div class="mp_product_meta">
 								<h3 class="mp_product_name entry-title" itemprop="name">
-	 								<a href="' . $product->url( false ) . '">' . $product->title( false ) . '</a>
-	 							</h3>
-								' . ( mp_arr_get_value( 'show_price', $args, - 1 ) != 0 ? $product->display_price( false ) : null ) . '
- 								' . $mp_product_list_content . '
+									<a href="' . $product->url( false ) . '">' . $product->title( false ) . '</a>
+								</h3>
+								' . ( mp_arr_get_value( 'show_price', $args, -1 ) != 0 ? $product->display_price( false ) : null ) . '
+								' . $mp_product_list_content . '
 
- 								<div class="mp_social_shares">
+								<div class="mp_social_shares">
 									' . $pinit . '
 									' . $fb . '
 									' . $twitter . '
@@ -609,7 +609,7 @@ if ( ! function_exists( '_mp3_global_products_html' ) ) {
 								' . apply_filters( 'mp_product_list_meta', '', $product->ID ) . '
 							</div><!-- end mp_product_callout -->
 
- 						</div><!-- end mp_product_details -->
+						</div><!-- end mp_product_details -->
 
 						<div style="display:none">
 							<span class="entry-title">' . $product->title( false ) . '</span> was last modified:

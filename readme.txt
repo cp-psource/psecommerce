@@ -53,6 +53,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 = 3.5.5 =
 
 Fix: session.start wird nun korrekt ausgelöst
+Fix: Fatal Error Netzwerkshopseite
 
 = 3.5.4 =
 
