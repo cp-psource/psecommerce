@@ -738,7 +738,7 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 * Add "Only show on store pages" option to all widgets
 * Add setting to disable excerpts in product lists
 * Add per product special tax rates
-* Add Pro Sites level recognition for multisite: http://premium.wpmudev.org/forums/topic/feature-request-advanced-integration-of-psecommerce-and-pro-sites
+* Add PS Bloghosting level recognition for multisite: http://premium.wpmudev.org/forums/topic/feature-request-advanced-integration-of-psecommerce-and-pro-sites
 * Add Stripe payment gateway! Accept credit cards directly on your site with full PCI compliance
 * Add custom API url support to Authorize.net gateway for compatibility with many 3rd party gateways
 * Add beta PayPal Payflow Pro gateway

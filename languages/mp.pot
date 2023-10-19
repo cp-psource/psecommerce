@@ -5204,7 +5204,7 @@ msgstr ""
 
 #: psecommerce.php:723 includes/psecommerce.php:724
 msgid ""
-"Grant access to themes and gateways depending on the user's Pro Site level"
+"Grant access to themes and gateways depending on the user's PS Bloghosting level"
 msgstr ""
 
 #: includes/common/payment-gateways/free_orders.php:34

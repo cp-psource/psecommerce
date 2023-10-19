@@ -730,7 +730,7 @@ class PSeCommerce {
 		if ( class_exists( 'ProSites' ) ) {
 			mp_register_addon( array(
 				'label' => __( 'PS Bloghosting', 'mp' ),
-				'desc'  => __( 'Grant access to themes and gateways depending on the user\'s Pro Site level', 'mp' ),
+				'desc'  => __( 'Gewähre Zugriff auf Themen und Gateways, abhängig vom PS Bloghosting-Level des Benutzers', 'mp' ),
 				'class' => 'MP_Prosites_Addon',
 				'path'  => mp_plugin_dir( 'includes/addons/mp-prosites/class-mp-prosites-addon.php' ),
 			) );

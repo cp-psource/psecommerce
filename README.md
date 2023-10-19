@@ -301,7 +301,7 @@ Um die Coupon-Nachricht zu konfigurieren, die Kunden auf der Checkout-Seite ange
 
 ![PSeCommerce – Rechnungs-Addon – Export](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-3006-invoice-addon-export-buttons.png)
 
-  Das Rechnungs-PDF-Add-on verfügt außerdem über eine eigene Einstellungsseite, auf die Sie über die Seite „Add-ons“ zugreifen können. Dort können Sie Dinge konfigurieren wie:
+  Das Rechnungs-PDF-Add-on verfügt außerdem über eine eigene Einstellungsseite, auf die Du über die Seite „Add-ons“ zugreifen kannst. Dort kannst Du Dinge konfigurieren wie:
 
 * Wie das PDF angezeigt werden soll
 * An welche E-Mails soll es angehängt werden?
@@ -310,57 +310,57 @@ Um die Coupon-Nachricht zu konfigurieren, die Kunden auf der Checkout-Seite ange
 
 ### Verwendung auf ClassicPress Multisite
 
-Auf Multisite können Sie PSeCommerce auf eine von zwei Arten aktivieren: **Weg Nr. 1: PSeCommerce Site für Site aktivieren** Sie würden diesen Weg wählen, wenn Sie daraus eine [Pro Sites](https:/ /premium.wpmudev.org/project/pro-sites/ „Pro Sites“) Premium-Plugin oder Sie wollten es auf bestimmte Websites beschränken. Das bedeutet für Ihre Benutzer:
+Auf Multisite kannst Du PSeCommerce auf eine von zwei Arten aktivieren: **Weg Nr. 1: PSeCommerce Site für Site aktivieren** Du würdest diesen Weg wählen, wenn Du daraus ein [PS Bloghosting](https://premium.wpmudev.org/project/pro-sites/) Premium-Plugin machen wolltest oder Du willst es auf bestimmte Webseiten beschränken. Das bedeutet für Deine Benutzer:
 
-* Sie können PSeCommerce in den Dashboards Ihrer Unterseiten über _Plugins -> Installierte Plugins_ aktivieren.
-* Sie können jedes der in PSeCommerce verfügbaren Zahlungsgateways aktivieren.
+* Du kannst PSeCommerce in den Dashboards Deiner Unterseiten über _Plugins -> Installierte Plugins_ aktivieren.
+* Du kannst jedes der in PSeCommerce verfügbaren Zahlungsgateways aktivieren.
 
-**Weg Nr. 2: Netzwerkaktivierung von PSeCommerce** Hier kann PSeCommerce auf Multisite wirklich glänzen. Mit dieser Aktivierungsmethode verwandeln Sie PSeCommerce von einem Shop-by-Shop-Erlebnis in ein netzwerkweites Erlebnis! Sie können Dinge tun wie:
+**Weg Nr. 2: Netzwerkaktivierung von PSeCommerce** Hier kann PSeCommerce auf Multisite wirklich glänzen. Mit dieser Aktivierungsmethode verwandelst Du PSeCommerce von einem Shop-by-Shop-Erlebnis in ein netzwerkweites Erlebnis! Du kannst Dinge tun wie:
 
-* Verfügen Sie über einen einzigen, globalen Warenkorb, sodass Besucher Ihres Netzwerks Artikel aus jedem Shop im Netzwerk hinzufügen und an einem einzigen Ort bezahlen können
-* Berechnen Sie einen Prozentsatz des Gewinns aus einem Verkauf über das PayPal Chained Payments-Gateway
-* Kontrollieren Sie den Zugriff auf Gateways und CSS-Themes innerhalb von PSeCommerce
+* Verfüge über einen einzigen, globalen Warenkorb, sodass Besucher Deines Netzwerks Artikel aus jedem Shop im Netzwerk hinzufügen und an einem einzigen Ort bezahlen können
+* Berechne einen Prozentsatz des Gewinns aus einem Verkauf über das PayPal Chained Payments-Gateway
+* Kontrolliere den Zugriff auf Gateways und CSS-Themes innerhalb von PSeCommerce
 
-Sie finden alle Multisite-Optionen im Netzwerk-Dashboard unter: _Einstellungen -> Store-Netzwerk_
+Du findest alle Multisite-Optionen im Netzwerk-Dashboard unter: _Einstellungen -> Shop-Netzwerk_
 
 ![PSeCommerce – Store Network – Startseite](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-3006-store-network-home.png)
 
-  Hier sehen Sie die folgenden Abschnitte:
+  Hier siehst Du die folgenden Abschnitte:
 
-* Allgemeine Einstellungen – Beschränken Sie die Verwendung globaler Widgets und Shortcodes auf den Hauptblog und aktivieren Sie den globalen Warenkorb
-* Produktindexer – indizieren Sie alle Produkte in Ihrem Netzwerk, sodass sie auf dem globalen Markt sichtbar sind
-* Gateway-Berechtigungen – Bereitstellung oder Einschränkung des Zugriffs auf Zahlungsgateways für Netzwerkshops (eine zusätzliche Pro Sites-Option wird bereitgestellt, wenn die [Pro Sites](https://premium.wpmudev.org/project/pro-sites/ „Pro Sites“ ) Plugin ist installiert, mehr dazu gleich)
-* Globale Marktplatzseiten – Passen Sie Ihren globalen Marktplatz, Ihre Kategorie- und Tag-Seiten an
-* Theme-Berechtigungen – Gewähren oder beschränken Sie den Zugriff auf PSeCommerce-CSS-Themes für Netzwerkshops
+* Allgemeine Einstellungen – Beschränke die Verwendung globaler Widgets und Shortcodes auf den Hauptblog und aktiviere den globalen Warenkorb
+* Produktindexer – indiziere alle Produkte in Deinem Netzwerk, sodass sie auf dem globalen Markt sichtbar sind
+* Gateway-Berechtigungen – Bereitstellung oder Einschränkung des Zugriffs auf Zahlungsgateways für Netzwerkshops (eine zusätzliche PS Bloghosting-Option wird bereitgestellt, wenn das [PS Bloghosting](https://premium.wpmudev.org/project/pro-sites/) Plugin installiert ist, mehr dazu gleich)
+* Globale Marktplatzseiten – Passe Deinen globalen Marktplatz, Deine Kategorie- und Tag-Seiten an
+* Theme-Berechtigungen – Gewähre oder beschränke den Zugriff auf PSeCommerce-CSS-Themes für Netzwerkshops
 
-_Wichtig:_ Wenn die Site-Sichtbarkeit einer Unterseite in Ihrem Netzwerk auf „Suchmaschinen abschrecken …“ eingestellt ist (unter Einstellungen -> Lesen), werden die Produkte dieser Unterseite nicht auf dem globalen Marktplatz angezeigt.
+_Wichtig:_ Wenn die Webseiten-Sichtbarkeit einer Unterseite in Deinem Netzwerk auf „Suchmaschinen blocken…“ eingestellt ist (unter Einstellungen -> Lesen), werden die Produkte dieser Unterseite nicht auf dem globalen Marktplatz angezeigt.
 
 ### Der globale Warenkorb und verkettete Zahlungen
 
-Der globale Einkaufswagen in PSeCommerce ist von Grund auf so konzipiert, dass jedes Geschäft ein anderer Händler sein kann, der Bestellungen unabhängig annimmt und bearbeitet, den Kunden jedoch einen einzigen Ort im Netzwerk zum Auschecken bietet. Es ist jedoch nicht dafür gedacht, dass ein und derselbe Ladenbesitzer mehrere Geschäfte betreibt. In diesem Fall sollten Sie Ihre Produkte einfach in einem Geschäft aufbewahren. Zwei Dinge, die Sie beim globalen Warenkorb beachten sollten, sind:
+Der globale Einkaufswagen in PSeCommerce ist von Grund auf so konzipiert, dass jedes Geschäft ein anderer Händler sein kann, der Bestellungen unabhängig annimmt und bearbeitet, den Kunden jedoch einen einzigen Ort im Netzwerk zum Auschecken bietet. Es ist jedoch nicht dafür gedacht, dass ein und derselbe Ladenbesitzer mehrere Geschäfte betreibt. In diesem Fall solltest Du Deine Produkte einfach in einem Geschäft aufbewahren. Zwei Dinge, die Du beim globalen Warenkorb beachten solltest, sind:
 
 1. Aufgrund von domänenübergreifenden Sicherheitsbedenken ist der globale Warenkorb nicht mit domänenbezogenen Unterseiten kompatibel.
 2. Wenn der globale Warenkorb aktiv ist, steht im Netzwerk nur das PayPal Express Checkout-Gateway zur Nutzung zur Verfügung.
 
-Nun zu verketteten Zahlungen (auch bekannt als [parallele Zahlungen](https://developer.paypal.com/webapps/developer/docs/classic/express-checkout/integration-guide/ECParallelPaymens/ „Parallelzahlungen“)). . Sie ermöglichen es einem Kunden, eine Bestellung einmal zur Kasse zu gehen/zu bezahlen und das Geld dann automatisch an mehrere Händler auf einem Marktplatz zu verteilen. Im Fall von PSeCommerce stellen wir dies über das PayPal Chained Payments-Gateway bereit, sodass Sie als Eigentümer des Filialnetzwerks Ihren Anteil am Gewinn für einen Verkauf einsammeln können, während Ihren Ladenbesitzern der Rest zugesandt wird.
+Nun zu verketteten Zahlungen (auch bekannt als [parallele Zahlungen](https://developer.paypal.com/webapps/developer/docs/classic/express-checkout/integration-guide/ECParallelPaymens/ „Parallelzahlungen“)). . Sie ermöglichen es einem Kunden, eine Bestellung einmal zur Kasse zu gehen/zu bezahlen und das Geld dann automatisch an mehrere Händler auf einem Marktplatz zu verteilen. Im Fall von PSeCommerce stellen wir dies über das PayPal Chained Payments-Gateway bereit, sodass Du als Eigentümer des Filialnetzwerks Deinen Anteil am Gewinn für einen Verkauf einsammeln kannst, während Deinen Ladenbesitzern der Rest zugesandt wird.
 
 ![PSeCommerce – PayPal Chained Payments](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-3006-network-chained-zahlungen.png)
 
-  _Wichtig:_ Bitte beachten Sie, dass die Funktion für verkettete Zahlungen nur über PayPal verfügbar ist.
+  _Wichtig:_ Bitte beachte, dass die Funktion für verkettete Zahlungen nur über PayPal verfügbar ist.
 
-### Pro Sites-Integration
+### PS Bloghosting-Integration
 
-Mit Hilfe unseres eigenen [Pro Sites](https://premium.wpmudev.org/project/pro-sites/ „Pro Sites“)-Plugins können Sie den Zugriff auf bestimmte Gateways und CSS-Themes innerhalb von PSeCommerce auf einfache Weise steuern Eine feinere Art und Weise erfordert, dass ein Benutzer zunächst über ein bestimmtes Pro Site-Level verfügt. Installieren und konfigurieren Sie einfach Pro Sites in Ihrem Netzwerk und richten Sie verschiedene Ebenen nach Ihren Wünschen ein, wie auf unserer [Nutzungsseite](https://premium.wpmudev.org/project/pro-sites/#product-usage) beschrieben. Sobald Sie das getan haben, gehen Sie zum Dashboard der Hauptseite und gehen Sie zu: _Store-Einstellungen -> Add-ons_ und aktivieren Sie von dort aus das Pro Sites-Add-on. Auf der Seite „Store-Netzwerk“ im Netzwerk-Dashboard sehen Sie nun im Dropdown-Feld weitere Optionen für den Zugriff, in denen die von Ihnen konfigurierten Pro-Site-Ebenen angezeigt werden:
+Mit Hilfe unseres eigenen [PS Bloghosting](https://n3rds.work/piestingtal_source/ps-bloghosting-multisite-next-level-plugin/)-Plugins kannst Du den Zugriff auf bestimmte Gateways und CSS-Themes innerhalb von PSeCommerce auf einfache Weise steuern Eine feinere Art und Weise erfordert, dass ein Benutzer zunächst über ein bestimmtes PS Bloghosting-Level verfügt. Installiere und konfiguriere einfach PS Bloghosting in Deinem Netzwerk und richte verschiedene Ebenen nach Deinen Wünschen ein. Sobald Du das getan hast, gehe zum Dashboard der Hauptseite und gehe zu: _Store-Einstellungen -> Add-ons_ und aktiviere von dort aus das PS Bloghosting-Add-on. Auf der Seite „Store-Netzwerk“ im Netzwerk-Dashboard siehst Du nun im Dropdown-Feld weitere Optionen für den Zugriff, in denen die von Dir konfigurierten PS Bloghosting-Ebenen angezeigt werden:
 
-![PSeCommerce – Pro Sites Integration](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-3006-pro-sites-integration.png)
+![PSeCommerce – PS Bloghosting Integration](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-3006-pro-sites-integration.png)
 
 ### Hinweis zum Caching
 
-Wenn Sie ein Caching-Plugin wie W3 Total Cache verwenden oder einen anderen Caching-Mechanismus wie Varnish auf Ihrem Server aktiviert haben, müssen Sie einige Cookie-Ausnahmen hinzufügen, damit PSeCommerce ordnungsgemäß funktioniert:
+Wenn Du ein Caching-Plugin wie W3 Total Cache verwendest oder einen anderen Caching-Mechanismus wie Varnish auf Deinem Server aktiviert hast, musst Du einige Cookie-Ausnahmen hinzufügen, damit PSeCommerce ordnungsgemäß funktioniert:
 
 * PHPSESSID
 * mp_order_history_
 * mp_session
 * mp_globalcart_*
 
-Wenn Sie W3 Total Cache verwenden, möchten Sie diese zur Einstellung „Abgelehnte Cookies“ hinzufügen (ein Element pro Zeile) unter: _Leistung -> Seiten-Cache -> Erweitert_ Wenn Ihr Server Varnish-Cache verwendet, wenden Sie sich bitte an Ihr Hosting Bitten Sie Ihren Anbieter, diese Ausnahmen hinzuzufügen.
+Wenn Du W3 Total Cache verwendest, möchtest Du diese zur Einstellung „Abgelehnte Cookies“ hinzufügen (ein Element pro Zeile) unter: _Leistung -> Seiten-Cache -> Erweitert_ Wenn Dein Server Varnish-Cache verwendet, wende Dich bitte an Dein Hosting Bitte Deinen Anbieter, diese Ausnahmen hinzuzufügen.
