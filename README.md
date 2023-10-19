@@ -46,43 +46,43 @@ Akzeptiere Zahlungen über 15 beliebte Zahlungsabwickler, darunter Stripe, PayPa
 
 Wähle ob Benutzer auf den aktuellen Produktseiten bleiben oder zur Kasse weitergeleitet werden, wenn sie ein Produkt in ihren Warenkorb legen.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/social-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-social-1x.png)
 
 **Soziale Einstellungen**
 
 Ermutige Kunden, Ihre Produkte mit ihren Freunden und ihrer Familie zu teilen, indem Du die Share-Buttons auf Pinterest, Facebook und Twitter nutzt.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/manage-checkout-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-manage-checkout-1x.png)
 
 **Verwalte den Bestellvorgang**
 
 Aktiviere oder deaktiviere den Gast-Checkout und verkaufe sogar in bestimmte Länder oder an jeden auf der Welt.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/digital-downloads-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-manage-checkout-1x.png)
 
 **Digitale Downloads beschränken**
 
 Wähle aus, wie oft ein Kunde eine gekaufte Datei herunterladen kann.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/one-page-checkout-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-manage-checkout-1x.png)
 
 **Einseitiger Checkout**
 
 Wusstest Du, dass die Wahrscheinlichkeit, dass der durchschnittliche Kunde seinen Warenkorb verlässt, bei 69 % liegt? Mit unserem einfachen neuen One-Page-Checkout-Prozess wirst Du nicht zu einer weiteren Statistik.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/taxes-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-taxes-1x.png)
 
 **Automatische Steuern**
 
 Einfache Steuereinstellungen erleichtern das Festlegen von Tarifen, das Erstellen von Ausnahmen, die Erhebung von Steuern auf herunterladbare Produkte, Steuern vor oder nach den Versandkosten und Steuern je nach Standort.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/ship-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-taxes-1x.png)
 
 **Überall versenden**
 
 Versende mit Zuversicht überall auf der Welt. Nutze Flatrate-Versandkosten oder richte Dich mit Tabellen- oder Gewichtstarifen nach einer spezifischen Distributionslogistik.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/hide-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-hide-1x.png)
 
 **Nicht vorrätige Produkte ausblenden**
 
