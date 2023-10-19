@@ -76,7 +76,7 @@ Wusstest Du, dass die Wahrscheinlichkeit, dass der durchschnittliche Kunde seine
 
 Einfache Steuereinstellungen erleichtern das Festlegen von Tarifen, das Erstellen von Ausnahmen, die Erhebung von Steuern auf herunterladbare Produkte, Steuern vor oder nach den Versandkosten und Steuern je nach Standort.
 
-![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-taxes-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-ship-1x.png)
 
 **Überall versenden**
 
