@@ -4,34 +4,34 @@ jQuery(document).ready(function ($) {
 	// Tabs
 	$('#mp-quick-setup-tabs').tabs();
 
-	$('#mp-quick-setup-tab-locations .mp_tab_navigation .mp_button_tab_nav-next').click(function (e) {
+	$('#mp-quick-setup-tab-locations .mp_tab_navigation .mp_button_tab_nav-next').on('click', function (e) {
 		e.preventDefault();
         if ( $form.valid() ) {
 			$('#mp-quick-setup-tabs').tabs({active: 1});
         }
 	});
 
-	$('#mp-quick-setup-tab-currency-and-tax .mp_tab_navigation .mp_button_tab_nav-next').click(function (e) {
+	$('#mp-quick-setup-tab-currency-and-tax .mp_tab_navigation .mp_button_tab_nav-next').on('click', function (e) {
 		$('#mp-quick-setup-tabs').tabs({active: 2});
 		e.preventDefault();
 	});
 
-	$('#mp-quick-setup-tab-metric-system .mp_tab_navigation .mp_button_tab_nav-next').click(function (e) {
+	$('#mp-quick-setup-tab-metric-system .mp_tab_navigation .mp_button_tab_nav-next').on('click', function (e) {
 		$('#mp-quick-setup-tabs').tabs({active: 3});
 		e.preventDefault();
 	});
 
-	$('#mp-quick-setup-tab-currency-and-tax .mp_tab_navigation .mp_button_tab_nav-prev').click(function (e) {
+	$('#mp-quick-setup-tab-currency-and-tax .mp_tab_navigation .mp_button_tab_nav-prev').on('click', function (e) {
 		$('#mp-quick-setup-tabs').tabs({active: 0});
 		e.preventDefault();
 	});
 
-	$('#mp-quick-setup-tab-metric-system .mp_tab_navigation .mp_button_tab_nav-prev').click(function (e) {
+	$('#mp-quick-setup-tab-metric-system .mp_tab_navigation .mp_button_tab_nav-prev').on('click', function (e) {
 		$('#mp-quick-setup-tabs').tabs({active: 1});
 		e.preventDefault();
 	});
 
-	$('#mp-quick-setup-tab-payment-gateway .mp_tab_navigation .mp_button_tab_nav-prev').click(function (e) {
+	$('#mp-quick-setup-tab-payment-gateway .mp_tab_navigation .mp_button_tab_nav-prev').on('click', function (e) {
 		$('#mp-quick-setup-tabs').tabs({active: 2});
 		e.preventDefault();
 	});

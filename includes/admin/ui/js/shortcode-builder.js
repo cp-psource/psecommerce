@@ -8,7 +8,7 @@
 	});
 
 	var initToolTips = function(){
-		$('.mp-tooltip').click(function(){
+		$('.mp-tooltip').on('click', function(){
 			var $this = $(this),
 					$button = $this.find('.mp-tooltip-button');
 
@@ -32,7 +32,7 @@
  	var initShortCodeBuilder = function() {
 		var $form = $('#mp-shortcode-builder-form');
 
-		$form.find('[name="shortcode"]').change(function(){
+		$form.find('[name="shortcode"]').on('change', function(){
 			var $table = $('#' + $(this).val().replace(/_/g, '-') + '-shortcode');
 
 			if ( $table.length == 0 ) {
@@ -48,7 +48,7 @@
 			refreshChosenFields();
 		});
 
-		$form.submit(function(e){
+		$form.on('submit', function(e){
 			e.preventDefault();
 
 			var shortcode = '[' + $form.find('[name="shortcode"]').val();

@@ -2,7 +2,7 @@
 
 /*
 PSeCommerce USPS Calculated Shipping Plugin
-Author: Arnold Bailey (Incsub)
+Author: DerN3rd (WMS N@W)
 */
 
 class MP_Shipping_USPS extends MP_Shipping_API_Calculated {

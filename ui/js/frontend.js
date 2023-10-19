@@ -234,7 +234,7 @@ var psecommerce = { };
                     scrollTop: $( "a.mp_product_tab_label_link.mp-product-overview" ).offset( ).top - 30
                 }, 500 );
             } );
-            $( '.mp_product_tab_label_link' ).click( function( e ) {
+            $( '.mp_product_tab_label_link' ).on('click', function( e ) {
                 e.preventDefault( );
                 var $this = $( this ),
                     $tab = $this.parent( ),

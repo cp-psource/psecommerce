@@ -189,7 +189,7 @@ class MP_Products_Screen {
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function ($) {
-				$('[name="has_variations"]').change(function () {
+				$('[name="has_variations"]').on('change', function () {
 					var $elms = $('#postimagediv, #postdivrich, #postexcerpt');
 
 					if ($(this).prop('checked')) {

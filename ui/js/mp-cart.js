@@ -664,7 +664,7 @@ var mp_cart = { };
             }, 300 );
         }, function() {
             $cart.removeClass( 'visible in-transition' );
-        } ).click( function() {
+        } ).on('click', function() {
             $cart.addClass( 'in-transition' );
             setTimeout( function() {
                 $cart.addClass( 'visible' );
