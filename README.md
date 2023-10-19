@@ -10,15 +10,15 @@ PSeCommerce bietet die einfachste Möglichkeit, alles online zu verkaufen, mit u
 
 PSeCommerce ist unser bislang ehrgeizigstes Plugin-Update. Es vereint Hunderte von Stunden Entwicklungszeit mit den Anfragen und dem Feedback der Mitglieder. PSeCommerce war noch nie einfacher, von der Kundenakquise bis zum Bezahlvorgang, und es wird immer besser.
 
-![marketpress-coupon-735x470](https://premium.wpmudev.org/wp-content/uploads/2010/06/marketpress-coupon-735x470.jpg)
+![psecommerce-coupon-735x470](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-coupon-735x470.jpg)
 
-  Coupons sind nur ein Beispiel für unseren wachsenden Katalog an Add-ons.
+  Gutscheine sind nur ein Beispiel für unseren wachsenden Katalog an Add-ons.
 
 ### Alles verkaufen
 
 Egal, ob Du individuelle T-Shirts verkaufen möchtest, die Du selbst in Deiner Garage entworfen und im Siebdruckverfahren gedruckt hast, herunterladbare Kopien der neuesten EP Deiner Band oder sogar Deine Zeit als Berater – PSeCommerce macht alles möglich.
 
-![similar-products-735x470](https://premium.wpmudev.org/wp-content/uploads/2010/06/similar-products-735x470-583x373.jpg)
+![psecommerce-similar-products-735x470](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-similar-products-735x470-583x373.jpg)
 
   Variationen sind leistungsfähiger und einfacher zu verwenden.
 
@@ -30,7 +30,7 @@ Variationen wurden von Grund auf neu geschrieben, sodass Du jetzt unbegrenzt vie
 
 Akzeptiere Zahlungen über 15 beliebte Zahlungsabwickler, darunter Stripe, PayPal und Authorize.net. Mache es jedem leicht, Dich zu bezahlen. Eine reibungslose Transaktionsabwicklung ist für den Aufbau von Vertrauen und Kundenbindung unerlässlich.
 
-![credit-card-735x470](https://premium.wpmudev.org/wp-content/uploads/2010/06/credit-card-735x470.jpg)
+![psecommerce-credit-card-735x470](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-credit-card-735x470.png)
 
   Weitere integrierte Zahlungsoptionen.
 
@@ -40,7 +40,7 @@ Akzeptiere Zahlungen über 15 beliebte Zahlungsabwickler, darunter Stripe, PayPa
 
 **Wir stellen alle Tools zur Verfügung, die Du benötigst, um Deine Produkte so zu vermarkten, wie Du es möchtest – ohne dass Du für teure Erweiterungen bezahlen musst.**
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/cart-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-cart-1x.png)
 
 **Warenkorbverhalten**
 
@@ -180,7 +180,7 @@ Nutze die gut 80 PSOURCE-Plugins, voll aus, indem Du sie mit PSeCommerce koppels
 
 Sobald Du PSeCommerce installiert und aktiviert hast, wird Dir unser Schnelleinrichtungsassistent angezeigt. Du kannst es überspringen, wenn Du _wirklich_ möchtest, aber wir empfehlen Dir dringend, es vollständig durchzugehen (da es die Einrichtung Deines Shops einfacher macht):
 
-![PSeCommerce – Quick Setup Start](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-3006-quick-setup-start.png)
+![PSeCommerce – Quick Setup Start](https://n3rds.work/wp-content/uploads/2021/10/PSeCommerce-Schnelleinrichtung-Willkommen.png)
 
   Wir beginnen mit der Erstellung der Store-Seiten und von dort aus konfigurierst Du Dinge wie:
 
