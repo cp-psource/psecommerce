@@ -4,12 +4,13 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: ecommerce, onlineshop, multisite, marketpress
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 3.5.4
+Stable tag: 3.5.5
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin - Ob kleiner Onlineshop, Digitales Schaufenster, funktioniert auch perfekt mit BuddyPress und Multisite, um einen sozialen Marktplatz zu schaffen, auf dem Du einen Prozentsatz nehmen kannst! Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige Produkte hinzu.
+Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin - Ob kleiner Onlineshop, Digitales Schaufenster, funktioniert auch perfekt mit BuddyPress und Multisite, um einen sozialen Marktplatz zu schaffen, auf dem Du einen Prozentsatz nehmen kannst! 
+Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige Produkte hinzu.
 
 == Description ==
 
@@ -24,7 +25,6 @@ mithilfe der mächtigen API eigene Erweiterungen und Plugins zur Verfügung stel
 Online Geld verdienen macht dieses mächtige Leichtgewicht von eCommerce Plugin im Nu Kinderleicht.
 
 [Projektseite](https://n3rds.work/piestingtal_source/psecommerce-shopsystem/)
-[Supportforum](https://n3rds.work/forums/forum/psource-support-foren/psecommerce-supportforum/)
 [GitHub](https://github.com/piestingtal-source/psecommerce)
 
 == Mehr PSOURCE ==
