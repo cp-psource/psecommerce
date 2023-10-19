@@ -94,31 +94,31 @@ Wenn ein Produkt nicht verfügbar ist, lege es automatisch als Entwurf fest, dam
 
 Zeige Deine Produkte als Liste oder Raster an, wähle die Anzahl der Zeilen, zeige Bilder an (oder auch nicht) und nutze die integrierte Bild-Lightbox optimal.
 
-![Bild](https://premium.wpmudev.org/wp-content/uploads/2010/06/google-an-1x.png)
+![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/google-an-1x.png)
 
 **Google Analytics**
 
 Wir haben dafür gesorgt, dass Deine gesamte Webseite oder Dein gesamtes Netzwerk sowohl mit Google Universal Analytics als auch mit Google Analytics eCommerce kompatibel ist.
 
-![Bild](https://premium.wpmudev.org/wp-content/uploads/2010/06/set-cur-1x.png)
+![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/set-cur-1x.png)
 
 **Standardwährung festlegen**
 
 Wähle aus 120 verschiedenen Währungen als Standardwährung. Du kannst Kunden auch erlauben, ihre Punkte oder Guthaben standardmäßig in Deinem Shop einzulösen.
 
-![Bild](https://premium.wpmudev.org/wp-content/uploads/2010/06/lated-product-1x.png)
+![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/lated-product-1x.png)
 
 **Ähnliche Produkte anzeigen**
 
 Verleite Kunden zu mehr Käufen, indem Du verwandte Produkte anzeigst. Wähle aus, wie viele angezeigt werden sollen, wähle eine Liste oder ein Raster aus und lege fest, ob Produkte nach Kategorien oder Tags verknüpft werden sollen.
 
-![Bild](https://premium.wpmudev.org/wp-content/uploads/2010/06/shortcodes-1x.png)
+![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/shortcodes-1x.png)
 
 **Shortcodes**
 
 Mit einer praktischen Schaltfläche im visuellen Beitragseditor kannst Du schnell Shortcodes in ein Produkt, eine Seite oder einen Beitrag einfügen.
 
-![Bild](https://premium.wpmudev.org/wp-content/uploads/2010/06/inventory-1x.png)
+![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/inventory-1x.png)
 
 **Bestandswarnung**
 
@@ -146,11 +146,11 @@ Durch die schnelle Einrichtung ist Deine Webseite in wenigen Minuten bereit für
 
 **PSeCommerce bringt Add-ons mit, es werden noch weitere hinzukommen.**
 
-![Bild](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-coupon-1x.png)
+![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-coupon-1x.png)
 
 _Coupons_ Gewinne neue Käufer und steigere den Umsatz mit Coupon-basierten Marketingkampagnen.
 
-![Bild](https://premium.wpmudev.org/wp-content/uploads/2010/06/pdf-1x.png)
+![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/pdf-1x.png)
 
 _PDF-Rechnung_ Ermögliche Benutzern die Erstellung einer ansprechenden Rechnung anstelle oder zusätzlich zu einer Standard-Rechnungs-E-Mail.
 
