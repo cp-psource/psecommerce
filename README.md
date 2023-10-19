@@ -58,13 +58,13 @@ Ermutige Kunden, Ihre Produkte mit ihren Freunden und ihrer Familie zu teilen, i
 
 Aktiviere oder deaktiviere den Gast-Checkout und verkaufe sogar in bestimmte Länder oder an jeden auf der Welt.
 
-![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-manage-checkout-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-digital-downloads-1x.png)
 
 **Digitale Downloads beschränken**
 
 Wähle aus, wie oft ein Kunde eine gekaufte Datei herunterladen kann.
 
-![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-manage-checkout-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2023/10/psecommerce-one-page-checkout-1x.png)
 
 **Einseitiger Checkout**
 
