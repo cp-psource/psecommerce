@@ -57,7 +57,7 @@ class MP_Shop_Einstellungen_General {
 		add_filter( 'psource_field/format_value/tax[rate]', array( &$this, 'format_tax_rate_value' ), 10, 2 );
 		add_filter( 'psource_field/sanitize_for_db/tax[rate]', array( &$this, 'save_tax_rate_value' ), 10, 3 );
 
-		foreach ( mp()->CA_provinces as $key => $value ) {
+		foreach ( mp()->provinces['CA'] as $key => $value ) {
 			add_filter( 'psource_field/format_value/tax[canada_rate][' . $key . ']', array( &$this, 'format_tax_rate_value' ), 10, 2 );
 			add_filter( 'psource_field/sanitize_for_db/tax[canada_rate][' . $key . ']', array( &$this, 'save_tax_rate_value' ), 10, 3 );
 		}
@@ -465,7 +465,7 @@ class MP_Shop_Einstellungen_General {
 		) );
 
 		// Create field for each canadian province
-		foreach ( mp()->CA_provinces as $key => $label ) {
+		foreach ( mp()->provinces['CA'] as $key => $label ) {
 			$metabox->add_field( 'text', array(
 				'name'			 => 'tax[canada_rate][' . $key . ']',
 				'desc'			 => '<a target="_blank" href="http://en.wikipedia.org/wiki/Sales_taxes_in_Canada">' . __( 'Aktuelle Steuersätze', 'mp' ) . '</a>',
@@ -655,7 +655,8 @@ class MP_Shop_Einstellungen_General {
 				'validation' => array(
 					'required' => true,
 				),
-			) );
+			) 
+		);
 	}
 
 }
