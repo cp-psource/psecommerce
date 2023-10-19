@@ -45,6 +45,15 @@ define( 'MP_VERSION', '3.5.4' );
  */
 class PSeCommerce {
 
+	public $currencies;
+	public $eu_countries;
+	public $provinces;
+	public $countries_no_postcode;
+	public $countries;
+	public $popular_countries;
+	public $default_settings;
+	public $defaults;
+
 	/**
 	 * Refers to the post types that PSeCommerce uses
 	 *

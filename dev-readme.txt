@@ -1,4 +1,4 @@
-=== PSeCommerce - WordPress eCommerce  ===
+=== PSeCommerce - ClassicPress eCommerce  ===
 Contributors: WMS N@W
 Tags: E-commerce, ecommerce, storefront, sell, store, shopping, cart, payment gateways, digital downloads, online store
 Requires at least: 3.7
@@ -6,11 +6,11 @@ Requires PHP: 5.2
 Tested up to: 4.9.6
 Stable tag: trunk
 
-Full-power ecommerce marketplace for WordPress and Multisite. 100% free and no extensions required.
+Full-power ecommerce marketplace for ClassicPress and Multisite. 100% free and no extensions required.
 
 == Description ==
 
-PSeCommerce ecommerce is a completely free premium online storefront for WordPress and Multisite.
+PSeCommerce ecommerce is a completely free premium online storefront for ClassicPress and Multisite.
 
 Sell everything from digital downloads to physical goods in all shapes and sizes, offer product variations and instant downloads from one easy-to-use online marketplace.
 
@@ -53,7 +53,7 @@ Setting up your own online store couldn't be easier with PSeCommerce. Features i
 
 = Customize Without Code = 
 
-PSeCommerce is built to work flawlessly with any well-coded WordPress theme.
+PSeCommerce is built to work flawlessly with any well-coded ClassicPress theme.
 
 * Shortcodes and built-in widgets let you display elements anywhere on your site
 * Includes CSS style presets
@@ -68,7 +68,7 @@ Set up your own eBay or Etsy-style network of stores and take a percentage of ea
 Whether you want to set up an individual storefront online or an entire ecommerce network for stores, PSeCommerce is the go-to solution.
 
 ★★★★★
-“I love this plugin! Other ecommerce plugins were just complicated. I set up Marketpress yesterday and woke up this morning with sales that took place seamlessly!” – <a href="https://wordpress.org/support/users/roseee">roseee</a>
+“I love this plugin! Other ecommerce plugins were just complicated. I set up PSeCommerce yesterday and woke up this morning with sales that took place seamlessly!” – <a href="https://wordpress.org/support/users/roseee">roseee</a>
 
 ★★★★★
 “I never dreamed it possible yet here I am doing it. I Launched an etsy-style network using PSeCommerce. Really nice work. Can’t do this with Woo!” – <a href="https://wordpress.org/support/users/leedman/">leedman</a>
@@ -440,7 +440,7 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 = 2.9.2.4 = 
 * Fixed: Coupon codes would not honor the "applies to" setting http://wp.mu/8z8
 * Fixed: Simplify gateway would display an "Simplify token not generated correctly" error when not activated with any other gateway plugins http://wp.mu/8yo
-* Fixed: Compatibility bug with WordPress HTTPS http://wp.mu/8y3
+* Fixed: Compatibility bug with ClassicPress HTTPS http://wp.mu/8y3
 * Fixed: Bug with low stock notifications
 
 = 2.9.2.3 = 
@@ -463,7 +463,7 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 * Fixed: Divide by zero warning in USPS gateway
 * Fixed: Mixed-content warnings in wp-admin
 * Fixed: Session handling code that caused issues with PayPal Express checkout 
-* Fixed: Conflict with WordPress Social Invitations plugin http://wp.mu/8ul
+* Fixed: Conflict with ClassicPress Social Invitations plugin http://wp.mu/8ul
 * Fixed: When using WPML and [mp_product] shortcode the non-translated version of the product would be returned
 * Fixed: GA E-Commerce bug http://wp.mu/8ve
 * Fixed mixed-content issues on checkout pages when using SSL
@@ -957,7 +957,7 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 
 = 1.1.1 =
 * Fixed: post_thumbnails breaks themes
-* Fixed: Marketpress Product List widget displays all products
+* Fixed: PSeCommerce Product List widget displays all products
 
 = 1.1 =
 * 2Checkout and Authorize.net beta gateways added

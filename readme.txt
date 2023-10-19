@@ -52,8 +52,10 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 = 3.5.5 =
 
-Fix: session.start wird nun korrekt ausgelöst
-Fix: Fatal Error Netzwerkshopseite
+* Fix: session.start wird nun korrekt ausgelöst
+* Fix: Fatal Error Netzwerkshopseite
+* Mehrere PhP8 Fixes
+* Mehrere jQuery Fixes
 
 = 3.5.4 =
 

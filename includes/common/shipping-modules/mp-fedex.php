@@ -1,6 +1,12 @@
 <?php
 
 class MP_Shipping_FedEx extends MP_Shipping_API_Calculated {
+
+	public $settings;
+
+	public $intl_services;
+
+	public $services;
 	//build of the plugin
 	public $build = 2;
 
