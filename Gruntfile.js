@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 	];
 
 	var includeCopyFilesDEV = includeCopyFiles.slice(0).concat( [ 'changelog.txt' ] );
-	var includeCopyFilesWPorg = includeCopyFiles.slice(0).concat( [ '!includes/admin/dash-notice/**', 'readme.txt' ] );
+	var includeCopyFilesWPorg = includeCopyFiles.slice(0).concat( [ 'readme.txt' ] );
 
 	grunt.initConfig({
 
@@ -169,7 +169,7 @@ module.exports = function(grunt) {
 			},
 			wporg: {
 				src:  includeCopyFilesWPorg,
-				dest: 'build/wordpress-ecommerce/',
+				dest: 'build/psecommerce/',
 				options: {
 					process: function (content, srcpath) {
 						if (srcpath.includes('psecommerce.php')) {
@@ -197,12 +197,12 @@ module.exports = function(grunt) {
 			wporg: {
 				options: {
 					mode: 'zip',
-					archive: './build/wordpress-ecommerce-<%= pkg.version %>.zip'
+					archive: './build/psecommerce-<%= pkg.version %>.zip'
 				},
 				expand: true,
-				cwd: 'build/wordpress-ecommerce/',
+				cwd: 'build/psecommerce/',
 				src: ['**/*'],
-				dest: 'wordpress-ecommerce/'
+				dest: 'psecommerce/'
 			}
 		},
 
