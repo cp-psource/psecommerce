@@ -77,7 +77,7 @@ jQuery(document).ready(function ($) {
 			$('.mp_tab_content_details-shipping').slideUp();
 		}
 	});
-	$('input[name="mp_charge_shipping"]:checked').click();
+	$('input[name="mp_charge_shipping"]:checked').on('click');
 	$('#mp-quick-setup-tab-payment-gateway').on('click', 'input[name="wizard_payment"]', function () {
 		if ($(this).val() != 'other') {
 			$('.mp_tab_content_details-payment-gateway').slideUp();
@@ -86,5 +86,5 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	$('input[name="wizard_payment"]:checked').click();
+	$('input[name="wizard_payment"]:checked').on('click');
 });
