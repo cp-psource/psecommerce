@@ -93,7 +93,7 @@ jQuery(document).ready(function($) {
         });
     }
 
-    $(window).resize(function() {
+    $(window).on( 'resize', function() {
         mp_variation_message();
     });
 
