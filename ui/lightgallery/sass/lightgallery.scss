@@ -9,21 +9,19 @@
 @import "lg-zoom";
 @import "lg-pager";
 @import "lg-fullscreen";
-@import "lg-share";
-@import "lg-rotate";
 
 // Clearfix
-.lg-group {
+.group {
     *zoom: 1;
 }
 
-.lg-group:before, .lg-group:after {
+.group:before, .group:after {
     display: table;
     content: "";
     line-height: 0;
 }
 
-.lg-group:after {
+.group:after {
     clear: both;
 }
 
@@ -36,7 +34,6 @@
     left: 0;
     z-index: $zindex-outer;
     opacity: 0;
-    outline: none;
     // For start/end transition
     @include transition(opacity 0.15s ease 0s);
 
@@ -102,7 +99,7 @@
     }
 
     .lg-item {
-        background: url("#{$lg-path-images}/loading.gif") no-repeat scroll center center transparent;
+        background: url(../img/loading.gif) no-repeat scroll center center transparent;
         display: none !important; 
     }
     &.lg-css3{
@@ -133,12 +130,11 @@
     }
 
     .lg-img-wrap {
-        position: absolute;
-        padding: 0 5px;
+        top: 0;
+        bottom: 0;
         left: 0;
         right: 0;
-        top: 0;
-        bottom: 0
+        padding: 0 5px;
     }
 
     .lg-item {
@@ -178,12 +174,6 @@
     // Hide title div if empty
     .lg-empty-html {
         display: none;
-    }
-
-    &.lg-hide-download{
-        #lg-download{
-            display: none;
-        }
     }
 }
 .lg-backdrop{

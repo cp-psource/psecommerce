@@ -2302,3 +2302,4 @@
     $.fn.lightGallery.modules.autoplay = Autoplay;
 
 })(jQuery, window, document);
+
