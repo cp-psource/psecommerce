@@ -80,7 +80,7 @@ else if ( !function_exists("__autoload") ) {
    *
    * @param string $class
    */
-  function __autoload($class) {
+  functionspl_autoload_register($class) {
     DOMPDF_autoload($class);
   }
 }
