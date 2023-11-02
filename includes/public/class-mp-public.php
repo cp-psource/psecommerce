@@ -45,8 +45,10 @@ class MP_Public {
 	 * @access private
 	 */
 	private function __construct() {
-		// Startet die Sitzung zuerst
-		session_start();
+        // Start a session only if it's not already started
+        if (session_id() === '') {
+            session_start();
+		}
 		//$this->includes();
 		add_action( 'wp', array( $this, 'disable_caching' ) );
 

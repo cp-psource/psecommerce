@@ -18,32 +18,28 @@ if ( is_multisite() ) {
 
 		function widget( $args, $instance ) {
 			global $mp;
-
 			extract( $args );
-
 			echo $before_widget;
-
-			$title = $instance['title'];
-
+		
+			$title = isset( $instance['title'] ) ? $instance['title'] : '';
+		
 			if ( ! empty( $title ) ) {
 				echo $before_title . apply_filters( 'widget_title', $title ) . $after_title;
 			}
-
-			if ( ! empty( $instance['custom-_text'] ) ) {
+		
+			if ( isset( $instance['custom_text'] ) ) {
 				echo '<div class="mp_widget_custom_text">' . $instance['custom_text'] . '</div>';
 			}
-
+		
 			$instance['as_list']   = true;
 			$instance['context']   = 'widget';
 			$instance['nopaging']  = true;
 			$instance['version']   = '3';
-			$instance['widget_id'] = $args['widget_id'];
-
-
-			//list global products
+			$instance['widget_id'] = isset( $args['widget_id'] ) ? $args['widget_id'] : '';
+		
+			// List global products
 			mp_global_list_products( $instance );
-			//mp_list_global_products( $instance );
-
+		
 			echo $after_widget;
 		}
 

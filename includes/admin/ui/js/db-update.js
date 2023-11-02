@@ -11,7 +11,7 @@
 		// reset page number (just in case)
 		$page.val('1');
 				
-		$form.submit(function(e){
+		$form.on('submit', function(e){
 			e.preventDefault();
 			
 			if ( $form.find('[type="submit"]').length > 0 ) {

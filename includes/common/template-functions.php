@@ -1739,7 +1739,7 @@ if ( ! function_exists( 'mp_tax_rate' ) ) :
 
 			case 'CA':
 				//Canada tax is for all orders in country, based on province shipped to. We're assuming the rate is a combination of GST/PST/etc.
-				if ( $country == 'CA' && array_key_exists( $state, mp()->CA_provinces ) ) {
+				if ( $country == 'CA' && array_key_exists( $state, mp()->provinces['CA'] ) ) {
 					if ( $_tax_rate = mp_get_setting( "tax->canada_rate->$state" ) ) {
 						$tax_rate = (float) $_tax_rate;
 					}
@@ -2519,7 +2519,9 @@ if ( ! function_exists( 'mp_product' ) ) {
 								$img_url        = mp_resize_image( $value, $original_image[0], $size );
 							}
 
-							$return .= '<li data-thumb="' . $img_url[0] . '" data-src ="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
+							if ( is_array($img_url) && !empty($img_url) ) {
+								$return .= '<li data-thumb="' . $img_url[0] . '" data-src="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
+							}
 						}
 					} else {
 						if ( ! empty( $values[0] ) ) {
@@ -2531,7 +2533,9 @@ if ( ! function_exists( 'mp_product' ) ) {
 								$img_url        = mp_resize_image( $values[0], $original_image[0], $size );
 							}
 
-							$return .= '<li data-thumb="' . $img_url[0] . '" data-src ="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
+							if ( is_array($img_url) && !empty($img_url) ) {
+								$return .= '<li data-thumb="' . $img_url[0] . '" data-src="' . $original_image[0] . '"><img src="' . $img_url[0] . '"></li>';
+							}
 						}
 					}
 

@@ -90,7 +90,7 @@ td.column-actions {
 </style>
 <script type="text/javascript">
 jQuery(document).ready(function($){
-	$('.mp-enable-disable-addon').click(function(e){
+	$('.mp-enable-disable-addon').on('click', function(e){
 		e.preventDefault();
 		var $this = $(this),
 				$row = $this.closest('tr'),

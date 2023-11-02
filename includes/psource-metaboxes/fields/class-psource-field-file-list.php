@@ -104,7 +104,7 @@ class PSOURCE_Field_File_List extends PSOURCE_Field {
             });
 
             //Add field button
-            $('.psource-fields .add-file').click(function(e) {
+            $('.psource-fields .add-file').on('click', function(e) {
                 e.preventDefault();
                 var newInput = $(".psource-fields .file-list .file:first").clone();
                 newInput.find("input").val('');

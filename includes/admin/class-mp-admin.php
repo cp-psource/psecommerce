@@ -107,7 +107,7 @@ class MP_Admin {
 		?>
 			<script type="text/javascript">
 				jQuery(function($){
-					$('.mp-dismissed-deprecated-notice').click(function(e){
+					$('.mp-dismissed-deprecated-notice').on('click', function(e){
 					e.preventDefault();
 					$.ajax({
 						type:'POST',

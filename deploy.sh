@@ -5,7 +5,7 @@
 # The difference is that this script lives in the plugin's git repo & doesn't require an existing SVN repo.
 
 # main config
-PLUGINSLUG="wordpress-ecommerce" # returns basename of current directory
+PLUGINSLUG="psecommerce" # returns basename of current directory
 CURRENTDIR=`pwd`
 MAINFILE="psecommerce.php" # this should be the name of your main php file in the wordpress plugin
 
@@ -21,7 +21,7 @@ SVNUSER="WPMUDEV" # your svn username
 # Let's begin...
 echo ".........................................."
 echo
-echo "Preparing to deploy WordPress plugin"
+echo "Preparing to deploy ClassicPress plugin"
 echo
 echo ".........................................."
 echo
@@ -63,7 +63,6 @@ README.md
 .gitmodules
 package.json
 Gruntfile.js
-includes/admin/dash-notice/wpmudev-dash-notification.php" "$SVNPATH/trunk/"
 
 echo "Changing directory to SVN and committing to trunk"
 cd $SVNPATH/trunk/

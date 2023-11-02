@@ -64,7 +64,7 @@ jQuery.validator.addMethod( 'lessthan', function( value, element, param ) {
     } );
 
     var initPostboxAccordions = function() {
-        $( '#mp-main-form' ).find( '.psource-postbox' ).find( '.hndle, .handlediv' ).click( function() {
+        $( '#mp-main-form' ).find( '.psource-postbox' ).find( '.hndle, .handlediv' ).on('click', function() {
             var $this = $( this ),
                 $postbox = $this.closest( '.psource-postbox' );
 
@@ -387,7 +387,7 @@ jQuery.validator.addMethod( 'lessthan', function( value, element, param ) {
             alert( msg );
         } );
 
-        $form.find( '#publish, #save-post,.save-bulk-form, [type="submit"]' ).click( function( e ) {
+        $form.find( '#publish, #save-post,.save-bulk-form, [type="submit"]' ).on('click', function( e ) {
             if ( !$form.valid() ) {
                 e.preventDefault();
             }

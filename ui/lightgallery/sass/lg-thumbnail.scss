@@ -59,7 +59,6 @@
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
         }
     }
 
@@ -85,7 +84,7 @@
         }
     }
 
-    .lg-toggle-thumb {
+    .lg-toogle-thumb {
         background-color: $lg-thumb-toggle-bg;
         border-radius: $lg-border-radius-base $lg-border-radius-base 0 0;
         color: $lg-thumb-toggle-color;
@@ -99,8 +98,6 @@
         text-align: center;
         top: -39px;
         width: 50px;
-        outline: medium none;
-        border: none;
 
         &:after {
             content: "\e1ff";

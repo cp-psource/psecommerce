@@ -93,7 +93,7 @@ jQuery(document).ready(function($) {
         });
     }
 
-    $(window).resize(function() {
+    $(window).on( 'resize', function() {
         mp_variation_message();
     });
 
@@ -403,7 +403,7 @@ jQuery(document).ready(function($) {
             return false;
         }
     });
-    $('#variant_bulk_doaction').click(function() {
+    $('#variant_bulk_doaction').on('click', function() {
         var selected_variant_bulk_action = $('.variant_bulk_selected').val();
         var checked_variants = $(".check-column-box:checked").length;
         if (selected_variant_bulk_action == 'variant_update_prices') {

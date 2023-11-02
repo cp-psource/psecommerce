@@ -1,81 +1,80 @@
-=== PSeCommerce - WordPress eCommerce  ===
-Contributors: WPMUDEV
+=== PSeCommerce - ClassicPress eCommerce  ===
+Contributors: WMS N@W
 Tags: E-commerce, ecommerce, storefront, sell, store, shopping, cart, payment gateways, digital downloads, online store
 Requires at least: 3.7
 Requires PHP: 5.2
 Tested up to: 4.9.6
 Stable tag: trunk
 
-Full-power ecommerce marketplace for WordPress and Multisite. 100% free and no extensions required.
+Leistungsstarker E-Commerce-Marktplatz für ClassicPress und Multisite. 100 % kostenlos und keine Erweiterungen erforderlich.
 
-== Description ==
+== Beschreibung ==
 
-PSeCommerce ecommerce is a completely free premium online storefront for WordPress and Multisite.
+PSeCommerce E-Commerce ist eine völlig kostenlose Premium-Online-Storefront für ClassicPress und Multisite.
 
-Sell everything from digital downloads to physical goods in all shapes and sizes, offer product variations and instant downloads from one easy-to-use online marketplace.
+Verkaufe alles von digitalen Downloads bis hin zu physischen Waren in allen Formen und Größen, biete Produktvarianten und Sofort-Downloads auf einem benutzerfreundlichen Online-Marktplatz an.
 
-= The Only Premium And Completely Free Ecommerce Plugin =
+= Das einzige Premium- und völlig kostenlose E-Commerce-Plugin =
 
-No need to spend hundreds of dollars purchasing add-ons or special licenses. PSeCommerce brings together the power of dozens of different plugins in one solid standalone ecommerce product.
-
-[youtube http://www.youtube.com/watch?v=4QX1P7e-9dw&hd=1]
-
-= Features = 
-
-Setting up your own online store couldn't be easier with PSeCommerce. Features include:
-
-* Setting up your own online store couldn't be easier with PSeCommerce. Features include:
-* Full suite of 15 payment gateways
-* Choose from 120 different currencies as your default currency
-* Fully internationalized by the WPML crew
-* Sell real objects or digital downloads
-* Simple one-page checkout
-* Easy setup with built-in Wizard
-* Choose how many times a customer can download a file they have purchased
-* Ready to go for tax and VAT
-* PDF Invoicing
-* Calculated shipping modules (UPS, USPS, Fedex, in-store pickup)
-* Pinterest, Facebook and Twitter shares buttons
-* Coupons, discounts and affiliate-ready
-* Fully integrated with Google Universal Analytics eCommerce tracking
-* Unlimited product variations
-* Coupons and sales pricing
-* Stock tracking and alerts per variation
-* Per order product limits
-* AJAX cart and cart widget
-* Powerful shortcodes you can use anywhere
-* Shortcode button in the post visual editor
-* Link any product to an external link
-* Stock tracking and order management and alerts
-* Automatically hide products when they are out of stock
-* Display related products
-* Checkout without having to be a site user
+Du musst nicht Hunderte von Dollar für den Kauf von Add-ons oder speziellen Lizenzen ausgeben. PSeCommerce vereint die Leistungsfähigkeit Dutzender verschiedener Plugins in einem soliden eigenständigen E-Commerce-Produkt.
 
 
-= Customize Without Code = 
+= Funktionen =
 
-PSeCommerce is built to work flawlessly with any well-coded WordPress theme.
+Mit PSeCommerce könnte die Einrichtung Deines eigenen Online-Shops nicht einfacher sein. Features sind:
 
-* Shortcodes and built-in widgets let you display elements anywhere on your site
-* Includes CSS style presets
-* Product thumbnails/images with lightbox zooming
+* Mit PSeCommerce könnte die Einrichtung Deines eigenen Online-Shops nicht einfacher sein. Features sind:
+* Vollständige Suite mit 15 Zahlungsgateways
+* Wähle aus 120 verschiedenen Währungen als Standardwährung
+* Vollständig internationalisiert durch die WPML-Crew
+* Verkaufe echte Objekte oder digitale Downloads
+* Einfache einseitige Kaufabwicklung
+* Einfache Einrichtung mit integriertem Assistenten
+* Wähle aus, wie oft ein Kunde eine gekaufte Datei herunterladen kann
+* Bereit für Steuern und Mehrwertsteuer
+* PDF-Rechnung
+* Berechnete Versandmodule (UPS, USPS, Fedex, Abholung im Geschäft)
+* Schaltflächen zum Teilen von Pinterest, Facebook und Twitter
+* Gutscheine, Rabatte und Affiliate-fähig
+* Vollständig integriert in das E-Commerce-Tracking von Google Universal Analytics
+* Unbegrenzte Produktvariationen
+* Gutscheine und Verkaufspreise
+* Bestandsverfolgung und Benachrichtigungen pro Variation
+* Produktlimits pro Bestellung
+* AJAX-Warenkorb und Warenkorb-Widget
+* Leistungsstarke Shortcodes, die überall verwenden werden können
+* Shortcode-Schaltfläche im visuellen Post-Editor
+* Verknüpfe jedes Produkt mit einem externen Link
+* Bestandsverfolgung und Auftragsverwaltung sowie Benachrichtigungen
+* Produkte automatisch ausblenden, wenn sie nicht vorrätig sind
+* Verwandte Produkte anzeigen
+* Zur Kasse gehen, ohne ein Webseiten-Benutzer sein zu müssen
 
-Or go download one of our Upfront themes with built-in PSeCommerce styles and a powerful drag-and-drop front end visual theme editor.
 
-= Multisite and BuddyPress Compatible = 
+= Ohne Code anpassen =
 
-Set up your own eBay or Etsy-style network of stores and take a percentage of each sale.
+PSeCommerce ist so konzipiert, dass es problemlos mit jedem gut codierten ClassicPress-Theme funktioniert.
 
-Whether you want to set up an individual storefront online or an entire ecommerce network for stores, PSeCommerce is the go-to solution.
+* Mithilfe von Shortcodes und integrierten Widgets kannst Du Elemente überall auf Deiner Webseite anzeigen
+* Enthält CSS-Stilvoreinstellungen
+* Miniaturansichten/Bilder des Produkts mit Lightbox-Zoom
 
-★★★★★
-“I love this plugin! Other ecommerce plugins were just complicated. I set up Marketpress yesterday and woke up this morning with sales that took place seamlessly!” – <a href="https://wordpress.org/support/users/roseee">roseee</a>
+Oder lade eines unserer Upfront-Themes mit integrierten PSeCommerce-Stilen und einem leistungsstarken visuellen Drag-and-Drop-Frontend-Theme-Editor herunter.
+
+= Multisite- und BuddyPress-kompatibel =
+
+Richte Dein eigenes Shop-Netzwerk im eBay- oder Etsy-Stil ein und erhalte einen Prozentsatz jedes Verkaufs.
+
+Ganz gleich, ob Du eine einzelne Storefront online oder ein ganzes E-Commerce-Netzwerk für Geschäfte einrichten möchtest, PSeCommerce ist die Lösung der Wahl.
 
 ★★★★★
-“I never dreamed it possible yet here I am doing it. I Launched an etsy-style network using PSeCommerce. Really nice work. Can’t do this with Woo!” – <a href="https://wordpress.org/support/users/leedman/">leedman</a>
+„Ich liebe dieses Plugin! Andere E-Commerce-Plugins waren einfach kompliziert. Ich habe PSeCommerce gestern eingerichtet und bin heute Morgen mit reibungslosen Verkäufen aufgewacht!“
 
-= Free Payment Gateways =
-Accept payments using any of the 15 built-in popular payment gateways, including Stripe, PayPal and Authorize.net.
+★★★★★
+„Ich hätte es nie für möglich gehalten, aber hier tue ich es. Ich habe mit PSeCommerce ein Netzwerk im Etsy-Stil gestartet. Wirklich schöne Arbeit. Mit Woo geht das nicht!“
+
+= Kostenlose Zahlungsgateways =
+Akzeptiere Zahlungen über eines der 15 integrierten beliebten Zahlungsgateways, darunter Stripe, PayPal und Authorize.net.
 
 * 2Checkout
 * Authorize.net AIM
@@ -93,61 +92,33 @@ Accept payments using any of the 15 built-in popular payment gateways, including
 * Stripe
 * WePay
 
-= Shipping Made Easy =
-Ship anywhere in the world with confidence. Use flat rate shipping or cater to specific distribution logistics using table or weight rates
+= Versand leicht gemacht =
+Versende mit Zuversicht überall auf der Welt. Nutze Flatrate-Versandkosten oder richte Dich mit Tabellen- oder Gewichtstarifen nach einer spezifischen Distributionslogistik
 
 = Google Analytics =
-PSeCommerce is both Google Universal Analytics and Google Analytics eCommerce compatible. Track sales and site activity and grow your business
+PSeCommerce ist sowohl mit Google Universal Analytics als auch mit Google Analytics eCommerce kompatibel. Verfolge Verkäufe und Webseiten-Aktivitäten und steigere Dein Geschäft
  
 = Social Sharing =
-Go viral with the included Pinterest, Facebook and Twitter share buttons. PSeCommerce makes it easy for your customers to share your products with their friends and family.
+Gehe viral mit den enthaltenen Share-Buttons für Pinterest, Facebook und Twitter. Mit PSeCommerce können Deine Kunden Deine Produkte ganz einfach mit ihren Freunden und ihrer Familie teilen.
 
-= Automated Inventory Manager =
-When youвЂ™re running out of any of your products, PSeCommerce will let you know when itвЂ™s time to restock вЂ“ or automatically hide products when they are no longer available.
-
-= Setup Wizard Included =
-ItвЂ™s big and powerful but donвЂ™t worry...the PSeCommerce setup wizard will walk you through setting up your store, step-by-step, so you donвЂ™t have to think about whatвЂ™s going on behind the scenes.
-
-If you run into any problems getting started, <a href="https://premium.wpmudev.org/project/e-commerce/#usage">PSeCommerce</a> is well documented and our support team is available around the clock to answer any questions you may have.
-
-So what are you waiting for? Get started with <a href="http://premium.wpmudev.org/project/e-commerce/">PSeCommerce ecommerce</a> today. Everything you need to start and grow your online store.
+= Automatisierter Inventarmanager =
+Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber, wann es Zeit ist, den Vorrat aufzufüllen – oder blendet Produkte automatisch aus, wenn sie nicht mehr verfügbar sind.
 
 
 == Installation ==
-= To Install: =
+= Zur Installation: =
 
-1.  Download the PSeCommerce plugin file
-2.  Unzip the file into a folder on your hard drive
-3.  Upload the `/wordpress-ecommerce/` folder to the `/wp-content/plugins/` folder on your site
-4.  Visit your Dashboard -> Plugins and Activate it there.
-
-= To Set Up And Configure PSeCommerce =
-* You can find <a href='http://premium.wpmudev.org/project/e-commerce/#usage'>in-depth setup and usage instructions with screenshots here &raquo;</a>
-
-= Importing products from the WP e-Commerce plugin =
-You can import products directly into PSeCommerce from WP e-Commerce
-
-1.  Activate WP e-Commerce and PSeCommerce plugins
-2.  Go to Site Admin>Products>Store Settings and click the tab for "WP e-Commerce Importer"
-3.  Select 'Import Now'.
-4.  You should see a success message letting you know the process has been completed.
-
-== Frequently Asked Questions ==
-
-= Do I need to be a paid WPMU DEV member? =
-Nope! This plugin is offered at no charge.
-
-= Is this BuddyPress compatible? =
-Absolutely.  PSeCommerce will work on individual sites in BuddyPress.
-
-= How do I get support? =
-We provide comprehensive and guaranteed support on the <a href='http://premium.wpmudev.org/forums/tags/psecommerce-ecommerce'>WPMU DEV forums</a>.
+1. Laden Sie die PSeCommerce-Plugin-Datei herunter
+2. Entpacken Sie die Datei in einen Ordner auf Ihrer Festplatte
+3. Laden Sie den Ordner „/wordpress-ecommerce/“ in den Ordner „/wp-content/plugins/“ auf Ihrer Website hoch
+4. Besuchen Sie Ihr Dashboard -> Plugins und aktivieren Sie es dort.
+5. Sie sollten eine Erfolgsmeldung sehen, die Sie darüber informiert, dass der Vorgang abgeschlossen ist.
 
 == Screenshots ==
 
-1. Beautiful grid product layouts.
-2. Clean and easy-to-read product pages.
-3. Descriptions and Reviews.
+1. Schöne Rasterproduktlayouts.
+2. Saubere und leicht lesbare Produktseiten.
+3. Beschreibungen und Rezensionen.
 
 == Changelog ==
 
@@ -458,7 +429,7 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 = 2.9.2.4 = 
 * Fixed: Coupon codes would not honor the "applies to" setting http://wp.mu/8z8
 * Fixed: Simplify gateway would display an "Simplify token not generated correctly" error when not activated with any other gateway plugins http://wp.mu/8yo
-* Fixed: Compatibility bug with WordPress HTTPS http://wp.mu/8y3
+* Fixed: Compatibility bug with ClassicPress HTTPS http://wp.mu/8y3
 * Fixed: Bug with low stock notifications
 
 = 2.9.2.3 = 
@@ -481,7 +452,7 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 * Fixed: Divide by zero warning in USPS gateway
 * Fixed: Mixed-content warnings in wp-admin
 * Fixed: Session handling code that caused issues with PayPal Express checkout 
-* Fixed: Conflict with WordPress Social Invitations plugin http://wp.mu/8ul
+* Fixed: Conflict with ClassicPress Social Invitations plugin http://wp.mu/8ul
 * Fixed: When using WPML and [mp_product] shortcode the non-translated version of the product would be returned
 * Fixed: GA E-Commerce bug http://wp.mu/8ve
 * Fixed mixed-content issues on checkout pages when using SSL
@@ -756,7 +727,7 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 * Add "Only show on store pages" option to all widgets
 * Add setting to disable excerpts in product lists
 * Add per product special tax rates
-* Add Pro Sites level recognition for multisite: http://premium.wpmudev.org/forums/topic/feature-request-advanced-integration-of-psecommerce-and-pro-sites
+* Add PS Bloghosting level recognition for multisite: http://premium.wpmudev.org/forums/topic/feature-request-advanced-integration-of-psecommerce-and-pro-sites
 * Add Stripe payment gateway! Accept credit cards directly on your site with full PCI compliance
 * Add custom API url support to Authorize.net gateway for compatibility with many 3rd party gateways
 * Add beta PayPal Payflow Pro gateway
@@ -975,7 +946,7 @@ We provide comprehensive and guaranteed support on the <a href='http://premium.w
 
 = 1.1.1 =
 * Fixed: post_thumbnails breaks themes
-* Fixed: Marketpress Product List widget displays all products
+* Fixed: PSeCommerce Product List widget displays all products
 
 = 1.1 =
 * 2Checkout and Authorize.net beta gateways added

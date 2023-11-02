@@ -60,7 +60,7 @@ class MP_Shop_Einstellungen_Shipping {
 					} );
 
 					// Update weight/dimension labels
-					$( 'input[name="shipping[system]"]' ).change( function() {
+					$( 'input[name="shipping[system]"]' ).on('change', function() {
 						switch ( $( this ).val() ) {
 							case 'english' :
 								$( '.mp-dimension-label' ).find( '.mp-units' ).html( 'in' );

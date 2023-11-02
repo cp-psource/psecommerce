@@ -459,7 +459,7 @@ jQuery(document).ready(function($){
 		}
 	});
 
-	$('.psource-repeater-field-add').click(function(){
+	$('.psource-repeater-field-add').on('click', function(){
 		/**
 		 * Triggered right before a row is added.
 		 *

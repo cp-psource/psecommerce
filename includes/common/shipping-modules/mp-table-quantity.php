@@ -42,7 +42,7 @@ class MP_Shipping_Table_Quantity extends MP_Shipping_API {
     ?>
     <script type="text/javascript">
 			jQuery(document).ready(function ($) {
-				$("#mp-table-quantity-rows").change(function() {
+				$("#mp-table-quantity-rows").on('change', function() {
 					$("#mp-shipping-form").submit();
 				});
 			});

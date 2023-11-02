@@ -2,7 +2,7 @@
 
 /*
 PSeCommerce USPS Calculated Shipping Plugin
-Author: Arnold Bailey (Incsub)
+Author: DerN3rd (WMS N@W)
 */
 
 class MP_Shipping_USPS extends MP_Shipping_API_Calculated {
@@ -885,19 +885,19 @@ endif;
 
 
 //register plugin as calculated. Only in US and US Possesions
-$settings = get_option( 'mp_settings' );
-if ( in_array( $settings['base_country'], array(
-	'US',
-	'UM',
-	'AS',
-	'FM',
-	'GU',
-	'MH',
-	'MP',
-	'PW',
-	'PR',
-	'PI',
-	'VI'
-) ) ) {
-	MP_Shipping_API::register_plugin( 'MP_Shipping_USPS', 'usps', __( 'USPS', 'mp' ), true );
+$settings = get_option('mp_settings');
+if (isset($settings['base_country']) && in_array($settings['base_country'], array(
+    'US',
+    'UM',
+    'AS',
+    'FM',
+    'GU',
+    'MH',
+    'MP',
+    'PW',
+    'PR',
+    'PI',
+    'VI'
+))) {
+    MP_Shipping_API::register_plugin('MP_Shipping_USPS', 'usps', __('USPS', 'mp'), true);
 }

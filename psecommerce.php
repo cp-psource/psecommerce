@@ -3,7 +3,7 @@
  * Plugin Name: PSeCommerce
  * Plugin URI:  https://n3rds.work/?piestingtal_source=psecommerce-shopsystem
  * Description: Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin
- * Version:     3.5.3
+ * Version:     3.5.5
  * Requires at least: 4.9
  * Author:      DerN3rd (WMS N3rds@Work)
  * Author URI:  https://n3rds.work
@@ -37,13 +37,22 @@ $MyUpdateChecker = PucFactory::buildUpdateChecker(
 	'psecommerce' 
 );
 
-define( 'MP_VERSION', '3.5.3' );
+define( 'MP_VERSION', '3.5.5' );
 
 
 /**
  * Main class PSeCommerce.
  */
 class PSeCommerce {
+
+	public $currencies;
+	public $eu_countries;
+	public $provinces;
+	public $countries_no_postcode;
+	public $countries;
+	public $popular_countries;
+	public $default_settings;
+	public $defaults;
 
 	/**
 	 * Refers to the post types that PSeCommerce uses
@@ -721,7 +730,7 @@ class PSeCommerce {
 		if ( class_exists( 'ProSites' ) ) {
 			mp_register_addon( array(
 				'label' => __( 'PS Bloghosting', 'mp' ),
-				'desc'  => __( 'Grant access to themes and gateways depending on the user\'s Pro Site level', 'mp' ),
+				'desc'  => __( 'Gewähre Zugriff auf Themen und Gateways, abhängig vom PS Bloghosting-Level des Benutzers', 'mp' ),
 				'class' => 'MP_Prosites_Addon',
 				'path'  => mp_plugin_dir( 'includes/addons/mp-prosites/class-mp-prosites-addon.php' ),
 			) );
