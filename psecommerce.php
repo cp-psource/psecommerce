@@ -27,7 +27,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA	02111-1307	USA
 
-Plugin Authors: DerN3rd (WMS N3rds@Work) Marko Miljus (Incsub), Aaron Edwards (Incsub), Hoang Ngo (Incsub), Jonathan Cowher (Incsub), Ricardo Freitas (Incsub), Cvetan Cvetanov (Incsub), Julien Zerbib (Incsub), Sabri Bouchaala (Incsub), Emmanuel Laborin (Incsub)
+Plugin Authors: DerN3rd (WMS N3rds@Work) Marko Miljus (Incsub), DerN3rd (WMS N@W), Hoang Ngo (Incsub), Jonathan Cowher (Incsub), Ricardo Freitas (Incsub), Cvetan Cvetanov (Incsub), Julien Zerbib (Incsub), Sabri Bouchaala (Incsub), Emmanuel Laborin (Incsub)
 */
 require 'psource/psource-plugin-update/psource-plugin-updater.php';
 use Psource\PluginUpdateChecker\v5\PucFactory;
