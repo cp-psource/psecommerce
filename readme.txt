@@ -53,6 +53,8 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 = 3.5.6 =
 
 * Fix: Undefined array key "widget_id"
+* Fix: Netzwerkproduktansicht
+* Texte angepasst
 
 = 3.5.5 =
 
