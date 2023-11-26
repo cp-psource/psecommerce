@@ -1,9 +1,14 @@
 <?php
 
-/**
- * @author: Hoang Ngo
- *12.3.20 alles fein DN
- */
+namespace MP_PDF_Invoice_Addon;
+
+use Dompdf\Dompdf;
+
+$dompdf = new Dompdf();
+$options = $dompdf->getOptions();
+$options->setDefaultFont('Courier');
+$dompdf->setOptions($options);
+
 class MP_PDF_Invoice {
 
 	const PDF_INVOICE = 'invoice', PDF_SLIP = 'slip';
@@ -16,7 +21,7 @@ class MP_PDF_Invoice {
 	 */
 	public function __construct() {
 		if ( ! class_exists( 'DOMPDF' ) ) {
-			require_once dirname( __FILE__ ) . '/vendors/dompdf/dompdf_config.inc.php';
+			require_once dirname( __FILE__ ) . '/vendors/dompdf/autoload.inc.php';
 		}
 		$this->settings = mp_get_setting( 'pdf_invoice' );
 	}

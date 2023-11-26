@@ -1,9 +1,8 @@
 <?php
 
-/**
- * @author: Hoang Ngo
- */
-require_once dirname( __FILE__ ) . '/class-mp-pdf-invoice.php';
+namespace MP_PDF_Invoice_Addon;
+
+use MP_PDF_Invoice_Addon\MP_PDF_Invoice;
 
 class MP_PDF_Invoice_Addon {
 

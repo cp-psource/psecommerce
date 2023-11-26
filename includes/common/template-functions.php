@@ -878,7 +878,7 @@ if ( ! function_exists( 'mp_create_store_page' ) ) :
 			case 'network_store_page' :
 				$args = array(
 					'post_title'     => __( 'Netzwerk Marktplatz', 'mp' ),
-					'post_content'   => __( "Welcome to our market place!\n\nCheck out our network of products:\n\n[mp_list_global_products]\n\nBrowse by category:\n\n[mp_global_categories_list]\n\nBrowse by tag:\n\n[mp_global_tag_cloud]", 'mp' ),
+					'post_content'   => __( "Willkommen auf unserem Marktplatz!\n\nSchaue Dir unser Produktnetzwerk an:\n\n[mp_list_global_products]\n\nNach Kategorie durchsuchen:\n\n[mp_global_categories_list]\n\nNach Tag durchsuchen:\n\n[mp_global_tag_cloud]", 'mp' ),
 					'comment_status' => 'closed'
 				);
 				break;
@@ -1009,9 +1009,9 @@ if ( ! function_exists( 'mp_format_currency' ) ) :
 			}
 		}
 
-// get the currency symbol
+		// get the currency symbol
 		if ( $symbol = mp_arr_get_value( "$currency->1", $currencies ) ) {
-// if many symbols are found, rebuild the full symbol
+			// if many symbols are found, rebuild the full symbol
 			$symbols = array_map( 'trim', explode( ', ', $symbol ) );
 			if ( is_array( $symbols ) ) {
 				$symbol = '';
@@ -1033,14 +1033,14 @@ if ( ! function_exists( 'mp_format_currency' ) ) :
 		 */
 		$symbol = apply_filters( 'mp_format_currency_symbol', $symbol, $currency );
 
-//check decimal option
+		//check decimal option
 		if ( (int) ( $amount ) == (float) $amount ) {
 			$decimal_place = 0;
 		} else {
 			$decimal_place = 2;
 		}
 
-//handle negative numbers
+		//handle negative numbers
 		$negative_symbol = '';
 
 		if ( $amount < 0 ) {
@@ -1049,10 +1049,10 @@ if ( ! function_exists( 'mp_format_currency' ) ) :
 		}
 
 		if ( $amount === false ) {
-// just return symbol
+			// just return symbol
 			$formatted = $symbol;
 		} else {
-// just in case so number_format_i18n doesn't throw an error if $amount is string instead of double
+			// just in case so number_format_i18n doesn't throw an error if $amount is string instead of double
 			$amount                        = (float) $amount;
 			$price_holder_arguments_string = '';
 
@@ -1155,12 +1155,12 @@ if ( ! function_exists( 'mp_get_current_user_zipcode' ) ) :
 		$zipcode = false;
 
 		if ( is_array( $address ) ) {
-// Try to get from usermeta
+			// Try to get from usermeta
 			$zipcode = mp_arr_get_value( 'zip', $address );
 		}
 
 		if ( false === $zipcode ) {
-// Try to get from cookie
+			// Try to get from cookie
 			$zipcode = mp_get_cookie_value( 'zip' );
 		}
 
@@ -1184,12 +1184,12 @@ if ( ! function_exists( 'mp_get_current_user_city' ) ) :
 		$city    = false;
 
 		if ( is_array( $address ) ) {
-// Try to get from usermeta
+			// Try to get from usermeta
 			$city = mp_arr_get_value( 'city', $address );
 		}
 
 		if ( false === $city ) {
-// Try to get from cookie
+			// Try to get from cookie
 			$city = mp_get_cookie_value( 'city' );
 		}
 
