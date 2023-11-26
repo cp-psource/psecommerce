@@ -263,9 +263,15 @@ if ( ! function_exists( 'mp_global_list_products' ) ) {
 			$order .= " " . mp_arr_get_value( 'order', $query );
 		}
 		$paging = "";
-		if ( mp_arr_get_value( 'posts_per_page', $query, 0 ) > 0 ) {
-			$limit  = mp_arr_get_value( 'posts_per_page', $query, 0 );
-			$offset = mp_arr_get_value( 'offset', $query );
+		if (mp_arr_get_value('posts_per_page', $query, 0) > 0) {
+			$limit  = mp_arr_get_value('posts_per_page', $query, 0);
+			$offset = mp_arr_get_value('offset', $query);
+
+			// Prüfe, ob $offset negativ ist und setze es auf 0, falls ja
+			if ($offset < 0) {
+				$offset = 0;
+			}
+
 			$paging = " LIMIT $offset,$limit";
 		}
 
@@ -327,18 +333,14 @@ if ( ! function_exists( 'mp_global_list_products' ) ) {
 }
 
 if ( ! function_exists( 'mp_global_products_nav' ) ) {
-	function mp_global_products_nav( $per_page, $count, $echo = true ) {
+	function mp_global_products_nav( $echo = true, $per_page, $count ) {
 		$html      = '';
 		$paged     = 1;
-		if ($per_page > 0) {
-			$max_pages = ceil($count / $per_page);
-		} else {
-			$max_pages = 0; // Oder einen anderen Wert, je nachdem, was in diesem Fall angemessen ist.
-		}
+		$max_pages = ceil( $count / $per_page );
 
 		if ( $max_pages > 1 ) {
 			$big = 999999999;
-
+			
 			if ( get_query_var( 'paged' ) != '' ) {
 				$paged  = intval( get_query_var( 'paged' ) );
 			} elseif ( get_query_var( 'page' ) != '' ) {
@@ -355,8 +357,8 @@ if ( ! function_exists( 'mp_global_products_nav' ) ) {
 				'current'      => max( 1, $paged ),
 				'show_all'     => false,
 				'prev_next'    => true,
-				'prev_text'    => __( 'Zurück', 'mp' ),
-				'next_text'    => __( 'Weiter', 'mp' ),
+				'prev_text'    => __( 'Prev', 'mp' ),
+				'next_text'    => __( 'Next', 'mp' ),
 				'add_args'     => true,
 				'add_fragment' => '',
 			) );
