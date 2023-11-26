@@ -4,7 +4,7 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: ecommerce, onlineshop, multisite, marketpress
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 3.5.5
+Stable tag: 3.5.6
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
