@@ -338,7 +338,7 @@ var mp_cart = { };
                     "dropdownAutoWidth": 1
                 } );
 
-                $.colorbox.resize();
+                $.colorbox.trigger("resize");
             }
         } );
     };
@@ -680,7 +680,7 @@ jQuery( document ).on( 'cbox_cleanup', function() {
 } );
 
 jQuery( document ).on( 'cbox_complete', function() {
-    jQuery.colorbox.resize();
+    jQuery.colorbox.trigger("resize");
     mp_cart.initCboxListeners();
 } );
 

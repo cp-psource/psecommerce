@@ -97,7 +97,7 @@ jQuery(document).ready(function($) {
         mp_variation_message();
     });
 
-    $(window).resize();
+    $(window).trigger("resize");
     /* Variations product name set */
     $('.mp_variations_product_name').html($('#title').val());
     $('#title').keyup(function() {
