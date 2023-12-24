@@ -756,8 +756,7 @@
 	 * @date 2011/08/17
 	 * @id TextExtAutocomplete.onShowDropdown
 	 */
-	p.onShowDropdown = function(e, renderCallback)
-	{
+	p.onShowDropdown = function(e, renderCallback){
 		var self        = this,
 			current     = self.selectedSuggestionElement().data(CSS_SUGGESTION),
 			suggestions = self._suggestions
@@ -766,12 +765,10 @@
 		if(!suggestions)
 			return self.trigger(EVENT_GET_SUGGESTIONS);
 
-		if($.isFunction(renderCallback))
-		{
+			if (typeof renderCallback === "function") {
 			renderCallback(self);
 		}
-		else
-		{
+		else{
 			self.renderSuggestions(self._suggestions);
 			self.toggleNextSuggestion();
 		}

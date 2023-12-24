@@ -189,7 +189,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 	}
 
 	// Handle case when target is a string or something (possible in deep copy)
-	if ( typeof target !== "object" && !jQuery.isFunction( target ) ) {
+	if (typeof target !== "object" && typeof target !== "function") {
 		target = {};
 	}
 
@@ -519,7 +519,7 @@ jQuery.extend( {
 
 		// Quick check to determine if target is callable, in the spec
 		// this throws a TypeError, but we will just return undefined.
-		if ( !jQuery.isFunction( fn ) ) {
+		if (typeof fn !== "function") {
 			return undefined;
 		}
 
@@ -2763,12 +2763,11 @@ var risSimple = /^.[^:#\[\.,]*$/;
 
 // Implement the identical functionality for filter and not
 function winnow( elements, qualifier, not ) {
-	if ( jQuery.isFunction( qualifier ) ) {
-		return jQuery.grep( elements, function( elem, i ) {
+	if (typeof qualifier === "function") {
+		return jQuery.grep(elements, function(elem, i) {
 			/* jshint -W018 */
-			return !!qualifier.call( elem, i, elem ) !== not;
-		} );
-
+			return !!qualifier.call(elem, i, elem) !== not;
+		});
 	}
 
 	if ( qualifier.nodeType ) {
@@ -2905,15 +2904,14 @@ var rootjQuery,
 
 					// HANDLE: $(html, props)
 					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObject( context ) ) {
-						for ( match in context ) {
-
+						for (let match in context) {
 							// Properties of context are called as methods if possible
-							if ( jQuery.isFunction( this[ match ] ) ) {
-								this[ match ]( context[ match ] );
-
+							if (typeof this[match] === "function") {
+								this[match](context[match]);
+						
 							// ...and otherwise set as attributes
 							} else {
-								this.attr( match, context[ match ] );
+								this.attr(match, context[match]);
 							}
 						}
 					}
@@ -2962,12 +2960,12 @@ var rootjQuery,
 
 		// HANDLE: $(function)
 		// Shortcut for document ready
-		} else if ( jQuery.isFunction( selector ) ) {
+		} else if (typeof selector === "function") {
 			return typeof root.ready !== "undefined" ?
-				root.ready( selector ) :
+				root.ready(selector) :
 
 				// Execute immediately if ready is not present
-				selector( jQuery );
+				selector(jQuery);
 		}
 
 		if ( selector.selector !== undefined ) {
@@ -3274,17 +3272,18 @@ jQuery.Callbacks = function( options ) {
 					}
 
 					( function add( args ) {
-						jQuery.each( args, function( _, arg ) {
-							if ( jQuery.isFunction( arg ) ) {
-								if ( !options.unique || !self.has( arg ) ) {
-									list.push( arg );
+						jQuery.each(args, function(_, arg) {
+							if (typeof arg === "function") {
+								if (!options.unique || !self.has(arg)) {
+									list.push(arg);
 								}
-							} else if ( arg && arg.length && jQuery.type( arg ) !== "string" ) {
-
+							} else if (arg && arg.length && jQuery.type(arg) !== "string") {
+						
 								// Inspect recursively
-								add( arg );
+								add(arg);
 							}
-						} );
+						});
+						
 					} )( arguments );
 
 					if ( memory && !firing ) {
@@ -3404,22 +3403,23 @@ jQuery.extend( {
 					var fns = arguments;
 					return jQuery.Deferred( function( newDefer ) {
 						jQuery.each( tuples, function( i, tuple ) {
-							var fn = jQuery.isFunction( fns[ i ] ) && fns[ i ];
+							var fn = typeof fns[i] === "function" && fns[i];
 
 							// deferred[ done | fail | progress ] for forwarding actions to newDefer
 							deferred[ tuple[ 1 ] ]( function() {
 								var returned = fn && fn.apply( this, arguments );
-								if ( returned && jQuery.isFunction( returned.promise ) ) {
+								if (returned && typeof returned.promise === "function") {
 									returned.promise()
-										.progress( newDefer.notify )
-										.done( newDefer.resolve )
-										.fail( newDefer.reject );
+										.progress(newDefer.notify)
+										.done(newDefer.resolve)
+										.fail(newDefer.reject);
 								} else {
-									newDefer[ tuple[ 0 ] + "With" ](
+									newDefer[tuple[0] + "With"](
 										this === promise ? newDefer.promise() : this,
-										fn ? [ returned ] : arguments
+										fn ? [returned] : arguments
 									);
 								}
+								
 							} );
 						} );
 						fns = null;
@@ -3483,8 +3483,7 @@ jQuery.extend( {
 			length = resolveValues.length,
 
 			// the count of uncompleted subordinates
-			remaining = length !== 1 ||
-				( subordinate && jQuery.isFunction( subordinate.promise ) ) ? length : 0,
+			remaining = length !== 1 || (subordinate && typeof subordinate.promise === "function") ? length : 0,
 
 			// the master Deferred.
 			// If resolveValues consist of only a single Deferred, just use that.
@@ -3512,7 +3511,7 @@ jQuery.extend( {
 			progressContexts = new Array( length );
 			resolveContexts = new Array( length );
 			for ( ; i < length; i++ ) {
-				if ( resolveValues[ i ] && jQuery.isFunction( resolveValues[ i ].promise ) ) {
+				if (resolveValues[i] && typeof resolveValues[i].promise === "function") {
 					resolveValues[ i ].promise()
 						.progress( updateFunc( i, progressContexts, progressValues ) )
 						.done( updateFunc( i, resolveContexts, resolveValues ) )
@@ -4388,7 +4387,7 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 	} else if ( value !== undefined ) {
 		chainable = true;
 
-		if ( !jQuery.isFunction( value ) ) {
+		if (!typeof value === "function") {
 			raw = true;
 		}
 
@@ -6017,7 +6016,7 @@ function domManip( collection, args, callback, ignored ) {
 		l = collection.length,
 		iNoClone = l - 1,
 		value = args[ 0 ],
-		isFunction = jQuery.isFunction( value );
+		isFunction = typeof value === 'function';
 
 	// We can't cloneNode fragments that contain checked, in WebKit
 	if ( isFunction ||
@@ -7806,7 +7805,7 @@ function Animation( elem, properties, options ) {
 	for ( ; index < length ; index++ ) {
 		result = Animation.prefilters[ index ].call( animation, elem, props, animation.opts );
 		if ( result ) {
-			if ( jQuery.isFunction( result.stop ) ) {
+			if ( typeof result.stop === "function" ) {
 				jQuery._queueHooks( animation.elem, animation.opts.queue ).stop =
 					jQuery.proxy( result.stop, result );
 			}
@@ -7816,7 +7815,7 @@ function Animation( elem, properties, options ) {
 
 	jQuery.map( props, createTween, animation );
 
-	if ( jQuery.isFunction( animation.opts.start ) ) {
+	if ( typeof animation.opts.start === "function" ) {
 		animation.opts.start.call( elem, animation );
 	}
 
@@ -7846,7 +7845,7 @@ jQuery.Animation = jQuery.extend( Animation, {
 	},
 
 	tweener: function( props, callback ) {
-		if ( jQuery.isFunction( props ) ) {
+		if ( typeof props === "function" ) {
 			callback = props;
 			props = [ "*" ];
 		} else {
@@ -7878,9 +7877,9 @@ jQuery.Animation = jQuery.extend( Animation, {
 jQuery.speed = function( speed, easing, fn ) {
 	var opt = speed && typeof speed === "object" ? jQuery.extend( {}, speed ) : {
 		complete: fn || !fn && easing ||
-			jQuery.isFunction( speed ) && speed,
+			typeof speed === "function" && speed,
 		duration: speed,
-		easing: fn && easing || easing && !jQuery.isFunction( easing ) && easing
+		easing: fn && easing || easing && !typeof easing === "function" && easing
 	};
 
 	opt.duration = jQuery.fx.off ? 0 : typeof opt.duration === "number" ? opt.duration :
@@ -7896,7 +7895,7 @@ jQuery.speed = function( speed, easing, fn ) {
 	opt.old = opt.complete;
 
 	opt.complete = function() {
-		if ( jQuery.isFunction( opt.old ) ) {
+		if ( typeof opt.old === "function" ) {
 			opt.old.call( this );
 		}
 
@@ -8221,7 +8220,7 @@ jQuery.fn.extend( {
 			return;
 		}
 
-		isFunction = jQuery.isFunction( value );
+		isFunction = typeof value === "function";
 
 		return this.each( function( i ) {
 			var val;
@@ -8809,7 +8808,7 @@ jQuery.fn.extend( {
 		var classes, elem, cur, curValue, clazz, j, finalValue,
 			i = 0;
 
-		if ( jQuery.isFunction( value ) ) {
+		if ( typeof value === "function" ) {
 			return this.each( function( j ) {
 				jQuery( this ).addClass( value.call( this, j, getClass( this ) ) );
 			} );
@@ -8847,7 +8846,7 @@ jQuery.fn.extend( {
 		var classes, elem, cur, curValue, clazz, j, finalValue,
 			i = 0;
 
-		if ( jQuery.isFunction( value ) ) {
+		if ( typeof value === "function" ) {
 			return this.each( function( j ) {
 				jQuery( this ).removeClass( value.call( this, j, getClass( this ) ) );
 			} );
@@ -8896,7 +8895,7 @@ jQuery.fn.extend( {
 			return stateVal ? this.addClass( value ) : this.removeClass( value );
 		}
 
-		if ( jQuery.isFunction( value ) ) {
+		if ( typeof value === "function" ) {
 			return this.each( function( i ) {
 				jQuery( this ).toggleClass(
 					value.call( this, i, getClass( this ), stateVal ),
@@ -9126,7 +9125,7 @@ function addToPrefiltersOrTransports( structure ) {
 			i = 0,
 			dataTypes = dataTypeExpression.toLowerCase().match( rnotwhite ) || [];
 
-		if ( jQuery.isFunction( func ) ) {
+		if ( typeof func === "function" ) {
 
 			// For each dataType in the dataTypeExpression
 			while ( ( dataType = dataTypes[ i++ ] ) ) {
@@ -9880,7 +9879,7 @@ jQuery.each( [ "get", "post" ], function( i, method ) {
 	jQuery[ method ] = function( url, data, callback, type ) {
 
 		// shift arguments if data argument was omitted
-		if ( jQuery.isFunction( data ) ) {
+		if ( typeof data === "function" ) {
 			type = type || callback;
 			callback = data;
 			data = undefined;
@@ -9915,7 +9914,7 @@ jQuery._evalUrl = function( url ) {
 
 jQuery.fn.extend( {
 	wrapAll: function( html ) {
-		if ( jQuery.isFunction( html ) ) {
+		if ( typeof html === "function" ) {
 			return this.each( function( i ) {
 				jQuery( this ).wrapAll( html.call( this, i ) );
 			} );
@@ -9945,7 +9944,7 @@ jQuery.fn.extend( {
 	},
 
 	wrapInner: function( html ) {
-		if ( jQuery.isFunction( html ) ) {
+		if ( typeof html === "function" ) {
 			return this.each( function( i ) {
 				jQuery( this ).wrapInner( html.call( this, i ) );
 			} );
@@ -9965,7 +9964,7 @@ jQuery.fn.extend( {
 	},
 
 	wrap: function( html ) {
-		var isFunction = jQuery.isFunction( html );
+		var isFunction = typeof html === "function";
 
 		return this.each( function( i ) {
 			jQuery( this ).wrapAll( isFunction ? html.call( this, i ) : html );
@@ -10070,7 +10069,7 @@ jQuery.param = function( a, traditional ) {
 		add = function( key, value ) {
 
 			// If value is a function, invoke it and return its value
-			value = jQuery.isFunction( value ) ? value() : ( value == null ? "" : value );
+			const value = typeof value === 'function' ? value() : (value == null ? '' : value);
 			s[ s.length ] = encodeURIComponent( key ) + "=" + encodeURIComponent( value );
 		};
 
@@ -10478,7 +10477,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 	if ( jsonProp || s.dataTypes[ 0 ] === "jsonp" ) {
 
 		// Get callback name, remembering preexisting value associated with it
-		callbackName = s.jsonpCallback = jQuery.isFunction( s.jsonpCallback ) ?
+		const callbackName = s.jsonpCallback = typeof s.jsonpCallback === 'function' ?
 			s.jsonpCallback() :
 			s.jsonpCallback;
 
@@ -10529,7 +10528,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 			}
 
 			// Call if it was a function and we have a response
-			if ( responseContainer && jQuery.isFunction( overwritten ) ) {
+			if ( responseContainer && typeof overwritten === "function" ) {
 				overwritten( responseContainer[ 0 ] );
 			}
 
@@ -10597,7 +10596,7 @@ jQuery.fn.load = function( url, params, callback ) {
 	}
 
 	// If it's a function
-	if ( jQuery.isFunction( params ) ) {
+	if ( typeof params === "function" ) {
 
 		// We assume that it's the callback
 		callback = params;
@@ -10716,7 +10715,7 @@ jQuery.offset = {
 			curLeft = parseFloat( curCSSLeft ) || 0;
 		}
 
-		if ( jQuery.isFunction( options ) ) {
+		if ( typeof options === "function" ) {
 
 			// Use jQuery.extend here to allow modification of coordinates argument (gh-1848)
 			options = options.call( elem, i, jQuery.extend( {}, curOffset ) );

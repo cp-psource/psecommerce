@@ -63,6 +63,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Fix: Deprecated .change()
 * Fix: Deprecated .blur()
 * Fix: Deprecated .bind()
+* Fix: Deprecated jQuery.isFunction()
 
 = 3.5.6 =
 
