@@ -51,7 +51,7 @@ jQuery( document ).ready( function( $ ) {
             replaceWith.blur( function( ) {
 
                 if ( $( this ).val( ) != "" ) {
-                    connectWith.val( $( this ).val() ).change( );
+                    connectWith.val( $( this ).val() ).trigger("change");
                     if ( data_type == 'number' ) {
                         var numeric_value = $( this ).val();
                         numeric_value = numeric_value.replace( ",", "" );

@@ -49,7 +49,7 @@ jQuery.validator.addMethod( 'lessthan', function( value, element, param ) {
         /* initializing conditional logic here instead of document.ready() to prevent
          issues with wysiwyg editor not getting proper height */
         initConditionals();
-        $( '.psource-postbox' ).find( ':checkbox, :radio, select' ).change( initConditionals );
+        $( '.psource-postbox' ).find( ':checkbox, :radio, select' ).on("change",  initConditionals );
     }
 
     $( document ).on( 'psource_repeater_field/after_add_field_group', function( e ) {

@@ -307,7 +307,7 @@ jQuery(document).ready(function($) {
 
                     $(this).parent().find('.currency').removeClass('.no_currency');
                     $(this).parent().find('.currency').show();
-                    connectWith.val($(this).val()).change();
+                    connectWith.val($(this).val()).trigger("change");
                     if (data_type == 'number') {
                         var numeric_value = $(this).val().trim();
                         numeric_value = numeric_value.replace(",", "."); //convert comma to dot

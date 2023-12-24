@@ -524,7 +524,7 @@ var mp_checkout;
             var $enableRegistration = $( 'input[name="enable_registration_form"]' );
 
             // Enable account registration fields
-            $enableRegistration.change( mp_checkout.toggleRegistrationFields );
+            $enableRegistration.on("change",  mp_checkout.toggleRegistrationFields );
         },
         /**
          * Initialize events related to shipping address fields
@@ -535,7 +535,7 @@ var mp_checkout;
             var $enableShippingAddress = $( 'input[name="enable_shipping_address"]' );
 
             // Enable billing address fields
-            $enableShippingAddress.change( mp_checkout.toggleShippingAddressFields );
+            $enableShippingAddress.on("change",  mp_checkout.toggleShippingAddressFields );
 
             // Copy billing field to shipping field (if shipping address isn't enabled)
             $( '[name^="billing["]' ).on( 'change keyup', function() {
