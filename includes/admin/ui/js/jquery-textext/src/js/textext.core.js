@@ -509,7 +509,7 @@
 
         function bind( event, handler )
         {
-            target.bind( event, function()
+            target.on( event, function()
             {
                 // apply handler to our PLUGIN object, not the target
                 return handler.apply( self, arguments );
@@ -861,7 +861,7 @@
     /**
      * Binds an event handler to the input box that user interacts with.
      *
-     * @signature TextExt.bind(event, handler)
+     * @signature TextExt.on(event, handler)
      *
      * @param event {String} Event name.
      * @param handler {Function} Event handler.
@@ -872,7 +872,7 @@
      */
     p.bind = function( event, handler )
     {
-        this.input().bind( event, handler );
+        this.input().on( event, handler );
     };
 
     /**
@@ -1452,7 +1452,7 @@
     /**
      * Shortcut to the core's `bind()` method. Binds specified handler to the event.
      *
-     * @signature TextExtPlugin.bind(event, handler)
+     * @signature TextExtPlugin.on(event, handler)
      *
      * @param event {String} Event name.
      * @param handler {Function} Event handler.
@@ -1463,7 +1463,7 @@
      */
     p.bind = function( event, handler )
     {
-        this.core().bind( event, handler );
+        this.core().on( event, handler );
     };
 
     /**

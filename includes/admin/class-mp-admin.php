@@ -388,7 +388,7 @@ class MP_Admin {
 						},
 						show: function (event, pointer_target) {
 							pointer_target.pointer.css({'position': 'fixed'});
-							pointer_target.pointer.find('.close').bind('click.pointer', function (e) {
+							pointer_target.pointer.find('.close').on('click.pointer', function (e) {
 								e.preventDefault();
 								pointer_target.element.pointer('close');
 							});

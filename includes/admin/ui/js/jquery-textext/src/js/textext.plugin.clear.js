@@ -75,7 +75,7 @@
 
 		self._clear = clear = $(self.opts(OPT_HTML_CLEAR));
 		self.core().wrapElement().append(clear);
-		clear.bind('click', function(e) { self.onClearClick(e); });
+		clear.on('click', function(e) { self.onClearClick(e); });
 	};
 
 	//--------------------------------------------------------------------------------

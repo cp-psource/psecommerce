@@ -133,7 +133,7 @@ jQuery(document).ready(function($) {
             if (variation_tags !== "") {
                 $(this).parent().find('.mp-variation-add-all').show();
                 var variation_tags_array = variation_tags.split(',');
-                $variation_tags_textarea.textext()[0].input().bind('getSuggestions', function(e, data) {
+                $variation_tags_textarea.textext()[0].input().on('getSuggestions', function(e, data) {
                     var textext = $(e.target).textext()[0],
                         query = (data ? data.query : '') || '',
                         existing_tags = textext.tags()._formData,

@@ -743,17 +743,17 @@ the specific language governing permissions and limitations under the Apache Lic
 
             installFilteredMouseMove(this.results);
 
-            this.dropdown.on("mousemove-filtered", resultsSelector, this.bind(this.highlightUnderEvent));
-            this.dropdown.on("touchstart touchmove touchend", resultsSelector, this.bind(function (event) {
+            this.dropdown.on("mousemove-filtered", resultsSelector, this.on(this.highlightUnderEvent));
+            this.dropdown.on("touchstart touchmove touchend", resultsSelector, this.on(function (event) {
                 this._touchEvent = true;
                 this.highlightUnderEvent(event);
             }));
-            this.dropdown.on("touchmove", resultsSelector, this.bind(this.touchMoved));
-            this.dropdown.on("touchstart touchend", resultsSelector, this.bind(this.clearTouchMoved));
+            this.dropdown.on("touchmove", resultsSelector, this.on(this.touchMoved));
+            this.dropdown.on("touchstart touchend", resultsSelector, this.on(this.clearTouchMoved));
 
             // Waiting for a click event on touch devices to select option and hide dropdown
             // otherwise click will be triggered on an underlying element
-            this.dropdown.on('click', this.bind(function (event) {
+            this.dropdown.on('click', this.on(function (event) {
                 if (this._touchEvent) {
                     this._touchEvent = false;
                     this.selectHighlighted();
@@ -761,7 +761,7 @@ the specific language governing permissions and limitations under the Apache Lic
             }));
 
             installDebouncedScroll(80, this.results);
-            this.dropdown.on("scroll-debounced", resultsSelector, this.bind(this.loadMoreIfNeeded));
+            this.dropdown.on("scroll-debounced", resultsSelector, this.on(this.loadMoreIfNeeded));
 
             // do not propagate change event from the search field out of the component
             $(this.container).on("change", ".select2-input", function(e) {e.stopPropagation();});
@@ -782,11 +782,11 @@ the specific language governing permissions and limitations under the Apache Lic
             }
 
             installKeyUpChangeEvent(search);
-            search.on("keyup-change input paste", this.bind(this.updateResults));
+            search.on("keyup-change input paste", this.on(this.updateResults));
             search.on("focus", function () { search.addClass("select2-focused"); });
             search.on("blur", function () { search.removeClass("select2-focused");});
 
-            this.dropdown.on("mouseup", resultsSelector, this.bind(function (e) {
+            this.dropdown.on("mouseup", resultsSelector, this.on(function (e) {
                 if ($(e.target).closest(".select2-result-selectable").length > 0) {
                     this.highlightUnderEvent(e);
                     this.selectHighlighted(e);
@@ -991,7 +991,7 @@ the specific language governing permissions and limitations under the Apache Lic
             }
 
             if (select) {
-                opts.query = this.bind(function (query) {
+                opts.query = this.on(function (query) {
                     var data = { results: [], more: false },
                         term = query.term,
                         children, placeholderOption, process;
@@ -1084,13 +1084,13 @@ the specific language governing permissions and limitations under the Apache Lic
         monitorSource: function () {
             var el = this.opts.element, observer, self = this;
 
-            el.on("change.select2", this.bind(function (e) {
+            el.on("change.select2", this.on(function (e) {
                 if (this.opts.element.data("select2-change-triggered") !== true) {
                     this.initSelection();
                 }
             }));
 
-            this._sync = this.bind(function () {
+            this._sync = this.on(function () {
 
                 // sync enabled state
                 var disabled = el.prop("disabled");
@@ -1626,7 +1626,7 @@ the specific language governing permissions and limitations under the Apache Lic
                         page: page,
                         context: context,
                         matcher: this.opts.matcher,
-                        callback: this.bind(function (data) {
+                        callback: this.on(function (data) {
 
                     // ignore a response if the select2 has been closed before it was received
                     if (!self.opened()) return;
@@ -1750,7 +1750,7 @@ the specific language governing permissions and limitations under the Apache Lic
                     page: this.resultsPage,
                     context: null,
                     matcher: opts.matcher,
-                    callback: this.bind(function (data) {
+                    callback: this.on(function (data) {
                 var def; // default choice
 
                 // ignore old responses
@@ -2096,7 +2096,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 .text($("label[for='" + this.focusser.attr('id') + "']").text())
                 .attr('for', this.search.attr('id'));
 
-            this.search.on("keydown", this.bind(function (e) {
+            this.search.on("keydown", this.on(function (e) {
                 if (!this.isInterfaceEnabled()) return;
 
                 if (e.which === KEY.PAGE_UP || e.which === KEY.PAGE_DOWN) {
@@ -2125,11 +2125,11 @@ the specific language governing permissions and limitations under the Apache Lic
                 }
             }));
 
-            this.search.on("blur", this.bind(function(e) {
+            this.search.on("blur", this.on(function(e) {
                 // a workaround for chrome to keep the search field focussed when the scroll bar is used to scroll the dropdown.
                 // without this the search field loses focus which is annoying
                 if (document.activeElement === this.body.get(0)) {
-                    window.setTimeout(this.bind(function() {
+                    window.setTimeout(this.on(function() {
                         if (this.opened()) {
                             this.search.focus();
                         }
@@ -2137,7 +2137,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 }
             }));
 
-            this.focusser.on("keydown", this.bind(function (e) {
+            this.focusser.on("keydown", this.on(function (e) {
                 if (!this.isInterfaceEnabled()) return;
 
                 if (e.which === KEY.TAB || KEY.isControl(e) || KEY.isFunctionKey(e) || e.which === KEY.ESC) {
@@ -2170,7 +2170,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
 
             installKeyUpChangeEvent(this.focusser);
-            this.focusser.on("keyup-change input", this.bind(function(e) {
+            this.focusser.on("keyup-change input", this.on(function(e) {
                 if (this.opts.minimumResultsForSearch >= 0) {
                     e.stopPropagation();
                     if (this.opened()) return;
@@ -2178,7 +2178,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 }
             }));
 
-            selection.on("mousedown touchstart", "abbr", this.bind(function (e) {
+            selection.on("mousedown touchstart", "abbr", this.on(function (e) {
                 if (!this.isInterfaceEnabled()) return;
                 this.clear();
                 killEventImmediately(e);
@@ -2186,7 +2186,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 this.selection.focus();
             }));
 
-            selection.on("mousedown touchstart", this.bind(function (e) {
+            selection.on("mousedown touchstart", this.on(function (e) {
                 // Prevent IE from generating a click event on the body
                 reinsertElement(selection);
 
@@ -2203,28 +2203,28 @@ the specific language governing permissions and limitations under the Apache Lic
                 killEvent(e);
             }));
 
-            dropdown.on("mousedown touchstart", this.bind(function() {
+            dropdown.on("mousedown touchstart", this.on(function() {
                 if (this.opts.shouldFocusInput(this)) {
                     this.search.focus();
                 }
             }));
 
-            selection.on("focus", this.bind(function(e) {
+            selection.on("focus", this.on(function(e) {
                 killEvent(e);
             }));
 
-            this.focusser.on("focus", this.bind(function(){
+            this.focusser.on("focus", this.on(function(){
                 if (!this.container.hasClass("select2-container-active")) {
                     this.opts.element.trigger($.Event("select2-focus"));
                 }
                 this.container.addClass("select2-container-active");
-            })).on("blur", this.bind(function() {
+            })).on("blur", this.on(function() {
                 if (!this.opened()) {
                     this.container.removeClass("select2-container-active");
                     this.opts.element.trigger($.Event("select2-blur"));
                 }
             }));
-            this.search.on("focus", this.bind(function(){
+            this.search.on("focus", this.on(function(){
                 if (!this.container.hasClass("select2-container-active")) {
                     this.opts.element.trigger($.Event("select2-focus"));
                 }
@@ -2666,7 +2666,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 .text($("label[for='" + this.opts.element.attr("id") + "']").text())
                 .attr('for', this.search.attr('id'));
 
-            this.search.on("input paste", this.bind(function() {
+            this.search.on("input paste", this.on(function() {
                 if (this.search.attr('placeholder') && this.search.val().length == 0) return;
                 if (!this.isInterfaceEnabled()) return;
                 if (!this.opened()) {
@@ -2677,7 +2677,7 @@ the specific language governing permissions and limitations under the Apache Lic
             this.search.attr("tabindex", this.elementTabIndex);
 
             this.keydowns = 0;
-            this.search.on("keydown", this.bind(function (e) {
+            this.search.on("keydown", this.on(function (e) {
                 if (!this.isInterfaceEnabled()) return;
 
                 ++this.keydowns;
@@ -2774,13 +2774,13 @@ the specific language governing permissions and limitations under the Apache Lic
 
             }));
 
-            this.search.on("keyup", this.bind(function (e) {
+            this.search.on("keyup", this.on(function (e) {
                 this.keydowns = 0;
                 this.resizeSearch();
             })
             );
 
-            this.search.on("blur", this.bind(function(e) {
+            this.search.on("blur", this.on(function(e) {
                 this.container.removeClass("select2-container-active");
                 this.search.removeClass("select2-focused");
                 this.selectChoice(null);
@@ -2789,7 +2789,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 this.opts.element.trigger($.Event("select2-blur"));
             }));
 
-            this.container.on("click", selector, this.bind(function (e) {
+            this.container.on("click", selector, this.on(function (e) {
                 if (!this.isInterfaceEnabled()) return;
                 if ($(e.target).closest(".select2-search-choice").length > 0) {
                     // clicked inside a select2 search choice, do not open
@@ -2805,7 +2805,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 e.preventDefault();
             }));
 
-            this.container.on("focus", selector, this.bind(function () {
+            this.container.on("focus", selector, this.on(function () {
                 if (!this.isInterfaceEnabled()) return;
                 if (!this.container.hasClass("select2-container-active")) {
                     this.opts.element.trigger($.Event("select2-focus"));
@@ -2938,7 +2938,7 @@ the specific language governing permissions and limitations under the Apache Lic
         // multi
         tokenize: function() {
             var input = this.search.val();
-            input = this.opts.tokenizer.call(this, input, this.data(), this.bind(this.onSelect), this.opts);
+            input = this.opts.tokenizer.call(this, input, this.data(), this.on(this.onSelect), this.opts);
             if (input != null && input != undefined) {
                 this.search.val(input);
                 if (input.length > 0) {
@@ -3035,7 +3035,7 @@ the specific language governing permissions and limitations under the Apache Lic
             if(enableChoice){
               choice.find(".select2-search-choice-close")
                   .on("mousedown", killEvent)
-                  .on("click dblclick", this.bind(function (e) {
+                  .on("click dblclick", this.on(function (e) {
                   if (!this.isInterfaceEnabled()) return;
 
                   this.unselect($(e.target));
@@ -3043,7 +3043,7 @@ the specific language governing permissions and limitations under the Apache Lic
                   killEvent(e);
                   this.close();
                   this.focusSearch();
-              })).on("focus", this.bind(function () {
+              })).on("focus", this.on(function () {
                   if (!this.isInterfaceEnabled()) return;
                   this.container.addClass("select2-container-active");
                   this.dropdown.addClass("select2-drop-active");
@@ -3248,7 +3248,7 @@ the specific language governing permissions and limitations under the Apache Lic
             this.setVal(val);
 
             if (this.select) {
-                this.opts.initSelection(this.select, this.bind(this.updateSelection));
+                this.opts.initSelection(this.select, this.on(this.updateSelection));
                 if (triggerChange) {
                     this.triggerChange(this.buildChangeDetails(oldData, this.data()));
                 }

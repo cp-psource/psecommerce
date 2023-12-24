@@ -57,7 +57,7 @@ class PSOURCE_Field_Colorpicker extends PSOURCE_Field {
 						that.val(hex);
 
 					}
-				}).bind('keyup', function(){
+				}).on('keyup', function(){
 					$(this).ColorPickerSetColor(this.value);
 				});
 			})
