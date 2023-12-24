@@ -261,7 +261,7 @@ var mp_checkout;
 
                     if ( $form.valid() ) {
                         var checkout_as_guest = false;
-                        if ($form.find('#is_checkout_as_guest').size() > 0) {
+                        if ($form.find('#is_checkout_as_guest').length > 0) {
                             checkout_as_guest = true;
                         }
 
@@ -587,7 +587,7 @@ var mp_checkout;
                 $( 'input[name="mp_login_email"]' ).rules( 'remove' );
                 $( 'input[name="mp_login_password"]' ).rules( 'remove' );
                 var form = $(this).closest('form');
-                if (form.find('#is_checkout_as_guest').size() == 0) {
+                if (form.find('#is_checkout_as_guest').length == 0) {
                     form.append($('<input id="is_checkout_as_guest"/>'));
                 }
                 //$( '.mp_checkout_section_errors' ).hide();

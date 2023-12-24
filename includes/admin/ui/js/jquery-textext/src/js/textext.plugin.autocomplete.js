@@ -1105,6 +1105,6 @@
 	 */
 	p.withinWrapElement = function(element) 
 	{
-		return this.core().wrapElement().find(element).size() > 0;
+		return this.core().wrapElement().find(element).length > 0;
 	}
 })(jQuery);

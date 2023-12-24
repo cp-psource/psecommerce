@@ -55,6 +55,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Fix: Deprecated jQuery.parseJSON()
 * Fix: Deprecated .unbind()
 * Fix: Deprecated .submit()
+* Fix: Deprecated .size()
 
 = 3.5.6 =
 

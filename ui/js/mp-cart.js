@@ -261,7 +261,7 @@ var mp_cart = { };
             if ( resp.success ) {
 
                 if (resp.data.image) {
-                    if ($container.find('.mp_product_image_link').size() == 0) {
+                    if ($container.find('.mp_product_image_link').length == 0) {
                         $('.mp_single_product_images').html(
                             $('<a/>').attr({
                                 'class': 'mp_product_image_link mp_lightbox cboxElement',
@@ -292,7 +292,7 @@ var mp_cart = { };
                 $container.find( '.mp_product_tab_content_text' ).html( resp.data.description );
                 //}
                 //update content for lightbox
-                if ( $( '.mp_product_options_excerpt' ).size() > 0 ) {
+                if ( $( '.mp_product_options_excerpt' ).length > 0 ) {
                     $( '.mp_product_options_excerpt' ).html( resp.data.excerpt );
                 }
 
