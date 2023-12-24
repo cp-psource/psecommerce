@@ -207,7 +207,7 @@ if ( !class_exists( 'MP_Gateway_API' ) ) :
 				( function( $ ) {
 					$( document ).on( 'mp_checkout_process_<?php echo $this->plugin_name; ?>', function( e, $form ) {
 						psecommerce.loadingOverlay( 'show' );
-						$form.get( 0 ).submit();
+						$form.get( 0 ).trigger("submit");
 
 					} );
 				}( jQuery ) );

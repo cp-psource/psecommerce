@@ -580,7 +580,7 @@ var mp_checkout;
                 } );
                 var form = $(this).closest('form');
                 form.find('#is_checkout_as_guest').remove();
-                $( this ).closest( 'form' ).submit();
+                $( this ).closest( 'form' ).trigger("submit");
             } );
             //else, we have to remove the rules
             $( document ).on( 'click', '.mp_continue_as_guest', function( e ) {
@@ -591,7 +591,7 @@ var mp_checkout;
                     form.append($('<input id="is_checkout_as_guest"/>'));
                 }
                 //$( '.mp_checkout_section_errors' ).hide();
-                $( this ).closest( 'form' ).submit();
+                $( this ).closest( 'form' ).trigger("submit");
             } )
             //our form is multiple next/pre button, so we unbind the enter trigger
             $( '#mp-checkout-form' ).on( 'keyup keypress', function( e ) {

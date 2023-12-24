@@ -108,7 +108,7 @@ jQuery(document).ready(function($){
 			$bulkActions.val('enable');
 		}
 
-		$form.submit();
+		$form.trigger("submit");
 	});
 });
 </script>
