@@ -127,8 +127,8 @@
 			upIncrement = function (ev) {
 				change.apply(ev.data.field.get(0), [true]);
 				ev.data.el.removeClass('colorpicker_slider').find('input').focus();
-				$(document).unbind('mouseup', upIncrement);
-				$(document).unbind('mousemove', moveIncrement);
+				$(document).off('mouseup', upIncrement);
+				$(document).off('mousemove', moveIncrement);
 				return false;
 			},
 			downHue = function (ev) {
@@ -154,8 +154,8 @@
 			upHue = function (ev) {
 				fillRGBFields(ev.data.cal.data('colorpicker').color, ev.data.cal.get(0));
 				fillHexFields(ev.data.cal.data('colorpicker').color, ev.data.cal.get(0));
-				$(document).unbind('mouseup', upHue);
-				$(document).unbind('mousemove', moveHue);
+				$(document).off('mouseup', upHue);
+				$(document).off('mousemove', moveHue);
 				return false;
 			},
 			downSelector = function (ev) {
@@ -184,8 +184,8 @@
 			upSelector = function (ev) {
 				fillRGBFields(ev.data.cal.data('colorpicker').color, ev.data.cal.get(0));
 				fillHexFields(ev.data.cal.data('colorpicker').color, ev.data.cal.get(0));
-				$(document).unbind('mouseup', upSelector);
-				$(document).unbind('mousemove', moveSelector);
+				$(document).off('mouseup', upSelector);
+				$(document).off('mousemove', moveSelector);
 				return false;
 			},
 			enterSubmit = function (ev) {
@@ -226,7 +226,7 @@
 					if (ev.data.cal.data('colorpicker').onHide.apply(this, [ev.data.cal.get(0)]) != false) {
 						ev.data.cal.hide();
 					}
-					$(document).unbind('mousedown', hide);
+					$(document).off('mousedown', hide);
 				}
 			},
 			isChildOf = function(parentEl, el, container) {

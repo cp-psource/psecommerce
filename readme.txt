@@ -53,6 +53,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 = 3.5.7 =
 
 * Fix: Deprecated jQuery.parseJSON()
+* Fix: Deprecated .unbind()
 
 = 3.5.6 =
 

@@ -123,7 +123,7 @@ jQuery(document).ready(function($) {
 
     $('.mp_product_attributes_select').on('change', function() {
         var $variation_tags_textarea = $(this).parents('.variation-row').find('input.variation_values');
-        $variation_tags_textarea.textext()[0].input().unbind('getSuggestions');
+        $variation_tags_textarea.textext()[0].input().off('getSuggestions');
         if ($(this).val() == '-1') {
             $(this).parent().find('.mp-variation-attribute-name').show();
             $(this).parent().find('.mp-variation-add-all').hide();
