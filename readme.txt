@@ -61,6 +61,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Fix: Deprecated .hover()
 * Fix: Deprecated .click()
 * Fix: Deprecated .change()
+* Fix: Deprecated .blur()
 
 = 3.5.6 =
 

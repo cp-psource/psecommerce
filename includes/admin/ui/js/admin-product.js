@@ -181,7 +181,7 @@ jQuery(document).ready(function($) {
     });
 
     $(".select_attributes_filter a").on('focus', function(event) {
-        $(this).blur();
+        $(this).trigger("blur");
     });
 
     $('#mp_make_combinations, #publishing-action #publish').on('click', function(event) { //
@@ -301,7 +301,7 @@ jQuery(document).ready(function($) {
             var len = $(replaceWith).val().length * 2; //has to be * 2 because how Opera counts carriage returns
 
             $(replaceWith).selectRange(len, len);
-            replaceWith.blur(function() {
+            replaceWith.on("blur", function() {
 
                 if ($(this).val() != "") {
 
@@ -372,7 +372,7 @@ jQuery(document).ready(function($) {
     });
     $(".mp_inline_temp_value").on('keyup', function(e) {
         if (e.keyCode == 13) {
-            $(this).blur();
+            $(this).trigger("blur");
         }
         e.preventDefault();
     });
@@ -383,7 +383,7 @@ jQuery(document).ready(function($) {
             var nextContainer = $(this).parent('th').next().next('td.field_editable');
             nextContainer.find('.original_value').trigger('click');
 
-            $(this).blur();
+            $(this).trigger("blur");
         }
     });
     $(".mp_inline_temp_value").on('keydown', function(e) {
@@ -394,7 +394,7 @@ jQuery(document).ready(function($) {
             var nextContainer = $(this).parent().next('td');
             nextContainer.find('.original_value').trigger('click');
 
-            $(this).blur();
+            $(this).trigger("blur");
         }
     });
     $('#mp-product-price-inventory-variants-metabox').keydown(function(event) { //window

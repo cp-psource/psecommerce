@@ -5427,7 +5427,7 @@ jQuery.event = {
 		blur: {
 			trigger: function() {
 				if ( this === safeActiveElement() && this.blur ) {
-					this.blur();
+					this.trigger("blur");
 					return false;
 				}
 			},

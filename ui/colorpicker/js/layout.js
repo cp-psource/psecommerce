@@ -56,7 +56,7 @@
 							.index(this);
 		$(this)
 			.addClass('active')
-			.blur();
+			.trigger("blur");
 		$('div.tab')
 			.hide()
 				.eq(tabIndex)

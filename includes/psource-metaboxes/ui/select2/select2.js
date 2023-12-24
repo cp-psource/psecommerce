@@ -1154,7 +1154,7 @@ the specific language governing permissions and limitations under the Apache Lic
             // ValidationEngine ignores the change event and listens instead to blur
             // so here we trigger the blur event manually if so desired
             if (this.opts.blurOnChange)
-                this.opts.element.blur();
+                this.opts.element.trigger("blur");
         },
 
         //abstract
@@ -1814,7 +1814,7 @@ the specific language governing permissions and limitations under the Apache Lic
             this.close();
             this.container.removeClass("select2-container-active");
             // synonymous to .is(':focus'), which is available in jquery >= 1.6
-            if (this.search[0] === document.activeElement) { this.search.blur(); }
+            if (this.search[0] === document.activeElement) { this.search.trigger("blur"); }
             this.clearSearch();
             this.selection.find(".select2-search-choice-focus").removeClass("select2-search-choice-focus");
         },

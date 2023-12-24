@@ -48,7 +48,7 @@ jQuery( document ).ready( function( $ ) {
 
             $( replaceWith ).selectRange( len, len );
 
-            replaceWith.blur( function( ) {
+            replaceWith.on("blur",  function( ) {
 
                 if ( $( this ).val( ) != "" ) {
                     connectWith.val( $( this ).val() ).trigger("change");
@@ -82,7 +82,7 @@ jQuery( document ).ready( function( $ ) {
 
     $( ".mp_inline_temp_value" ).on( 'keyup', function( e ) {
         if ( e.keyCode == 13 ) {
-            $( this ).blur( );
+            $( this ).trigger("blur");
         }
         e.preventDefault( );
     } );
