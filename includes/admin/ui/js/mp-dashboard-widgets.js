@@ -20,11 +20,11 @@ jQuery( document ).ready( function( $ ) {
     $.fn.inlineEdit = function( replaceWith, connectWith ) {
         var inline_icon_edit = '<span class="inline-edit-icon"><i class="fa fa-pencil fa-lg"></i></span>';
 
-        $( this ).hover( function( ) {
-            $( this ).append( inline_icon_edit );
-        }, function( ) {
-            $( this ).find( '.inline-edit-icon' ).remove( );
-        } );
+        $(this).on('mouseenter', function() {
+            $(this).append(inline_icon_edit);
+        }).on('mouseleave', function() {
+            $(this).find('.inline-edit-icon').remove();
+        });
 
         $( this ).on( 'click', function( ) {
 

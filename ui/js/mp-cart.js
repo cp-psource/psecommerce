@@ -655,21 +655,16 @@ var mp_cart = { };
      * @since 3.0
      */
     mp_cart.initCartAnimation = function() {
-        var $cart = $( '#mp-floating-cart' );
-
-        $cart.hover( function() {
-            $cart.addClass( 'in-transition' );
-            setTimeout( function() {
-                $cart.addClass( 'visible' );
-            }, 300 );
-        }, function() {
-            $cart.removeClass( 'visible in-transition' );
-        } ).on('click', function() {
-            $cart.addClass( 'in-transition' );
-            setTimeout( function() {
-                $cart.addClass( 'visible' );
-            }, 300 );
-        } );
+        var $cart = $('#mp-floating-cart');
+    
+        $cart.on('mouseenter click', function() {
+            $cart.addClass('in-transition');
+            setTimeout(function() {
+                $cart.addClass('visible');
+            }, 300);
+        }).on('mouseleave', function() {
+            $cart.removeClass('visible in-transition');
+        });
     };
 }( jQuery ) );
 
