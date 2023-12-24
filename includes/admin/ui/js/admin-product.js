@@ -266,7 +266,7 @@ jQuery(document).ready(function($) {
                 range.collapse(true);
                 range.moveEnd('character', end);
                 range.moveStart('character', start);
-                range.select();
+                range.trigger("select");
             }
         });
     };

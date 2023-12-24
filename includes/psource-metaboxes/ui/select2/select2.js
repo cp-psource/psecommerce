@@ -262,7 +262,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 else if (el.createTextRange) {
                     range = el.createTextRange();
                     range.collapse(false);
-                    range.select();
+                    range.trigger("select");
                 }
             }
         }, 0);
@@ -1977,7 +1977,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 if (el.createTextRange) {
                     range = el.createTextRange();
                     range.collapse(false);
-                    range.select();
+                    range.trigger("select");
                 } else if (el.setSelectionRange) {
                     len = this.search.val().length;
                     el.setSelectionRange(len, len);
@@ -1989,7 +1989,7 @@ the specific language governing permissions and limitations under the Apache Lic
             if(this.search.val() === "") {
                 if(this.nextSearchTerm != undefined){
                     this.search.val(this.nextSearchTerm);
-                    this.search.select();
+                    this.search.trigger("select");
                 }
             }
 
@@ -2887,7 +2887,7 @@ the specific language governing permissions and limitations under the Apache Lic
             if(this.search.val() === "") {
                 if(this.nextSearchTerm != undefined){
                     this.search.val(this.nextSearchTerm);
-                    this.search.select();
+                    this.search.trigger("select");
                 }
             }
 
@@ -2981,7 +2981,7 @@ the specific language governing permissions and limitations under the Apache Lic
                         if(this.nextSearchTerm != undefined){
                             this.search.val(this.nextSearchTerm);
                             this.updateResults();
-                            this.search.select();
+                            this.search.trigger("select");
                         }
                     }
                     this.positionDropdown();
