@@ -5955,7 +5955,7 @@ msgstr ""
 
 #: includes/admin/class-mp-products-admin.php:1452
 #: includes/includes/admin/class-mp-products-admin.php:1452
-msgid "Ist empfohlen?"
+msgid "Produkt empfehlen?"
 msgstr ""
 
 #: includes/common/payment-gateways/skrill.php:46
@@ -11946,11 +11946,11 @@ msgid "Wähle %s"
 msgstr ""
 
 #: psecommerce.php:205 includes/psecommerce.php:206
-msgid "Wähle aus den am häufigsten verwendeten Produktetiketten"
+msgid "Auswahl häufig verwendeter Produktetiketten"
 msgstr ""
 
 #: psecommerce.php:171 includes/psecommerce.php:172
-msgid "Wähle aus den am häufigsten verwendeten Shopkategorien"
+msgid "Auswahl häufig verwendeter Shopkategorien"
 msgstr ""
 
 #: includes/admin/class-mp-setup-wizard.php:626

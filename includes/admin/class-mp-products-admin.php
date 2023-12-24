@@ -1415,7 +1415,7 @@ WHERE $delete_where"
 	public function init_related_products_metabox() {
 		$metabox = new PSOURCE_Metabox( apply_filters( 'mp_metabox_array_mp-related-products-metabox', array(
 			'id'        => 'mp-related-products-metabox',
-			'title'     => __( 'Empfohlene Produkte', 'mp' ),
+			'title'     => __( 'Verwandte Produkte', 'mp' ),
 			'post_type' => MP_Product::get_post_type(),
 			'context'   => 'side',
 			'desc'      => __( 'Wenn Du möchtest, kannst Du bestimmte verwandte Produkte auswählen, anstatt die von PSeCommerce generierten zu verwenden', 'mp' ),
@@ -1449,7 +1449,7 @@ WHERE $delete_where"
 
 		$metabox->add_field( 'checkbox', apply_filters( 'mp_add_field_array_featured', array(
 			'name'    => 'featured',
-			'message' => __( 'Ist empfohlen?', 'mp' ),
+			'message' => __( 'Produkt empfehlen?', 'mp' ),
 		) ) );
 	}
 
@@ -1468,7 +1468,7 @@ WHERE $delete_where"
 		) ) );
 
 		$product_kinds = array(
-			'physical'     => __( 'Physical / Tangible Product', 'mp' ),
+			'physical'     => __( 'Physisches Produkt', 'mp' ),
 			'digital'      => __( 'Digitaler Download', 'mp' )
 		);
 

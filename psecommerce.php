@@ -178,7 +178,7 @@ class PSeCommerce {
 				'search_items'               => __( 'Shopkategorien suchen', 'mp' ),
 				'separate_items_with_commas' => __( 'Shopkategorien durch Kommas trennen', 'mp' ),
 				'add_or_remove_items'        => __( 'Shopkategorien hinzufügen oder entfernen', 'mp' ),
-				'choose_from_most_used'      => __( 'Wähle aus den am häufigsten verwendeten Shopkategorien', 'mp' ),
+				'choose_from_most_used'      => __( 'Auswahl häufig verwendeter Shopkategorien', 'mp' ),
 				'not_found'                  => __( 'Keine Shopkategorien gefunden :(', 'mp' ),
 			),
 			'capabilities'      => array(
@@ -212,7 +212,7 @@ class PSeCommerce {
 				'search_items'               => __( 'Produkt-Tags suchen', 'mp' ),
 				'separate_items_with_commas' => __( 'Produktetiketten durch Kommas trennen', 'mp' ),
 				'add_or_remove_items'        => __( 'Produkt-Tags hinzufügen oder entfernen', 'mp' ),
-				'choose_from_most_used'      => __( 'Wähle aus den am häufigsten verwendeten Produktetiketten', 'mp' ),
+				'choose_from_most_used'      => __( 'Auswahl häufig verwendeter Produkt-Tags', 'mp' ),
 				'not_found'                  => __( 'Keine Produkt-Tags gefunden', 'mp' ),
 			),
 			'capabilities'      => array(

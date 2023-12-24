@@ -3405,7 +3405,7 @@ the specific language governing permissions and limitations under the Apache Lic
         formatResultCssClass: function(data) {return data.css;},
         formatSelectionCssClass: function(data, container) {return undefined;},
         formatMatches: function (matches) { if (matches === 1) { return "Ein Ergebnis ist verfügbar. Drücke die Eingabetaste, um es auszuwählen."; } return matches + " results are available, use up and down arrow keys to navigate."; },
-        formatNoMatches: function () { return "No matches found"; },
+        formatNoMatches: function () { return "Keine Treffer gefunden"; },
         formatInputTooShort: function (input, min) { var n = min - input.length; return "Please enter " + n + " or more character" + (n == 1? "" : "s"); },
         formatInputTooLong: function (input, max) { var n = input.length - max; return "Please delete " + n + " character" + (n == 1? "" : "s"); },
         formatSelectionTooBig: function (limit) { return "You can only select " + limit + " item" + (limit == 1 ? "" : "s"); },
