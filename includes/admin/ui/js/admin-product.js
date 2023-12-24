@@ -690,7 +690,7 @@ jQuery(document).ready(function($) {
             action: 'ajax_add_new_variant',
             parent_post_id: $('#post_ID').val(),
         }).done(function(data, status) {
-            var response = jQuery.parseJSON(data);
+            var response = JSON.parse(data);
             if (response) {
                 if (response.type == true) {
                     $.colorbox({
@@ -909,7 +909,7 @@ jQuery(document).ready(function($) {
             //action: 'save_inline_post_data',
             mp_product_admin_i18n.ajaxurl, form.serialize()
         ).done(function(data, status) {
-            var response = $.parseJSON(data);
+            var response = JSON.parse(data);
             if (response.status_message !== '') {
                 $('.mp_ajax_response').html(response.status_message);
                 $('.mp_ajax_response').attr('class', 'mp_ajax_response');

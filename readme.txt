@@ -50,6 +50,10 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 3.5.7 =
+
+* Fix: Deprecated jQuery.parseJSON()
+
 = 3.5.6 =
 
 * Fix: Undefined array key "widget_id"
