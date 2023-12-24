@@ -222,7 +222,7 @@ jQuery(document).ready(function($) {
                     //$( '.mp-admin-overlay' ).show();
                     $('#save-post').removeAttr('disabled');
                     //$( '#save-post' ).prop( 'disabled', false );
-                    $('#save-post').click();
+                    $('#save-post').trigger("click");
                     //mp_variation_message();
                 } else {
 
@@ -230,7 +230,7 @@ jQuery(document).ready(function($) {
                     if (caller_id == 'mp_make_combinations') {
                         $('#publish').removeAttr('disabled');
                         //$( '#publish' ).prop( 'disabled', false );
-                        $('#publish').click();
+                        $('#publish').trigger("click");
                     }
                     //mp_variation_message();
                 }
@@ -249,7 +249,7 @@ jQuery(document).ready(function($) {
 
     });
 
-    $('.mp-add-new-variation').click();
+    $('.mp-add-new-variation').trigger("click");
 
 });
 /* INLINE EDIT */
@@ -648,7 +648,7 @@ jQuery(document).ready(function($) {
             save_inline_post_data($('[name="post_ID"]').val(), 'delete_variations', '', '');
             setInterval(function() {
                 $('#publish').removeAttr('disabled');
-                $('#publish').click();
+                $('#publish').trigger("click");
             }, 500);
         }
         return false;

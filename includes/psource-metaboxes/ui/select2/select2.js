@@ -1149,7 +1149,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             // some validation frameworks ignore the change event and listen instead to keyup, click for selects
             // so here we trigger the click event manually
-            this.opts.element.click();
+            this.opts.element.trigger("click");
 
             // ValidationEngine ignores the change event and listens instead to blur
             // so here we trigger the blur event manually if so desired

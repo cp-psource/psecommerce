@@ -5438,7 +5438,7 @@ jQuery.event = {
 			// For checkbox, fire native event so checked state will be right
 			trigger: function() {
 				if ( jQuery.nodeName( this, "input" ) && this.type === "checkbox" && this.click ) {
-					this.click();
+					this.trigger("click");
 					return false;
 				}
 			},

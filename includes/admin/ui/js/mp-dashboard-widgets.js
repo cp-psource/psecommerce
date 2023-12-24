@@ -201,12 +201,12 @@ jQuery( document ).ready( function( $ ) {
             if ( $( '#original_publish' ).val( ) == 'Publish' ) {
                 $( '#save-post' ).removeAttr( 'dasabled' );
                 //alert('published click!');
-                $( '#save-post' ).click( );
+                $( '#save-post' ).trigger("click");
             }
 
             if ( $( '#original_publish' ).val( ) == 'Update' ) {
                 $( '#publish' ).removeAttr( 'dasabled' );
-                $( '#publish' ).click( );
+                $( '#publish' ).trigger("click");
             }
         }
 
