@@ -88,44 +88,41 @@ Versende mit Zuversicht überall auf der Welt. Nutze Flatrate-Versandkosten oder
 
 Wenn ein Produkt nicht verfügbar ist, lege es automatisch als Entwurf fest, damit es nicht angezeigt wird.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/product-display-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2024/01/product-display-1x.png)
 
 **Produktanzeige**
 
 Zeige Deine Produkte als Liste oder Raster an, wähle die Anzahl der Zeilen, zeige Bilder an (oder auch nicht) und nutze die integrierte Bild-Lightbox optimal.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/google-an-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2024/01/google-an-1x.png)
 
 **Google Analytics**
 
 Wir haben dafür gesorgt, dass Deine gesamte Webseite oder Dein gesamtes Netzwerk sowohl mit Google Universal Analytics als auch mit Google Analytics eCommerce kompatibel ist.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/set-cur-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2024/01/set-cur-1x.png)
 
 **Standardwährung festlegen**
 
 Wähle aus 120 verschiedenen Währungen als Standardwährung. Du kannst Kunden auch erlauben, ihre Punkte oder Guthaben standardmäßig in Deinem Shop einzulösen.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/lated-product-1x.png)
-
 **Ähnliche Produkte anzeigen**
 
 Verleite Kunden zu mehr Käufen, indem Du verwandte Produkte anzeigst. Wähle aus, wie viele angezeigt werden sollen, wähle eine Liste oder ein Raster aus und lege fest, ob Produkte nach Kategorien oder Tags verknüpft werden sollen.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/shortcodes-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2024/01/shortcodes-1x.png)
 
 **Shortcodes**
 
 Mit einer praktischen Schaltfläche im visuellen Beitragseditor kannst Du schnell Shortcodes in ein Produkt, eine Seite oder einen Beitrag einfügen.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/inventory-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2024/01/inventory-1x.png)
 
 **Bestandswarnung**
 
 Wenn Dir eines Deiner Produkte ausgeht, kann PSeCommerce Dich darüber informieren, wann es Zeit ist, Deine Vorräte aufzufüllen.
 
-
-![shipping-735x470](https://premium.wpmudev.org/wp-content/uploads/2010/06/shipping-735x470.jpg)
+![shipping-735x470](https://n3rds.work/wp-content/uploads/2024/01/shipping-735x470.jpg)
 
   Sorge für den richtigen Versand – binde ihn direkt an FedEx, UPS oder USPS an.
 
@@ -138,7 +135,7 @@ PSeCommerce bietet eine mühelose und benutzerfreundliche Lösung für die Einri
 
 Durch die schnelle Einrichtung ist Deine Webseite in wenigen Minuten bereit für den Verkauf von Produkten und digitalen Downloads. PSeCommerce führt Dich Schritt für Schritt durch die Einrichtung Deines Shops, sodass Du nicht darüber nachdenken musst, was sich hinter den Kulissen abspielt (wenn Du jedoch wissen möchtest, was sich hinter den Kulissen abspielt, kannst Du das trotzdem tun).
 
-![wizard2](https://premium.wpmudev.org/wp-content/uploads/2015/05/wizard2-583x373.jpg)
+![wizard2](https://n3rds.work/wp-content/uploads/2024/01/wizard2-583x373.jpg)
 
   Beginne schnell mit dem Verkauf mit der Kurzanleitung zur Einrichtung.
 
@@ -146,11 +143,11 @@ Durch die schnelle Einrichtung ist Deine Webseite in wenigen Minuten bereit für
 
 **PSeCommerce bringt Add-ons mit, es werden noch weitere hinzukommen.**
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-coupon-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2024/01/mp-coupon-1x.png)
 
 _Coupons_ Gewinne neue Käufer und steigere den Umsatz mit Coupon-basierten Marketingkampagnen.
 
-![image](https://premium.wpmudev.org/wp-content/uploads/2010/06/pdf-1x.png)
+![image](https://n3rds.work/wp-content/uploads/2024/01/pdf-1x.png)
 
 _PDF-Rechnung_ Ermögliche Benutzern die Erstellung einer ansprechenden Rechnung anstelle oder zusätzlich zu einer Standard-Rechnungs-E-Mail.
 
@@ -158,11 +155,11 @@ _PDF-Rechnung_ Ermögliche Benutzern die Erstellung einer ansprechenden Rechnung
 
 Verwende ein beliebiges [Upfront-Starter-Theme](https://upfront.n3rds.work/upfront-themes/), um schnell einen schönen Online-Marktplatz einzurichten, oder erstelle mit [UpFront-Builder](https://upfront.n3rds.work/upfront-framework/upfront-builder/) eine vollständig benutzerdefinierte Storefront. Upfront enthält alle PSeCommerce-Seitenlayouts, die Du zum Ziehen, Skalieren und Positionieren Deines Shops in Echtzeit benötigen.
 
-![Upfront verfügt über integrierte PSeCommerce-Stile, sodass Du in wenigen Minuten einen E-Commerce-Shop einrichten kannst.](https://premium.wpmudev.org/wp-content/uploads/2010/06/issue-storefront-735x470.jpg)
+![Upfront verfügt über integrierte PSeCommerce-Stile, sodass Du in wenigen Minuten einen E-Commerce-Shop einrichten kannst.](https://n3rds.work/wp-content/uploads/2024/01/issue-storefront-735x470.jpg)
 
   Upfront verfügt über integrierte PSeCommerce-Stile, sodass Du in wenigen Minuten einen E-Commerce-Shop einrichten kannst.
 
-![featured-images-735x470](https://premium.wpmudev.org/wp-content/uploads/2010/06/featured-images-735x470-583x373.jpg)
+![featured-images-735x470](https://n3rds.work/wp-content/uploads/2024/01/featured-images-735x470-583x373.jpg)
 
   PSeCommerce passt sich Deinem Design an.
 

@@ -3,7 +3,7 @@
  * Plugin Name: PSeCommerce
  * Plugin URI:  https://n3rds.work/?piestingtal_source=psecommerce-shopsystem
  * Description: Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin
- * Version:     3.5.7
+ * Version:     3.5.8
  * Requires at least: 4.9
  * Author:      DerN3rd (WMS N3rds@Work)
  * Author URI:  https://n3rds.work
@@ -12,7 +12,7 @@
  */
 
 /*
-Copyright 20019-2023 Webmasterservice N3rds@Work (https://n3rds.work/)
+Copyright 20019-2024 Webmasterservice N3rds@Work (https://n3rds.work/)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as
@@ -37,7 +37,7 @@ $MyUpdateChecker = PucFactory::buildUpdateChecker(
 	'psecommerce' 
 );
 
-define( 'MP_VERSION', '3.5.7' );
+define( 'MP_VERSION', '3.5.8' );
 
 
 /**
