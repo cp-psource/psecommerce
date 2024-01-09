@@ -2785,41 +2785,29 @@ if ( ! function_exists( 'mp_products_nav' ) ) :
 	 * @param WP_Query object $custom_query
 	 */
 	function mp_products_nav( $custom_query, $echo = true ) {
-		$html = '';
+        $html = '';
 
-		if ( $custom_query->max_num_pages > 1 ) {
-			$big = 999999999;
+        // Check if $custom_query is a valid instance of WP_Query
+        if ( $custom_query instanceof WP_Query && $custom_query->max_num_pages > 1 ) {
+            $big = 999999999;
 
-			$html = '
-				<nav class="mp_listings_nav">';
+            $html = '<nav class="mp_listings_nav">';
 
-			/* $html .= paginate_links( array(
-			  'base'		 => '%_%',
-			  'format'	 => '?paged=%#%',
-			  'total'		 => $custom_query->max_num_pages,
-			  'current'	 => max( 1, $custom_query->get( 'paged' ) ),
-			  'prev_text'	 => __( 'Prev', 'mp' ),
-			  'next_text'	 => __( 'Next', 'mp' ),
-			  ) ); */
+            $html .= paginate_links( array(
+                'base'         => '?paged=%#%',
+                'format'       => '',
+                'total'        => $custom_query->max_num_pages,
+                'current'      => max( 1, $custom_query->get( 'paged' ) ),
+                'show_all'     => false,
+                'prev_next'    => true,
+                'prev_text'    => __( 'Zurück', 'mp' ),
+                'next_text'    => __( 'Weiter', 'mp' ),
+                'add_args'     => true,
+                'add_fragment' => '',
+            ) );
 
-			//echo 'current_page:'.$custom_query->get( 'paged' );
-
-			$html .= paginate_links( array(
-				'base'         => '?paged=%#%', //'%_%',
-				'format'       => '', //?paged=%#%
-				'total'        => $custom_query->max_num_pages,
-				'current'      => max( 1, $custom_query->get( 'paged' ) ),
-				'show_all'     => false,
-				'prev_next'    => true,
-				'prev_text'    => __( 'Zurück', 'mp' ),
-				'next_text'    => __( 'Weiter', 'mp' ),
-				'add_args'     => true,
-				'add_fragment' => '',
-			) );
-
-			$html .= '
-				</nav>';
-		}
+            $html .= '</nav>';
+        }
 
 		/**
 		 * Filter the products nav html
