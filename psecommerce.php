@@ -1,18 +1,18 @@
 <?php
 /**
  * Plugin Name: PSeCommerce
- * Plugin URI:  https://n3rds.work/?piestingtal_source=psecommerce-shopsystem
+ * Plugin URI:  https://cp-psource.github.io/psecommerce/
  * Description: Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin
  * Version:     3.5.8
  * Requires at least: 4.9
- * Author:      DerN3rd (WMS N3rds@Work)
- * Author URI:  https://n3rds.work
+ * Author:      PSOURCE
+ * Author URI:  https://github.com/cp-psource
  * Text Domain: mp
  * Domain Path: /languages
  */
 
 /*
-Copyright 20019-2024 Webmasterservice N3rds@Work (https://n3rds.work/)
+Copyright 20019-2024 PSOURCE (https://github.com/cp-psource)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as
@@ -27,15 +27,21 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA	02111-1307	USA
 
-Plugin Authors: DerN3rd (WMS N3rds@Work) Marko Miljus (Incsub), DerN3rd (WMS N@W), Hoang Ngo (Incsub), Jonathan Cowher (Incsub), Ricardo Freitas (Incsub), Cvetan Cvetanov (Incsub), Julien Zerbib (Incsub), Sabri Bouchaala (Incsub), Emmanuel Laborin (Incsub)
+Plugin Authors: DerN3rd (PSOURCE)
 */
-require 'psource/psource-plugin-update/psource-plugin-updater.php';
-use Psource\PluginUpdateChecker\v5\PucFactory;
-$MyUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=psecommerce', 
-	__FILE__, 
-	'psecommerce' 
+
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+ 
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/cp-psource/psecommerce',
+	__FILE__,
+	'psecommerce'
 );
+ 
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
+
 
 define( 'MP_VERSION', '3.5.8' );
 
@@ -279,7 +285,7 @@ class PSeCommerce {
 			'labels'          => array(
 				'name'               => __( 'Bestellungen', 'mp' ),
 				'singular_name'      => __( 'Bestellung', 'mp' ),
-				'add_new'            => _x( 'Neue hinzufügen', 'mp_order', 'mp' ),
+				'add_new'            => _x( 'Neue Bestellung hinzufügen', 'mp_order', 'mp' ),
 				'add_new_item'       => __( 'Neue Bestellung hinzufügen', 'mp' ),
 				'edit_item'          => __( 'Bestellung bearbeiten', 'mp' ),
 				'new_item'           => __( 'Neue Bestellung', 'mp' ),
@@ -320,7 +326,7 @@ class PSeCommerce {
 
 		// Register custom post statuses for our orders.
 		register_post_status( 'order_received', array(
-			'label'       => __( 'Bestellung erhalten', 'mp' ),
+			'label'       => __( 'Bestellung eingegangen', 'mp' ),
 			/* translators: %s: orders received */
 			'label_count' => _n_noop( 'Eingegangen <span class="count">(%s)</span>', 'Eingegangen <span class="count">(%s)</span>', 'mp' ),
 			'post_type'   => 'mp_order',
@@ -488,10 +494,10 @@ class PSeCommerce {
 			 * @return string
 			 */
 			function mp_get_plugin_slug() {
-				if ( file_exists( dirname( __FILE__ ) . '/psource/psource-plugin-update/psource-info.php' ) ) {
+				if ( file_exists( dirname( __FILE__ ) . '/psource/psource-plugin-update/plugin-update-checker.php' ) ) {
 					return 'psecommerce/psecommerce.php';
 				} else {
-					return 'psecommerce/psecommerce.php';
+					return 'classicpress-ecommerce/psecommerce.php';
 				}
 			}
 		}
@@ -625,7 +631,7 @@ class PSeCommerce {
 	 */
 	function mp_plugin_settings_link( $links ) {
 		$settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=shop-einstellungen' ) ) . '">'
-			. __( 'Shopeinstellungen', 'mp' ) . '</a>';
+			. __( 'Shop Einstellungen', 'mp' ) . '</a>';
 		array_unshift( $links, $settings_link );
 
 		return $links;

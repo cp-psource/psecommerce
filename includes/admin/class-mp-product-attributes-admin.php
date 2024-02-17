@@ -45,7 +45,7 @@ class MP_Product_Attributes_Admin {
 			$list_table->prepare_items();
 			?>
 			<div class="icon32"><img src="<?php echo mp_plugin_url( 'ui/images/settings.png' ); ?>" /></div>
-			<h2 class="mp-settings-title"><?php _e( 'Produkteigenschaften', 'mp' ); ?> <a class="add-new-h2" href="<?php echo add_query_arg( array( 'action' => 'mp_add_product_attribute' ) ); ?>"><?php _e( 'Eigenschaft hinzufügen', 'mp' ); ?></a></h2>
+			<h2 class="mp-settings-title"><?php _e( 'Eigenschaften', 'mp' ); ?> <a class="add-new-h2" href="<?php echo add_query_arg( array( 'action' => 'mp_add_product_attribute' ) ); ?>"><?php _e( 'Eigenschaft hinzufügen', 'mp' ); ?></a></h2>
 			<div class="clear"></div>
 			<div class="mp-settings">
 				<form method="get">

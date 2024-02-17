@@ -108,21 +108,21 @@ class MP_Shop_Einstellungen_Admin {
 		$cap = apply_filters( 'mp_store_settings_cap', 'manage_store_settings' );
 
 		
-		add_menu_page( __( 'Shopeinstellungen', 'mp' ), __( 'Shop Einstellungen', 'mp' ), $cap, 'shop-einstellungen', null, 'dashicons-store', 99.33 );
+		add_menu_page( __( 'Shop Einstellungen', 'mp' ), __( 'Shop Einstellungen', 'mp' ), $cap, 'shop-einstellungen', null, 'dashicons-store', 99.33 );
 		
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Basiseinstellungen', 'mp' ), __( 'Basiseinstellungen', 'mp' ), $cap, 'shop-einstellungen', array( &$this, 'display_settings_form' ) );
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Shopdarstellung', 'mp' ), __( 'Shopdarstellung', 'mp' ), $cap, 'shop-einstellungen-presentation', array( &$this, 'display_settings_form' ) );
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Benachrichtigung', 'mp' ), __( 'Benachrichtigungen', 'mp' ), $cap, 'shop-einstellungen-notifications', array( &$this, 'display_settings_form' ) );
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Versand', 'mp' ), __( 'Versand', 'mp' ), $cap, 'shop-einstellungen-shipping', array( &$this, 'display_settings_form' ) );
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Zahlungen', 'mp' ), __( 'Zahlungen', 'mp' ), $cap, 'shop-einstellungen-payments', array( &$this, 'display_settings_form' ) );
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Produkteigenschaften', 'mp' ), __( 'Produkteigenschaften', 'mp' ), $cap, 'shop-einstellungen-productattributes', array( 'MP_Product_Attributes_Admin', 'display_product_attributes' ) );
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Shopkategorien', 'mp' ), __( 'Shopkategorien', 'mp' ), apply_filters( 'mp_manage_product_categories_cap', 'manage_product_categories' ), 'edit-tags.php?taxonomy=product_category&post_type=' . MP_Product::get_post_type() );
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: ProduktTags', 'mp' ), __( 'ProduktTags', 'mp' ), apply_filters( 'mp_manage_product_tags_cap', 'manage_product_tags' ), 'edit-tags.php?taxonomy=product_tag&post_type=' . MP_Product::get_post_type() );
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Benutzerrechte', 'mp' ), __( 'Benutzerrechte', 'mp' ), $cap, 'shop-einstellungen-capabilities', array( &$this, 'display_settings_form' ) );
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Import/Export', 'mp' ), __( 'Import/Export', 'mp' ), $cap, 'shop-einstellungen-import', array( MP_Shop_Einstellungen_Import::get_instance(), 'display_settings' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Einstellungen', 'mp' ), __( 'Einstellungen', 'mp' ), $cap, 'shop-einstellungen', array( &$this, 'display_settings_form' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Darstellung', 'mp' ), __( 'Darstellung', 'mp' ), $cap, 'shop-einstellungen-presentation', array( &$this, 'display_settings_form' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Benachrichtigung', 'mp' ), __( 'Benachrichtigungen', 'mp' ), $cap, 'shop-einstellungen-notifications', array( &$this, 'display_settings_form' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Versand', 'mp' ), __( 'Versand', 'mp' ), $cap, 'shop-einstellungen-shipping', array( &$this, 'display_settings_form' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Zahlungen', 'mp' ), __( 'Zahlungen', 'mp' ), $cap, 'shop-einstellungen-payments', array( &$this, 'display_settings_form' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Eigenschaften', 'mp' ), __( 'Eigenschaften', 'mp' ), $cap, 'shop-einstellungen-productattributes', array( 'MP_Product_Attributes_Admin', 'display_product_attributes' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Shopkategorien', 'mp' ), __( 'Shopkategorien', 'mp' ), apply_filters( 'mp_manage_product_categories_cap', 'manage_product_categories' ), 'edit-tags.php?taxonomy=product_category&post_type=' . MP_Product::get_post_type() );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Schlagworte', 'mp' ), __( 'Schlagworte', 'mp' ), apply_filters( 'mp_manage_product_tags_cap', 'manage_product_tags' ), 'edit-tags.php?taxonomy=product_tag&post_type=' . MP_Product::get_post_type() );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Benutzerrechte', 'mp' ), __( 'Benutzerrechte', 'mp' ), $cap, 'shop-einstellungen-capabilities', array( &$this, 'display_settings_form' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Import/Export', 'mp' ), __( 'Import/Export', 'mp' ), $cap, 'shop-einstellungen-import', array( MP_Shop_Einstellungen_Import::get_instance(), 'display_settings' ) );
 		//add_submenu_page('shop-einstellungen', __('Shop Einstellungen: Importers', 'mp'), __('Importers', 'mp'), $cap, 'shop-einstellungen-importers', false);
 		//add_submenu_page('shop-einstellungen', __('Shop Einstellungen: Exporters', 'mp'), __('Exporters', 'mp'), $cap, 'shop-einstellungen-exporters', false);
-		add_submenu_page( 'shop-einstellungen', __( 'Shopeinstellungen: Erweiterungen', 'mp' ), __( 'Erweiterungen', 'mp' ), $cap, 'shop-einstellungen-addons', array( MP_Shop_Einstellungen_Addons::get_instance(), 'display_settings' ) );
+		add_submenu_page( 'shop-einstellungen', __( 'Shop Einstellungen: Erweiterungen', 'mp' ), __( 'Erweiterungen', 'mp' ), $cap, 'shop-einstellungen-addons', array( MP_Shop_Einstellungen_Addons::get_instance(), 'display_settings' ) );
 
 		$mp_needs_quick_setup = get_option( 'mp_needs_quick_setup', 1 );
 
@@ -202,11 +202,11 @@ class MP_Shop_Einstellungen_Admin {
 	 */
 	public function get_message_by_key( $key ) {
 		$messages = array(
-			'mp_product_attribute_added'	 => __( 'Product attribute added successfully.', 'mp' ),
-			'mp_product_attribute_updated'	 => __( 'Product attribute updated successfully.', 'mp' ),
+			'mp_product_attribute_added'	 => __( 'Produktattribut erfolgreich hinzugefügt.', 'mp' ),
+			'mp_product_attribute_updated'	 => __( 'Produktattribut erfolgreich aktualisiert.', 'mp' ),
 		);
 
-		return ( isset( $messages[ $key ] ) ) ? $messages[ $key ] : sprintf( __( 'An appropriate message for key "%s" could not be found.', 'mp' ), $key );
+		return ( isset( $messages[ $key ] ) ) ? $messages[ $key ] : sprintf( __( 'Für den Schlüssel „%s“ konnte keine passende Nachricht gefunden werden.', 'mp' ), $key );
 	}
 
 	/**
@@ -217,11 +217,11 @@ class MP_Shop_Einstellungen_Admin {
 	 */
 	public function display_settings_form() {
 		$updated = false;
-		$title	 = __( 'Shopeinstellungen', 'mp' ) . ': ';
+		$title	 = __( 'Shop Einstellungen', 'mp' ) . ': ';
 
 		switch ( mp_get_current_screen()->id ) {
 			case 'shop-einstellungen_page_shop-einstellungen-presentation' :
-				$title .= __( 'Shopdarstellung', 'mp' );
+				$title .= __( 'Darstellung', 'mp' );
 				break;
 
 			case 'shop-einstellungen_page_shop-einstellungen-notifications' :
@@ -265,7 +265,7 @@ class MP_Shop_Einstellungen_Admin {
 				break;
 
 			default :
-				$title .= __( 'Basiseinstellungen', 'mp' );
+				$title .= __( 'Einstellungen', 'mp' );
 				break;
 		}
 		?>
