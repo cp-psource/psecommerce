@@ -79,11 +79,11 @@ Online Geld verdienen macht dieses mächtige Leichtgewicht von eCommerce Plugin 
 
 = 3.5.2 =
 
-* Neues Icon für Shop-Einstellungen
-* Bessere Position für Shop-Einstellungen Menü im Dashboard
+* Neues Icon für Shopeinstellungen
+* Bessere Position für Shopeinstellungen Menü im Dashboard
 * Aktuellen Hilfetab zum Handbuch eingefügt
 * Shopstatisitken mit Adminicon versehen
-* Shopstatistiken unter Shop Einstellungen platziert
+* Shopstatistiken unter Shopeinstellungen platziert
 * PHP Deprecated:  Required parameter
 
 

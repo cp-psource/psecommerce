@@ -631,7 +631,7 @@ class PSeCommerce {
 	 */
 	function mp_plugin_settings_link( $links ) {
 		$settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=shop-einstellungen' ) ) . '">'
-			. __( 'Shop Einstellungen', 'mp' ) . '</a>';
+			. __( 'Shopeinstellungen', 'mp' ) . '</a>';
 		array_unshift( $links, $settings_link );
 
 		return $links;

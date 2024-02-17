@@ -44,7 +44,7 @@ class MP_Shop_Einstellungen_Addons {
 	$list_table = new MP_Addons_List_Table();
 	$list_table->prepare_items();	?>
 	<div class="icon32"><img src="<?php echo mp_plugin_url('ui/images/settings.png'); ?>" /></div>
-	<h2 class="mp-settings-title"><?php printf(__('Shop Einstellungen: Erweiterungen: %s', 'mp'), $addon_obj->label); ?></h2>
+	<h2 class="mp-settings-title"><?php printf(__('Shopeinstellungen: Erweiterungen: %s', 'mp'), $addon_obj->label); ?></h2>
 	<div class="clear"></div>
 	<div class="mp-settings">
 		<form method="post">
@@ -118,7 +118,7 @@ jQuery(document).ready(function($){
 	$list_table = new MP_Addons_List_Table();
 	$list_table->prepare_items();	?>
 	<div class="icon32"><img src="<?php echo mp_plugin_url('ui/images/settings.png'); ?>" /></div>
-	<h2 class="mp-settings-title"><?php _e('Shop Einstellungen: Erweiterungen', 'mp'); ?></h2>
+	<h2 class="mp-settings-title"><?php _e('Shopeinstellungen: Erweiterungen', 'mp'); ?></h2>
 	<div class="clear"></div>
 	<div class="mp-settings">
 		<form method="get">

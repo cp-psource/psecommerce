@@ -9494,7 +9494,7 @@ msgstr ""
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:111
 #: includes/psource-metaboxes/fields/class-psource-field-custom-quick-setup.php:196
 #: includes/includes/psource-metaboxes/fields/class-psource-field-custom-quick-setup.php:196
-msgid "Shop Einstellungen"
+msgid "Shopeinstellungen"
 msgstr ""
 
 #: includes/addons/mp-pdf-invoice/class-mp-pdf-invoice-addon.php:239
@@ -9538,70 +9538,70 @@ msgstr ""
 #: includes/admin/class-mp-shop-einstellungen-admin.php:220
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:111
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:220
-msgid "Shop Einstellungen"
+msgid "Shopeinstellungen"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:113
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:113
-msgid "Shop Einstellungen: Einstellungen"
+msgid "Shopeinstellungen: Einstellungen"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:115
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:115
-msgid "Shop Einstellungen: Benachrichtigung"
+msgid "Shopeinstellungen: Benachrichtigung"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:121
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:121
-msgid "Shop Einstellungen: Benutzerrechte"
+msgid "Shopeinstellungen: Benutzerrechte"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:125
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-addons.php:121
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:125
 #: includes/includes/admin/shop-einstellungen/class-mp-shop-einstellungen-addons.php:121
-msgid "Shop Einstellungen: Erweiterungen"
+msgid "Shopeinstellungen: Erweiterungen"
 msgstr ""
 
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-addons.php:47
 #: includes/includes/admin/shop-einstellungen/class-mp-shop-einstellungen-addons.php:47
 #, php-format
-msgid "Shop Einstellungen: Erweiterungen: %s"
+msgid "Shopeinstellungen: Erweiterungen: %s"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:122
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:122
-msgid "Shop Einstellungen: Import/Export"
+msgid "Shopeinstellungen: Import/Export"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:118
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:118
-msgid "Shop Einstellungen: Eigenschaften"
+msgid "Shopeinstellungen: Eigenschaften"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:120
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:120
-msgid "Shop Einstellungen: Schlagworte"
+msgid "Shopeinstellungen: Schlagworte"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:114
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:114
-msgid "Shop Einstellungen: Darstellung"
+msgid "Shopeinstellungen: Darstellung"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:119
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:119
-msgid "Shop Einstellungen: Shopkategorien"
+msgid "Shopeinstellungen: Shopkategorien"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:116
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:116
-msgid "Shop Einstellungen: Versand"
+msgid "Shopeinstellungen: Versand"
 msgstr ""
 
 #: includes/admin/class-mp-shop-einstellungen-admin.php:117
 #: includes/includes/admin/class-mp-shop-einstellungen-admin.php:117
-msgid "Shop Einstellungen: Zahlungen"
+msgid "Shopeinstellungen: Zahlungen"
 msgstr ""
 
 #: psecommerce.php:163 includes/psecommerce.php:164

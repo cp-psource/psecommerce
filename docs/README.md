@@ -128,7 +128,7 @@ Wenn Dir eines Deiner Produkte ausgeht, kann PSeCommerce Dich darüber informier
 
 ### Einfacher, intuitiver und noch leistungsfähiger
 
-PSeCommerce bietet eine mühelose und benutzerfreundliche Lösung für die Einrichtung eines Online-Shops, auch für Erstbesitzer eines Shops. Von Produkt- und Shop-Einstellungen bis hin zu Zahlungsgateways, Versand und Produktanzeige – die Einrichtung Deines Shops mit PSeCommerce nimmt keine Zeit in Anspruch.
+PSeCommerce bietet eine mühelose und benutzerfreundliche Lösung für die Einrichtung eines Online-Shops, auch für Erstbesitzer eines Shops. Von Produkt- und Shopeinstellungen bis hin zu Zahlungsgateways, Versand und Produktanzeige – die Einrichtung Deines Shops mit PSeCommerce nimmt keine Zeit in Anspruch.
 
 
 ### Schnelleinrichtungsassistent
@@ -194,9 +194,9 @@ Sobald Du das alles konfiguriert hast, hast Du die Möglichkeit, entweder ein ne
 
 ### Ein Spaziergang durch den Shop... Einstellungen
 
-Unser Freund, die Registerkarte „Shop-Einstellungen“, enthält alle Einstellungen für PSeCommerce:
+Unser Freund, die Registerkarte „Shopeinstellungen“, enthält alle Einstellungen für PSeCommerce:
 
-![PSeCommerce – Shop-Einstellungen](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-3006-store-settings-tab.png)
+![PSeCommerce – Shopeinstellungen](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-3006-store-settings-tab.png)
 
   Wir stellen eine Inline-Dokumentation für alle Einstellungen innerhalb von PSeCommerce bereit, möchten jedoch bei der Einrichtung dieses neuen Shops insbesondere auf einige Punkte eingehen. **Digitale Downloads** Wenn Du vorhast, digitale Produkte in Deinem Shop anzubieten, solltest Du den Abschnitt „Download-Einstellungen“ unter „Store-Einstellungen“ -> „Allgemein“ lesen.
 
@@ -214,7 +214,7 @@ Unser Freund, die Registerkarte „Shop-Einstellungen“, enthält alle Einstell
 
   Von dort aus kannst Du PSeCommerce so konfigurieren, dass es mit dem auf Deiner Webseite verwendeten Tracking-Code funktioniert (unabhängig davon, ob Du den alten, neuen oder universellen Tracking-Code verwendest). **Store-Seiten** Wenn Du den Schritt weiter oben in der Schnelleinrichtung zum Erstellen der Store-Seiten übersprungen hast, solltest Du unbedingt zum Abschnitt „Store-Seiten“ unter: _Store-Einstellungen -> Präsentation_ gehen und diese Seiten einrichten. Du kannst für jede Shop-Seite auf die Schaltfläche „Seite erstellen“ klicken und PSeCommerce erstellt automatisch eine Seite für Dich:
 
-![PSeCommerce – Shop-Einstellungen – Shop-Seiten erstellen](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-3006-create-store-pages.png)
+![PSeCommerce – Shopeinstellungen – Shop-Seiten erstellen](https://premium.wpmudev.org/wp-content/uploads/2010/06/mp-3006-create-store-pages.png)
 
   **Produktattribute** In PSeCommerce werden diese auch als Variationen bezeichnet (auf die wir später eingehen). In diesem Abschnitt kannst Du verschiedene Attribute für Deine Produkte erstellen und ändern (z.B. Farbe, Größe, Gewicht usw.). Du kannst auch die Art und Weise der Sortierung und die Sortierung anpassen und sogar neue Optionen zu einem vorhandenen Attribut hinzufügen. **Produktkategorien/Produkt-Tags** Da Du mit ClassicPress Kategorien und Tags für Deine Beiträge erstellen kannst, kannst Du mit PSeCommerce über die Einstellungsseiten „Produktkategorien“ und „Produkt-Tags“ dasselbe für Deine Produkte tun. Denn wenn es um die Bereitstellung von Produkten geht, möchte man es dem Kunden möglichst einfach machen, das zu finden, was er sucht. **Funktionen** Dieser Abschnitt ist praktisch, wenn Du steuern möchtest, wie andere Deinen Shop verwalten können, oder sogar jemandem erlauben möchten, Deinen gesamten Shop zu verwalten, ohne ihn zum Administrator Deiner Webseite machen zu müssen! Tipp: Wenn Du eine spezielle Rolle für einen Shop-Administrator erstellen möchtest, kannst Du dazu ein Plugin wie [Benutzerrollen-Editor](https://wordpress.org/plugins/user-role-editor/) verwenden (Eine einfache Möglichkeit wäre, die Rolle „Abonnent“ zu duplizieren und dann einfach die gewünschten Berechtigungen auf der Seite „Funktionen“ in PSeCommerce zuzuweisen.) Wir werden uns später noch mit einigen anderen Einstellungen befassen, aber zunächst einmal erstellen wir unser erstes Produkt!
 

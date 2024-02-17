@@ -1,7 +1,7 @@
 /*
-Copyright 2024 DerN3rd
+Copyright 2012 Igor Vaynberg
 
-Version: 3.5.1
+Version: 3.5.0 Timestamp: Mon Jun 16 19:29:44 EDT 2014
 
 This software is licensed under the Apache License, Version 2.0 (the "Apache License") or the GNU
 General Public License version 2 (the "GPL License"). You may choose either license to govern your
@@ -18,7 +18,6 @@ Apache License or the GPL License is distributed on an "AS IS" BASIS, WITHOUT WA
 CONDITIONS OF ANY KIND, either express or implied. See the Apache License and the GPL License for
 the specific language governing permissions and limitations under the Apache License and the GPL License.
 */
-
 (function ($) {
     if(typeof $.fn.each2 == "undefined") {
         $.extend($.fn, {
@@ -429,12 +428,12 @@ the specific language governing permissions and limitations under the Apache Lic
                 if (handler && typeof handler.abort === "function") { handler.abort(); }
 
                 if (options.params) {
-                    if ($.isFunction(options.params)) {
+                    if (typeof options.params === 'function') {
                         $.extend(params, options.params.call(self));
                     } else {
                         $.extend(params, options.params);
                     }
-                }
+                }                
 
                 $.extend(params, {
                     url: url,
@@ -472,25 +471,25 @@ the specific language governing permissions and limitations under the Apache Lic
             tmp,
             text = function (item) { return ""+item.text; }; // function used to retrieve the text portion of a data item that is matched against the search
 
-         if ($.isArray(data)) {
+        if (Array.isArray(data)) {
             tmp = data;
             data = { results: tmp };
         }
 
-         if ($.isFunction(data) === false) {
-            tmp = data;
+        if (typeof data !== 'function') {
+            var tmp = data;
             data = function() { return tmp; };
-        }
+        }        
 
         var dataItem = data();
         if (dataItem.text) {
-            text = dataItem.text;
+            var text = dataItem.text;
             // if text is not a function we assume it to be a key name
-            if (!$.isFunction(text)) {
-                dataText = dataItem.text; // we need to store this in a separate variable because in the next step data gets reset and data.text is no longer available
+            if (typeof text !== 'function') {
+                var dataText = text; // we need to store this in a separate variable because in the next step data gets reset and data.text is no longer available
                 text = function (item) { return item[dataText]; };
             }
-        }
+        }        
 
         return function (query) {
             var t = query.term, filtered = { results: [] }, process;
@@ -526,11 +525,11 @@ the specific language governing permissions and limitations under the Apache Lic
 
     // TODO javadoc
     function tags(data) {
-        var isFunc = $.isFunction(data);
+        var isFunc = typeof data === 'function';
         return function (query) {
             var t = query.term, filtered = {results: []};
             var result = isFunc ? data(query) : data;
-            if ($.isArray(result)) {
+            if (Array.isArray(result)) {
                 $(result).each(function () {
                     var isObject = this.text !== undefined,
                         text = isObject ? this.text : this;
@@ -541,7 +540,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 query.callback(filtered);
             }
         };
-    }
+    }    
 
     /**
      * Checks if the formatter function should be used.
@@ -552,11 +551,11 @@ the specific language governing permissions and limitations under the Apache Lic
      * @param formatter
      */
     function checkFormatter(formatter, formatterName) {
-        if ($.isFunction(formatter)) return true;
+        if (typeof formatter === 'function') return true;
         if (!formatter) return false;
-        if (typeof(formatter) === 'string') return true;
-        throw new Error(formatterName +" must be a string, function, or falsy value");
-    }
+        if (typeof formatter === 'string') return true;
+        throw new Error(formatterName + " must be a string, function, or falsy value");
+    }    
 
   /**
    * Returns a given value
@@ -567,7 +566,7 @@ the specific language governing permissions and limitations under the Apache Lic
    * @returns {*}
    */
     function evaluate(val, context) {
-        if ($.isFunction(val)) {
+        if (typeof val === 'function') {
             var args = Array.prototype.slice.call(arguments, 2);
             return val.apply(context, args);
         }
@@ -804,14 +803,14 @@ the specific language governing permissions and limitations under the Apache Lic
 
             this.nextSearchTerm = undefined;
 
-            if ($.isFunction(this.opts.initSelection)) {
+            if (typeof this.opts.initSelection === 'function') {
                 // initialize selection based on the current value of the source element
                 this.initSelection();
-
+            
                 // if the user has provided a function that can set selection based on the value of the source element
                 // we monitor the change event on the element and trigger it, allowing for two way synchronization
                 this.monitorSource();
-            }
+            }            
 
             if (opts.maximumInputLength !== null) {
                 this.search.attr("maxlength", opts.maximumInputLength);
@@ -986,7 +985,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 opts.id = function (e) { return e[idKey]; };
             }
 
-            if ($.isArray(opts.element.data("select2Tags"))) {
+            if (Array.isArray(opts.element.data("select2Tags"))) {
                 if ("tags" in opts) {
                     throw "tags specified as both an attribute 'data-select2-tags' and in options of Select2 " + opts.element.attr("id");
                 }
@@ -1046,20 +1045,25 @@ the specific language governing permissions and limitations under the Apache Lic
                         if (opts.createSearchChoice === undefined) {
                             opts.createSearchChoice = function (term) { return {id: $.trim(term), text: $.trim(term)}; };
                         }
-                        if (opts.initSelection === undefined) {
+                        if (typeof opts.initSelection === 'undefined') {
                             opts.initSelection = function (element, callback) {
                                 var data = [];
                                 $(splitVal(element.val(), opts.separator)).each(function () {
                                     var obj = { id: this, text: this },
                                         tags = opts.tags;
-                                    if ($.isFunction(tags)) tags=tags();
-                                    $(tags).each(function() { if (equal(this.id, obj.id)) { obj = this; return false; } });
+                                    if (typeof tags === 'function') tags = tags();
+                                    $(tags).each(function () {
+                                        if (equal(this.id, obj.id)) {
+                                            obj = this;
+                                            return false;
+                                        }
+                                    });
                                     data.push(obj);
                                 });
-
+                        
                                 callback(data);
                             };
-                        }
+                        }                        
                     }
                 }
             }
@@ -1152,7 +1156,7 @@ the specific language governing permissions and limitations under the Apache Lic
 
             // some validation frameworks ignore the change event and listen instead to keyup, click for selects
             // so here we trigger the click event manually
-            this.opts.element.click();
+            this.opts.element.trigger('click');
 
             // ValidationEngine ignores the change event and listens instead to blur
             // so here we trigger the blur event manually if so desired
@@ -1706,7 +1710,7 @@ the specific language governing permissions and limitations under the Apache Lic
             var maxSelSize = this.getMaximumSelectionSize();
             if (maxSelSize >=1) {
                 data = this.data();
-                if ($.isArray(data) && data.length >= maxSelSize && checkFormatter(opts.formatSelectionTooBig, "formatSelectionTooBig")) {
+                if (Array.isArray(data) && data.length >= maxSelSize && checkFormatter(opts.formatSelectionTooBig, "formatSelectionTooBig")) {
                     render("<li class='select2-selection-limit'>" + evaluate(opts.formatSelectionTooBig, opts.element, maxSelSize) + "</li>");
                     return;
                 }
@@ -1909,11 +1913,11 @@ the specific language governing permissions and limitations under the Apache Lic
                     }
 
                     return null;
-                } else if ($.isFunction(this.opts.width)) {
+                } else if (typeof this.opts.width === 'function') {
                     return this.opts.width();
                 } else {
                     return this.opts.width;
-               }
+                }                
             };
 
             var width = resolveContainerWidth.call(this);
@@ -2320,9 +2324,9 @@ the specific language governing permissions and limitations under the Apache Lic
                             }
                             return is_match;
                         },
-                        callback: !$.isFunction(callback) ? $.noop : function() {
+                        callback: typeof callback !== 'function' ? $.noop : function() {
                             callback(match);
-                        }
+                        }                        
                     });
                 };
             }
@@ -2592,7 +2596,7 @@ the specific language governing permissions and limitations under the Apache Lic
                             }
                             return is_match;
                         },
-                        callback: !$.isFunction(callback) ? $.noop : function() {
+                        callback: typeof callback !== 'function' ? $.noop : function() {
                             // reorder matches based on the order they appear in the ids array because right now
                             // they are in the order in which they appear in data array
                             var ordered = [];
@@ -2609,6 +2613,7 @@ the specific language governing permissions and limitations under the Apache Lic
                             }
                             callback(ordered);
                         }
+                        
                     });
                 };
             }

@@ -1,7 +1,7 @@
 /*
-Copyright 2024 DerN3rd
+Copyright 2012 Igor Vaynberg
 
-Version: 3.5.1
+Version: 3.5.0 Timestamp: Mon Jun 16 19:29:44 EDT 2014
 
 This software is licensed under the Apache License, Version 2.0 (the "Apache License") or the GNU
 General Public License version 2 (the "GPL License"). You may choose either license to govern your
@@ -18,7 +18,6 @@ Apache License or the GPL License is distributed on an "AS IS" BASIS, WITHOUT WA
 CONDITIONS OF ANY KIND, either express or implied. See the Apache License and the GPL License for
 the specific language governing permissions and limitations under the Apache License and the GPL License.
 */
-
 (function ($) {
     if(typeof $.fn.each2 == "undefined") {
         $.extend($.fn, {

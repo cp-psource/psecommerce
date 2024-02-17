@@ -4,7 +4,7 @@
 }
 
 .form-control .select2-choice .select2-arrow {
-    border-radius: 0 2px 2px 0;
+    border-radius: 0 2px 2px 0;   
 }
 
 .form-control.select2-container {
@@ -85,6 +85,3 @@
     border-left: 1px solid #468847 !important;
     background: #DFF0D8 !important;
 }
-
-
-/* 553479-1557340715-au */

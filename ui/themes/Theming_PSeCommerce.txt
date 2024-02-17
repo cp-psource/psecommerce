@@ -15,7 +15,7 @@ Basic Styles:
       PSeCommerce Style: CUSTOMNAME
       */
       Including this header will cause your custom theme to show in the dropdown on the
-      Shop Einstellungen -> Presentation page so it may be selected.
+      Shopeinstellungen -> Presentation page so it may be selected.
   3. You can also optionally create a subdirectory for your css images in the /wp-content/psecommerce-styles/ folder and
       link to images within it with relative urls like "image-folder/my-image.jpg".
       

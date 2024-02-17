@@ -193,7 +193,7 @@ class PSOURCE_Field_Quick_Setup extends PSOURCE_Field {
 					<div class="mp_content_col mp_content_col-one-half">
 						<span class="dashicons dashicons-admin-settings mp_icon mp_icon-stack mp_icon-gray mp_icon-big"></span>
 						<p><?php _e( '<strong> Konfiguriere </strong> Versandkosten, E-Mails und das Erscheinungsbild Deines Shops. ', 'mp' ); ?></p>
-						<a href="<?php echo admin_url( 'admin.php?page=shop-einstellungen' ); ?>" class="button-primary mp_button mp_button-configure-store"><?php _e( 'Shop Einstellungen', 'mp' ); ?></a>
+						<a href="<?php echo admin_url( 'admin.php?page=shop-einstellungen' ); ?>" class="button-primary mp_button mp_button-configure-store"><?php _e( 'Shopeinstellungen', 'mp' ); ?></a>
 					</div>
 				</div><!-- end mp_callout -->
 			</div><!-- end mp_quick_setup_content_step-3 -->
