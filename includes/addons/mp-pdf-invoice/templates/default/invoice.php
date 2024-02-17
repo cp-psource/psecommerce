@@ -15,19 +15,13 @@
 	}
 
 	.header img {
-		max-height: 120px;
-		width: 300px;	
-	}
-	
-	.header h2 {
-	    font-size: 25px;
-		font-weight: normal;
+		max-height: 60px;
+		width: auto;
 	}
 
 	.header h3 {
 		font-size: 20pt;
 		font-weight: normal;
-		text-align: center;
 	}
 
 	.clear {
@@ -63,7 +57,6 @@
 <div class="container">
 	<div class="header">
 		{{logo}}
-		<h2>{{shop_name}}</h2>
 
 		<h3><?php _e( "Rechnung", "mp" ) ?> #{{order_id}}</h3>
 	</div>
@@ -75,7 +68,7 @@
 			</td>
 			<?php if ( $show_shipping == true ): ?>
 				<td>
-					<strong><?php _e( "Lieferadresse", "mp" ) ?></strong><br>
+					<strong><?php _e( "Lieferanschrift", "mp" ) ?></strong><br>
 					{{shipping}}
 				</td>
 			<?php endif; ?>
@@ -96,9 +89,4 @@
 		{{order_details}}
 		</tbody>
 	</table>
-	    {{footer}}
-	<br/>
-    <strong><?php _e( "Shopanschrift:", "mp" ) ?></strong>
-	    {{shop_address}}
 </div>
-   

@@ -58,17 +58,17 @@
 	<div class="header">
 		{{logo}}
 
-		<h3><?php _e( "Lieferschein", "mp" ) ?> #{{order_id}}</h3>
+		<h3><?php _e( "Packing Slip", "mp" ) ?> #{{order_id}}</h3>
 	</div>
 	<table>
 		<tr>
 			<td>
-				<strong><?php _e( "Rechnungsadresse", "mp" ) ?></strong><br>
+				<strong><?php _e( "Billing Address", "mp" ) ?></strong><br>
 				{{billing}}
 			</td>
 			<?php if ( $show_shipping == true ): ?>
 				<td>
-					<strong><?php _e( "Lieferadresse", "mp" ) ?></strong><br>
+					<strong><?php _e( "Shipping Address", "mp" ) ?></strong><br>
 					{{shipping}}
 				</td>
 			<?php endif; ?>
@@ -83,8 +83,8 @@
 	<table class="product-detail">
 		<thead>
 		<tr>
-			<th><?php _e( "Produktname", "mp" ) ?></th>
-			<th><?php _e( "Menge", "mp" ) ?></th>
+			<th><?php _e( "Product Name", "mp" ) ?></th>
+			<th><?php _e( "Quantity", "mp" ) ?></th>
 		</tr>
 		</thead>
 		<tbody>

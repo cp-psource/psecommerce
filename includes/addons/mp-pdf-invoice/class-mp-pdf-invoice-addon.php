@@ -1,8 +1,9 @@
 <?php
 
-namespace MP_PDF_Invoice_Addon;
-
-use MP_PDF_Invoice_Addon\MP_PDF_Invoice;
+/**
+ * @author: Hoang Ngo
+ */
+require_once dirname( __FILE__ ) . '/class-mp-pdf-invoice.php';
 
 class MP_PDF_Invoice_Addon {
 
@@ -63,16 +64,16 @@ class MP_PDF_Invoice_Addon {
 	public function generate_pdf() {
 		$order_id = mp_get_get_value( 'order_id', null );
 		if ( $order_id == null ) {
-			die( __( "Ungültige ID", "mp" ) );
+			die( __( "Invalid ID", "mp" ) );
 		}
 		//check does order exist
 		$order = new MP_Order( $order_id );
 		if ( $order->exists() == false ) {
-			die( __( "Bestellung existiert nicht!", "mp" ) );
+			die( __( "Order not exist!", "mp" ) );
 		}
 		//check nonce
 		if ( ! wp_verify_nonce( mp_get_get_value( 'wpnonce' ), $order->ID ) ) {
-			die( __( "Ungültige Anfrage", "mp" ) );
+			die( __( "Invalid Request", "mp" ) );
 		}
 		//check does order belong to right
 		if ( get_current_user_id() == $order->post_author || current_user_can( 'manage_options' ) ) {
@@ -99,13 +100,13 @@ class MP_PDF_Invoice_Addon {
 						$settings = mp_get_setting( 'pdf_invoice' );
 						$gen->generate_pdf( $order->get_id(), mp_get_get_value( 'type', MP_PDF_Invoice::PDF_INVOICE ), $settings['download'] == 'download' ? true : false );
 					} else {
-						die( __( "Du kannst diese Bestellrechnung nicht herunterladen", "mp" ) );
+						die( __( "You can't download this order invoice", "mp" ) );
 					}
 				} else {
-					die( __( "Du kannst diese Bestellrechnung nicht herunterladen", "mp" ) );
+					die( __( "You can't download this order invoice", "mp" ) );
 				}
 			} else {
-				die( __( "Du kannst diese Bestellrechnung nicht herunterladen", "mp" ) );
+				die( __( "You can't download this order invoice", "mp" ) );
 			}
 		}
 	}
@@ -154,7 +155,7 @@ class MP_PDF_Invoice_Addon {
 	 * @since 3.0
 	 */
 	public function add_meta_box() {
-		add_meta_box( 'mp-order-pdf-metabox', __( 'Exportiere PDF', 'mp' ), array(
+		add_meta_box( 'mp-order-pdf-metabox', __( 'Export PDF', 'mp' ), array(
 			&$this,
 			'show_ipn_button_on_order_admin_detail'
 		), 'mp_order', 'side', 'high' );
@@ -189,66 +190,65 @@ class MP_PDF_Invoice_Addon {
 	 * @since 3.0
 	 */
 	public function view_settings() {
-		$metabox = new PSOURCE_Metabox( array(
+		$metabox = new WPMUDEV_Metabox( array(
 			'id'          => 'mp-invoice-pdf-general-metabox',
-			'title'       => __( 'Basiseinstellungen', 'mp' ),
-			'page_slugs'  => array( 'shop-einstellungen-addons' ),
+			'title'       => __( 'General Settings', 'mp' ),
+			'page_slugs'  => array( 'store-settings-addons' ),
 			'option_name' => 'mp_settings',
 		) );
 		$metabox->add_field( 'select', array(
 			'name'          => 'pdf_invoice[download]',
 			'options'       => array(
-				'download' => __( "PDF RUNTERLADEN", 'mp' ),
-				'new_tab'  => __( "Öffne die PDF-Datei in einem neuen Browser-Tab/Fenster", 'mp' )
+				'download' => __( "Download the PDF", 'mp' ),
+				'new_tab'  => __( "Open the PDF in a new browser tab/window", 'mp' )
 			),
-			'label'         => array( 'text' => __( 'Wie möchtest Du das PDF anzeigen?', 'mp' ) ),
-			'default_value' => __( 'Herunterladen', 'mp' ),
+			'label'         => array( 'text' => __( 'How do you want to view the PDF?', 'mp' ) ),
+			'default_value' => __( 'download', 'mp' ),
 		) );
 		$metabox->add_field( 'checkbox_group', array(
 			'name'    => 'pdf_invoice[attach_to]',
 			'options' => array(
-				'admin_new_order'        => __( "Admin Neue Bestellung Email", "mp" ),
-				'customer_new_order'     => __( "Kunde Neue Bestellung Email", "mp" ),
+				'admin_new_order'        => __( "Admin New Order email", "mp" ),
+				'customer_new_order'     => __( "Customer New Order email", "mp" ),
 				//'admin_shipped_order'    => __( "Admin Order Shipped email", "mp" ),
-				'customer_shipped_order' => __( "Kunde Versand Email", "mp" )
+				'customer_shipped_order' => __( "Customer Order Shipped email", "mp" )
 			),
-			'label'   => array( 'text' => __( 'Rechnung anhängen', 'mp' ) )
+			'label'   => array( 'text' => __( 'Attach invoice to', 'mp' ) )
 		) );
 		$metabox->add_field( 'checkbox', array(
 			'name'    => 'pdf_invoice[quit_on_free]',
-			'label'   => array( 'text' => __( "Für kostenlose Produkte deaktivieren", "mp" ) ),
-			'message' => __( "Deaktiviere das automatische Erstellen/Anhängen von Rechnungen, wenn nur kostenlose Produkte bestellt werden", "mp" )
+			'label'   => array( 'text' => __( "Disable for free products", "mp" ) ),
+			'message' => __( "Disable automatic creation/attachment of invoices when only free products are ordered", "mp" )
 		) );
 
-		$metabox   = new PSOURCE_Metabox( array(
+		$metabox   = new WPMUDEV_Metabox( array(
 			'id'          => 'mp-invoice-pdf-template-metabox',
-			'title'       => __( 'Vorlageneinstellungen', 'mp' ),
-			'page_slugs'  => array( 'shop-einstellungen-addons' ),
+			'title'       => __( 'Template Settings', 'mp' ),
+			'page_slugs'  => array( 'store-settings-addons' ),
 			'option_name' => 'mp_settings',
 		) );
 		$templates = $this->scan_templates();
 		$metabox->add_field( 'select', array(
 			'name'    => 'pdf_invoice[template]',
-			'label'   => array( 'text' => __( "Vorlage wählen", 'mp' ) ),
-			'desc'    => __( "Wenn bei der Rechnungserstellung Probleme auftreten, füge der Datei wp-config.php <code>define( 'DOMPDF_ENABLE_HTML5PARSER', true );</code> hinzu.", 'mp' ),
+			'label'   => array( 'text' => __( "Choose a template", 'mp' ) ),
 			'options' => $templates
 		) );
 		$metabox->add_field( 'file', array(
 			'name'  => 'pdf_invoice[template_logo]',
-			'label' => array( 'text' => __( "Shop Header/Logo", "mp" ) ),
+			'label' => array( 'text' => __( "Shop header/logo", "mp" ) ),
 		) );
-		$metabox->add_field( 'text', array(
+		/*$metabox->add_field( 'text', array(
 			'name'  => 'pdf_invoice[shop_name]',
-			'label' => array( 'text' => __( "Shop Name", "mp" ) )
+			'label' => array( 'text' => __( "Shop name", "mp" ) )
 		) );
 		$metabox->add_field( 'textarea', array(
 			'name'  => 'pdf_invoice[shop_address]',
-			'label' => array( 'text' => __( "Shop Addresse", "mp" ) )
+			'label' => array( 'text' => __( "Shop Address", "mp" ) )
 		) );
 		$metabox->add_field( 'textarea', array(
 			'name'  => 'pdf_invoice[footer]',
-			'label' => array( 'text' => __( "Rechnungshinweis (zB. Rücktrittsrecht/Kleinunternehmerregelung)", "mp" ) )
-		) );
+			'label' => array( 'text' => __( "Footer", "mp" ) )
+		) );*/
 	}
 
 	private function scan_templates() {

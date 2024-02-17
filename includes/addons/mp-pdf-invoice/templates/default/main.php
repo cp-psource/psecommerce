@@ -1,6 +1,6 @@
 <?php
 /**
  * Name: Default
- * Description: Default template for PSeCommerce invoice
+ * Description: Default template for MarketPress invoice
  */
 //only for information

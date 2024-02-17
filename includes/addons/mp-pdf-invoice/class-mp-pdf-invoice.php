@@ -1,14 +1,7 @@
 <?php
 
-namespace MP_PDF_Invoice_Addon;
-
 use Dompdf\Dompdf;
-
-$dompdf = new Dompdf();
-$options = $dompdf->getOptions();
-$options->setDefaultFont('Courier');
-$dompdf->setOptions($options);
-
+use Dompdf\Options;
 class MP_PDF_Invoice {
 
 	const PDF_INVOICE = 'invoice', PDF_SLIP = 'slip';
@@ -50,7 +43,7 @@ class MP_PDF_Invoice {
 				'type'     => $type
 			);
 			$http_params = apply_filters( 'mp_pdf_invoice_button_params', $http_params, $type, $order );
-			$html        = sprintf( '<a target="_blank" href="%s" class="button">%s</a>', add_query_arg( $http_params, admin_url( 'admin-ajax.php' ) ), $type == self::PDF_INVOICE ? __( "PDF Rechnung", "mp" ) : __( "PDF Packzettel", "mp" )
+			$html        = sprintf( '<a target="_blank" href="%s" class="button">%s</a>', add_query_arg( $http_params, admin_url( 'admin-ajax.php' ) ), $type == self::PDF_INVOICE ? __( "PDF Invoice", "mp" ) : __( "PDF Packing Slip", "mp" )
 			);
 
 			return apply_filters( 'mp_pdf_invoice_button', $html, $http_params, $type, $order );
@@ -187,7 +180,7 @@ class MP_PDF_Invoice {
 
 
 		$email = '';
-
+		
 		$order_items  = $order->get_meta( 'mp_cart_items' );
 		$order_details = array();
 		$cart          = $order->get_cart();
@@ -205,7 +198,7 @@ class MP_PDF_Invoice {
 				foreach ( $items as $item ){
 					$order_details[] = sprintf( '<tr><td>%s</td><td>%s</td><td>%s</td></tr>', $item['name'], $item['quantity'], mp_format_currency( '', $item['price'] )
 					);
-				}
+				}								
 			}
 			//times for the subtotal
 			$order_details[] = sprintf( '<tr><td class="no-bg">%s</td><td class="no-bg">%s</td><td>%s</td></tr>', '', __( "Zwischensumme", "mp" ), $cart->product_total( true ) );
@@ -238,7 +231,7 @@ class MP_PDF_Invoice {
 
 			$order_details = apply_filters( 'mp_pdf_invoice/order_details/after_total', $order_details, $order, $cart, $type );
 
-			$order_details[] = sprintf( '<tr><td class="no-bg">%s</td><td class="no-bg"></td><td class="no-bg"></td></tr>', sprintf( __( "Bezahlverfahren: %s", "mp" ), $gateway ) );
+			$order_details[] = sprintf( '<tr><td class="no-bg">%s</td><td class="no-bg"></td><td class="no-bg"></td></tr>', sprintf( __( "Zahlungsart: %s", "mp" ), $gateway ) );
 
 			$order_details = apply_filters( 'mp_pdf_invoice/order_details/after_payment_method', $order_details, $order, $cart, $type );
 
@@ -261,7 +254,7 @@ class MP_PDF_Invoice {
 
 			$email = sprintf( __( "Email: %s", "mp" ), $billing_email );
 			if ( $shipping_email != $billing_email ) {
-				$email .= '<br/>' . sprintf( __( "Versand Email: %s", "mp" ), $shipping_email );
+				$email .= '<br/>' . sprintf( __( "Shipping Email: %s", "mp" ), $shipping_email );
 			}
 			//rejoin billing & shipping
 			$billing  = implode( '<br/>', $billing );
@@ -272,23 +265,8 @@ class MP_PDF_Invoice {
 		//prepare logo
 		$logo = '';
 		if ( ! empty( $this->settings['template_logo'] ) && function_exists( 'gd_info' ) ) {
-			$logo = sprintf( '<img width="250" height="80" src="%s"/>', $this->settings['template_logo'] );
+			$logo = sprintf( '<img height="80" src="%s"/>', $this->settings['template_logo'] );
 		}
-		
-		$shop_name = '';
-			if ( ! empty( $this->settings['shop_name'] ) && function_exists( 'gd_info' ) ) {
-				$shop_name .= '<br/>' . sprintf( __( "%s", "mp" ), $this->settings['shop_name'] );
-			}
-		
-		$footer = '';
-			if ( ! empty( $this->settings['footer'] ) && function_exists( 'gd_info' ) ) {
-				$footer .= '<br/>' . sprintf( __( "%s", "mp" ), $this->settings['footer'] );
-			}
-		
-		$shop_address = '';
-			if ( ! empty( $this->settings['shop_address'] ) && function_exists( 'gd_info' ) ) {
-				$shop_address .= '<br/>' . sprintf( __( "%s", "mp" ), $this->settings['shop_address'] );
-			}
 
 		$template = $this->settings['template'];
 		if ( empty( $template ) ) {
@@ -310,8 +288,6 @@ class MP_PDF_Invoice {
 		} else {
 			$show_shipping = true;
 		}
-		
-		
 		ob_start();
 		include $template;
 
@@ -322,12 +298,7 @@ class MP_PDF_Invoice {
 			'{{shipping}}'      => $shipping,
 			'{{order_details}}' => $order_details,
 			'{{logo}}'          => $logo,
-			'{{email}}'         => $email,
-			'{{footer}}'        => $footer,
-			'{{shop_name}}'     => $shop_name,
-			'{{shop_address}}'  => $shop_address,
-				
-			
+			'{{email}}'         => $email
 		);
 		$data = apply_filters( 'mp_pdf_invoice_params', $data );
 
