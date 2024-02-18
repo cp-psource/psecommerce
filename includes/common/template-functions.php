@@ -1045,6 +1045,7 @@ if ( ! function_exists( 'mp_format_currency' ) ) :
 
 		if ( $amount < 0 ) {
 			$negative_symbol = '-';
+			$amount = floatval($amount);
 			$amount          = abs( $amount );
 		}
 
