@@ -148,8 +148,7 @@ class MP_Public {
 	 * @access protected
 	 */
 	public function session_start() {
-		$sess_id = session_id();
-		if ( empty( $sess_id ) ) {
+		if (!session_id()) {
 			@session_start();
 		}
 	}
