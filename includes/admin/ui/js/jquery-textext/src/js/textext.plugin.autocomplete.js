@@ -456,15 +456,14 @@
 	 * @date 2011/08/17
 	 * @id TextExtAutocomplete.onAnyKeyUp
 	 */
-	p.onAnyKeyUp = function(e, keyCode)
-	{
+	p.on('keyup', function(e, keyCode) {
 		var self          = this,
 			isFunctionKey = self.opts('keys.' + keyCode) != null
 			;
 
 		if(self.val().length > 0 && !isFunctionKey)
 			self.getSuggestions();
-	};
+	});
 
 	/**
 	 * Reacts to the `downKeyDown` event triggered by the TextExt core.

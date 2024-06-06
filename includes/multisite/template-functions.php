@@ -333,57 +333,62 @@ if ( ! function_exists( 'mp_global_list_products' ) ) {
 }
 
 if ( ! function_exists( 'mp_global_products_nav' ) ) {
-	function mp_global_products_nav( $echo = true, $per_page, $count ) {
-		$html      = '';
-		$paged     = 1;
-		$max_pages = ceil( $count / $per_page );
+    function mp_global_products_nav( $per_page, $count, $echo = true ) {
+        $html      = '';
+        $paged     = 1;
 
-		if ( $max_pages > 1 ) {
-			$big = 999999999;
-			
-			if ( get_query_var( 'paged' ) != '' ) {
-				$paged  = intval( get_query_var( 'paged' ) );
-			} elseif ( get_query_var( 'page' ) != '' ) {
-				$paged  = intval( get_query_var( 'page' ) );
-			}
+        // Überprüfen, ob sowohl $per_page als auch $count gültige Werte haben
+        if ( $per_page > 0 && $count > 0 ) {
+            $max_pages = ceil( $count / $per_page );
 
-			$html = '
-				<nav class="mp_listings_nav">';
+            if ( $max_pages > 1 ) {
+                $big = 999999999;
+                
+                if ( get_query_var( 'paged' ) != '' ) {
+                    $paged  = intval( get_query_var( 'paged' ) );
+                } elseif ( get_query_var( 'page' ) != '' ) {
+                    $paged  = intval( get_query_var( 'page' ) );
+                }
 
-			$html .= paginate_links( array(
-				'base'         => '?paged=%#%', //'%_%',
-				'format'       => '', //?paged=%#%
-				'total'        => $max_pages,
-				'current'      => max( 1, $paged ),
-				'show_all'     => false,
-				'prev_next'    => true,
-				'prev_text'    => __( 'Prev', 'mp' ),
-				'next_text'    => __( 'Next', 'mp' ),
-				'add_args'     => true,
-				'add_fragment' => '',
-			) );
+                $html = '
+                    <nav class="mp_listings_nav">';
 
-			$html .= '
-				</nav>';
-		}
+                $html .= paginate_links( array(
+                    'base'         => '?paged=%#%', //'%_%',
+                    'format'       => '', //?paged=%#%
+                    'total'        => $max_pages,
+                    'current'      => max( 1, $paged ),
+                    'show_all'     => false,
+                    'prev_next'    => true,
+                    'prev_text'    => __( 'Prev', 'mp' ),
+                    'next_text'    => __( 'Next', 'mp' ),
+                    'add_args'     => true,
+                    'add_fragment' => '',
+                ) );
 
-		/**
-		 * Filter the products nav html
-		 *
-		 * @since 3.0
-		 *
-		 * @param string $html
-		 * @param WP_Query $custom_query
-		 */
-		$html = apply_filters( 'mp_global_products_nav', $html, $per_page );
+                $html .= '
+                    </nav>';
+            }
+        }
 
-		if ( $echo ) {
-			echo $html;
-		} else {
-			return $html;
-		}
-	}
+        /**
+         * Filter the products nav html
+         *
+         * @since 3.0
+         *
+         * @param string $html
+         * @param WP_Query $custom_query
+         */
+        $html = apply_filters( 'mp_global_products_nav', $html, $per_page );
+
+        if ( $echo ) {
+            echo $html;
+        } else {
+            return $html;
+        }
+    }
 }
+
 
 if ( ! function_exists( 'mp_global_products_filter' ) ) :
 

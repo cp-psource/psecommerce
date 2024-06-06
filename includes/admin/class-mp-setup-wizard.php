@@ -392,11 +392,23 @@ class MP_Setup_Wizard {
 					'required' => true,
 				),
 			) );
+
 			$metabox->add_field( 'text', array(
 				'name'		 => 'base_city',
 				'label'		 => array( 'text' => __( 'Stadt/Ort', 'mp' ) ),
 				'custom'	 => array(
 					'style' => 'width:300px',
+				),
+				'validation' => array(
+					'required' => true,
+				),
+			) );
+
+			$metabox->add_field( 'text', array(
+				'name'       => 'zip_label',
+				'label'      => array( 'text' => __( 'Zip/Postal Code Label', 'mp' ) ),
+				'custom'     => array(
+					'style' => 'max-width: 300px',
 				),
 				'validation' => array(
 					'required' => true,
@@ -419,7 +431,7 @@ class MP_Setup_Wizard {
 				'desc'                   => __( 'In diese Länder wirst Du verkaufen.', 'mp' ),
 				'options'                => mp_popular_country_list() + array( 'all_countries' => __( 'Alle Länder', 'mp' ) ) + mp_country_list(),
 				//all_countries|disabled
-				//'default_value'          => array( 'AT' => __( 'Österreich', 'mp' ) ),
+				//'default_value'          => array( 'all_countries' => __( 'Alle Länder', 'mp' ) ),
 				'placeholder'            => __( 'Wähle Zielländer', 'mp' ),
 				/*
 				'format_dropdown_header' => '
@@ -485,7 +497,7 @@ class MP_Setup_Wizard {
 				'validation'  => array(
 					'number' => true,
 				),
-				'placeholder' => '10',
+				'placeholder' => '20',
 				'conditional' => array(
 					'name'   => 'base_country',
 					'value'  => 'CA',

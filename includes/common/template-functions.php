@@ -884,7 +884,7 @@ if ( ! function_exists( 'mp_create_store_page' ) ) :
 				break;
 			case 'network_categories' :
 				$args = array(
-					'post_title'     => __( 'Shopkategorie', 'mp' ),
+					'post_title'     => __( 'Netzwerkartikel Kategorien', 'mp' ),
 					'post_content'   => __( "[mp_global_categories_list]", 'mp' ),
 					'comment_status' => 'closed',
 					'post_parent'    => mp_get_network_setting( 'pages->network_store_page', 0 ),
@@ -892,7 +892,7 @@ if ( ! function_exists( 'mp_create_store_page' ) ) :
 				break;
 			case 'network_tags' :
 				$args = array(
-					'post_title'     => __( 'Tag', 'mp' ),
+					'post_title'     => __( 'Shopnetzwerk Tags', 'mp' ),
 					'post_content'   => __( "[mp_global_tag_cloud]", 'mp' ),
 					'comment_status' => 'closed',
 					'post_parent'    => mp_get_network_setting( 'pages->network_store_page', 0 ),
