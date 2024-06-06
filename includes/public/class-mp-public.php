@@ -594,13 +594,11 @@ class MP_Public {
 	 * @action init
 	 */
 	public function maybe_session_start() {
-		if ( ! mp_is_shop_page( 'checkout' ) && ! mp_is_shop_page( 'cart' ) ) {
-			return;
+		if ( mp_is_shop_page( 'checkout' ) || mp_is_shop_page( 'cart' ) ) {
+			$this->session_start();
 		}
-
-		$this->session_start();
 	}
-
+	
 	/**
 	 * Hide the post thumbnail on single product, product category and product tag templates
 	 *
