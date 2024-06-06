@@ -45,10 +45,6 @@ class MP_Public {
 	 * @access private
 	 */
 	private function __construct() {
-        // Start a session only if it's not already started
-        if (session_id() === '') {
-            session_start();
-		}
 		//$this->includes();
 		add_action( 'wp', array( $this, 'disable_caching' ) );
 
@@ -595,7 +591,9 @@ class MP_Public {
 	 */
 	public function maybe_session_start() {
 		if ( mp_is_shop_page( 'checkout' ) || mp_is_shop_page( 'cart' ) ) {
-			$this->session_start();
+			if ( session_id() === '' ) {
+				session_start();
+			}
 		}
 	}
 	

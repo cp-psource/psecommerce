@@ -520,6 +520,8 @@ class MP_Ajax {
 	 * @action wp_ajax_nopriv_mp_update_product_list, wp_ajax_mp_update_product_list
 	 */
 	public function update_product_list() {
+		// Start session if not already started
+		$this->session_start();
 		$page		 = mp_get_post_value( 'page', 1 );
 		$per_page	 = mp_get_post_value( 'per_page', 1 );
 		$category	 = mp_get_post_value( 'product_category' );
