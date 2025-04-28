@@ -82,6 +82,24 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
   var $ipn_url;
 
 	/**
+   * Contains the return URL for the payment gateway.
+   *
+   * @since 3.0
+   * @access public
+   * @var string
+   */
+  var $returnURL;
+
+	/**
+   * Contains the cancel URL for the payment gateway.
+   *
+   * @since 3.0
+   * @access public
+   * @var string
+   */
+  var $cancelURL;
+
+	/**
    * Whether if this is the only enabled gateway it can skip the payment_form step.
    *
    * @since 3.0
