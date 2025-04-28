@@ -1,4 +1,4 @@
-=== PSeCommerce - ClassicPress eCommerce  ===
+=== MarketPress - ClassicPress eCommerce  ===
 Contributors: WMS N@W
 Tags: E-commerce, ecommerce, storefront, sell, store, shopping, cart, payment gateways, digital downloads, online store
 Requires at least: 3.7
@@ -10,20 +10,20 @@ Leistungsstarker E-Commerce-Marktplatz für ClassicPress und Multisite. 100 % ko
 
 == Beschreibung ==
 
-PSeCommerce E-Commerce ist eine völlig kostenlose Premium-Online-Storefront für ClassicPress und Multisite.
+MarketPress E-Commerce ist eine völlig kostenlose Premium-Online-Storefront für ClassicPress und Multisite.
 
 Verkaufe alles von digitalen Downloads bis hin zu physischen Waren in allen Formen und Größen, biete Produktvarianten und Sofort-Downloads auf einem benutzerfreundlichen Online-Marktplatz an.
 
 = Das einzige Premium- und völlig kostenlose E-Commerce-Plugin =
 
-Du musst nicht Hunderte von Dollar für den Kauf von Add-ons oder speziellen Lizenzen ausgeben. PSeCommerce vereint die Leistungsfähigkeit Dutzender verschiedener Plugins in einem soliden eigenständigen E-Commerce-Produkt.
+Du musst nicht Hunderte von Dollar für den Kauf von Add-ons oder speziellen Lizenzen ausgeben. MarketPress vereint die Leistungsfähigkeit Dutzender verschiedener Plugins in einem soliden eigenständigen E-Commerce-Produkt.
 
 
 = Funktionen =
 
-Mit PSeCommerce könnte die Einrichtung Deines eigenen Online-Shops nicht einfacher sein. Features sind:
+Mit MarketPress könnte die Einrichtung Deines eigenen Online-Shops nicht einfacher sein. Features sind:
 
-* Mit PSeCommerce könnte die Einrichtung Deines eigenen Online-Shops nicht einfacher sein. Features sind:
+* Mit MarketPress könnte die Einrichtung Deines eigenen Online-Shops nicht einfacher sein. Features sind:
 * Vollständige Suite mit 15 Zahlungsgateways
 * Wähle aus 120 verschiedenen Währungen als Standardwährung
 * Vollständig internationalisiert durch die WPML-Crew
@@ -53,25 +53,25 @@ Mit PSeCommerce könnte die Einrichtung Deines eigenen Online-Shops nicht einfac
 
 = Ohne Code anpassen =
 
-PSeCommerce ist so konzipiert, dass es problemlos mit jedem gut codierten ClassicPress-Theme funktioniert.
+MarketPress ist so konzipiert, dass es problemlos mit jedem gut codierten ClassicPress-Theme funktioniert.
 
 * Mithilfe von Shortcodes und integrierten Widgets kannst Du Elemente überall auf Deiner Webseite anzeigen
 * Enthält CSS-Stilvoreinstellungen
 * Miniaturansichten/Bilder des Produkts mit Lightbox-Zoom
 
-Oder lade eines unserer Upfront-Themes mit integrierten PSeCommerce-Stilen und einem leistungsstarken visuellen Drag-and-Drop-Frontend-Theme-Editor herunter.
+Oder lade eines unserer Upfront-Themes mit integrierten MarketPress-Stilen und einem leistungsstarken visuellen Drag-and-Drop-Frontend-Theme-Editor herunter.
 
 = Multisite- und BuddyPress-kompatibel =
 
 Richte Dein eigenes Shop-Netzwerk im eBay- oder Etsy-Stil ein und erhalte einen Prozentsatz jedes Verkaufs.
 
-Ganz gleich, ob Du eine einzelne Storefront online oder ein ganzes E-Commerce-Netzwerk für Geschäfte einrichten möchtest, PSeCommerce ist die Lösung der Wahl.
+Ganz gleich, ob Du eine einzelne Storefront online oder ein ganzes E-Commerce-Netzwerk für Geschäfte einrichten möchtest, MarketPress ist die Lösung der Wahl.
 
 ★★★★★
-„Ich liebe dieses Plugin! Andere E-Commerce-Plugins waren einfach kompliziert. Ich habe PSeCommerce gestern eingerichtet und bin heute Morgen mit reibungslosen Verkäufen aufgewacht!“
+„Ich liebe dieses Plugin! Andere E-Commerce-Plugins waren einfach kompliziert. Ich habe MarketPress gestern eingerichtet und bin heute Morgen mit reibungslosen Verkäufen aufgewacht!“
 
 ★★★★★
-„Ich hätte es nie für möglich gehalten, aber hier tue ich es. Ich habe mit PSeCommerce ein Netzwerk im Etsy-Stil gestartet. Wirklich schöne Arbeit. Mit Woo geht das nicht!“
+„Ich hätte es nie für möglich gehalten, aber hier tue ich es. Ich habe mit MarketPress ein Netzwerk im Etsy-Stil gestartet. Wirklich schöne Arbeit. Mit Woo geht das nicht!“
 
 = Kostenlose Zahlungsgateways =
 Akzeptiere Zahlungen über eines der 15 integrierten beliebten Zahlungsgateways, darunter Stripe, PayPal und Authorize.net.
@@ -96,19 +96,19 @@ Akzeptiere Zahlungen über eines der 15 integrierten beliebten Zahlungsgateways,
 Versende mit Zuversicht überall auf der Welt. Nutze Flatrate-Versandkosten oder richte Dich mit Tabellen- oder Gewichtstarifen nach einer spezifischen Distributionslogistik
 
 = Google Analytics =
-PSeCommerce ist sowohl mit Google Universal Analytics als auch mit Google Analytics eCommerce kompatibel. Verfolge Verkäufe und Webseiten-Aktivitäten und steigere Dein Geschäft
+MarketPress ist sowohl mit Google Universal Analytics als auch mit Google Analytics eCommerce kompatibel. Verfolge Verkäufe und Webseiten-Aktivitäten und steigere Dein Geschäft
  
 = Social Sharing =
-Gehe viral mit den enthaltenen Share-Buttons für Pinterest, Facebook und Twitter. Mit PSeCommerce können Deine Kunden Deine Produkte ganz einfach mit ihren Freunden und ihrer Familie teilen.
+Gehe viral mit den enthaltenen Share-Buttons für Pinterest, Facebook und Twitter. Mit MarketPress können Deine Kunden Deine Produkte ganz einfach mit ihren Freunden und ihrer Familie teilen.
 
 = Automatisierter Inventarmanager =
-Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber, wann es Zeit ist, den Vorrat aufzufüllen – oder blendet Produkte automatisch aus, wenn sie nicht mehr verfügbar sind.
+Wenn eines Deiner Produkte zur Neige geht, informiert Dich MarketPress darüber, wann es Zeit ist, den Vorrat aufzufüllen – oder blendet Produkte automatisch aus, wenn sie nicht mehr verfügbar sind.
 
 
 == Installation ==
 = Zur Installation: =
 
-1. Laden Sie die PSeCommerce-Plugin-Datei herunter
+1. Laden Sie die MarketPress-Plugin-Datei herunter
 2. Entpacken Sie die Datei in einen Ordner auf Ihrer Festplatte
 3. Laden Sie den Ordner „/wordpress-ecommerce/“ in den Ordner „/wp-content/plugins/“ auf Ihrer Website hoch
 4. Besuchen Sie Ihr Dashboard -> Plugins und aktivieren Sie es dort.
@@ -152,13 +152,13 @@ Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber,
 * Enhance: Allow to deselect default variation in product edit screen
 * Enhance: Remove extra fields from checkout
 * Enhance: Users will not be able to order without filling out all required fields on checkout
-* Enhance: Add prefixes to css styles so they do not affect non PSeCommerce pages
+* Enhance: Add prefixes to css styles so they do not affect non MarketPress pages
 * Fix: Shipping tax calculated incorrectly
 * Fix: PHP notices when creating variations
 * Fix: Wrong symbol for Turkish Lira
 * Fix: Tax settings for Canada not being applied correctly
 * Fix: Error when adding coupon code on checkout page
-* Fix: Error when creating global PSeCommerce pages on multisite
+* Fix: Error when creating global MarketPress pages on multisite
 * Fix: Product page with variations will not auto select the first variation by default
 * Fix: Inability to deselect default variation for a product
 * Fix: Wrong sale price on products page for variable products
@@ -193,7 +193,7 @@ Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber,
 * Fixed: PHP notices on product pages
 * Fixed: PHP warning during quick setup
 * Fixed: Styles in admin interface
-* Fixed: PSeCommerce disabling front-end page comments
+* Fixed: MarketPress disabling front-end page comments
 * Fixed: Some orders were not changing status to Paid with Stripe payment gateway
 
 = 3.2.4 =
@@ -226,8 +226,8 @@ Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber,
 * Fixed: Fatal error with PHP version lower than 5.5
 
 = 3.2 =
-* New: Removed all limitations from free version. PSeCommerce is now 100% free.
-* Adjusted versioning to lineup with PSeCommerce Pro
+* New: Removed all limitations from free version. MarketPress is now 100% free.
+* Adjusted versioning to lineup with MarketPress Pro
 * TONS of code cleanup/optimizations - 99% of PHP notices/warnings have been cleaned up
 * New: Short codes can now be inserted via a popup wizard that is available from within the TinyMCE editor
 * New: Product variations have been rebuilt from the ground up
@@ -263,7 +263,7 @@ Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber,
 * Fixed: Store menu items regenerate themselves after being deleted
 
 = 2.9.5.3 =
-* Fixed: Fatal errors when PSeCommerce Pro is activated while PSeCommerce lite is also activated
+* Fixed: Fatal errors when MarketPress Pro is activated while MarketPress lite is also activated
 * Fixed: PHP warnings with wp_title_output()
 * Fixed: Nav Menu items classes not being applied correctly
 * Fixed: Bug with pagination when displaying products from a given category using [mp_list_products] short code
@@ -479,7 +479,7 @@ Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber,
 * Use WP3.8 dashicon for admin menu
 * Fixed a bug with product filters some times redirecting to a 404 page or returning the wrong product set
 * Fixed a bug when calling mp_list_products() with no arguments, the default set of arguments would be populated incorrectly
-* Fixed a bug where product listings would use default posts per page setting instead of the value in PSeCommerce presentation settings
+* Fixed a bug where product listings would use default posts per page setting instead of the value in MarketPress presentation settings
 * Fixed a bug where users couldn't update products/order after updating
 * Added Coupons for individual categories/products
 * Added compatibility with Google Universal Analytics
@@ -892,7 +892,7 @@ Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber,
 * Chained payments not clearing cart bugfix
 
 = 1.2.0 =
-* Headway theme compatiblity fix: Missing argument 2 for PSeCommerce::filter_nav_menu()
+* Headway theme compatiblity fix: Missing argument 2 for MarketPress::filter_nav_menu()
 * Fix category dropdown widget js
 * Add filter to orderid generation
 * Additional classes and filters added for our custom theme
@@ -922,7 +922,7 @@ Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber,
 * Fixed order status change success message on orders page
 
 = 1.1.5 =
-* Fixed: Global PSeCommerce Permalink Updating Problems - for sure this time ;-)
+* Fixed: Global MarketPress Permalink Updating Problems - for sure this time ;-)
 
 = 1.1.4 =
 * WP 3.1 compatibility
@@ -930,11 +930,11 @@ Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber,
 * Updated default .po file for translation
 * Fixed: Global products not removed for deleted/spammed/archived/deactivated sites
 * Fixed: Make global tag/category lists filter out those with no counts
-* Fixed: Global PSeCommerce Permalink Updating Problems - bug last time around
+* Fixed: Global MarketPress Permalink Updating Problems - bug last time around
 
 = 1.1.3 =
-* Fixed: Global PSeCommerce Permalink Updating Problems
-* Fixed: PSeCommerce check out page issues
+* Fixed: Global MarketPress Permalink Updating Problems
+* Fixed: MarketPress check out page issues
 
 = 1.1.2 =
 * Fixed: MP html needs more css class names
@@ -946,7 +946,7 @@ Wenn eines Deiner Produkte zur Neige geht, informiert Dich PSeCommerce darüber,
 
 = 1.1.1 =
 * Fixed: post_thumbnails breaks themes
-* Fixed: PSeCommerce Product List widget displays all products
+* Fixed: MarketPress Product List widget displays all products
 
 = 1.1 =
 * 2Checkout and Authorize.net beta gateways added

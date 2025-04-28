@@ -1418,7 +1418,7 @@ WHERE $delete_where"
 			'title'     => __( 'Verwandte Produkte', 'mp' ),
 			'post_type' => MP_Product::get_post_type(),
 			'context'   => 'side',
-			'desc'      => __( 'Wenn Du möchtest, kannst Du bestimmte verwandte Produkte auswählen, anstatt die von PSeCommerce generierten zu verwenden', 'mp' ),
+			'desc'      => __( 'Wenn Du möchtest, kannst Du bestimmte verwandte Produkte auswählen, anstatt die von MarketPress generierten zu verwenden', 'mp' ),
 		) ) );
 
 		$metabox->add_field( 'post_select', apply_filters( 'mp_add_field_array_related_products', array(

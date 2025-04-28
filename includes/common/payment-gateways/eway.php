@@ -1,11 +1,11 @@
 <?php
 
 /**
- * PSeCommerce eWay Gateway Plugin
+ * MarketPress eWay Gateway Plugin
  *
  * @since 3.0
  *
- * @package PSeCommerce
+ * @package MarketPress
  */
 
 class MP_Gateway_eWay_Shared extends MP_Gateway_API {
@@ -351,7 +351,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 			'page_slugs' => array('shop-einstellungen-payments', 'shop-einstellungen_page_shop-einstellungen-payments'),
 			'title' => sprintf(__('%s Settings', 'mp'), $this->admin_name),
 			'option_name' => 'mp_settings',
-			'desc' => __('The Hosted Page is a webpage hosted on eWAY\'s side eliminating the need for merchants to capture, transmit or store credit card numbers. At the checkout time the merchant automatically redirects the customer to the Hosted Page where they would enter their details and have the transaction processed. Upon completion of the transaction the customer is redirected back to the PSeCommerce checkout confirmation page.', 'mp'),
+			'desc' => __('The Hosted Page is a webpage hosted on eWAY\'s side eliminating the need for merchants to capture, transmit or store credit card numbers. At the checkout time the merchant automatically redirects the customer to the Hosted Page where they would enter their details and have the transaction processed. Upon completion of the transaction the customer is redirected back to the MarketPress checkout confirmation page.', 'mp'),
 			'conditional' => array(
 				'name' => 'gateways[allowed][' . $this->plugin_name . ']',
 				'value' => 1,
@@ -443,7 +443,7 @@ class MP_Gateway_eWay_Shared extends MP_Gateway_API {
 
 	  //build args
 	  $args = array();
-	  $args['user-agent'] = 'PSeCommerce/' . MP_VERSION . ': http://premium.psource.org/project/e-commerce | eWay Shared Payments Gateway/' . MP_VERSION;
+	  $args['user-agent'] = 'MarketPress/' . MP_VERSION . ': http://premium.psource.org/project/e-commerce | eWay Shared Payments Gateway/' . MP_VERSION;
 	  $args['sslverify'] = false;
 	  $args['timeout'] = mp_get_api_timeout( $this->plugin_name );
 

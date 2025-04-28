@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: PSeCommerce
+ * Plugin Name: MarketPress
  * Plugin URI:  https://cp-psource.github.io/psecommerce/
  * Description: Das einfachste und dennoch mächtigste ClassicPress-E-Commerce-Plugin
  * Version:     3.5.8
@@ -47,9 +47,9 @@ define( 'MP_VERSION', '3.5.8' );
 
 
 /**
- * Main class PSeCommerce.
+ * Main class MarketPress.
  */
-class PSeCommerce {
+class MarketPress {
 
 	public $currencies;
 	public $eu_countries;
@@ -61,7 +61,7 @@ class PSeCommerce {
 	public $defaults;
 
 	/**
-	 * Refers to the post types that PSeCommerce uses
+	 * Refers to the post types that MarketPress uses
 	 *
 	 * @since 3.0
 	 * @access public
@@ -122,7 +122,7 @@ class PSeCommerce {
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new PSeCommerce();
+			self::$_instance = new MarketPress();
 		}
 
 		return self::$_instance;
@@ -253,7 +253,7 @@ class PSeCommerce {
 				'not_found_in_trash' => __( 'Keine Produkte im Papierkorb gefunden', 'mp' ),
 				'view'               => __( 'Produkt betrachten', 'mp' ),
 			),
-			'description'        => __( 'Produkte für Deinen PSeCommerce-Shop.', 'mp' ),
+			'description'        => __( 'Produkte für Deinen MarketPress-Shop.', 'mp' ),
 			'public'             => true,
 			'show_ui'            => true,
 			'publicly_queryable' => true,
@@ -773,7 +773,7 @@ class PSeCommerce {
 		mp_register_addon( array(
 			'label'        => __( 'Erlaube Produktkommentare', 'mp' ),
 			'desc'         => __( 'Erlaube das kommentieren von Produkten', 'mp' ),
-			'class'        => 'MP_PSECOMMERCE_COMMENTS_Addon',
+			'class'        => 'MP_MARKETPRESS_COMMENTS_Addon',
 			'path'         => mp_plugin_dir( 'includes/addons/psecommerce-comments/class-psecommerce-comments.php' ),
 			'has_settings' => false,
 		) );
@@ -782,7 +782,7 @@ class PSeCommerce {
         mp_register_addon( array(
 			'label'        => __( 'Shop Statistiken (ALFAVERSION)', 'mp' ),
 			'desc'         => __( 'Aktiviere diese Erweiterung um eine Dashboard-Seite mit Shop-Statistiken zu erstellen', 'mp' ),
-			'class'        => 'MP_PSECOMMERCE_STATS_Addon',
+			'class'        => 'MP_MARKETPRESS_STATS_Addon',
 			'path'         => mp_plugin_dir( 'includes/addons/psecommerce-statistics/psecommerce-stats.php' ),
 			'has_settings' => false,
 		) );
@@ -1158,7 +1158,7 @@ class PSeCommerce {
 				break;
 
 			default :
-				trigger_error( 'Error! PSeCommerce doesn\'t have a ' . $method . ' method.', E_USER_ERROR );
+				trigger_error( 'Error! MarketPress doesn\'t have a ' . $method . ' method.', E_USER_ERROR );
 				break;
 		}
 	}
@@ -1174,7 +1174,7 @@ class PSeCommerce {
 		$this->_plugin_file = __FILE__;
 		$this->_plugin_dir  = plugin_dir_path( __FILE__ );
 		$this->_plugin_url  = plugin_dir_url( __FILE__ );
-		$this->plugin_title = __( 'PSeCommerce', 'mp' );
+		$this->plugin_title = __( 'MarketPress', 'mp' );
 
 		// Load data structures.
 		require_once $this->plugin_dir( 'includes/common/data.php' );
@@ -1192,7 +1192,7 @@ class PSeCommerce {
 }
 
 
-$GLOBALS['mp'] = PSeCommerce::get_instance();
+$GLOBALS['mp'] = MarketPress::get_instance();
 
 register_activation_hook( __FILE__, 'mp_plugin_activate' );
 register_uninstall_hook( __FILE__, 'mp_plugin_uninstall' );

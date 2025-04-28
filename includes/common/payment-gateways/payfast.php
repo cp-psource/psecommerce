@@ -2,7 +2,7 @@
 /**
  * payfast.php
  *
- * PSeCommerce PayFast Gateway Plugin
+ * MarketPress PayFast Gateway Plugin
  *
  * Copyright (c) 2013 PayFast (Pty) Ltd
  *

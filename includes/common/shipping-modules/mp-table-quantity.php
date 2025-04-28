@@ -1,6 +1,6 @@
 <?php
 /*
-PSeCommerce Table-Quantity Shipping Plugin
+MarketPress Table-Quantity Shipping Plugin
 Author: Gary Wilmot (Avallach Technology)
 Based on table-rate plugin by Nick Bunn (Salty Dog Interactive)
 Version: 1.0

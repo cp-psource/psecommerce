@@ -76,7 +76,7 @@ class MP_Admin {
 		?>
 		<div id="message" class="update-nag">
 			<p>
-				<?php _e( '<strong>PSeCommerce noch nicht Betriebsbereit!</strong> Sobald Du diesen Schnellinstallationsassistenten abgeschlossen hast, hast Du einen voll funktionsfähigen Online-Shop - aufregend! ', 'mp' ); ?>
+				<?php _e( '<strong>MarketPress noch nicht Betriebsbereit!</strong> Sobald Du diesen Schnellinstallationsassistenten abgeschlossen hast, hast Du einen voll funktionsfähigen Online-Shop - aufregend! ', 'mp' ); ?>
 			</p>
 			<p>
 				<?php printf( __( '<a class="button button-primary" href="%s">Einrichtung starten</a>', 'mp' ), admin_url( 'admin.php?page=store-setup-wizard' ) ); ?>
@@ -93,7 +93,7 @@ class MP_Admin {
 		?>
 		<div class="update-nag mp-deprecated-notice">
 		<div class="mp-notice-text">
-		<?php echo sprintf(__("PSeCommerce bietet Dir eine vielzahl an Zahlungsgateways (an einigen arbeiten wir noch), richte einige ein um Deine Kunden möglichst bequem shoppen lassen zu können. Erledige das am besten gleich <a href=\"%s\">HIER</a>.","mp"),admin_url('admin.php?page=shop-einstellungen-payments')) ?>
+		<?php echo sprintf(__("MarketPress bietet Dir eine vielzahl an Zahlungsgateways (an einigen arbeiten wir noch), richte einige ein um Deine Kunden möglichst bequem shoppen lassen zu können. Erledige das am besten gleich <a href=\"%s\">HIER</a>.","mp"),admin_url('admin.php?page=shop-einstellungen-payments')) ?>
 		</div>
 		<a href="#" class="mp-dismissed-deprecated-notice"><i class="dashicons dashicons-no-alt"></i></a>
 		</div>
@@ -151,7 +151,7 @@ class MP_Admin {
 	}
 
 	/**
-	 * Adds the PSeCommerce help tab
+	 * Adds the MarketPress help tab
 	 *
 	 * @since 3.0
 	 * @access public
@@ -159,7 +159,7 @@ class MP_Admin {
 	public function add_help_tab() {
 		get_current_screen()->add_help_tab( array(
 			'id'		 => 'psecommerce-help',
-			'title'		 => __( 'PSeCommerce Handbuch', 'mp' ),
+			'title'		 => __( 'MarketPress Handbuch', 'mp' ),
 			'content'	 => '<iframe src="https://n3rds.work/piestingtal_source/psecommerce-shopsystem/" width="100%" height="600px"></iframe>'
 		) );
 	}

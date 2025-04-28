@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: PSeCommerce-Statistiken
+Plugin Name: MarketPress-Statistiken
 Plugin URI: https://n3rds.work
-Description: Zeigt PSeCommerce-Statistiken mithilfe der GooGle-Diagrammbibliothek an (https://google-developers.appspot.com/chart/)
+Description: Zeigt MarketPress-Statistiken mithilfe der GooGle-Diagrammbibliothek an (https://google-developers.appspot.com/chart/)
 Version: 0.4.2
 Author: DerN3rd
 */
@@ -28,7 +28,7 @@ function mp_st_admin_menu() {
 
 function mp_st_page() {
 
-  if ( class_exists( 'PSeCommerce' ) ) {
+  if ( class_exists( 'MarketPress' ) ) {
     if ( function_exists('current_user_can') && !current_user_can('manage_options') )
   	  die(__('Cheatin&#8217; uh?'));
 

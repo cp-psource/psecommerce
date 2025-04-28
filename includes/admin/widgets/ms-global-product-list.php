@@ -6,12 +6,12 @@ if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
 if ( is_multisite() ) {
 
 	//Product listing widget
-	class PSeCommerce_Global_Product_List extends WP_Widget {
+	class MarketPress_Global_Product_List extends WP_Widget {
 
 		function __construct() {
 			$widget_ops = array(
 				'classname'   => 'mp_widget mp_global_product_list_widget',
-				'description' => __( 'Zeigt eine anpassbare globale Liste von Produkten aus PSeCommerce-Shops im Netzwerk an.', 'mp' )
+				'description' => __( 'Zeigt eine anpassbare globale Liste von Produkten aus MarketPress-Shops im Netzwerk an.', 'mp' )
 			);
 			parent::__construct( 'mp_global_product_list_widget', __( 'Netzwerk Produktarchiv', 'mp' ), $widget_ops );
 		}
@@ -184,6 +184,6 @@ if ( is_multisite() ) {
 
 	}
 
-	//add_action( 'widgets_init', create_function( '', 'return register_widget("PSeCommerce_Global_Product_List");' ) );
-	add_action( 'widgets_init', 'PSeCommerce_Global_Product_List' ); function PSeCommerce_Global_Product_List() {return register_widget('PSeCommerce_Global_Product_List');}
+	//add_action( 'widgets_init', create_function( '', 'return register_widget("MarketPress_Global_Product_List");' ) );
+	add_action( 'widgets_init', 'MarketPress_Global_Product_List' ); function MarketPress_Global_Product_List() {return register_widget('MarketPress_Global_Product_List');}
 }

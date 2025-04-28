@@ -1,6 +1,6 @@
 <?php
 /*
-PSeCommerce Payway Gateway Plugin
+MarketPress Payway Gateway Plugin
 Author: Mindblaze(Rashid Ali)
 */
 

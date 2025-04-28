@@ -1,7 +1,7 @@
-Themeing PSeCommerce
+Themeing MarketPress
 -------------------------------------------------------------------------------
 
-There are two methods to create custom designs for PSeCommerce stores:
+There are two methods to create custom designs for MarketPress stores:
 
 Basic Styles:
 
@@ -12,7 +12,7 @@ Basic Styles:
       may be easiest to copy our default.css theme and modify it.
   2. Make sure to add the custom theme header with your theme's name at the top of the css file:
       /*
-      PSeCommerce Style: CUSTOMNAME
+      MarketPress Style: CUSTOMNAME
       */
       Including this header will cause your custom theme to show in the dropdown on the
       Shopeinstellungen -> Presentation page so it may be selected.
@@ -22,7 +22,7 @@ Basic Styles:
 
 Advanced Themes:
 
-  PSeCommerce uses custom post types to display it's products. This means that you can use
+  MarketPress uses custom post types to display it's products. This means that you can use
   the same WP theme templating system you are familiar with. We simply provide a customized
   subset of template functions so you don't have to worry about dealing with post meta. Template
   functions are fully documented and can be found in the /psecommerce/includes/common/template-functions.php file.
@@ -35,7 +35,7 @@ Advanced Themes:
   2. mp_product.php must use the mp_* functions instead of the_content(), see template-functions.php for a list of functions relevant to products.
 
 
-  PSeCommerce searches your current theme folder for template files specific to store pages. Here are possible
+  MarketPress searches your current theme folder for template files specific to store pages. Here are possible
   file names for store templates in order:
   
   Single Product Page

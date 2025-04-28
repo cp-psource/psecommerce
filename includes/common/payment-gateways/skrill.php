@@ -1,7 +1,7 @@
 <?php
 
 /*
-  PSeCommerce Skrill / Moneybookers Gateway Plugin
+  MarketPress Skrill / Moneybookers Gateway Plugin
   Author: Marko Miljus, Aaron Edwards
  */
 

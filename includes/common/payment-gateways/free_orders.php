@@ -1,7 +1,7 @@
 <?php
 
 /*
-  PSeCommerce FREE Orders Gateway Plugin
+  MarketPress FREE Orders Gateway Plugin
   Author: Marko Miljus (Incsub)
  */
 

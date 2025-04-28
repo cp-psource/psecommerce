@@ -307,7 +307,7 @@ class MP_Shop_Einstellungen_General {
 		$metabox->add_field( 'checkbox', array(
 			'name'		 => 'disable_cart',
 			'label'		 => array( 'text' => __( 'Warenkorb deaktivieren?', 'mp' ) ),
-			'desc'		 => __( 'Diese Option verwandelt PSeCommerce eher in ein Plugin für Produktlisten, wodurch Einkaufswagen, Kaufabwicklung und Bestellverwaltung deaktiviert werden. Dies ist nützlich, wenn Du einfach Produkte auflisten möchtest, die Du in einem anderen Geschäft kaufen kannst, und optional die Schaltflächen "Jetzt kaufen" mit einer externen Website verknüpfen möchtest. Einige Beispiele sind ein Autohaus oder das Verknüpfen mit Songs/Alben in iTunes oder das Verknüpfen mit Produkten auf einer anderen Website mit Ihren eigenen Partnerlinks.', 'mp' ),
+			'desc'		 => __( 'Diese Option verwandelt MarketPress eher in ein Plugin für Produktlisten, wodurch Einkaufswagen, Kaufabwicklung und Bestellverwaltung deaktiviert werden. Dies ist nützlich, wenn Du einfach Produkte auflisten möchtest, die Du in einem anderen Geschäft kaufen kannst, und optional die Schaltflächen "Jetzt kaufen" mit einer externen Website verknüpfen möchtest. Einige Beispiele sind ein Autohaus oder das Verknüpfen mit Songs/Alben in iTunes oder das Verknüpfen mit Produkten auf einer anderen Website mit Ihren eigenen Partnerlinks.', 'mp' ),
 			'message'	 => __( 'JA', 'mp' ),
 		) );
 		$metabox->add_field( 'checkbox', array(

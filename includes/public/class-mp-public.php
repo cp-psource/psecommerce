@@ -4,7 +4,7 @@ class MP_Public {
 
 
 	/**
-	 * Refers to the store page types that PSeCommerce uses
+	 * Refers to the store page types that MarketPress uses
 	 *12.3.20 mp_agb (mp-agb) eingefügt, php template noch erstellen dazu. 
 	 *Übersetzungen verbessern, sonst fein. DN
 	 * @since 3.2.5
@@ -96,7 +96,7 @@ class MP_Public {
 
 		$post_type = MP_Product::get_post_type();
 		$settings  = get_option( 'mp_settings' );
-		//Add global .mp class on all PSeCommerce pages
+		//Add global .mp class on all MarketPress pages
 		if (
 			is_singular( $post_type ) ||
 			get_post_type() == $post_type ||
@@ -743,7 +743,7 @@ class MP_Public {
 
 			if ( is_wp_error( $tmp ) ) {
 				@unlink( $tmp );
-				trigger_error( "PSeCommerce konnte die Datei $url nicht herunterladen, um sie als Download bereitzustellen: " . $tmp->get_error_message(), E_USER_WARNING );
+				trigger_error( "MarketPress konnte die Datei $url nicht herunterladen, um sie als Download bereitzustellen: " . $tmp->get_error_message(), E_USER_WARNING );
 				wp_die( __( 'Hoppla, beim Laden dieser Datei für Deinen Download ist ein Problem aufgetreten. Bitte kontaktiere uns für Hilfe.', 'mp' ) );
 			}
 		}
@@ -787,7 +787,7 @@ class MP_Public {
 				$handle = fopen( $tmp, 'rb' );
 
 				if ( $handle === false ) {
-					trigger_error( "PSeCommerce konnte die Datei $tmp für die Bereitstellung als Download nicht lesen.", E_USER_WARNING );
+					trigger_error( "MarketPress konnte die Datei $tmp für die Bereitstellung als Download nicht lesen.", E_USER_WARNING );
 
 					return false;
 				}

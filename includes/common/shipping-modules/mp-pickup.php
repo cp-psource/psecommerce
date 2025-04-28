@@ -1,7 +1,7 @@
 <?php
 
 /*
-  PSeCommerce Pickup Shipping Plugin
+  MarketPress Pickup Shipping Plugin
  */
 
 class MP_Shipping_Pickup extends MP_Shipping_API {

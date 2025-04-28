@@ -1,11 +1,11 @@
 <?php
 
 //Product listing widget
-class PSeCommerce_Product_List extends WP_Widget {
+class MarketPress_Product_List extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array( 'classname' => 'mp_widget mp_widget_products_list', 'description' => __( 'Zeigt eine anpassbare Liste von Produkten aus Deinem PSeCommerce-Shop an.', 'mp' ) );
-		parent::__construct( 'mp_product_list_widget', __( '(PSeCommerce) Produktliste', 'mp' ), $widget_ops );
+		$widget_ops = array( 'classname' => 'mp_widget mp_widget_products_list', 'description' => __( 'Zeigt eine anpassbare Liste von Produkten aus Deinem MarketPress-Shop an.', 'mp' ) );
+		parent::__construct( 'mp_product_list_widget', __( '(MarketPress) Produktliste', 'mp' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -256,9 +256,9 @@ class PSeCommerce_Product_List extends WP_Widget {
 
 }
 
-function PSeCommerce_Product_init_List ()
+function MarketPress_Product_init_List ()
 {
-	return register_widget('PSeCommerce_Product_List');
+	return register_widget('MarketPress_Product_List');
 }
-add_action ('widgets_init', 'PSeCommerce_Product_init_List');
+add_action ('widgets_init', 'MarketPress_Product_init_List');
 ?>

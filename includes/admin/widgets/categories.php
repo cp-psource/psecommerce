@@ -1,11 +1,11 @@
 <?php
 
 //Product categories widget
-class PSeCommerce_Categories_Widget extends WP_Widget {
+class MarketPress_Categories_Widget extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array( 'classname' => 'widget_categories mp_widget mp_widget_product_categories', 'description' => __( "Eine Liste oder Dropdown-Liste von Shopkategorien aus Deinem PSeCommerce-Shop.", 'mp' ) );
-		parent::__construct( 'mp_categories_widget', __( '(PSeCommerce) Shopkategorien', 'mp' ), $widget_ops );
+		$widget_ops = array( 'classname' => 'widget_categories mp_widget mp_widget_product_categories', 'description' => __( "Eine Liste oder Dropdown-Liste von Shopkategorien aus Deinem MarketPress-Shop.", 'mp' ) );
+		parent::__construct( 'mp_categories_widget', __( '(MarketPress) Shopkategorien', 'mp' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -85,9 +85,9 @@ class PSeCommerce_Categories_Widget extends WP_Widget {
 
 }
 
-function PSeCommerce_Categories_init_Widget ()
+function MarketPress_Categories_init_Widget ()
 {
-	return register_widget('PSeCommerce_Categories_Widget');
+	return register_widget('MarketPress_Categories_Widget');
 }
-add_action ('widgets_init', 'PSeCommerce_Categories_init_Widget');
+add_action ('widgets_init', 'MarketPress_Categories_init_Widget');
 ?>

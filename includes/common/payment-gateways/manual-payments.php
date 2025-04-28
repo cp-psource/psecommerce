@@ -1,7 +1,7 @@
 <?php
 
 /*
-  PSeCommerce Manual Payments Gateway Plugin
+  MarketPress Manual Payments Gateway Plugin
   Author: DerN3rd (WMS N@W)
  */
 

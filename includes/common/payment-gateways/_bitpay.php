@@ -1,10 +1,10 @@
 <?php
 
 /**
- * PSeCommerce Bitpay Gateway
+ * MarketPress Bitpay Gateway
  *
  * @since 3.0
- * @package PSeCommerce
+ * @package MarketPress
  * @subpackage Bitway Gateway
  */
 

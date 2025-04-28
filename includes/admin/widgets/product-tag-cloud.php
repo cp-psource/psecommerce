@@ -1,11 +1,11 @@
 <?php
 
 //Product tags cloud
-class PSeCommerce_Tag_Cloud_Widget extends WP_Widget {
+class MarketPress_Tag_Cloud_Widget extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array( 'classname' => 'widget_tag_cloud mp_widget mp_widget_tag_cloud', 'description' => __( "Die am häufigsten verwendeten Produkt-Tags im Cloud-Format aus Deinem PSeCommerce-Shop.", 'mp' ) );
-		parent::__construct( 'mp_tag_cloud_widget', __( '(PSeCommerce) Tagwolke', 'mp' ), $widget_ops );
+		$widget_ops = array( 'classname' => 'widget_tag_cloud mp_widget mp_widget_tag_cloud', 'description' => __( "Die am häufigsten verwendeten Produkt-Tags im Cloud-Format aus Deinem MarketPress-Shop.", 'mp' ) );
+		parent::__construct( 'mp_tag_cloud_widget', __( '(MarketPress) Tagwolke', 'mp' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -60,9 +60,9 @@ class PSeCommerce_Tag_Cloud_Widget extends WP_Widget {
 
 }
 
-function PSeCommerce_Tag_Cloud_init_Widget ()
+function MarketPress_Tag_Cloud_init_Widget ()
 {
-	return register_widget('PSeCommerce_Tag_Cloud_Widget');
+	return register_widget('MarketPress_Tag_Cloud_Widget');
 }
-add_action ('widgets_init', 'PSeCommerce_Tag_Cloud_init_Widget');
+add_action ('widgets_init', 'MarketPress_Tag_Cloud_init_Widget');
 ?>

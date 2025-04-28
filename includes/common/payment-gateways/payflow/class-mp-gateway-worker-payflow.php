@@ -112,7 +112,7 @@ class MP_Gateway_Worker_Payflow
 
 		$url = $server['scheme'] . '://' . $server['host'] . $server['path'] . (( isset( $server['query'] ) ) ? '?' . $server['query'] : '');
 		$result = wp_remote_post( $url, array(
-			'user-agent' => 'PSeCommerce/' . MP_VERSION . ': http://premium.psource.org/project/e-commerce | PayPal Payflow Plugin/' . MP_VERSION,
+			'user-agent' => 'MarketPress/' . MP_VERSION . ': http://premium.psource.org/project/e-commerce | PayPal Payflow Plugin/' . MP_VERSION,
 			'sslverify' => false,
 			'body' => $parameters,
 			'timeout' => mp_get_api_timeout( 'payflow' ),

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * PSeCommerce CubePoints Plugin
+ * MarketPress CubePoints Plugin
  *
  * Requires the CubePoints plugin: http://classicpress.org/extend/plugins/cubepoints/
  *
  * @since 3.0
  *
- * @package PSeCommerce
+ * @package MarketPress
  */
 
 class MP_Gateway_CubePoints extends MP_Gateway_API {
@@ -123,7 +123,7 @@ class MP_Gateway_CubePoints extends MP_Gateway_API {
 			//subtract $total from user's CubePoints
 			cp_points( 'custom', $uid, -$total, sprintf(__('%s Store Purchase', 'mp'), get_bloginfo('name')) );
 
-			//create PSeCommerce order
+			//create MarketPress order
 			$order_id = mp()->generate_order_id();
 			$payment_info['gateway_public_name'] = $this->public_name;
 			$payment_info['gateway_private_name'] = $this->admin_name;

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PSeCommerce\n"
+"Project-Id-Version: MarketPress\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-31 03:50+0000\n"
 "PO-Revision-Date: 2023-01-31 03:51+0000\n"
@@ -492,21 +492,21 @@ msgstr ""
 
 #: includes/admin/widgets/product-list.php:8
 #: includes/includes/admin/widgets/product-list.php:8
-msgid "(PSeCommerce) Produktliste"
+msgid "(MarketPress) Produktliste"
 msgstr ""
 
 #: includes/admin/widgets/categories.php:8
 #: includes/includes/admin/widgets/categories.php:8
-msgid "(PSeCommerce) Shopkategorien"
+msgid "(MarketPress) Shopkategorien"
 msgstr ""
 
 #: includes/admin/widgets/product-tag-cloud.php:8
 #: includes/includes/admin/widgets/product-tag-cloud.php:8
-msgid "(PSeCommerce) Tagwolke"
+msgid "(MarketPress) Tagwolke"
 msgstr ""
 
 #: includes/admin/widgets/cart.php:8 includes/includes/admin/widgets/cart.php:8
-msgid "(PSeCommerce) Warenkorb"
+msgid "(MarketPress) Warenkorb"
 msgstr ""
 
 #: includes/common/shipping-modules/mp-ups.php:56
@@ -716,7 +716,7 @@ msgstr ""
 #: includes/admin/class-mp-admin.php:79
 #: includes/includes/admin/class-mp-admin.php:79
 msgid ""
-"<strong>PSeCommerce noch nicht Betriebsbereit!</strong> Sobald Du diesen "
+"<strong>MarketPress noch nicht Betriebsbereit!</strong> Sobald Du diesen "
 "Schnellinstallationsassistenten abgeschlossen hast, hast Du einen voll "
 "funktionsfähigen Online-Shop - aufregend! "
 msgstr ""
@@ -981,7 +981,7 @@ msgstr ""
 
 #: includes/common/class-mp-installer.php:600
 #: includes/includes/common/class-mp-installer.php:600
-msgid "Aktualisiere die PSeCommerce-Daten"
+msgid "Aktualisiere die MarketPress-Daten"
 msgstr ""
 
 #: includes/admin/class-mp-admin.php:260
@@ -2238,7 +2238,7 @@ msgstr ""
 #: includes/includes/common/class-mp-installer.php:647
 msgid ""
 "Bitte aktualisiere jede Unterwebsite in Deinem ClassicPress-Netzwerk, auf der "
-"Du eine ältere Version des PSeCommerce-Plugins hast."
+"Du eine ältere Version des MarketPress-Plugins hast."
 msgstr ""
 
 #: includes/addons/mp-coupons/class-mp-coupons-addon.php:1199
@@ -3109,7 +3109,7 @@ msgstr ""
 #: includes/includes/admin/widgets/product-tag-cloud.php:7
 msgid ""
 "Die am häufigsten verwendeten Produkt-Tags im Cloud-Format aus Deinem "
-"PSeCommerce-Shop."
+"MarketPress-Shop."
 msgstr ""
 
 #: includes/admin/class-mp-shortcode-builder.php:607
@@ -3509,7 +3509,7 @@ msgstr ""
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-general.php:310
 #: includes/includes/admin/shop-einstellungen/class-mp-shop-einstellungen-general.php:310
 msgid ""
-"Diese Option verwandelt PSeCommerce eher in ein Plugin für Produktlisten, "
+"Diese Option verwandelt MarketPress eher in ein Plugin für Produktlisten, "
 "wodurch Einkaufswagen, Kaufabwicklung und Bestellverwaltung deaktiviert "
 "werden. Dies ist nützlich, wenn Du einfach Produkte auflisten möchtest, die "
 "Du in einem anderen Geschäft kaufen kannst, und optional die Schaltflächen "
@@ -3525,8 +3525,8 @@ msgstr ""
 msgid ""
 "Diese Option ändert die integrierten CSS-Stile für Shopseiten. Speicher für "
 "einen benutzerdefinierten CSS-Stil Deine CSS-Datei mit der Kopfzeile <strong>"
-"/* PSeCommerce Style: Dein CSS-Themenname hier */</strong> im Ordner <strong>"
-" \"%s\" </strong>, (wir haben diesen Ordner bereits in das PSeCommerce "
+"/* MarketPress Style: Dein CSS-Themenname hier */</strong> im Ordner <strong>"
+" \"%s\" </strong>, (wir haben diesen Ordner bereits in das MarketPress "
 "integriert, Du musst ihn nur noch verschieben) dann erscheinen sie in dieser "
 "Liste, damit Du sie auswählen kannst. Du solltest \"Keine\" auswählen, wenn "
 "Du keine benutzerdefinierten CSS-Stile verwenden möchtest oder wenn Du "
@@ -3540,7 +3540,7 @@ msgstr ""
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-presentation.php:195
 #: includes/includes/admin/shop-einstellungen/class-mp-shop-einstellungen-presentation.php:195
 msgid ""
-"Diese Seite wird als Stammverzeichnis für Deinen PSeCommerce Shop verwendet."
+"Diese Seite wird als Stammverzeichnis für Deinen MarketPress Shop verwendet."
 msgstr ""
 
 #: includes/common/class-mp-gdpr.php:71
@@ -3549,7 +3549,7 @@ msgid ""
 "Diese Website verwendet möglicherweise Dienste und Tools von Drittanbietern, "
 "um Zahlungen oder/und zu verarbeiten\n"
 "                   Verarbeiten Sie Versanddaten, wenn Sie Bestellungen im "
-"PSeCommerce Store erstellen. \n"
+"MarketPress Store erstellen. \n"
 "\t\t\t\t   Diese Dienstleistungen beinhalten die Zahlung Gateways: \n"
 "\t\t\t\t   2Checkout, Authorize.net AIM, gemeinsame Zahlungen von eWay, eWay "
 "Rapid 3.1 Payments, Mijireh,\n"
@@ -3650,7 +3650,7 @@ msgstr ""
 #: includes/includes/admin/widgets/ms-global-tag-cloud.php:13
 msgid ""
 "Displays global most used product tags in cloud format from network "
-"PSeCommerce stores."
+"MarketPress stores."
 msgstr ""
 
 #: includes/common/payment-gateways/stripe.php:85
@@ -3973,7 +3973,7 @@ msgstr ""
 #: includes/admin/widgets/categories.php:7
 #: includes/includes/admin/widgets/categories.php:7
 msgid ""
-"Eine Liste oder Dropdown-Liste von Shopkategorien aus Deinem PSeCommerce-"
+"Eine Liste oder Dropdown-Liste von Shopkategorien aus Deinem MarketPress-"
 "Shop."
 msgstr ""
 
@@ -4742,7 +4742,7 @@ msgstr ""
 msgid ""
 "Festlegen von Theme-Zugriffsberechtigungen für Netzwerkspeicher. Speichere "
 "für ein benutzerdefiniertes CSS-Thema Deine CSS-Datei mit dem Header <strong>"
-" PSeCommerce Theme: NAME </strong> im Ordner <strong> "
+" MarketPress Theme: NAME </strong> im Ordner <strong> "
 "/psecommerce/ui/themes/ </strong>, damit es in dieser Liste angezeigt wird."
 msgstr ""
 
@@ -7067,7 +7067,7 @@ msgstr ""
 msgid ""
 "Mit PayPal Chained Payments kannst Du als Netzwerkbesitzer mit mehreren "
 "Webseiten eine vordefinierte Gebühr oder einen Prozentsatz aller Verkäufe in "
-"PSeCommerce-Filialen im Netzwerk erheben! Dies ist für Kunden, die Artikel "
+"MarketPress-Filialen im Netzwerk erheben! Dies ist für Kunden, die Artikel "
 "in einem Geschäft kaufen, unsichtbar. Alle PayPal-Gebühren werden dem "
 "Geschäftsinhaber in Rechnung gestellt. Um diese Option verwenden zu können, "
 "musst Du API-Anmeldeinformationen erstellen und alle anderen Gateways oben "
@@ -8612,7 +8612,7 @@ msgid "Produkte auswählen"
 msgstr ""
 
 #: psecommerce.php:240 includes/psecommerce.php:241
-msgid "Produkte für Deinen PSeCommerce-Shop."
+msgid "Produkte für Deinen MarketPress-Shop."
 msgstr ""
 
 #: includes/common/class-mp-cart.php:697
@@ -8794,19 +8794,19 @@ msgstr ""
 
 #. Name of the plugin
 #: psecommerce.php:1161 includes/psecommerce.php:1162
-msgid "PSeCommerce"
+msgid "MarketPress"
 msgstr ""
 
 #: includes/psource-metaboxes/fields/class-psource-field-custom-quick-setup.php:40
 #: includes/includes/psource-metaboxes/fields/class-psource-field-custom-quick-setup.php:40
-msgid "PSeCommerce - Einrichtungsassistent"
+msgid "MarketPress - Einrichtungsassistent"
 msgstr ""
 
 #: includes/admin/class-mp-admin.php:96
 #: includes/includes/admin/class-mp-admin.php:96
 #, php-format
 msgid ""
-"PSeCommerce bietet Dir eine vielzahl an Zahlungsgateways (an einigen "
+"MarketPress bietet Dir eine vielzahl an Zahlungsgateways (an einigen "
 "arbeiten wir noch), richte einige ein um Deine Kunden möglichst bequem "
 "shoppen lassen zu können. Erledige das am besten gleich <a href=\"%s\">"
 "HIER</a>."
@@ -8816,7 +8816,7 @@ msgstr ""
 #: includes/includes/admin/class-mp-setup-wizard.php:289
 #, php-format
 msgid ""
-"PSeCommerce Einrichtung ist noch nicht abgeschlossen! <a class=\"button "
+"MarketPress Einrichtung ist noch nicht abgeschlossen! <a class=\"button "
 "button-primary\" href=\"%s\">Setup Assistent starten</a>"
 msgstr ""
 
@@ -8824,7 +8824,7 @@ msgstr ""
 #: includes/includes/common/class-mp-installer.php:677
 #, php-format
 msgid ""
-"PSeCommerce erfordert ein Datenbank-Update, um weiterhin ordnungsgemäß zu "
+"MarketPress erfordert ein Datenbank-Update, um weiterhin ordnungsgemäß zu "
 "funktionieren. <a class=\"button-primary\" href=\"%s\">Gehe zur Update-"
 "Seite</a>"
 msgstr ""
@@ -8832,7 +8832,7 @@ msgstr ""
 #: includes/common/class-mp-installer.php:601
 #: includes/includes/common/class-mp-installer.php:601
 msgid ""
-"PSeCommerce erfordert ein Datenbank-Update, um weiterhin ordnungsgemäß zu "
+"MarketPress erfordert ein Datenbank-Update, um weiterhin ordnungsgemäß zu "
 "funktionieren.<br />Unten findest Du eine Liste von Elementen, die Deine "
 "Aufmerksamkeit erfordern."
 msgstr ""
@@ -8840,7 +8840,7 @@ msgstr ""
 #: includes/psource-metaboxes/fields/class-psource-field-custom-quick-setup.php:42
 #: includes/includes/psource-metaboxes/fields/class-psource-field-custom-quick-setup.php:42
 msgid ""
-"PSeCommerce fügt Deiner Seite eine komplette, einfache aber äusserst "
+"MarketPress fügt Deiner Seite eine komplette, einfache aber äusserst "
 "funktionale eCommerce Lösung hinzu. Dieser Assistent wird Dir dabei helfen "
 "deinen Onlineshop genau nach Deinen Bedürfnissen und Ansprüchen einzurichten."
 " <br>In wenigen Schritten wird dieser Assistent Deinen Shop einsatzbereit "
@@ -8849,13 +8849,13 @@ msgstr ""
 
 #: includes/admin/class-mp-admin.php:162
 #: includes/includes/admin/class-mp-admin.php:162
-msgid "PSeCommerce Handbuch"
+msgid "MarketPress Handbuch"
 msgstr ""
 
 #: includes/common/class-mp-installer.php:657
 #: includes/includes/common/class-mp-installer.php:657
 msgid ""
-"PSeCommerce hat ein schnelles automatisches Update erfolgreich durchgeführt!"
+"MarketPress hat ein schnelles automatisches Update erfolgreich durchgeführt!"
 msgstr ""
 
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-presentation.php:379
@@ -8863,7 +8863,7 @@ msgstr ""
 #: includes/includes/admin/shop-einstellungen/class-mp-shop-einstellungen-presentation.php:379
 #: includes/includes/admin/shop-einstellungen/class-mp-shop-einstellungen-presentation.php:668
 msgid ""
-"PSeCommerce unterstützt zwei \"Flows\" zum Hinzufügen von Produkten zum "
+"MarketPress unterstützt zwei \"Flows\" zum Hinzufügen von Produkten zum "
 "Warenkorb. Nach dem Hinzufügen eines Produkts zum Warenkorb können zwei "
 "Dinge passieren:"
 msgstr ""
@@ -8871,13 +8871,13 @@ msgstr ""
 #: includes/common/class-mp-gdpr.php:101 includes/common/class-mp-gdpr.php:117
 #: includes/includes/common/class-mp-gdpr.php:101
 #: includes/includes/common/class-mp-gdpr.php:117
-msgid "PSeCommerce User Data"
+msgid "MarketPress User Data"
 msgstr ""
 
 #: includes/admin/class-mp-shortcode-builder.php:1522
 #: includes/includes/admin/class-mp-shortcode-builder.php:1522
 #: includes/includes/admin/class-mp-shortcode-builder.php:1522
-msgid "PSeCommerce-Shortcode hinzufügen"
+msgid "MarketPress-Shortcode hinzufügen"
 msgstr ""
 
 #: includes/common/payment-gateways/paymill.php:183
@@ -10368,7 +10368,7 @@ msgid ""
 "time the merchant automatically redirects the customer to the Hosted Page "
 "where they would enter their details and have the transaction processed. "
 "Upon completion of the transaction the customer is redirected back to the "
-"PSeCommerce checkout confirmation page."
+"MarketPress checkout confirmation page."
 msgstr ""
 
 #: includes/common/payment-gateways/skrill.php:177
@@ -11704,7 +11704,7 @@ msgstr ""
 #: includes/includes/admin/class-mp-products-admin.php:1421
 msgid ""
 "Wenn Du möchtest, kannst Du bestimmte verwandte Produkte auswählen, anstatt "
-"die von PSeCommerce generierten zu verwenden"
+"die von MarketPress generierten zu verwenden"
 msgstr ""
 
 #: includes/admin/shop-einstellungen/class-mp-shop-einstellungen-general.php:268
@@ -11894,7 +11894,7 @@ msgstr ""
 
 #: includes/psource-metaboxes/fields/class-psource-field-custom-quick-setup.php:41
 #: includes/includes/psource-metaboxes/fields/class-psource-field-custom-quick-setup.php:41
-msgid "Willkommen beim PSeCommerce - Einrichtungsassistenten"
+msgid "Willkommen beim MarketPress - Einrichtungsassistenten"
 msgstr ""
 
 #: includes/admin/class-mp-dashboard-widgets.php:243
@@ -12666,26 +12666,26 @@ msgstr ""
 #: includes/admin/widgets/cart.php:7 includes/includes/admin/widgets/cart.php:7
 msgid ""
 "Zeigt dynamische Warenkorbinhalte zusammen mit einer Checkout-Schaltfläche "
-"für Deinen PSeCommerce-Shop an."
+"für Deinen MarketPress-Shop an."
 msgstr ""
 
 #: includes/admin/widgets/ms-global-product-list.php:14
 #: includes/includes/admin/widgets/ms-global-product-list.php:14
 msgid ""
-"Zeigt eine anpassbare globale Liste von Produkten aus PSeCommerce-Shops im "
+"Zeigt eine anpassbare globale Liste von Produkten aus MarketPress-Shops im "
 "Netzwerk an."
 msgstr ""
 
 #: includes/admin/widgets/product-list.php:7
 #: includes/includes/admin/widgets/product-list.php:7
 msgid ""
-"Zeigt eine anpassbare Liste von Produkten aus Deinem PSeCommerce-Shop an."
+"Zeigt eine anpassbare Liste von Produkten aus Deinem MarketPress-Shop an."
 msgstr ""
 
 #: includes/admin/widgets/ms-global-categories.php:13
 #: includes/includes/admin/widgets/ms-global-categories.php:13
 msgid ""
-"Zeigt eine netzwerkweite HTML-Liste der Produktkategorien aus PSeCommerce-"
+"Zeigt eine netzwerkweite HTML-Liste der Produktkategorien aus MarketPress-"
 "Stores im Netzwerk an."
 msgstr ""
 

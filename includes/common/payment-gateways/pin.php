@@ -1,7 +1,7 @@
 <?php
 
 /*
-  PSeCommerce PIN Gateway (www.pin.net.au) Plugin
+  MarketPress PIN Gateway (www.pin.net.au) Plugin
   Author: Marko Miljus (Incsub)
  */
 

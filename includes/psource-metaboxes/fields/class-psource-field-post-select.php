@@ -60,9 +60,9 @@ class PSOURCE_Field_Post_Select extends PSOURCE_Field {
 
 		parse_str( $_GET[ 'query' ], $args );
 
-		$args = array_replace_recursive( array(
-			'posts_per_page' => get_option( 'posts_per_page' ),
-		), $args );
+		$args = array_merge(array(
+			'posts_per_page' => get_option('posts_per_page'),
+		), $args);
 
 		$query	 = new WP_Query( array_replace_recursive( array(
 			'paged'					 => mp_arr_get_value( 'page', $_GET ),

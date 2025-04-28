@@ -1,6 +1,6 @@
 <?php
 /*
-PSeCommerce WePay Gateway Plugin
+MarketPress WePay Gateway Plugin
 Author: Marko Miljus (Incsub)
 */
 

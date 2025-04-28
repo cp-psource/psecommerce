@@ -1,7 +1,7 @@
 <?php
 
 /*
-  PSeCommerce PayPal Chained Payments Gateway Plugin
+  MarketPress PayPal Chained Payments Gateway Plugin
   Author: DerN3rd 
  */
 
@@ -458,7 +458,7 @@ class MP_Gateway_Paypal_Chained_Payments extends MP_Gateway_API {
 		}
 
 		$response = wp_remote_post( $paypal_url, array(
-			'user-agent' => 'PSeCommerce/' . MP_VERSION . ': http://premium.psource.org/project/e-commerce | PayPal Chained Payments Plugin/' . MP_VERSION,
+			'user-agent' => 'MarketPress/' . MP_VERSION . ': http://premium.psource.org/project/e-commerce | PayPal Chained Payments Plugin/' . MP_VERSION,
 			'body'       => $req,
 			'sslverify'  => false,
 			'timeout'    => mp_get_api_timeout( $this->plugin_name ),
@@ -678,7 +678,7 @@ class MP_Gateway_Paypal_Chained_Payments extends MP_Gateway_API {
 			'X-PAYPAL-APPLICATION-ID'          => $this->appId
 		);
 
-		$args['user-agent'] = "PSeCommerce/{mp()->version}: http://premium.psource.org/project/e-commerce | PayPal Chained Payments Plugin/{mp()->version}";
+		$args['user-agent'] = "MarketPress/{mp()->version}: http://premium.psource.org/project/e-commerce | PayPal Chained Payments Plugin/{mp()->version}";
 		$args['body']       = $nvpStr . '&requestEnvelope.errorLanguage=en_US';
 		$args['sslverify']  = false;
 		$args['timeout']    = 60;
@@ -754,7 +754,7 @@ if ( is_plugin_active_for_network( mp_get_plugin_slug() ) && ! mp_cart()->is_glo
 			'id'               => 'mp-network-settings-paypal-chained-payments',
 			'page_slugs'       => array( 'network-shop-einstellungen' ),
 			'title'            => __( 'PayPal Chained Payments', 'mp' ),
-			'desc'             => __( 'Mit PayPal Chained Payments kannst Du als Netzwerkbesitzer mit mehreren Webseiten eine vordefinierte Gebühr oder einen Prozentsatz aller Verkäufe in PSeCommerce-Filialen im Netzwerk erheben! Dies ist für Kunden, die Artikel in einem Geschäft kaufen, unsichtbar. Alle PayPal-Gebühren werden dem Geschäftsinhaber in Rechnung gestellt. Um diese Option verwenden zu können, musst Du API-Anmeldeinformationen erstellen und alle anderen Gateways oben nicht verfügbar oder eingeschränkt machen.', 'mp' ),
+			'desc'             => __( 'Mit PayPal Chained Payments kannst Du als Netzwerkbesitzer mit mehreren Webseiten eine vordefinierte Gebühr oder einen Prozentsatz aller Verkäufe in MarketPress-Filialen im Netzwerk erheben! Dies ist für Kunden, die Artikel in einem Geschäft kaufen, unsichtbar. Alle PayPal-Gebühren werden dem Geschäftsinhaber in Rechnung gestellt. Um diese Option verwenden zu können, musst Du API-Anmeldeinformationen erstellen und alle anderen Gateways oben nicht verfügbar oder eingeschränkt machen.', 'mp' ),
 			'site_option_name' => 'mp_network_settings',
 			'order'            => 16,
 			'conditional'      => array(

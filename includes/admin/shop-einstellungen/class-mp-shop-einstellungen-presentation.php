@@ -192,7 +192,7 @@ class MP_Shop_Einstellungen_Presentation {
 		$metabox->add_field( 'post_select', array(
 			'name'        => 'pages[store]',
 			'label'       => array( 'text' => __( 'Shopportal', 'mp' ) ),
-			'desc'        => __( 'Diese Seite wird als Stammverzeichnis für Deinen PSeCommerce Shop verwendet.', 'mp' ),
+			'desc'        => __( 'Diese Seite wird als Stammverzeichnis für Deinen MarketPress Shop verwendet.', 'mp' ),
 			'query'       => array( 'post_type' => 'page', 'orderby' => 'title', 'order' => 'ASC' ),
 			'placeholder' => __( 'Eine Seite auswählen', 'mp' ),
 			'validation'  => array(
@@ -376,7 +376,7 @@ class MP_Shop_Einstellungen_Presentation {
 		$metabox->add_field( 'radio_group', array(
 			'name'    => 'list_button_type',
 			'label'   => array( 'text' => __( 'In den Warenkorb Aktion', 'mp' ) ),
-			'desc'    => __( 'PSeCommerce unterstützt zwei "Flows" zum Hinzufügen von Produkten zum Warenkorb. Nach dem Hinzufügen eines Produkts zum Warenkorb können zwei Dinge passieren:', 'mp' ),
+			'desc'    => __( 'MarketPress unterstützt zwei "Flows" zum Hinzufügen von Produkten zum Warenkorb. Nach dem Hinzufügen eines Produkts zum Warenkorb können zwei Dinge passieren:', 'mp' ),
 			'options' => array(
 				'addcart' => __( 'Auf der aktuellen Produktseite bleiben', 'mp' ),
 				'buynow'  => __( 'Zur sofortigen Kaufabwicklung auf die Warenkorbseite umleiten', 'mp' ),
@@ -665,7 +665,7 @@ class MP_Shop_Einstellungen_Presentation {
 		$metabox->add_field( 'radio_group', array(
 			'name'    => 'product_button_type',
 			'label'   => array( 'text' => __( 'In den Warenkorb Aktion', 'mp' ) ),
-			'desc'    => __( 'PSeCommerce unterstützt zwei "Flows" zum Hinzufügen von Produkten zum Warenkorb. Nach dem Hinzufügen eines Produkts zum Warenkorb können zwei Dinge passieren:', 'mp' ),
+			'desc'    => __( 'MarketPress unterstützt zwei "Flows" zum Hinzufügen von Produkten zum Warenkorb. Nach dem Hinzufügen eines Produkts zum Warenkorb können zwei Dinge passieren:', 'mp' ),
 			'options' => array(
 				'addcart' => __( 'Auf der aktuellen Produktseite bleiben', 'mp' ),
 				'buynow'  => __( 'Zur sofortigen Kaufabwicklung auf die Warenkorbseite umleiten', 'mp' ),
@@ -816,7 +816,7 @@ class MP_Shop_Einstellungen_Presentation {
 
 		$metabox->add_field( 'radio_group', array(
 			'name'    => 'store_theme',
-			'desc'    => sprintf( __( 'Diese Option ändert die integrierten CSS-Stile für Shopseiten. Speicher für einen benutzerdefinierten CSS-Stil Deine CSS-Datei mit der Kopfzeile <strong>/* PSeCommerce Style: Dein CSS-Themenname hier */</strong> im Ordner <strong> "%s" </strong>, (wir haben diesen Ordner bereits in das PSeCommerce integriert, Du musst ihn nur noch verschieben) dann erscheinen sie in dieser Liste, damit Du sie auswählen kannst. Du solltest "Keine" auswählen, wenn Du keine benutzerdefinierten CSS-Stile verwenden möchtest oder wenn Du Standard-Designvorlagen oder benutzerdefinierte Designvorlagen und CSS verwendest, um Dein eigenes, völlig einzigartiges Shop-Design zu erstellen (z.B.: mit Hilfe des Upfront-Kreators). Weitere Informationen zu benutzerdefinierten Designvorlagen findest Du <a target="_blank" href="%s">hier &raquo;</a>.', 'mp' ), trailingslashit( WP_CONTENT_DIR ) . 'psecommerce-styles/', mp_plugin_url( 'ui/themes/Theming_PSeCommerce.txt' ) ),
+			'desc'    => sprintf( __( 'Diese Option ändert die integrierten CSS-Stile für Shopseiten. Speicher für einen benutzerdefinierten CSS-Stil Deine CSS-Datei mit der Kopfzeile <strong>/* MarketPress Style: Dein CSS-Themenname hier */</strong> im Ordner <strong> "%s" </strong>, (wir haben diesen Ordner bereits in das MarketPress integriert, Du musst ihn nur noch verschieben) dann erscheinen sie in dieser Liste, damit Du sie auswählen kannst. Du solltest "Keine" auswählen, wenn Du keine benutzerdefinierten CSS-Stile verwenden möchtest oder wenn Du Standard-Designvorlagen oder benutzerdefinierte Designvorlagen und CSS verwendest, um Dein eigenes, völlig einzigartiges Shop-Design zu erstellen (z.B.: mit Hilfe des Upfront-Kreators). Weitere Informationen zu benutzerdefinierten Designvorlagen findest Du <a target="_blank" href="%s">hier &raquo;</a>.', 'mp' ), trailingslashit( WP_CONTENT_DIR ) . 'psecommerce-styles/', mp_plugin_url( 'ui/themes/Theming_MarketPress.txt' ) ),
 			'label'   => array( 'text' => __( 'Shopdesign', 'mp' ) ),
 			'options' => mp_get_theme_list() + array(
 				'default' => __( 'Standard - Verwenden von Standard-CSS', 'mp' ),

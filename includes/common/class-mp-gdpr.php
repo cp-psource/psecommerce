@@ -6,7 +6,7 @@
  *
  * @since 3.2.9
  *
- * @package PSeCommerce
+ * @package MarketPress
  */
 
 
@@ -69,7 +69,7 @@ class MP_GDPR {
 		$content = sprintf( '<h3>%s</h3><p>%s</p><h3>%s</h3><p>%s</p><h3>%s</h3><p>%s</p>',
 			__( 'Drittanbieter', 'mp' ),
 			__( 'Diese Website verwendet möglicherweise Dienste und Tools von Drittanbietern, um Zahlungen oder/und zu verarbeiten
-                   Verarbeiten Sie Versanddaten, wenn Sie Bestellungen im PSeCommerce Store erstellen. 
+                   Verarbeiten Sie Versanddaten, wenn Sie Bestellungen im MarketPress Store erstellen. 
 				   Diese Dienstleistungen beinhalten die Zahlung Gateways: 
 				   2Checkout, Authorize.net AIM, gemeinsame Zahlungen von eWay, eWay Rapid 3.1 Payments, Mijireh,
                    Mollie, Paymill, PayPal, PIN, Simplify Commerce mit MasterCard, Stripe und WePay; 
@@ -84,7 +84,7 @@ class MP_GDPR {
 		);
 
 		wp_add_privacy_policy_content(
-			'PSeCommerce',
+			'MarketPress',
 			wp_kses_post( wpautop( $content, false ) )
 		);
 	}
@@ -98,7 +98,7 @@ class MP_GDPR {
 	 */
 	public function register_exporter( $exporters ) {
 		$exporters['mp'] = array(
-			'exporter_friendly_name' => __( 'PSeCommerce User Data', 'mp' ),
+			'exporter_friendly_name' => __( 'MarketPress User Data', 'mp' ),
 			'callback'               => array( $this, 'export_data' ),
 		);
 
@@ -114,7 +114,7 @@ class MP_GDPR {
 	 */
 	public function register_eraser( $erasers ) {
 		$erasers['mp'] = array(
-			'eraser_friendly_name' => __( 'PSeCommerce User Data', 'mp' ),
+			'eraser_friendly_name' => __( 'MarketPress User Data', 'mp' ),
 			'callback'             => array( $this, 'erase_data' ),
 		);
 

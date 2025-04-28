@@ -1,6 +1,6 @@
 <?php
 /*
-  PSeCommerce Shipping Plugin Base Class
+  MarketPress Shipping Plugin Base Class
  */
 if ( !class_exists( 'MP_Shipping_API' ) ) {
 

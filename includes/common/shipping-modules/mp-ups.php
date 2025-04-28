@@ -1,6 +1,6 @@
 <?php
 /*
-PSeCommerce UPS Calculated Shipping Plugin
+MarketPress UPS Calculated Shipping Plugin
 Author: Arnold Bailey (Incsub)
 */
 
@@ -361,7 +361,7 @@ class MP_Shipping_UPS extends MP_Shipping_API_Calculated {
 		$request = $root->appendChild($dom->createElement('Request'));
 
 		$transaction = $request->appendChild($dom->createElement('TransactionReference'));
-		$transaction->appendChild($dom->createElement('CustomerContext','PSeCommerce Rate Request'));
+		$transaction->appendChild($dom->createElement('CustomerContext','MarketPress Rate Request'));
 		$transaction->appendChild($dom->createElement('XpciVersion','1.0001'));
 
 		$request->appendChild($dom->createElement('RequestAction', 'Rate'));

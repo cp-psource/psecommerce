@@ -1,7 +1,7 @@
 <?php
 
 /*
-  PSeCommerce Mollie Gateway Plugin
+  MarketPress Mollie Gateway Plugin
   Author: Marko Miljus (Incsub)
  */
 

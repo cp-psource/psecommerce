@@ -77,7 +77,7 @@ class MP_Gateway_Worker_AuthorizeNet_AIM {
 
 		$count = 0;
 		while ( $count < $retries ) {
-			$args['user-agent'] = 'PSeCommerce/' . MP_VERSION . ': http://premium.psource.org/project/e-commerce | Authorize.net AIM Plugin/' . MP_VERSION;
+			$args['user-agent'] = 'MarketPress/' . MP_VERSION . ': http://premium.psource.org/project/e-commerce | Authorize.net AIM Plugin/' . MP_VERSION;
 			$args['body'] = $this->fields;
 			$args['sslverify'] = false;
 			$args['timeout'] = mp_get_api_timeout( $this->plugin_name );

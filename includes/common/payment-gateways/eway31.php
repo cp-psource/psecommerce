@@ -1,6 +1,6 @@
 <?php
 /*
-PSeCommerce eWay Rapid 3.1 Payments Gateway Plugin
+MarketPress eWay Rapid 3.1 Payments Gateway Plugin
 Author: Mariusz Maniu (Incsub)
 */
 
@@ -320,7 +320,7 @@ class MP_Gateway_eWay31 extends MP_Gateway_API {
 
 		// Create AccessCode Request Object
 		$request = new CreateDirectPaymentRequest();
-		$request->Customer->Reference = 'PSeCommerce';
+		$request->Customer->Reference = 'MarketPress';
 
 		// Card Info
 		$exp = explode( '/', mp_get_post_value( 'mp_cc_exp', '' ) );

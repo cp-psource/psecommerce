@@ -1,6 +1,6 @@
 <?php
 /*
-PSeCommerce 2Checkout Gateway Plugin
+MarketPress 2Checkout Gateway Plugin
 Author: S H Mohanjith (Incsub), Marko Miljus (Incsub)
 */
 

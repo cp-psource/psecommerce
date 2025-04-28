@@ -597,8 +597,8 @@ class MP_Installer {
 		global $wpdb;
 		?>
 		<div class="wrap">
-			<h2><?php _e( 'Aktualisiere die PSeCommerce-Daten', 'mp' ); ?></h2>
-			<h4><?php _e( 'PSeCommerce erfordert ein Datenbank-Update, um weiterhin ordnungsgemäß zu funktionieren.<br />Unten findest Du eine Liste von Elementen, die Deine Aufmerksamkeit erfordern.', 'mp' ); ?></h4>
+			<h2><?php _e( 'Aktualisiere die MarketPress-Daten', 'mp' ); ?></h2>
+			<h4><?php _e( 'MarketPress erfordert ein Datenbank-Update, um weiterhin ordnungsgemäß zu funktionieren.<br />Unten findest Du eine Liste von Elementen, die Deine Aufmerksamkeit erfordern.', 'mp' ); ?></h4>
 
 			<br/>
 
@@ -644,7 +644,7 @@ class MP_Installer {
 					if ( is_multisite() ) {
 						?>
 						<p class="mp-important">
-							<strong><?php _e( 'Bitte aktualisiere jede Unterwebsite in Deinem ClassicPress-Netzwerk, auf der Du eine ältere Version des PSeCommerce-Plugins hast.', 'mp' ); ?></strong>
+							<strong><?php _e( 'Bitte aktualisiere jede Unterwebsite in Deinem ClassicPress-Netzwerk, auf der Du eine ältere Version des MarketPress-Plugins hast.', 'mp' ); ?></strong>
 						</p>
 						<?php
 					}
@@ -654,7 +654,7 @@ class MP_Installer {
 				</form>
 				<?php
 			} else {
-				_e( 'PSeCommerce hat ein schnelles automatisches Update erfolgreich durchgeführt!', 'mp' );
+				_e( 'MarketPress hat ein schnelles automatisches Update erfolgreich durchgeführt!', 'mp' );
 				delete_option( 'mp_db_update_required' );
 			} // End if().
 			?>
@@ -674,7 +674,7 @@ class MP_Installer {
 			return;
 		}
 
-		echo '<div class="error"><p>' . sprintf( __( 'PSeCommerce erfordert ein Datenbank-Update, um weiterhin ordnungsgemäß zu funktionieren. <a class="button-primary" href="%s">Gehe zur Update-Seite</a>', 'mp' ), admin_url( 'admin.php?page=mp-db-update' ) ) . '</p></div>';
+		echo '<div class="error"><p>' . sprintf( __( 'MarketPress erfordert ein Datenbank-Update, um weiterhin ordnungsgemäß zu funktionieren. <a class="button-primary" href="%s">Gehe zur Update-Seite</a>', 'mp' ), admin_url( 'admin.php?page=mp-db-update' ) ) . '</p></div>';
 	}
 
 	/**

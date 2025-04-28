@@ -616,7 +616,7 @@ class MP_Shipping_FedEx extends MP_Shipping_API_Calculated {
 						<v13:MeterNumber>' . $this->get_setting( 'meter' ) . '</v13:MeterNumber>
 					</v13:ClientDetail>
 					<v13:TransactionDetail>
-						<v13:CustomerTransactionId>PSeCommerce Rates Request</v13:CustomerTransactionId>
+						<v13:CustomerTransactionId>MarketPress Rates Request</v13:CustomerTransactionId>
 					</v13:TransactionDetail>
 					<v13:Version>
 						<v13:ServiceId>crs</v13:ServiceId>

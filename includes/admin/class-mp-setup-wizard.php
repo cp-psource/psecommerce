@@ -286,7 +286,7 @@ class MP_Setup_Wizard {
 		}
 		?>
 		<div class="error">
-			<p><?php printf( __( 'PSeCommerce Einrichtung ist noch nicht abgeschlossen! <a class="button button-primary" href="%s">Setup Assistent starten</a>', 'mp' ), admin_url( 'admin.php?page=store-setup-wizard' ) ); ?></p>
+			<p><?php printf( __( 'MarketPress Einrichtung ist noch nicht abgeschlossen! <a class="button button-primary" href="%s">Setup Assistent starten</a>', 'mp' ), admin_url( 'admin.php?page=store-setup-wizard' ) ); ?></p>
 		</div>
 		<?php
 	}

@@ -1,6 +1,6 @@
-# PSeCommerce eCommerce
+# MarketPress eCommerce
 
-All development for PSeCommerce should be done in the `development` branch. Please fork and submit pull-requests to the `development` branch only!
+All development for MarketPress should be done in the `development` branch. Please fork and submit pull-requests to the `development` branch only!
 
 ## Start development
 

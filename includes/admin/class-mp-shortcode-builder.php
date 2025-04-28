@@ -1,9 +1,9 @@
 <?php
 /**
- * Handles adding and inserting PSeCommerce short codes from within the tinymce editor
+ * Handles adding and inserting MarketPress short codes from within the tinymce editor
  *
  * @since 3.0
- * @package PSeCommerce
+ * @package MarketPress
  */
 add_action( 'wp_ajax_mp_shortcode_builder_search_products', array( 'MP_Shortcode_Builder', 'search_products' ) );
 
@@ -1519,7 +1519,7 @@ class MP_Shortcode_Builder {
 		// Show button only if enabled.
 		if ( $sc_uilder ) {
 			?>
-			<a href="javascript:;" class="button mp-shortcode-builder-button" title="<?php _e( 'PSeCommerce-Shortcode hinzufügen', 'mp' ); ?>"><span class="wp-media-buttons-icon dashicons dashicons-cart"></span> <?php _e( 'PSeCommerce-Shortcode hinzufügen', 'mp' ); ?></a>
+			<a href="javascript:;" class="button mp-shortcode-builder-button" title="<?php _e( 'MarketPress-Shortcode hinzufügen', 'mp' ); ?>"><span class="wp-media-buttons-icon dashicons dashicons-cart"></span> <?php _e( 'MarketPress-Shortcode hinzufügen', 'mp' ); ?></a>
 			<?php
 		}
 	}

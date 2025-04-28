@@ -1,4 +1,4 @@
-=== PSeCommerce ===
+=== MarketPress ===
 Contributors: PSOURCE
 Tags: ecommerce, onlineshop, multisite, marketpress, psecommerce
 Requires at least: 4.9
@@ -13,10 +13,10 @@ Aktiviere das Plugin, passe Deine Einstellungen an und füge Deinem Shop einige 
 
 == Description ==
 
-PSeCommerce basiert auf dem Quellcode von MarketPress. MarketPress war der Vorgänger von WooCommerce und wurde von WPMUDEV 2019
+MarketPress basiert auf dem Quellcode von MarketPress. MarketPress war der Vorgänger von WooCommerce und wurde von WPMUDEV 2019
 entgültig eingestellt und erhält keine Updates mehr. Da wir immer schon lieber mit MarketPress gearbeitet haben, da es sehr
 Anpassungsfähig ist und einem alle Basics für das eCommerce bereitstellt ohne dabei überladen zu sein, mit irgendwelchen PRO Features zu
-nerven, etv. PSeCommerce ist ebenso OpenSource und absolut Kostenfrei und jeder darf sich an der weiteren Entwicklung beteiligen oder 
+nerven, etv. MarketPress ist ebenso OpenSource und absolut Kostenfrei und jeder darf sich an der weiteren Entwicklung beteiligen oder 
 mithilfe der mächtigen API eigene Erweiterungen und Plugins zur Verfügung stellen.
 
 
@@ -101,7 +101,7 @@ Online Geld verdienen macht dieses mächtige Leichtgewicht von eCommerce Plugin 
 
 = 3.4.7 =
 
-* PSeCommerce-Frontend ist nun ein eigenständiges Plugin
+* MarketPress-Frontend ist nun ein eigenständiges Plugin
 * Erweiterung für Statisik eingefügt
 * Weitere Anpassungen auf PhP7.5
 

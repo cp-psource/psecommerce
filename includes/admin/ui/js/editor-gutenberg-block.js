@@ -1,4 +1,4 @@
-/*! PSeCommerce - v3.3.7
+/*! MarketPress - v3.3.7
  * https://n3rds.work/piestingtal-source-project/ps-gmaps/
  * Copyright (c) 2018; * Licensed GPLv2+ */
 /*global window:false */

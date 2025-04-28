@@ -1,7 +1,7 @@
 <?php
 
 /*
-  PSeCommerce Stripe Gateway Plugin
+  MarketPress Stripe Gateway Plugin
   Author - Aaron Edwards, Marko Miljus
  */
 

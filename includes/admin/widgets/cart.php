@@ -1,11 +1,11 @@
 <?php
 
 //Product tags cloud
-class PSeCommerce_Shopping_Cart_Widget extends WP_Widget {
+class MarketPress_Shopping_Cart_Widget extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array( 'classname' => 'mp_widget mp_widget_cart', 'description' => __( 'Zeigt dynamische Warenkorbinhalte zusammen mit einer Checkout-Schaltfläche für Deinen PSeCommerce-Shop an.', 'mp' ) );
-		parent::__construct( 'mp_cart_widget', __( '(PSeCommerce) Warenkorb', 'mp' ), $widget_ops );
+		$widget_ops = array( 'classname' => 'mp_widget mp_widget_cart', 'description' => __( 'Zeigt dynamische Warenkorbinhalte zusammen mit einer Checkout-Schaltfläche für Deinen MarketPress-Shop an.', 'mp' ) );
+		parent::__construct( 'mp_cart_widget', __( '(MarketPress) Warenkorb', 'mp' ), $widget_ops );
 	}
 
 	function widget( $args, $instance ) {
@@ -78,9 +78,9 @@ class PSeCommerce_Shopping_Cart_Widget extends WP_Widget {
 
 }
 
-function PSeCommerce_Shopping_Cart_init_Widget ()
+function MarketPress_Shopping_Cart_init_Widget ()
 {
-	return register_widget('PSeCommerce_Shopping_Cart_Widget');
+	return register_widget('MarketPress_Shopping_Cart_Widget');
 }
-add_action ('widgets_init', 'PSeCommerce_Shopping_Cart_init_Widget');
+add_action ('widgets_init', 'MarketPress_Shopping_Cart_init_Widget');
 ?>

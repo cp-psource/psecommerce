@@ -1,6 +1,6 @@
 <?php
 /*
-PSeCommerce iDeal Gateway Plugin
+MarketPress iDeal Gateway Plugin
 Author: Remi Schouten
 */
 

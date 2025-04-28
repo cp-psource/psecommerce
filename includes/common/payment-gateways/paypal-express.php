@@ -138,7 +138,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 
 		//make API call
 		$response = wp_remote_post( $this->API_Endpoint, array(
-			'user-agent'  => 'PSeCommerce/' . MP_VERSION . ': https://n3rds.work/piestingtal_source/psecommerce-shopsystem/ | PayPal Express Plugin/' . MP_VERSION,
+			'user-agent'  => 'MarketPress/' . MP_VERSION . ': https://n3rds.work/piestingtal_source/psecommerce-shopsystem/ | PayPal Express Plugin/' . MP_VERSION,
 			'body'        => http_build_query( $request ),
 			'sslverify'   => false,
 			'timeout'     => mp_get_api_timeout( $this->plugin_name ),
@@ -1041,7 +1041,7 @@ class MP_Gateway_Paypal_Express extends MP_Gateway_API {
 		$req = array_merge( array( 'cmd' => '_notify-validate' ), $_POST );
 
 		$response = wp_remote_post( $domain, array(
-			'user-agent' => 'PSeCommerce/' . MP_VERSION . ': http://premium.psource.org/project/e-commerce | PayPal Express Plugin/' . MP_VERSION,
+			'user-agent' => 'MarketPress/' . MP_VERSION . ': http://premium.psource.org/project/e-commerce | PayPal Express Plugin/' . MP_VERSION,
 			'body'       => http_build_query( $req ),
 			'sslverify'  => false,
 			'timeout'    => mp_get_api_timeout( $this->plugin_name ),

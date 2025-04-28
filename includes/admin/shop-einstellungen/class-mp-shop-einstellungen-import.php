@@ -3,7 +3,7 @@
  * Class MP_Shop_Einstellungen_Import
  *
  * @since   3.2.3
- * @package PSeCommerce
+ * @package MarketPress
  */
 
 if ( ! class_exists( 'MP_Shop_Einstellungen_Import' ) ) {

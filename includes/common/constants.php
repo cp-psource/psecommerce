@@ -15,7 +15,7 @@ if ( !defined('MP_HIDE_ORDERSTATUS_SHIPPING') ) define('MP_HIDE_ORDERSTATUS_SHIP
 //is this mp lite version?
 if ( !defined('MP_LITE') ) define('MP_LITE', false);
 
-//hide the PSeCommerce menus
+//hide the MarketPress menus
 if ( !defined('MP_HIDE_MENUS') ) define('MP_HIDE_MENUS', false);
 
 //entfernt PSOURCE Branding

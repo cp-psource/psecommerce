@@ -1,7 +1,7 @@
 <?php
 
 /*
-  PSeCommerce Paymill Gateway Plugin
+  MarketPress Paymill Gateway Plugin
   Author: Marko Miljus
  */
 

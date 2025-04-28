@@ -1,7 +1,7 @@
 <?php
 
 /*
-  PSeCommerce Mijireh Gateway Plugin
+  MarketPress Mijireh Gateway Plugin
   Author: Marko Miljus (Incsub)
  */
 

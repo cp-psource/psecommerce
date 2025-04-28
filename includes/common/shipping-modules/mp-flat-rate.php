@@ -1,6 +1,6 @@
 <?php
 /*
-PSeCommerce Flat-Rate Shipping Plugin
+MarketPress Flat-Rate Shipping Plugin
 Author: DerN3rd (WMS N@W)
 */
 class MP_Shipping_Flat_Rate extends MP_Shipping_API {

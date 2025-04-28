@@ -6,11 +6,11 @@ if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
 if ( is_multisite() ) {
 
 //Product tags cloud
-	class PSeCommerce_Global_Tag_Cloud_Widget extends WP_Widget {
+	class MarketPress_Global_Tag_Cloud_Widget extends WP_Widget {
 
 		function __construct() {
 			$widget_ops = array( 'classname'   => 'mp_widget mp_global_tag_cloud_widget',
-			                     'description' => __( "Displays global most used product tags in cloud format from network PSeCommerce stores.", 'mp' )
+			                     'description' => __( "Displays global most used product tags in cloud format from network MarketPress stores.", 'mp' )
 			);
 			parent::__construct( 'mp_global_tag_cloud_widget', __( 'Global Product Tag Cloud', 'mp' ), $widget_ops );
 		}
@@ -58,7 +58,7 @@ if ( is_multisite() ) {
 
 	}
 
-	//add_action( 'widgets_init', create_function( '', 'return register_widget("PSeCommerce_Global_Tag_Cloud_Widget");' ) );
-	add_action( 'widgets_init', 'PSeCommerce_Global_Tag_Cloud_Widget' ); function PSeCommerce_Global_Tag_Cloud_Widget() {return register_widget('PSeCommerce_Global_Tag_Cloud_Widget');}
+	//add_action( 'widgets_init', create_function( '', 'return register_widget("MarketPress_Global_Tag_Cloud_Widget");' ) );
+	add_action( 'widgets_init', 'MarketPress_Global_Tag_Cloud_Widget' ); function MarketPress_Global_Tag_Cloud_Widget() {return register_widget('MarketPress_Global_Tag_Cloud_Widget');}
 }
 ?>

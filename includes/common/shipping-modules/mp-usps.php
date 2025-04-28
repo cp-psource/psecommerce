@@ -1,7 +1,7 @@
 <?php
 
 /*
-PSeCommerce USPS Calculated Shipping Plugin
+MarketPress USPS Calculated Shipping Plugin
 Author: DerN3rd (WMS N@W)
 */
 

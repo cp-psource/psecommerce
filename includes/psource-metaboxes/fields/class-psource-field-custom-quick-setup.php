@@ -37,10 +37,10 @@ class PSOURCE_Field_Quick_Setup extends PSOURCE_Field {
 			?>
 			<div class="mp_quick_setup_step mp_quick_setup_step-1">
 				<div class="mp_content">
-					<img class="mp_quick_setup_image-welcome mp_image" src="<?php echo mp_plugin_url( 'includes/admin/ui/images/mp_quick_setup-welcome.png' ); ?>" alt="<?php _e('PSeCommerce - Einrichtungsassistent', 'mp'); ?>" height="158" width="158">
-					<h3 class="mp_title"><?php _e( 'Willkommen beim PSeCommerce - Einrichtungsassistenten', 'mp' ); ?></h3>
-					<p><?php _e( 'PSeCommerce fügt Deiner Seite eine komplette, einfache aber äusserst funktionale eCommerce Lösung hinzu. Dieser Assistent wird Dir dabei helfen deinen Onlineshop genau nach Deinen Bedürfnissen und Ansprüchen einzurichten. <br>In wenigen Schritten wird dieser Assistent Deinen Shop einsatzbereit machen, das dauert nur wenige Minuten.', 'mp' ); ?></p>
-					<!--<p><?php // _e( 'PSeCommerce adds a full online store to your website. It\'s really easy to get gogin, and only takes a few minutes to setup!', 'mp' );        ?></p>-->
+					<img class="mp_quick_setup_image-welcome mp_image" src="<?php echo mp_plugin_url( 'includes/admin/ui/images/mp_quick_setup-welcome.png' ); ?>" alt="<?php _e('MarketPress - Einrichtungsassistent', 'mp'); ?>" height="158" width="158">
+					<h3 class="mp_title"><?php _e( 'Willkommen beim MarketPress - Einrichtungsassistenten', 'mp' ); ?></h3>
+					<p><?php _e( 'MarketPress fügt Deiner Seite eine komplette, einfache aber äusserst funktionale eCommerce Lösung hinzu. Dieser Assistent wird Dir dabei helfen deinen Onlineshop genau nach Deinen Bedürfnissen und Ansprüchen einzurichten. <br>In wenigen Schritten wird dieser Assistent Deinen Shop einsatzbereit machen, das dauert nur wenige Minuten.', 'mp' ); ?></p>
+					<!--<p><?php // _e( 'MarketPress adds a full online store to your website. It\'s really easy to get gogin, and only takes a few minutes to setup!', 'mp' );        ?></p>-->
 					<p><?php _e( 'Leg einfach los wenn Du bereit bist, es ist Kinderleicht!.', 'mp' ); ?></p>
 				</div><!-- end mp_content -->
 

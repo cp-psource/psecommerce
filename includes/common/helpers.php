@@ -4,13 +4,13 @@ if( !defined('MP_EMAIL_USE_BILLIG_NAME')) define('MP_EMAIL_USE_BILLIG_NAME', fal
 if ( ! function_exists( 'mp' ) ) :
 
 	/**
-	 * Returns the PSeCommerce instance
+	 * Returns the MarketPress instance
 	 *
 	 * @since 3.0
 	 * @return object
 	 */
 	function mp() {
-		return PSeCommerce::get_instance();
+		return MarketPress::get_instance();
 	}
 
 endif;
@@ -557,7 +557,7 @@ if ( ! function_exists( 'mp_get_theme_list' ) ) :
 			}
 
 			foreach ( $themes as $theme ) {
-				$theme_data = get_file_data( $theme, array( 'name' => 'PSeCommerce Style' ) );
+				$theme_data = get_file_data( $theme, array( 'name' => 'MarketPress Style' ) );
 				$key        = basename( $theme, '.css' );
 
 				if ( $name = mp_arr_get_value( 'name', $theme_data ) ) {

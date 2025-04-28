@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: PSeCommerce Erlaube Kommentare
+Plugin Name: MarketPress Erlaube Kommentare
 Version: 0.3
 Plugin URI: https://n3rds.work
 Description: Ein einfaches Add-On, mit dem Kommentare zu Produken hinzugefügt werden können.
